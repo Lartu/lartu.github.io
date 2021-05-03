@@ -1,0 +1,108 @@
+{{ pagetitle Lartunet — Videogames }}
+{{ favicon favicon.png }}
+{{ descr Videogames developed by Lartu. }}
+
+{{ include _header.coso }}
+
+{{ title Videogames }}
+
+I've long held a passion for game development. Back in the day I released many
+Flash games and, with the advent of Android and iOS devices, I've also made my
+way into the Play Store and the App Store. Lately, I've been also working on
+browser-based and downloadable games for PC.
+
+--
+
+My games can also be found on {{my itch.io page => https://lartu.itch.io}}.
+
+{{ bigimg carts.jpeg }}
+
+/* I have as well written some short, nonsensical JavaScript excerpts that do
+useless stuff that I like to call toys. Both things are listed on this page. */
+
+{{ subtitle Eterspire (Browser-based, 2021) }}
+
+{{ midimg es.png }}
+
+{{ Eterspire => https://eterspire.com}} is a Browser-Based, Free Multiplayer 
+Online Role Playing Game.
+You take on the role of an adventurer in the land of Eterspire, fight
+creatures, find treasure and make friends with other players!
+
+--
+
+I've always wanted to make an MMORPG and this is it. It's not a hardcore
+MMORPG by any means, it's more casual than anything, but people keep logging
+in and playing and they seem to really like it. The game is frequently
+updated with new content.
+
+{{ subtitle Soft Drizzle: B-Track (MacOS & Windows, 2020) }}
+
+{{ midimg sdb.png }}
+
+{{Soft Drizzle: B-Track => https://lartu.itch.io/soft-drizzle-b-track }} is a
+short (30 - 50 min. long) visual novel about friendship and Halloween
+Festivals. It even includes an escape room! It was written in Unity over the
+course of a month as my submission for the 
+{{Spooktober Visual Novel Jam => https://itch.io/jam/spooktober-visual-novel-jam-by-devtalk2}}.
+It's a
+sequel to Soft Drizzle, a visual novel I released a month earlier. Graphics are
+bigger and better and it even includes 3D scenes to interact with and explore.
+
+{{ subtitle Soft Drizzle (Browser-based, 2020) }}
+
+{{ midimg sd.png }}
+
+{{ Soft Drizzle => https://lartu.itch.io/soft-drizzle}} is a short (15 - 25 min. long) visual novel about
+friendship and rainy days. It was written in JavaScript and {{ p5.js => https://p5js.org }}
+over the course of seven days as my submission 
+{{ 2020's LOWREZJAM => https://itch.io/jam/lowrezjam-2020}}. As such, it's resultion is 64x64, so I'd
+hardly believe you've played a smaller visual novel before!
+People really, really liked it and I'm very happy with the cute, wholesome result.
+
+{{ subtitle Fateful Lore (Android & iOS, 2020) }}
+
+{{ midimg fl.png }}
+
+{{Fateful Lore => https://fantaseel.itch.io/fateful-lore}}
+is an all-new retro-style role-playing game by 
+{{Fantaseel Interactive => https://fantaseel.com/}}, 
+a start-up I set up with some colleages to develop video-games.
+Inspired by old-school, 8-bit JRPGs, Fateful Lore is a nostalgic adventure
+that will delight fans of the genre! It's inspired by classic RPGs like Dragon
+Quest and Final Fantasy. We found that there were no RPGs on these platforms
+that looked and played like the games we loved when we were young, so we
+decided to make one ourselves.
+
+{{ subtitle Eternal Lux (Android, 2014) }}
+
+{{ midimg el.png }}
+
+{{Eternal Lux => https://lartu.itch.io/eternal-lux}}
+is an old-school styled Android RPG, designed to look like a game from the
+80's for the Apple II or MS-DOS like Ultima, with 16-color graphics and an
+awesome MIDI soundtrack. It's written completely in Java-Processing without a
+single class, for at the moment I did not know a thing about object oriented
+programming. Nevertheless, Eternal Lux was downloaded by over 20.000 people
+from all over the world and has received fairly positive reviews from an
+assortment of gaming websites and users alike, holding a total score of
+4.3 / 5 on the Google Play Store. It's free and weighs less than 800kb,
+so go give it a try!
+
+{{ subtitle Aidinia: An Epic Adventure! (Android, 2013) }}
+
+{{ midimg ai.png }}
+
+{{Aidinia - An Epic Adventure => https://lartu.itch.io/aidinia}}
+was my first attempt at developing an Android RPG. It's an 8-bit-like
+role-playing game written in Basic4Android and, being my first project on
+the system, the controls are a little clunky. It also may or may not work well
+on newer Android phones. Reviews were positive though and it holds a score of
+4,1 / 5 stars. This was really painful to develop and it took me a very long
+time, so I am quite happy with how the game turned out in the end, even if
+it's not the best example of good game design choices. It was a paid title
+for a long time, but due to a disagreement with the policies Google enforces
+on their store I've decided to release it for free.
+
+{{ subtitle Other Games }}
+I have also made other games that are not worth mentioning or that have been sadly lost to time.

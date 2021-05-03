@@ -1,0 +1,14 @@
+{{ pagetitle Lartunet — Changelog }}
+{{ favicon favicon.png }}
+{{ descr List of recent changes for the lartunet. }}
+
+{{ include _header.coso }}
+
+{{ title Changelog }}
+
+{{ bigimg 20181225_191732.jpg }}
+
+This is a list of all the changes that have taken place since the last version
+of the lartunet.
+
+{{ changelog }}

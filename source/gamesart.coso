@@ -1,0 +1,55 @@
+{{ pagetitle Lartunet — Games & Art }}
+{{ favicon favicon.png }}
+{{ descr Games & Art at lartunet }}
+
+{{ include _header.coso }}
+
+{{ title games and art }}
+
+{{ bigimg IMG-20180201-WA0069.jpg }}
+
+{{ subtitle videogames }}
+
+Most of my free time is spent developing videogames. There's a special page
+dedicated to the games I've released {{ here -> gamedev.coso }}. You can also
+visit me at {{ itch.io => https://lartu.itch.io }}.
+--
+Most of my games are released for free, although donations are always welcome
+on platforms that support them. Except in some very rare instances, no source
+code is provided for them.
+
+
+{{ subtitle photography }}
+
+I'm not a photographer by any means. When traveling I do like to take pictures
+of places I like. Some of my photos have been uploaded to adorn the lartunet.
+I haven't made a full album available publicly yet, but I may in the future.
+--
+The names of the photos depicted on this website are a hash based on their
+original filename to mantain consistency, general aesthetic and for
+convenience. There's no real meaning to them. There's also no actual meaning
+to the photos I display here, just places I enjoyed observing.
+
+
+{{ subtitle music }}
+
+I write music for my videogames. There are hours and hours of soundtracks that
+I haven't uploaded anywhere yet, but I might in the future. The soundtrack for
+all my games is available to download for free on their respective
+{{ itch.io => https://lartu.itch.io }} subsites.
+--
+At some point I also attempted to write lo-fi hip hop with
+{{ Polaris Quine => https://www.youtube.com/watch?v=3pzCy--ItfE}}
+and {{ MOXWave => https://www.youtube.com/watch?v=TLNvlRiahDo}}.
+
+
+{{ subtitle recipes }}
+
+«__Of course, food is a human need and can be seen as a science, but we have
+transformed food and its preparation into something more than just a basic
+human need. We have made eating an experience, and the preparation of food an
+art form__», states the Northern Art Prize Initiative, as an excuse for me to
+add this section to this page.
+--
+Sometimes I enjoy cooking (and I do surely enjoy eating even more).
+I have compiled a few recipes I enjoy in the {{ cookbook -> cookbook.coso }}.

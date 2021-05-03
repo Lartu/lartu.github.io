@@ -1,0 +1,116 @@
+{{ pagetitle Lartunet — Home }}
+{{ favicon favicon.png }}
+{{ descr Lartu's personal website, welcome to Lartu.net. }}
+
+{{ include _header.coso }}
+
+{{ title Welcome }}
+
+Hi there, I'm Lartu. This is my web domain: the lartunet. I make games and open-source software. 
+I love rainy days and food. Last updated **{{ date }}**. 
+Despite its looks, this site is still maintained. 
+Online since **November 29, 2015** and best viewed on a small CRT screen.
+--
+You can send me email to {{ lartu@lartu.net => mailto:lartu@lartu.net }}. 
+My Twitter handle is {{ @martulartu => https://twitter.com/martulartu }}.
+My GitHub user is {{ lartu => https://github.com/lartu }}. 
+My itch.io account is also {{ lartu => https://lartu.itch.io }}. 
+If you see another lartu somewhere that's also probably me.
+--
+I have written and published a number of {{ videogames -> gamedev.coso }}, 
+mostly RPGs and visual novels. I'm also looking into {{ fantasy consoles -> pfc.coso }}.
+I also like developing {{ programming languages -> languages.coso }},
+{{ code libraries -> libraries.coso}} and {{ general software and tools -> software.coso }}.
+--
+I have also defined some standards of my own with the {{ mitsubachi -> mitsubachi.coso }} chat protocol
+and my official
+{{ hangman rules -> hangman.coso }}.
+--
+If you are here for my academic work, in {{ teoremas para el final de análisis II (computación) -> analisis.coso }} you
+can find calculus theorems and their demonstrations, in Spanish. I have also written an
+interpreter for the {{ S Language -> slang.coso }}, created by Martin Davis, 
+Ron Sigal & Elaine J. Weyuker for their book __Computability, Complexity, and 
+Languages: Fundamentals of Theoretical Computer Science__. The lartunet also
+has some {{graph theory notes -> graphteory.coso }}.
+--
+I enjoy public speaking very much and I've spoken at several conferences. 
+You can find the details {{ here -> talks.coso }}.
+
+{{ bigimg IMG_0096.JPG }}
+
+See {{ recent changes -> changelog.coso }}.
+
+/*
+{{ subtitle Game Development }}
+
+I have written and published a number of {{ games -> gamedev.coso }}, 
+mostly RPGs and visual novels.
+--
+I am also developing the {{ PFC-21 -> pfc.coso }} fixed-size fantasy console.
+
+{{ subtitle Programming Projects }}
+
+I code for the sake of coding. I like programming languages, I have developed
+{{ LDPL -> ldpl.coso }}, {{ LAPL -> lapl.coso }}, {{ polaris -> polaris.coso }},
+{{ LarBASIC -> larbasic.coso }}, {{ nari -> nari.coso }}, {{ coso -> coso.coso }},
+{{ malady -> malady.coso }}, {{ cherryl -> cherryl.coso }},
+{{ mauifish -> mauifish.coso }}, {{ mastropiero -> mastropiero.coso }},
+{{ htmlkoala -> htmlkoala.coso }} and {{ LBI -> lbi.coso }}.
+I'm probably forgetting some.
+
+--
+
+When it comes
+to programming libraries, I have written {{ cppregex -> cppregex.coso }}, 
+{{ cpptrim -> cpptrim.coso }},
+{{ lstring -> lstring.coso }}, {{ shibahug -> shibahug.coso }}, {{ p5.clickable
+-> p5clickable.coso }}, {{ ldpl-fltk -> ldplfltk.coso }}, {{ldpl-std -> ldplstd.coso}},
+{{ ldpl-url-resolver -> ldplurlresolver.coso}}, {{ldpl-ncurses -> ldplncurses.coso}},
+{{ ldpl-net-server -> ldpl-net-server.coso }}, {{ldpl-irc-bot -> ldpl-irc-bot.coso}},
+{{ doodlest-artu -> artu.coso }} and {{ chText -> chtext.coso }}.
+
+--
+
+Tools and software in general: {{ coralDB -> coraldb.coso }},
+{{ starqueue -> starqueue.coso }}, {{ tmon -> tmon.coso }}, {{ lute -> lute.coso }},
+{{ OpenNapkin -> opennapkin.coso }}, {{ led -> led.coso }}, {{ explicartu 
+-> explicartu.coso }}, {{ mgit -> mgit.coso }}, {{ beKnowledge -> beknowledge.coso }},
+{{ ast -> ast.coso }},
+{{ gallemathic -> gallemathic.coso }} and {{ lartype -> lartype.coso }}.
+
+--
+
+I have also defined some standards of my own with {{ mitsubachi -> mitsubachi.coso }}
+and
+{{ my hangman rules -> hangman.coso }}.
+
+
+{{ subtitle Academic Work }}
+
+In {{ teoremas para el final de análisis II (computación) -> analisis.coso }} you
+can find calculus theorems and their demonstrations, in Spanish. I have written an
+interpreter for the {{ S Language -> slang.coso }}, created by Martin Davis, 
+Ron Sigal & Elaine J. Weyuker for their book __Computability, Complexity, and 
+Languages: Fundamentals of Theoretical Computer Science__. The lartunet also
+has some {{graph theory notes -> graphteory.coso }}.
+
+{{ subtitle Talks and Lectures }}
+
+I enjoy public speaking very much and I've spoken at several conferences. 
+You can find the details {{ here -> talks.coso }}.
+
+*/
+
+{{ subtitle Low Tech Webring }}
+
+The lartunet is also part of the {{ low tech webring => https://emreed.net/LowTech_Directory.html }}.
+The site to the left of the lartunet is {{ hazel's site => https://blog.knightsofthelambdacalcul.us/}},
+while the one to the right is {{ Comet Pustój's => https://cometpustoj.neocities.org/ }}.
+
+--
+
+<small>Text on this website is released under a 
+{{Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported => https://creativecommons.org/licenses/by-nc-sa/3.0/ }}
+License. All photos have been taken by me unless otherwise specified. All
+other images also belong to me, again unless otherwise specified.
+Copyright © Lartu, 2015 - {{ year }}. All rights reserved.</small>
