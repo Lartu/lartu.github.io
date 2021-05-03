@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lartunet — Mitsubachi</title>
+<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<meta name="description" content="Definition for the Mitsubachi Chat Protocol.">
+</head><!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130871915-2"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-130871915-2');
+            </script>
+            
+<body>
+<table>
+    <tr>
+        <td>
+            <div class="img"><img src ="images/I58C86.png" title="I58C86" alt="Image: I58C86"></div>
+        </td>
+        <td>
+            lartunet
+            — <a href="index.html">home</a>
+            — <a href="computing.html">computing</a>
+            <a href="gamesart.html">games & art</a>
+            <a href="research.html">research</a>
+            — <a href="sitemap.html">sitemap</a>
+        </td>
+    </tr>
+</table>
+
+<h1>Mitsubachi</h1>
+
+<div class="img"><img src ="images/X93Z95.png" title="X93Z95" alt="Image: X93Z95"></div>
+
+Mitsubachi is a tiny and open chat protocol, designed to be minimal, easy to
+implement, easy to use and easy to understand. Mitsubachi supports nicknames,
+nickname changing, user-to-user messaging and channel / group (known in
+Mitsubachi as "distribution lists") chat.
+
+<div class="split"></div>
+
+I designed the Mitsubachi protocol because I found that most common, open chat
+protocols (IRC, XMPP, etc.) are to complex too implement properly and
+completely. Writing a very bare-bones IRC client is easy, but implementing the
+whole protocol is not. XMPP messages are way to heavy to be reliable on
+high-latency, low-bandwidth networks. The protocol is also very complex for an
+amateur, casual client / server writer to implement. Mitsubachi aims to address
+all these issues.
+
+<h2>protocol tl;dr</h2>
+
+Connection is done via plain sockets on TCP port 7107.
+<div class="split"></div>
+Messages between client and server are divided in 5 sections
+separated by a single space.
+<div class="split"></div>
+Messages end with a \n character.
+<div class="split"></div>
+<table border="1">
+<tr>
+<th colspan=5>Mitsubachi Message Format</th>
+</tr>
+<tr>
+    <td>Command</td>
+    <td>Sender</td>
+    <td>Recipient</td>
+    <td>Extra-Data</td>
+    <td>Content</td>
+</tr>
+<tr>
+    <td>4 chars</td>
+    <td>1 to 32 chars</td>
+    <td>1 to 32 chars</td>
+    <td>&gt;1 chars</td>
+    <td>&gt;1 chars</td>
+</tr>
+</table>
+<div class="split"></div>
+All clients and lists have a nick that identifies them. Nicks
+are unique.
+<div class="split"></div>
+Lists also have nicks, but list nicks begin with the character !.
+<div class="split"></div>
+Clients may join and leave lists. Messages sent to a client
+are delivered to that client. Messages sent to lists are sent
+to every client on that list.
+<div class="split"></div>
+When a client joins a list that doesn't exist, it is created
+and the client is added to it.
+<div class="split"></div>
+Below is a list of valid commands. These commands can both be
+sent to a Mitsubachi server or be received by a Mitsubachi client:
+<table border="1">
+<tr>
+    <th>Command</th>
+    <th>Action</th>
+</tr>
+<tr>
+    <td><code>NICK &lt;nick&gt; # # #\n</code></td>
+    <td>Used to change your nick</td>
+</tr>
+<tr>
+    <td><code>JOIN # &lt;list-nick&gt; # #\n</code></td>
+    <td>Used to join a list</td>
+</tr>
+<tr>
+    <td><code>LEAV # &lt;list-nick&gt; # #\n</code></td>
+    <td>Used to leave a list</td>
+</tr>
+<tr>
+    <td><code>MESG &lt;sender-nick&gt; &lt;recipient-nick&gt; # &lt;message&gt;\n</code></td>
+    <td>Used to send an actual message to a nick</td>
+</tr>
+<tr>
+    <td><code>EXIT # # # #\n</code></td>
+    <td>Used to close the connection, usually sent by clients only</td>
+</tr>
+<tr>
+    <td><code>OOPS # # &lt;error-code&gt; #\n</code></td>
+    <td>Used to tell a client the result of
+  an operation (sent by servers)</td>
+</tr>
+<tr>
+    <td><code>INFO # # # &lt;error-code&gt;\n</code></td>
+    <td>Used by servers to send text messages
+  to clients</td>
+</tr>
+</table>
+Notice in the table above how every command has the five sections
+stated in the previous table. <code>#</code> means the literal
+character #. This character (or any other character really, as it
+should be ignored) is used to fulfill the character requirement
+of at least one character of unused sections.
+<div class="split"></div>
+<b>Error codes:</b>
+A server should reply <i>000</i> ("ok") when a client changes their nick successfully. Otherwise it should reply <i>001</i> ("nick already in
+use") or <i>002</i> ("invalid nick", for nicks beginning in ! for users). <i>003</i> should
+be sent when trying to join an invalid list (using a client nick).
+<i>005</i> should be sent when a client tries to send a message to a list
+they are not a member of. <i>006</i> should be sent when an invalid command
+is received by the server. <i>007</i> should be sent to clients that have
+not chosen a nick when the server has received a command from them
+other than NICK.
+
+<h2>protocol details</h2>
+
+By default and standard, Mitsubachi servers listen for connections
+on TCP port 7107. Clients (users) connect to a server by plain socket connection.
+<div class="split"></div>
+Exchange between server and client is handled via messages. A message is a
+string sent from a client to the server or from the server to a client.
+Messages have a maximum length of 1024 bytes (1024 characters), are divided in
+5 sections and follow the format:
+<div class="split"></div>
+<code>command sender recipient extradata content\n</code>
+<div class="split"></div>
+Note the \n at the end. This character is used to delimit the end of the message
+and thus cannot be used anywhere else in the message.
+<div class="split"></div>
+Each section of a message represents a different type of information:
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> The <b>command</b> part tells the recipent of the message what we intend to do with this message (for example, change our nick or join a list).</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a fixed length of 4 characters.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section is always UPPERCASE.</div>
+<div class='listitem'><span class='listmark'>▶</span> The <b>sender</b> part tells the recipient who is this message from.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a maximum length of 32 characters.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section is always lowercase.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section may not contain any spaces.</div>
+<div class='listitem'><span class='listmark'>▶</span> The <b>recipient</b> part tells who was this message sent to.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a maximum length of 32 characters.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section is always lowercase.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section may not contain any spaces.</div>
+<div class='listitem'><span class='listmark'>▶</span> The <b>extradata</b> section is a reserved part of the message used for sending error codes or other data.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has no maximum length.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section is always lowercase.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Multiple words in this section must be delimited by the character <code>|</code>.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section may not contain any spaces.</div>
+<div class='listitem'><span class='listmark'>▶</span> The <b>content</b> part of the message is used for sending messages per sé, as in the content of a message (<i>"hi there!"</i>, <i>"how are you?"</i>).</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section has no maximum length.</div>
+<div class='listitem2'><span class='listmark'>▶</span> This section may contain spaces.</div>
+<div class="split"></div>
+When a section is supposed to be empty (for example, when sending a message to the server that has no recipient) it must
+be filled with a single character, usually <code>#</code>.
+<div class="split"></div>
+The minimum length of any message is 13: <code>XXXX # # # #\n</code>.
+<div class="split"></div>
+<b>Nicks</b> identify users. Each user has a nick (or nickname) and no 
+two users can have the same nickname. When a user disconnects from
+the server, their nickname becomes available to be used by other
+user. Nicknames have a minimum length of 1 character and a maximum
+length of 32 characters. Nicknames that start with the character <code>!</code>
+identify lists. As such, user nicknames cannot contain this
+character in the first position. Nicks can contain any character
+except spaces.
+<div class="split"></div>
+<b>Lists</b> are lists of users. They have a nickname just like any other user, but
+messages sent to a list are sent to every member of the list.
+In order to be able to send a message to a list, a client must
+be part of said list (otherwise error message <i>005</i> 
+("you are not a member of this list") should be sent to the 
+client). When a message is sent to a list, it is broadcast to 
+every member of the list except the one who sent the message. 
+Users may join and leave lists at any time. When a client tries 
+to join a non-existant list, it is created.
+<div class="split"></div>
+All this said, the following messages are valid Mitsubachi messages:
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>NICK</b>: sent by a client to a server to change their nick. If the nick is in use by another client, the server should reply <code>OOPS # # 001 #\n</code> ("nick already in use"). It the nick is available to be used, the server should reply <code>OOPS # # 000 #\n</code> ("ok") and assign the nick to the client.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: NICK</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: the desired nick</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>NICK myNick # # #\n</code></div>
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>JOIN</b>: sent by a client to a server to join a list. If the nick of the list to be joined is not a valid list nick, the server should reply <code>OOPS # # 003 #\n</code> ("invalid distribution list"). If the list is valid, the client should be joined to the list and the server should reply <code>OOPS # # 000 #\n</code> ("ok").</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: JOIN</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: nick of the list to be joined</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>JOIN # !mitsubachi # #\n</code></div>
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>LEAV</b>: sent by a client to a server to leave a list. If the nick of the list to be left is not a valid list nick, the server should reply <code>OOPS # # 003 #\n</code> ("invalid distribution list"). If the list is valid, the client should be removed from the list and the server should reply <code>OOPS # # 000 #\n</code> ("ok").</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: LEAV</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: nick of the list to be left</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>LEAV # !lamelist # #\</code></div>
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>MESG</b>: sent by a client to a server to deliver a message to another client or list. When this message is sent by the server to a client it means that said client has received a message.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: MESG</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: nick of the sender of the message</div>
+<div class='listitem2'><span class='listmark'>▶</span> When a client is the one that sends this message to a server, it may omit the contents of this section and just send a # in it instead. When this message is sent by a server to a client, the content of this section is always the nick of the user who sent the message originally.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: nick of the recipient of the message (user or list)</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: actual contents of the message</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>MESG user1 coolUser # Hello there, coolUser, how are you?\n</code></div>
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>EXIT</b>: sent by a client to a server to close the connection.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: EXIT</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>EXIT # # # #\n</code></div>
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>OOPS</b>: sent by a server to a client to inform the result of the requested operation. This message shouldn't be sent by clients.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: OOPS</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: error code that represents the result of the requested operation</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>OOPS # # 000 #\n</code></div>
+<div class="split"></div>
+<div class='listitem'><span class='listmark'>▶</span> <b>INFO</b>: an information message from the server with a text message. This is supposed to be read by the user. It may contain a MOTD or any valuable information the server administrator desires to send clients.</div>
+<div class='listitem2'><span class='listmark'>▶</span> Command section value: INFO</div>
+<div class='listitem2'><span class='listmark'>▶</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>▶</span> Content section value: the contents of a message</div>
+<div class='listitem2'><span class='listmark'>▶</span> Example: <code>INFO # # # Welcome to Mitsubachi!\n</code></div>
+<div class="split"></div>
+In order to request any command to a server, clients must
+first have chosen a nick (by issuing a NICK message). Should
+they try to send any other message to the server other than a
+NICK command, the server should reply <code>OOPS # # 007 #\n</code>
+("please log in").
+<div class="split"></div>
+Should a message not in the list above be received by a server,
+it should reply <code>OOPS # # 006 #\n</code> ("unknown command").
+
+<h2>implementations</h2>
+
+A Mitsubachi Server written in <a href="ldpl.html">LDPL</a>
+is uploaded <a href="https://github.com/Lartu/mitsubachi/blob/master/mitsubachi-server.ldpl" class="external" target=_blank>here</a>.
+You are allowed to use and
+modify it in any way you see fit. You are encouraged to host
+your own Mitsubachi servers!
+
+In order to build and run this server implementation you must run
+the following commands:
+
+<div class="split"></div>
+
+<pre>ldpl mitsubachi-server.ldpl -o=mitsubachi-server</pre>
+
+<div class="split"></div>
+
+This server implementation requires the
+<a href="ldplnetserver.html">LDPL Net Server</a>
+and the text package from the <a href="ldplstd.html">LDPL Standard Library</a>.
+
+<div class="split"></div>
+
+If at the time of reading the LDPL Library Library is still
+available, you can install both libraries by running:
+<div class="split"></div>
+<pre>lpm install ldpl_net_server
+lpm install std-text</pre>
+
+<h2>license</h2>
+
+The Mitsubachi protocol is released under the MIT license and
+may be freely reproduced and translated. The Mitsubachi bee logo
+is released under the MIT license and may be freely reproduced
+on any medium.
+</body>
+</html>
