@@ -18,7 +18,7 @@ import time
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 SOURCES_DIR = BASE_DIR + "/source"
-DEST_DIR = BASE_DIR + "/build"
+DEST_DIR = BASE_DIR + "/docs"
 IMAGES_DIR = BASE_DIR + "/images"
 STYLE_FILE = BASE_DIR + "/styles.css"
 MAIN_TITLE = "lartu.net"
