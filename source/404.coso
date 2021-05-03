@@ -1,9 +1,9 @@
 {{ pagetitle Lartunet — 404 }}
 {{ favicon favicon.png }}
-{{ descr 404, site not found. }}
+{{ descr 404, page not found. }}
 
 {{ include _header.coso }}
 
-{{ title 404 — site not found }}
+{{ title 404 — page not found }}
 
 {{ bigimg IMG-20180203-WA0035.jpg }}
