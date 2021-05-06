@@ -8,6 +8,7 @@
 
 {{ bigimg 20190105_161231.jpg }}
 
+{{ anchor langs }}
 {{ subtitle programming languages }}
 
 {{ LDPL -> ldpl.coso }}, a compiled programming language for Unix systems,
@@ -47,6 +48,7 @@ turns source code into music.
 {{ LBI -> lbi.coso }}, a Brainfuck Interpreter written in LDPL.
 
 
+{{ anchor libs }}
 {{ subtitle programming libraries }}
 
 {{ p5.clickable -> p5clickable.coso }}, a {{p5.js => http://p5js.org/}} library
@@ -104,6 +106,7 @@ type: a string type used just like regular C++ strings but with UTF-8 support.
 The LDPL ``TEXT`` data-type is based on this library.
 
 
+{{ anchor software }}
 {{ subtitle general software }}
 
 {{ coralDB -> coraldb.coso }}, an extremely simple and minimal in-memory

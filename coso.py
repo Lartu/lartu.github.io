@@ -174,6 +174,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     description = DESCRIPTION
     include_count = 0
     includes = []
+    footnotes = []
     for tag in tags:
         tag_content = tag.strip("{} \r\n\t")
         # Non command tags
@@ -186,17 +187,27 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             tokens = tag_content.split("->")
             message = tokens[0].strip()
             realfilename = tokens[1].strip()
+            anchor = ""
+            if len(tokens) > 2:
+                anchor = tokens[2].strip()
             if realfilename not in linkedpages:
                 linkedpages[realfilename] = False
             destination = get_file_name(realfilename)
+            if anchor:
+                destination += "#" + anchor
             source = source.replace(tag, f'<a href="{destination}">{message}</a>')
         elif "~>" in tag_content:
             tokens = tag_content.split("~>")
             message = tokens[0].strip()
             realfilename = tokens[1].strip()
+            anchor = ""
+            if len(tokens) > 2:
+                anchor = tokens[2].strip()
             if realfilename not in linkedpages:
                 linkedpages[realfilename] = False
             destination = get_file_name(realfilename)
+            if anchor:
+                destination += "#" + anchor
             source = source.replace(tag, f'<a href="{destination}" target=_blank>{message}</a>')
         else:
             tag_content = re.sub(r"\s+", " ", tag_content)
@@ -272,6 +283,18 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 if with_head:
                     sitemap[get_file_name(filename)] = page_title
                 source = source.replace(tag, get_changelog())
+            elif tokens[0] == "footnote":
+                footnotes.append(tokens[1].strip())
+                source = source.replace(tag, f"<sup>{len(footnotes)}</sup>")
+    # Add footnotes
+    if len(footnotes) > 0:
+        source = source + "{{subtitle footnotes}}"
+        fnindex = 0
+        for footnote in footnotes:
+            fnindex += 1
+            source = source + f"({fnindex}) {footnote}"
+            if fnindex < len(footnotes):
+                source = source + "\n--\n"
     # Formatted text
     bolds = re.findall(r"\*\*(?:.|\n)*?\*\*", source)
     for text in bolds:
@@ -288,11 +311,11 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     listitems = re.findall(r"(?<=\n)::::.+?[\r\n]", source)
     for text in listitems:
         source = source.replace(
-            text, "<div class='listitem2'><span class='listmark'>▶</span> " + text[4:].strip() + "</div>\n")
+            text, "<div class='listitem2'><span class='listmark'>※</span> " + text[4:].strip() + "</div>\n")
     listitems = re.findall(r"(?<=\n)::.+?[\r\n]", source)
     for text in listitems:
         source = source.replace(
-            text, "<div class='listitem'><span class='listmark'>▶</span> " + text[2:].strip() + "</div>\n")
+            text, "<div class='listitem'><span class='listmark'>※</span> " + text[2:].strip() + "</div>\n")
     # Include includes
     index = 0
     for include in includes:
@@ -328,7 +351,9 @@ os.system(f"cp \"{STYLE_FILE}\" \"{DEST_DIR}/styles.css\"")
 # Create images directory
 os.system(f"mkdir \"{DEST_DIR}/images\"")
 os.system(f'''cp "{IMAGES_DIR}/{FAVICON}" "{DEST_DIR}/images/{FAVICON}"''')
+os.system(f'''cp -R "{IMAGES_DIR}/analisis" "{DEST_DIR}/images/analisis"''') # Imagenes de analisis
 os.system(f'''echo "forbidden" > "{DEST_DIR}/images/index.html"''')
+os.system(f'''echo "forbidden" > "{DEST_DIR}/images/analisis/index.html"''')
 
 # Get source files
 directory = os.fsencode(SOURCES_DIR)

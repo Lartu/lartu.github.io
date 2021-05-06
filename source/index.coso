@@ -19,8 +19,8 @@ If you see another lartu somewhere that's also probably me.
 --
 I have written and published a number of {{ videogames -> gamedev.coso }}, 
 mostly RPGs and visual novels. I'm also looking into {{ fantasy consoles -> pfc.coso }}.
-I also like developing {{ programming languages -> languages.coso }},
-{{ code libraries -> libraries.coso}} and {{ general software and tools -> software.coso }}.
+I also like developing {{ programming languages -> computing.coso -> langs }},
+{{ code libraries -> computing.coso -> libs}} and {{ general software and tools -> computing.coso -> sofware }}.
 --
 I have also defined some standards of my own with the {{ mitsubachi -> mitsubachi.coso }} chat protocol
 and my official

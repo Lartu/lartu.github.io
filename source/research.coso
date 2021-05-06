@@ -1,0 +1,45 @@
+{{ pagetitle Lartunet — Research }}
+{{ favicon favicon.png }}
+{{ descr Research at lartunet }}
+
+{{ include _header.coso }}
+
+{{ title research }}
+
+{{ bigimg 20180208_163940_Film2.jpg }}
+
+{{ subtitle maths }}
+
+{{ Teoremas para el final de análisis II (computación) -> analisis.coso }},
+calculus theorems and their demonstrations, in Spanish. Compiled for the final
+exam of Calculus II for the Computing Department of the
+Faculty of Exact and Natural Sciences of the University of Buenos Aires.
+
+--
+
+I have some {{graph theory notes -> graphteory.coso }}.
+
+{{ subtitle computing }}
+
+I've made an interpreter for the {{ S Language -> slang.coso }}, created by Martin Davis, 
+Ron Sigal & Elaine J. Weyuker for their book __Computability, Complexity, and 
+Languages: Fundamentals of Theoretical Computer Science__.
+
+--
+
+The {{ mitsubachi -> mitsubachi.coso }} chat protocol standard.
+
+{{ subtitle others }}
+
+An unambiguous ruleset for {{ hangman -> hangman.coso }}.
+
+--
+
+My so called {{ lartips -> lartips.coso }} are a list of steps, do's and don't's
+that I compiled based on my game-development experience and that I constantly
+apply to help me finish my projects.
+
+--
+
+{{ Notes on everything -> everynotes.coso }}, a list of knowledge bits collected
+from various places about different things.
