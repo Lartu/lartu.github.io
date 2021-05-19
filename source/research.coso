@@ -8,16 +8,12 @@
 
 {{ bigimg 20180208_163940_Film2.jpg }}
 
-{{ subtitle maths }}
+{{ subtitle mathematics }}
 
 {{ Teoremas para el final de análisis II (computación) -> analisis.coso }},
 calculus theorems and their demonstrations, in Spanish. Compiled for the final
 exam of Calculus II for the Computing Department of the
 Faculty of Exact and Natural Sciences of the University of Buenos Aires.
-
---
-
-I have some {{graph theory notes -> graphteory.coso }}.
 
 {{ subtitle computing }}
 
@@ -27,7 +23,9 @@ Languages: Fundamentals of Theoretical Computer Science__.
 
 --
 
-The {{ mitsubachi -> mitsubachi.coso }} chat protocol standard.
+The {{ mitsubachi -> mitsubachi.coso }} chat protocol, a tiny and
+open chat protocol, designed to be minimal, easy to implement,
+easy to use and easy to understand. 
 
 {{ subtitle others }}
 

@@ -20,6 +20,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 SOURCES_DIR = BASE_DIR + "/source"
 DEST_DIR = BASE_DIR + "/docs"
 IMAGES_DIR = BASE_DIR + "/images"
+FILES_DIR = BASE_DIR + "/files"
 STYLE_FILE = BASE_DIR + "/styles.css"
 MAIN_TITLE = "lartu.net"
 FAVICON = "favicon.png"
@@ -354,6 +355,10 @@ os.system(f'''cp "{IMAGES_DIR}/{FAVICON}" "{DEST_DIR}/images/{FAVICON}"''')
 os.system(f'''cp -R "{IMAGES_DIR}/analisis" "{DEST_DIR}/images/analisis"''') # Imagenes de analisis
 os.system(f'''echo "forbidden" > "{DEST_DIR}/images/index.html"''')
 os.system(f'''echo "forbidden" > "{DEST_DIR}/images/analisis/index.html"''')
+
+# Create files directory
+os.system(f'''cp -R "{FILES_DIR}" "{DEST_DIR}/files"''')
+os.system(f'''echo "forbidden" > "{DEST_DIR}/files/index.html"''')
 
 # Get source files
 directory = os.fsencode(SOURCES_DIR)

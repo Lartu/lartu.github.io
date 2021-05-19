@@ -10,6 +10,9 @@ body {
     line-height: 1.5rem;
     color: #132c33;
     background-color: #d8e3e7;
+    /* NEW */
+    color: black;
+    background-color: #d4d3d3;
 }
 
 *::selection {
@@ -20,19 +23,36 @@ body {
 a {
     color: #132c33;
     text-decoration: none;
+    /* NEW */
+    color: black;
 }
 
 a::before {
-    content: "[";
+    content: "{";
 }
 
 a::after {
+    content: "}";
+}
+
+.external::before {
+    content: "[";
+}
+
+.external::after {
     content: "]";
 }
 
 a:hover,
 a::selection {
     background-color: #51c4d3;
+    color: white;
+    text-decoration: none;
+}
+
+.external:hover,
+.external::selection {
+    background-color: deeppink;
     color: white;
     text-decoration: none;
 }
@@ -44,6 +64,8 @@ h2 {
     margin-bottom: 1.5rem;
     vertical-align: baseline;
     text-transform: lowercase;
+    /* NEW */
+    color: black;
 }
 
 h1::after,
@@ -89,10 +111,13 @@ td {
 
 .listmark {
     color: #126e82;
+    /* NEW */
+    color: black;
 }
 
 img {
     max-width: 100%;
+    max-height: 500px;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     display: block;
@@ -102,6 +127,10 @@ img {
     display: block;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+}
+
+.bigimg img {
+    border: 1px solid black;
 }
 
 .midimg {

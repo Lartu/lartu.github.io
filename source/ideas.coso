@@ -1,0 +1,25 @@
+{{ pagetitle Lartunet — Ideas }}
+{{ favicon favicon.png }}
+{{ descr Ideas at lartunet. }}
+
+{{ include _header.coso }}
+
+{{ title Ideas }}
+
+{{ bigimg 20190104_152650.jpg }}
+
+This is an unordered list of projects I would like to tackle in the future.
+Of course, that doesn't mean I actually will.
+Feel free to work on any of them if you are interested.
+--
+::A music sequencer / tracker like Soundtracker, Fasttracker or {{LSDJ => https://www.littlesounddj.com/lsd/index.php }}.
+::A real-mode operating system inspired by CP/M or DOS.
+::A fantasy console like {{PICO-8 => https://www.lexaloffle.com/pico-8.php}}, or a virtual machine like {{uxn => https://100r.co/site/uxn.html}}.
+::A visual novel with 1-bit graphics (maybe using the fantasy console from the previous point and released for multiple platforms).
+::Learn to sail. Again.
+::Do something with RISC OS. I don't know what.
+::Learn Electron.
+::Learn Swedish.
+::Release a desktop version of Soft Drizzle using Electron.
+--
+More __will__ be added!

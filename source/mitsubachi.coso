@@ -253,7 +253,7 @@ it should reply ``OOPS # # 006 #\n`` ("unknown command").
 
 {{ subtitle implementations }}
 
-A Mitsubachi Server written in {{ LDPL -> ldpl.coso }}
+A Mitsubachi Server written in {{ LDPL => https://ldpl-lang.org }}
 is uploaded {{ here => https://github.com/Lartu/mitsubachi/blob/master/mitsubachi-server.ldpl }}.
 You are allowed to use and
 modify it in any way you see fit. You are encouraged to host
@@ -271,8 +271,8 @@ ldpl mitsubachi-server.ldpl -o=mitsubachi-server
 --
 
 This server implementation requires the
-{{ LDPL Net Server -> ldplnetserver.coso }}
-and the text package from the {{LDPL Standard Library -> ldplstd.coso }}.
+{{ LDPL Net Server => https://github.com/Lartu/ldpl-net-server/ }}
+and the text package from the {{LDPL Standard Library => https://github.com/Lartu/ldpl-std }}.
 
 --
 

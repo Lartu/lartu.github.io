@@ -1,0 +1,142 @@
+{{ pagetitle Lartunet — S }}
+{{ favicon favicon.png }}
+{{ descr S Language at lartunet }}
+
+{{ include _header.coso }}
+    
+    
+    <h1>S Language Interpreter</h1>
+
+    <p>
+        <b>Input Area</b>
+        <br>
+        <input type="text" id="input-area" style="width: 100%; margin-top: 0.5em; font-family: monospace;" placeholder="X: 7, X1: 2, X8: 19">
+    </p>
+
+    <p>
+        <b>Code Area</b>
+        <br>
+        <textarea id="code-area" style="width: 100%;margin-top: 0.5em; font-family: monospace; resize: none; height: 20em;" placeholder="Your program goes here...">
+</textarea>
+    </p>
+
+    <p style="margin-bottom: 0.5em">
+        <b>Output Area</b>
+    </p>
+    <div type="text" id="output-area" style="width: 100%; font-family: monospace;" class="inputbox">
+        Output will be printed here...
+    </div>
+
+    <p>
+        <input type="submit" value="Run Program" onclick="run()">
+    </p>
+
+    <h2>Index</h2>
+    <ul>
+        <li>
+            <a href="#about">
+            About this Interpreter
+        </a>
+        </li>
+
+        <li>
+            <a href="#how-to-use">
+            How to Use this Interpreter
+        </a>
+        </li>
+
+        <li>
+            <a href="#instructions">
+            Instructions
+        </a>
+        </li>
+
+    </ul>
+
+    <h2 id="about">About this Interpreter</h2>
+    <p>
+        This is an interpreter written by me for the <b>S Language</b> created by Martin Davis, Ron Sigal & Elaine J. Weyuker (<i>Computability, Complexity, and Languages:
+Fundamentals of Theoretical Computer Science, 2<sup>nd</sup> edition, Morgan Kaufmann Publishers,  ISBN: 0-12-206382-1</i>). It's a simple, imperative language, equally powerful to a Turing Machine but easier to program. This interpreter is open-source
+        and released under the <a href="https://tldrlegal.com/license/mit-license" class="external">MIT license</a>.
+    </p>
+
+    <h2 id="how-to-use">xHow to Use this Interpreter</h2>
+    <p>
+        Comments in this interpreter must be preceded by the hash symbol ('<code>#</code>'). For example:
+    </p>
+
+    <div class="code">
+        # This is a comment!
+    </div>
+
+    <p>
+        Variables in S can only store natural numbers (including zero). There are three kinds of variables: <b>input variables</b>, <b>temporary variables</b> (set by default to 0) and only one <b>output variable</b> (also set by default to 0) called
+        <code>Y</code>.
+    </p>
+
+    <p>
+        <b>Input variables</b> may be called <code>X</code>, <code>X1</code>, <code>X2</code>, <code>X3</code>, etc. In this interpreter, input variables are initialized in the <a href="#inputarea">Input Area</a>, separated by commas. The syntax for initialization
+        is <code>variable-name: value</code>. For example:
+    </p>
+
+    <div class="code">
+        X: 1, X2: 45, X3: 992, X4: 56
+    </div>
+
+    <p>
+        <b>Temporary</b> (or local) <b>variables</b> may be called <code>Z</code>, <code>Z1</code>, <code>Z2</code>, <code>Z3</code>, etc. These variables are set by default to 0 and need no initialization.
+    </p>
+
+    <p>
+        <b>Instructions:</b> S only supports three instructions: <a href="#add">addition</a>, <a href="#sub">subtraction</a> and <a href="#jmp">conditional jumps</a>. In this interpreter, instructions are written in the <a href="#codearea">Code Area</a>.
+        Each instruction must be written on a different line.
+    </p>
+
+    <p>
+        <b>Labels:</b> Each line of instructions may be preceded by a <b>label</b>. Labels may be named any letter optionally followed by a number, for example <code>A</code>, <code>M1</code>, <code>C32</code>, etc., surounded by <code>[ ]</code>. Labels
+        are unique and may appear only once in each program. Labels <u>may not</u> be called <code>E</code>, though, as this is a reserved label. Example:
+    </p>
+
+    <div class="code">
+        [A] X &lt;- X + 1
+    </div>
+
+    <p>
+        A <b>program</b> is a finite sequence of instructions. Programs are run from the first line to the last. A program halts when there are no more instructions to execute.
+    </p>
+
+    <h2 id="instructions">Instructions</h2>
+
+    <p>
+        As mentioned in the previous section, S programs only support three instructions, addition, subtraction and conditional jumps. Please note the spaces in the syntax of each instruction and respect them as the interpreter will not work if these are not
+        set correctly. The interpreter is not case sensitive.
+    </p>
+
+    <p id="add">
+        <b>Addition:</b>
+        <br><b>Syntax:</b> <code>V &lt;- V + 1</code>
+        <br><b>Does:</b> increases by <code>1</code> the value of the variable <code>V</code>.
+    </p>
+
+    <p id="sub">
+        <b>Subtraction:</b>
+        <br><b>Syntax:</b> <code>V &lt;- V - 1</code>
+        <br><b>Does:</b> if the value of <code>V</code> is <code>0</code>, leaves it unchanged; otherwise decreases it by <code>1</code>.
+    </p>
+
+    <p id="jmp">
+        <b>Conditional Jump:</b>
+        <br><b>Syntax:</b> <code>IF V != 0 GOTO A</code>
+        <br><b>Does:</b> If the value of <code>V</code> is nonzero, perform the instruction with label <code>A</code> next and continue from there; otherwise proceed to the next instruction in the list. If the label is <code>E</code> and <code>V</code>        is nonzero, the program halts, as <code>E</code> is the <i>exit label</i>.
+    </p>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Interpreter code -->
+    <script src="files/s.js"></script>
+
+    <h2>Special Thanks</h2>
+    <p>
+        I would like to thank <a href="https://github.com/mmilicich">Mariana Milicich</a> and <a href="https://github.com/iglosiggio">Ignacio Losiggio</a> for finding and helping me fix bugs in this code.
+    </p>

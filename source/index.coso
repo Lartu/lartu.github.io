@@ -6,10 +6,11 @@
 
 {{ title Welcome }}
 
-Hi there, I'm Lartu. This is my web domain: the lartunet. I make games and open-source software. 
-I love rainy days and food. Last updated **{{ date }}**. 
+Hi there, I'm Lartu. This is my personal {{ digital garden -> garden.coso }}: the lartunet. 
+I make games and open-source software. 
+I love rainy days and exotic food. Last updated **{{ date }}**. 
 Despite its looks, this site is still maintained. 
-Online since **November 29, 2015** and best viewed on a small CRT screen.
+Online since **November 29, 2015** and best viewed on any device.
 --
 You can send me email to {{ lartu@lartu.net => mailto:lartu@lartu.net }}. 
 My Twitter handle is {{ @martulartu => https://twitter.com/martulartu }}.
@@ -18,23 +19,14 @@ My itch.io account is also {{ lartu => https://lartu.itch.io }}.
 If you see another lartu somewhere that's also probably me.
 --
 I have written and published a number of {{ videogames -> gamedev.coso }}, 
-mostly RPGs and visual novels. I'm also looking into {{ fantasy consoles -> pfc.coso }}.
-I also like developing {{ programming languages -> computing.coso -> langs }},
-{{ code libraries -> computing.coso -> libs}} and {{ general software and tools -> computing.coso -> sofware }}.
+mostly RPGs and visual novels.
+I also like developing {{ programming languages -> computing.coso -> langs }}
+and other {{ computing -> computing.coso }} stuff.
 --
-I have also defined some standards of my own with the {{ mitsubachi -> mitsubachi.coso }} chat protocol
-and my official
-{{ hangman rules -> hangman.coso }}.
+You might also be here for my {{ research -> research.coso }} notes.
 --
-If you are here for my academic work, in {{ teoremas para el final de análisis II (computación) -> analisis.coso }} you
-can find calculus theorems and their demonstrations, in Spanish. I have also written an
-interpreter for the {{ S Language -> slang.coso }}, created by Martin Davis, 
-Ron Sigal & Elaine J. Weyuker for their book __Computability, Complexity, and 
-Languages: Fundamentals of Theoretical Computer Science__. The lartunet also
-has some {{graph theory notes -> graphteory.coso }}.
---
-I enjoy public speaking very much and I've spoken at several conferences. 
-You can find the details {{ here -> talks.coso }}.
+I enjoy {{ public speaking -> talks.coso }} very much and I've spoken at 
+several conferences. 
 
 {{ bigimg IMG_0096.JPG }}
 
