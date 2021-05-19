@@ -10,9 +10,6 @@ body {
     line-height: 1.5rem;
     color: #132c33;
     background-color: #d8e3e7;
-    /* NEW */
-    color: black;
-    background-color: #d4d3d3;
 }
 
 *::selection {
@@ -23,8 +20,6 @@ body {
 a {
     color: #132c33;
     text-decoration: none;
-    /* NEW */
-    color: black;
 }
 
 a::before {
@@ -58,18 +53,18 @@ a::selection {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     color: #126e82;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     vertical-align: baseline;
     text-transform: lowercase;
-    /* NEW */
-    color: black;
 }
 
 h1::after,
-h2::after {
+h2::after,
+h3::after {
     content: ".";
 }
 
@@ -117,7 +112,6 @@ td {
 
 img {
     max-width: 100%;
-    max-height: 500px;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     display: block;
@@ -130,14 +124,18 @@ img {
 }
 
 .bigimg img {
-    border: 1px solid black;
+    max-height: 500px;
 }
 
 .midimg {
     display: block;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    max-width: 400px;
+    max-width: 50%;
+}
+
+.midimg img {
+    max-height: 300px;
 }
 
 .bigimg img,

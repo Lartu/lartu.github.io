@@ -245,6 +245,10 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 anchorname = tokens[1].strip()
                 source = source.replace(tag, f"<div style='display: hidden' id='{anchorname}'></div>")
             elif tokens[0] in ["bigimg", "img", "midimg"]:
+                # Bigimg es imagen comprimida ancho 100% con epígrafe
+                # Midimg es imagen comprimida ancho 50% con epígrafe
+                # img es imagen comprimida max ancho 100% sin epígrafe.
+                # Img no da opción de view original.
                 image_filename = tokens[1].strip()
                 img_file = IMAGES_DIR + "/" + image_filename
                 picture = Image.open(img_file)
