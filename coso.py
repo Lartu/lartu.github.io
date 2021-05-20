@@ -147,7 +147,7 @@ def get_changelog():
     source = ""
     old_changelogs = changelog_lines + old_changelogs
     for line in old_changelogs[0:100]:
-        source = f"{line}\n{source}"
+        source += f"\n{line}"
     
     source = compile(source, False)
     return "<table class=\"changelogtable\">" + source + "\n</table>"
