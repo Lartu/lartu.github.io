@@ -259,21 +259,23 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 black_and_white = False
                 if len(tokens) >= 3 and tokens[2] == "bw":
                     black_and_white = True
+                image_title, file_ext = os.path.splitext(image_filename)
+                file_ext = file_ext.strip(".")
                 img_file = IMAGES_DIR + "/" + image_filename
                 picture = Image.open(img_file)
                 width = picture.size[0]
                 height = picture.size[1]
-                imgname = get_image_hash_name(tokens[1].strip())
-                os.system(f'''cp "{img_file}" "{DEST_DIR}/images/{imgname}.png"''')  # Save original image
-                show(f"Copied {image_filename} to the images directory as {imgname}.png.")
-                image_filename = f"{imgname}.png"
-                compresed_image_file = imgname + ".jpg"
+                imghash = get_image_hash_name(image_title)
+                image_filename = f"{imghash}.{file_ext}"
+                os.system(f'''cp "{img_file}" "{DEST_DIR}/images/{image_filename}"''')  # Save original image
+                show(f"Copied {image_filename} to the images directory as {image_filename}.")
+                compresed_image_file = imghash + ".jpg"
                 compression_format = "JPEG"
                 jpeg_note = " (JPEG) "
                 max_width = MAX_IMG_WIDTH
                 if tokens[0] == "midimg":
                     max_width = int(max_width / 2)
-                    compresed_image_file = imgname + ".png"
+                    compresed_image_file = imghash + ".png"
                     compression_format = "PNG"
                     jpeg_note = ""
                 if width > max_width:
@@ -291,23 +293,23 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                     show(f"Saved {compressed_filename}.")
                     filesize = os.path.getsize(img_file)
                     vieworiginal = "{{ view original ~> images/" + image_filename + " }} " + \
-                        f"({ceil(filesize / 1024)} KiB)"
+                        f"({ceil(filesize / 1024)} KiB, {file_ext.upper()})"
                     bwnote = ""
                     if black_and_white:
                         bwnote = "(b&w version) "
                     if tokens[0] == "img":
                         source = source.replace(
                             tag,
-                            f"<img src =\"images/c_{compresed_image_file}\" title=\"{imgname}\" alt=\"Image: {imgname}\">")
+                            f"<img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
                     else:
                         source = source.replace(
                             tag,
-                            f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imgname}\" alt=\"Image: {imgname}\">"
-                            + f"<small>— {imgname} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
+                            f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">"
+                            + f"<small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
                 else:
                     source=source.replace(
                         tag,
-                        f"<div class=\"{tokens[0]}\"><img src =\"images/{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\"></div>")
+                        f"<div class=\"{tokens[0]}\"><img src =\"images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></div>")
             elif tokens[0] == "sitemap":
                 # Add to sitemap
                 if with_head:
