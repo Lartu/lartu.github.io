@@ -8,8 +8,7 @@
 
 Hi there, I'm Lartu. This is my personal {{ digital garden -> garden.coso }}: the lartunet. 
 I make games and open-source software. 
-I love rainy days and exotic food. Last updated **{{ date }}**. 
-Despite its looks, this site is still maintained. 
+I love rainy days and exotic food. Last updated **{{ date }}**.
 Online since **November 29, 2015** and best viewed on any device.
 --
 You can send me email to {{ lartu@lartu.net => mailto:lartu@lartu.net }}. 
