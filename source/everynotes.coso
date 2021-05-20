@@ -22,6 +22,15 @@
 :: Finish a project before you optimize it. A released project is better than a well-polished one that no-one will ever see.
 :: Most software out there is messy. That's why it's out there.
 :: Aesthetics is important.
+--
+::Rule of Modularity: Write simple parts connected by clean interfaces.
+::Rule of Composition: Design programs to be connected to other programs.
+::Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.
+--
+<small>(__The Art of Unix Programming__, by Eric S. Raymond)</small>
+--
+::{{A tool can be __too large__ or __to small__ => https://brandur.org/small-sharp-tools}}. The boundaries of any service should be considered in depth, and if built to be small, it should be for more reason than virtue of size alone.
+::Everything should be made as simple as possible, but not simpler.
 
 {{ subtitle health }}
 
