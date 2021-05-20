@@ -237,7 +237,8 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 source = source.replace(tag, f"<INCLUDE_{include_count}>")
                 includes.append(page_to_include)
             elif tokens[0] == "favicon":
-                favicon = tokens[1].strip()
+                # DEPRECATED TAG
+                # favicon = tokens[1].strip()
                 source = source.replace(tag, "")
             elif tokens[0] == "descr":
                 description = tokens[1].strip()

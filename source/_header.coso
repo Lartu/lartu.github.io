@@ -9,8 +9,8 @@
             lartunet
             — {{ home -> index.coso }}
             — {{ computing -> computing.coso }}
-            {{ games & art -> gamesart.coso }}
-            {{ research -> research.coso }}
+            : {{ games & art -> gamesart.coso }}
+            : {{ research -> research.coso }}
             — {{ sitemap -> sitemap.coso }}
         </td>
     </tr>
