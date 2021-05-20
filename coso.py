@@ -269,11 +269,13 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 image_filename = f"{imgname}.png"
                 compresed_image_file = imgname + ".jpg"
                 compression_format = "JPEG"
+                jpeg_note = " (JPEG) "
                 max_width = MAX_IMG_WIDTH
                 if tokens[0] == "midimg":
                     max_width = int(max_width / 2)
                     compresed_image_file = imgname + ".png"
                     compression_format = "PNG"
+                    jpeg_note = ""
                 if width > max_width:
                     show(f"Optimizing {image_filename}.")
                     picture = picture.resize((max_width, int(height*max_width/width)))
@@ -301,7 +303,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                         source = source.replace(
                             tag,
                             f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imgname}\" alt=\"Image: {imgname}\">"
-                            + f"<small>— {imgname} {bwnote}- {vieworiginal}</small></div>")
+                            + f"<small>— {imgname} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
                 else:
                     source=source.replace(
                         tag,
@@ -363,6 +365,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             break
     # Add boilerplate
     if with_head:
+        # Si tiene <head>
         head=get_head(page_title, favicon, description)
         source=f"<!DOCTYPE html>\n<html>\n{head}\n<body>\n{source}\n</body>\n</html>"
     # Add to sitemap
