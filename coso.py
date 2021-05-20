@@ -9,7 +9,7 @@ import os
 import re
 from datetime import date
 import hashlib
-from PIL import Image
+from PIL import Image, ImageOps
 import PIL
 import glob
 from math import ceil
@@ -24,7 +24,7 @@ FILES_DIR = BASE_DIR + "/files"
 STYLE_FILE = BASE_DIR + "/styles.css"
 CNAME_FILE = BASE_DIR + "/CNAME"
 MAIN_TITLE = "lartu.net"
-FAVICON = "favicon.png"
+FAVICON = "fuyukogif2.png"
 DESCRIPTION = "Lartu's personal website, welcome to Lartu.net."
 SITEMAP_FILENAME = "sitemap.coso"
 CHANGELOG_FILENAME = "changelog.coso"
@@ -250,7 +250,14 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 # Midimg es imagen comprimida ancho 50% con epígrafe
                 # img es imagen comprimida max ancho 100% sin epígrafe.
                 # Img no da opción de view original.
+                if " " in tokens[1]:
+                    other_tokens = tokens[1].split()
+                    tokens.pop()
+                    tokens += other_tokens
                 image_filename = tokens[1].strip()
+                black_and_white = False
+                if len(tokens) >= 3 and tokens[2] == "bw":
+                    black_and_white = True
                 img_file = IMAGES_DIR + "/" + image_filename
                 picture = Image.open(img_file)
                 width = picture.size[0]
@@ -259,27 +266,41 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 os.system(f'''cp "{img_file}" "{DEST_DIR}/images/{imgname}.png"''')  # Save original image
                 show(f"Copied {image_filename} to the images directory as {imgname}.png.")
                 image_filename = f"{imgname}.png"
+                compresed_image_file = imgname + ".jpg"
+                compression_format = "JPEG"
                 max_width = MAX_IMG_WIDTH
                 if tokens[0] == "midimg":
                     max_width = int(max_width / 2)
+                    compresed_image_file = imgname + ".png"
+                    compression_format = "PNG"
                 if width > max_width:
                     show(f"Optimizing {image_filename}.")
                     picture = picture.resize((max_width, int(height*max_width/width)))
-                    compressed_filename = DEST_DIR + "/images/c_" + imgname + ".png"
-                    picture.save(compressed_filename, optimize=True, quality=75)
+                    picture = picture.convert("RGBA")
+                    new_image = Image.new("RGBA", picture.size, "WHITE")
+                    new_image.paste(picture, (0, 0), picture)
+                    if black_and_white:
+                        picture = ImageOps.grayscale(new_image)
+                    else:
+                        picture = new_image.convert("RGB")
+                    compressed_filename = DEST_DIR + "/images/c_" + compresed_image_file
+                    picture.save(compressed_filename, optimize=True, quality=75, format=compression_format)
                     show(f"Saved {compressed_filename}.")
                     filesize = os.path.getsize(img_file)
                     vieworiginal = "{{ view original ~> images/" + image_filename + " }} " + \
                         f"({ceil(filesize / 1024)} KiB)"
+                    bwnote = ""
+                    if black_and_white:
+                        bwnote = "(b&w version) "
                     if tokens[0] == "img":
                         source = source.replace(
                             tag,
-                            f"<img src =\"images/c_{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\">")
+                            f"<img src =\"images/c_{compresed_image_file}\" title=\"{imgname}\" alt=\"Image: {imgname}\">")
                     else:
                         source = source.replace(
                             tag,
-                            f"<div class=\"{tokens[0]}\"><img src =\"images/c_{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\">"
-                            + f"— {imgname} - {vieworiginal}</div>")
+                            f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imgname}\" alt=\"Image: {imgname}\">"
+                            + f"<small>— {imgname} {bwnote}- {vieworiginal}</small></div>")
                 else:
                     source=source.replace(
                         tag,

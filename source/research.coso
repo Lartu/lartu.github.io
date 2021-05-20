@@ -6,7 +6,7 @@
 
 {{ title research }}
 
-{{ bigimg 20180208_163940_Film2.jpg }}
+{{ bigimg IMG_0096.JPG }}
 
 {{ subtitle mathematics }}
 
@@ -39,5 +39,10 @@ apply to help me finish my projects.
 
 --
 
-{{ Notes on everything -> everynotes.coso }}, a list of knowledge bits collected
+The {{ Notes on Everything -> everynotes.coso }} is a list of knowledge bits collected
 from various places about different things.
+
+--
+
+My list of {{ideas -> ideas.coso}} is a list of projects I'd like to work on
+one day, or general things I want to do.
