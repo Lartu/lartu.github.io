@@ -358,8 +358,8 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
         source=source.replace(f"<INCLUDE_{index}>", load_and_compile(include, False))
         index += 1
     # Add footer
-    '''if with_head:
-        source=f"{source}\n\n" + "{{ include _footer.coso }}"'''
+    if with_head:
+        source=f"{source}\n\n" + "{{ include _footer.coso }}"
     # Parse a few more times for nested things
     while True and do_multiple_passes:
         new_source=compile(source, False, False)
