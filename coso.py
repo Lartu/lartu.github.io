@@ -1,10 +1,6 @@
 # Coso - Lartu's Website Compiler
 # 2021-05-02
 
-# TODO:
-# - Que se suba solo al servidor
-# - Changelog automático
-
 import os
 import re
 from datetime import date
@@ -15,6 +11,7 @@ import glob
 from math import ceil
 import pickle
 import time
+import sys
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 SOURCES_DIR = BASE_DIR + "/source"
@@ -33,25 +30,16 @@ MAX_IMG_WIDTH = 800
 sitemap = {}
 linkedpages = {}
 
-filesizes = {}
-changelog = []
-files = []
 old_changelogs = []
 
 
 def save_changelog():
-    global filesizes, old_changelogs
-    pickle.dump(filesizes, open(BASE_DIR + "/filesizes.p", "wb"))
+    global old_changelogs
     pickle.dump(old_changelogs, open(BASE_DIR + "/oldchangelogs.p", "wb"))
 
 
 def load_changelog():
-    global filesizes, old_changelogs
-    try:
-        filesizes = pickle.load(open(BASE_DIR + "/filesizes.p", "rb"))
-        show("Loaded file sizes from previous version.")
-    except:
-        filesizes = {}
+    global old_changelogs
     try:
         old_changelogs = pickle.load(open(BASE_DIR + "/oldchangelogs.p", "rb"))
         show("Loaded old changelogs.")
@@ -116,14 +104,6 @@ def load_and_compile(filename, with_head=True):
     source = ""
     with open(SOURCES_DIR + "/" + filename, "r") as f:
         source = f.read()
-    if get_file_name(filename) not in files:
-        files.append(get_file_name(filename))
-    if get_file_name(filename) not in filesizes:
-        filesizes[get_file_name(filename)] = len(source)
-        changelog.append((get_file_name(filename), filesizes[get_file_name(filename)]))
-    else:
-        if filesizes[get_file_name(filename)] != len(source):
-            changelog.append((get_file_name(filename), len(source) - filesizes[get_file_name(filename)]))
     compiled_source = compile(source, with_head, filename=filename)
     return compiled_source
 
@@ -138,30 +118,38 @@ def get_sitemap():
 
 
 def get_changelog():
-    global changelog, filesizes, files, sitemap, old_changelogs
-    for key in list(filesizes):
-        if key not in files:
-            changelog.append((key, -filesizes[key]))
-            del filesizes[key]
-    changelog_source = ""
+    global sitemap, old_changelogs
+
     chlogclass = '''class="bytesnochange"'''
-    for changes in changelog:
-        key = changes[0]
-        if key not in sitemap:
+    git_changelog = os.popen('git diff --stat --relative source | grep -E ".*\.coso.*"').read()
+    lines = git_changelog.split("\n")
+    changelog_lines = []
+    for line in lines:
+        if "|" not in line:
             continue
-        diff = changes[1]
-        if diff > 0:
-            diff = f"+{diff}"
+        tokens = line.split("|")
+        key = get_file_name(tokens[0].strip().split("/")[-1].strip())
+        change_count = int(tokens[1].strip().split()[0])
+        pos_changes = tokens[1].count('+')
+        neg_changes = tokens[1].count('-')
+        total_change_signs = pos_changes + neg_changes
+        pos_changes = ceil(pos_changes * change_count / total_change_signs)
+        neg_changes = ceil(neg_changes * change_count / total_change_signs)
+        diftext = ""
+        if pos_changes > 0:
             chlogclass = '''class="bytespositive"'''
-        elif diff < 0:
-            chlogclass = '''class="bytesnegative"'''
-        changelog_source += f'\n<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd"><span {chlogclass}>{diff}</span></td><td class="changelogtabletimetd">' + '{{date}} {{time}}</td></tr>'
-    changelog_source = compile(changelog_source, False)
-    old_changelogs.append(changelog_source)
-    old_changelogs = old_changelogs[0:100]
+            diftext += f"<span {chlogclass}>+{pos_changes}</span>"
+        if neg_changes > 0:
+            chlogclass = '''class="bytespositive"'''
+            diftext += f"<span {chlogclass}>-{neg_changes}</span>"
+        changelog_lines.append(f'<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd">{diftext}</td><td class="changelogtabletimetd">' + '{{date}} {{time}}</td></tr>')
+    
     source = ""
-    for chlog in old_changelogs:
-        source = f"{chlog}\n{source}"
+    old_changelogs = changelog_lines + old_changelogs
+    for line in old_changelogs[0:100]:
+        source = f"{line}\n{source}"
+    
+    source = compile(source, False)
     return "<table class=\"changelogtable\">" + source + "\n</table>"
 
 
@@ -306,75 +294,75 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                             f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">"
                             + f"<small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
                 else:
-                    source=source.replace(
+                    source = source.replace(
                         tag,
                         f"<div class=\"{tokens[0]}\"><img src =\"images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></div>")
             elif tokens[0] == "sitemap":
                 # Add to sitemap
                 if with_head:
-                    sitemap[get_file_name(filename)]=page_title
-                source=source.replace(tag, get_sitemap())
+                    sitemap[get_file_name(filename)] = page_title
+                source = source.replace(tag, get_sitemap())
             elif tokens[0] == "changelog":
                 # Add to changelog
                 if with_head:
-                    sitemap[get_file_name(filename)]=page_title
-                source=source.replace(tag, get_changelog())
+                    sitemap[get_file_name(filename)] = page_title
+                source = source.replace(tag, get_changelog())
             elif tokens[0] == "footnote":
                 footnotes.append(tokens[1].strip())
-                source=source.replace(tag, f"<sup>{len(footnotes)}</sup>")
+                source = source.replace(tag, f"<sup>{len(footnotes)}</sup>")
     # Add footnotes
     if len(footnotes) > 0:
-        source=source + "{{subtitle footnotes}}"
-        fnindex=0
+        source = source + "{{subtitle footnotes}}"
+        fnindex = 0
         for footnote in footnotes:
             fnindex += 1
-            source=source + f"<small>({fnindex}) {footnote}</small>"
+            source = source + f"<small>({fnindex}) {footnote}</small>"
             if fnindex < len(footnotes):
-                source=source + "\n--\n"
+                source = source + "\n--\n"
     # Formatted text
-    bolds=re.findall(r"\*\*(?:.|\n)*?\*\*", source)
+    bolds = re.findall(r"\*\*(?:.|\n)*?\*\*", source)
     for text in bolds:
-        source=source.replace(text, "<b>" + text.strip("* ") + "</b>")
-    italics=re.findall(r"__(?:.|\n)*?__", source)
+        source = source.replace(text, "<b>" + text.strip("* ") + "</b>")
+    italics = re.findall(r"__(?:.|\n)*?__", source)
     for text in italics:
-        source=source.replace(text, "<i>" + text.strip("_ ") + "</i>")
-    code=re.findall(r"(```(?:.|\n)*?```)", source)
+        source = source.replace(text, "<i>" + text.strip("_ ") + "</i>")
+    code = re.findall(r"(```(?:.|\n)*?```)", source)
     for text in code:
-        source=source.replace(text, "<pre>" + text[3:-3].strip() + "</pre>")
-    code=re.findall(r"``(?:.|\n)*?``", source)
+        source = source.replace(text, "<pre>" + text[3:-3].strip() + "</pre>")
+    code = re.findall(r"``(?:.|\n)*?``", source)
     for text in code:
-        source=source.replace(text, "<code>" + text.strip("` ") + "</code>")
-    listitems=re.findall(r"(?<=\n)::::.+?[\r\n]", source)
+        source = source.replace(text, "<code>" + text.strip("` ") + "</code>")
+    listitems = re.findall(r"(?<=\n)::::.+?[\r\n]", source)
     for text in listitems:
-        source=source.replace(
+        source = source.replace(
             text, "<div class='listitem2'><span class='listmark'>※</span> " + text[4:].strip() + "</div>\n")
-    listitems=re.findall(r"(?<=\n)::.+?[\r\n]", source)
+    listitems = re.findall(r"(?<=\n)::.+?[\r\n]", source)
     for text in listitems:
-        source=source.replace(
+        source = source.replace(
             text, "<div class='listitem'><span class='listmark'>※</span> " + text[2:].strip() + "</div>\n")
     # Include includes
-    index=0
+    index = 0
     for include in includes:
-        source=source.replace(f"<INCLUDE_{index}>", load_and_compile(include, False))
+        source = source.replace(f"<INCLUDE_{index}>", load_and_compile(include, False))
         index += 1
     # Add footer
     if with_head:
-        source=f"{source}\n\n" + "{{ include _footer.coso }}"
+        source = f"{source}\n\n" + "{{ include _footer.coso }}"
     # Parse a few more times for nested things
     while True and do_multiple_passes:
-        new_source=compile(source, False, False)
+        new_source = compile(source, False, False)
         if new_source != source:
-            source=new_source
+            source = new_source
         else:
             break
     # Add boilerplate
     if with_head:
         # Si tiene <head>
-        head=get_head(page_title, favicon, description)
-        source=f"<!DOCTYPE html>\n<html>\n{head}\n<body>\n{source}\n</body>\n</html>"
+        head = get_head(page_title, favicon, description)
+        source = f"<!DOCTYPE html>\n<html>\n{head}\n<body>\n{source}\n</body>\n</html>"
     # Add to sitemap
     if with_head:
-        sitemap[get_file_name(filename)]=page_title
+        sitemap[get_file_name(filename)] = page_title
     return source.strip()
 
 
@@ -403,40 +391,40 @@ os.system(f'''cp -R "{FILES_DIR}" "{DEST_DIR}/files"''')
 os.system(f'''echo "forbidden" > "{DEST_DIR}/files/index.html"''')
 
 # Get source files
-directory=os.fsencode(SOURCES_DIR)
+directory = os.fsencode(SOURCES_DIR)
 
-want_sitemap=False
-want_changelog=False
+want_sitemap = False
+want_changelog = False
 
 for file in os.listdir(directory):
-    filename=os.fsdecode(file)
+    filename = os.fsdecode(file)
     if filename.endswith(".coso") and filename[0] != "_":
         if filename == SITEMAP_FILENAME:
-            want_sitemap=True
+            want_sitemap = True
             continue
         if filename == CHANGELOG_FILENAME:
-            want_changelog=True
+            want_changelog = True
             continue
-        compiled_source=load_and_compile(filename)
+        compiled_source = load_and_compile(filename)
         with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
             f.write(compiled_source)
 
 if want_changelog:
-    filename=CHANGELOG_FILENAME
-    compiled_source=load_and_compile(filename)
+    filename = CHANGELOG_FILENAME
+    compiled_source = load_and_compile(filename)
     with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
         f.write(compiled_source)
 
 if want_sitemap:
-    filename=SITEMAP_FILENAME
-    compiled_source=load_and_compile(filename)
+    filename = SITEMAP_FILENAME
+    compiled_source = load_and_compile(filename)
     with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
         f.write(compiled_source)
 
 # List linked but not found files
 show("All files have been compiled.")
 
-errors=0
+errors = 0
 for key in linkedpages:
     if not linkedpages[key] and ".coso" in key:
         error(f"The file {key} is linked but not found.")
@@ -447,7 +435,9 @@ error(f"{errors} error(s) found.")
 print("Total site size:")
 os.system(f"du -sh \"{DEST_DIR}\"")
 
-save_changelog()
+if len(sys.argv) > 1 and sys.argv[1] == "--save-changelog":
+    show("Saving changelog!")
+    save_changelog()
 
 # List linked but not found files
 show("Compilation complete.")

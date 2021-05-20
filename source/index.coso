@@ -31,66 +31,6 @@ several conferences.
 
 See {{ recent changes -> changelog.coso }}.
 
-/*
-{{ subtitle Game Development }}
-
-I have written and published a number of {{ games -> gamedev.coso }}, 
-mostly RPGs and visual novels.
---
-I am also developing the {{ PFC-21 -> pfc.coso }} fixed-size fantasy console.
-
-{{ subtitle Programming Projects }}
-
-I code for the sake of coding. I like programming languages, I have developed
-{{ LDPL -> ldpl.coso }}, {{ LAPL -> lapl.coso }}, {{ polaris -> polaris.coso }},
-{{ LarBASIC -> larbasic.coso }}, {{ nari -> nari.coso }}, {{ coso -> coso.coso }},
-{{ malady -> malady.coso }}, {{ cherryl -> cherryl.coso }},
-{{ mauifish -> mauifish.coso }}, {{ mastropiero -> mastropiero.coso }},
-{{ htmlkoala -> htmlkoala.coso }} and {{ LBI -> lbi.coso }}.
-I'm probably forgetting some.
-
---
-
-When it comes
-to programming libraries, I have written {{ cppregex -> cppregex.coso }}, 
-{{ cpptrim -> cpptrim.coso }},
-{{ lstring -> lstring.coso }}, {{ shibahug -> shibahug.coso }}, {{ p5.clickable
--> p5clickable.coso }}, {{ ldpl-fltk -> ldplfltk.coso }}, {{ldpl-std -> ldplstd.coso}},
-{{ ldpl-url-resolver -> ldplurlresolver.coso}}, {{ldpl-ncurses -> ldplncurses.coso}},
-{{ ldpl-net-server -> ldpl-net-server.coso }}, {{ldpl-irc-bot -> ldpl-irc-bot.coso}},
-{{ doodlest-artu -> artu.coso }} and {{ chText -> chtext.coso }}.
-
---
-
-Tools and software in general: {{ coralDB -> coraldb.coso }},
-{{ starqueue -> starqueue.coso }}, {{ tmon -> tmon.coso }}, {{ lute -> lute.coso }},
-{{ OpenNapkin -> opennapkin.coso }}, {{ led -> led.coso }}, {{ explicartu 
--> explicartu.coso }}, {{ mgit -> mgit.coso }}, {{ beKnowledge -> beknowledge.coso }},
-{{ ast -> ast.coso }},
-{{ gallemathic -> gallemathic.coso }} and {{ lartype -> lartype.coso }}.
-
---
-
-I have also defined some standards of my own with {{ mitsubachi -> mitsubachi.coso }}
-and
-{{ my hangman rules -> hangman.coso }}.
-
-
-{{ subtitle Academic Work }}
-
-In {{ teoremas para el final de análisis II (computación) -> analisis.coso }} you
-can find calculus theorems and their demonstrations, in Spanish. I have written an
-interpreter for the {{ S Language -> slang.coso }}, created by Martin Davis, 
-Ron Sigal & Elaine J. Weyuker for their book __Computability, Complexity, and 
-Languages: Fundamentals of Theoretical Computer Science__. The lartunet also
-has some {{graph theory notes -> graphteory.coso }}.
-
-{{ subtitle Talks and Lectures }}
-
-I enjoy public speaking very much and I've spoken at several conferences. 
-You can find the details {{ here -> talks.coso }}.
-
-*/
 
 {{ subtitle Low Tech Webring }}
 
