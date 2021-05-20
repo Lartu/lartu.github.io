@@ -11,7 +11,7 @@
 {{ subtitle videogames }}
 
 Most of my free time is spent developing {{ videogames -> gamedev.coso }}.
-You can also find most of my games at {{ lartu.itch.io => https://lartu.itch.io }}.
+You can also find my games at {{ lartu.itch.io => https://lartu.itch.io }}.
 --
 Most of my games are released for free, although donations are always welcome
 on platforms that support them. Except in some very rare instances, no source
