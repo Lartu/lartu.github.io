@@ -6,23 +6,29 @@ html {
 body {
     max-width: 800px;
     font-family: 'Times New Roman', Times, serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 1.5rem;
     line-height: 1.5rem;
-    color: #132c33;
-    background-color: #d8e3e7;
-}
-
-*::selection {
-    color: white;
-    background-color: #51c4d3;
+    background-color: white;
+    color: black;
 }
 
 a {
-    color: #132c33;
-    text-decoration: none;
+    color: black;
+    text-decoration: underline;
 }
 
-a::before {
+.external {
+    text-decoration-style: dashed;
+}
+
+a:visited {
+    color: grey;
+}
+
+
+/*a::before {
     content: "{";
 }
 
@@ -36,26 +42,21 @@ a::after {
 
 .external::after {
     content: "]";
-}
+}*/
 
-a:hover,
-a::selection {
-    background-color: #51c4d3;
+a:hover {
+    background-color: black;
     color: white;
-    text-decoration: none;
 }
 
-.external:hover,
-.external::selection {
+.external:hover {
     background-color: deeppink;
     color: white;
-    text-decoration: none;
 }
 
 h1,
 h2,
 h3 {
-    color: #126e82;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     vertical-align: baseline;
@@ -92,6 +93,7 @@ td h2 {
 
 td {
     vertical-align: baseline;
+    padding: 0px;
 }
 
 .listitem {
@@ -105,9 +107,7 @@ td {
 }
 
 .listmark {
-    color: #126e82;
-    /* NEW */
-    color: black;
+    /* ※ */
 }
 
 img {

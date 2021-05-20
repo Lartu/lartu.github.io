@@ -8,6 +8,12 @@
 
 {{ bigimg 20190105_161231.jpg }}
 
+{{ title index }}
+
+::{{ Programming Languages -> computing.coso -> langs}}
+::{{ Libraries -> computing.coso -> libs}}
+::{{ General Software -> computing.coso -> software}}
+
 {{ title nomenclature }}
 
 In this page I use the (**†**) symbol to mark projects that are no longer

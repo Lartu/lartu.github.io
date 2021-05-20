@@ -22,6 +22,7 @@ DEST_DIR = BASE_DIR + "/docs"
 IMAGES_DIR = BASE_DIR + "/images"
 FILES_DIR = BASE_DIR + "/files"
 STYLE_FILE = BASE_DIR + "/styles.css"
+CNAME_FILE = BASE_DIR + "/CNAME"
 MAIN_TITLE = "lartu.net"
 FAVICON = "favicon.png"
 DESCRIPTION = "Lartu's personal website, welcome to Lartu.net."
@@ -270,76 +271,81 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                     filesize = os.path.getsize(img_file)
                     vieworiginal = "{{ view original ~> images/" + image_filename + " }} " + \
                         f"({ceil(filesize / 1024)} KiB)"
-                    source = source.replace(
-                        tag,
-                        f"<div class=\"{tokens[0]}\"><img src =\"images/c_{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\">"
-                        + (f"— {imgname} - {vieworiginal}" if tokens[0] != "img" else "") + "</div>")
+                    if tokens[0] == "img":
+                        source = source.replace(
+                            tag,
+                            f"<img src =\"images/c_{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\">")
+                    else:
+                        source = source.replace(
+                            tag,
+                            f"<div class=\"{tokens[0]}\"><img src =\"images/c_{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\">"
+                            + f"— {imgname} - {vieworiginal}</div>")
                 else:
-                    source = source.replace(
+                    source=source.replace(
                         tag,
                         f"<div class=\"{tokens[0]}\"><img src =\"images/{image_filename}\" title=\"{imgname}\" alt=\"Image: {imgname}\"></div>")
             elif tokens[0] == "sitemap":
                 # Add to sitemap
                 if with_head:
-                    sitemap[get_file_name(filename)] = page_title
-                source = source.replace(tag, get_sitemap())
+                    sitemap[get_file_name(filename)]=page_title
+                source=source.replace(tag, get_sitemap())
             elif tokens[0] == "changelog":
                 # Add to changelog
                 if with_head:
-                    sitemap[get_file_name(filename)] = page_title
-                source = source.replace(tag, get_changelog())
+                    sitemap[get_file_name(filename)]=page_title
+                source=source.replace(tag, get_changelog())
             elif tokens[0] == "footnote":
                 footnotes.append(tokens[1].strip())
-                source = source.replace(tag, f"<sup>{len(footnotes)}</sup>")
+                source=source.replace(tag, f"<sup>{len(footnotes)}</sup>")
     # Add footnotes
     if len(footnotes) > 0:
-        source = source + "{{subtitle footnotes}}"
-        fnindex = 0
+        source=source + "{{subtitle footnotes}}"
+        fnindex=0
         for footnote in footnotes:
             fnindex += 1
-            source = source + f"({fnindex}) {footnote}"
+            source=source + f"<small>({fnindex}) {footnote}</small>"
             if fnindex < len(footnotes):
-                source = source + "\n--\n"
+                source=source + "\n--\n"
     # Formatted text
-    bolds = re.findall(r"\*\*(?:.|\n)*?\*\*", source)
+    bolds=re.findall(r"\*\*(?:.|\n)*?\*\*", source)
     for text in bolds:
-        source = source.replace(text, "<b>" + text.strip("* ") + "</b>")
-    italics = re.findall(r"__(?:.|\n)*?__", source)
+        source=source.replace(text, "<b>" + text.strip("* ") + "</b>")
+    italics=re.findall(r"__(?:.|\n)*?__", source)
     for text in italics:
-        source = source.replace(text, "<i>" + text.strip("_ ") + "</i>")
-    code = re.findall(r"(```(?:.|\n)*?```)", source)
+        source=source.replace(text, "<i>" + text.strip("_ ") + "</i>")
+    code=re.findall(r"(```(?:.|\n)*?```)", source)
     for text in code:
-        source = source.replace(text, "<pre>" + text[3:-3].strip() + "</pre>")
-    code = re.findall(r"``(?:.|\n)*?``", source)
+        source=source.replace(text, "<pre>" + text[3:-3].strip() + "</pre>")
+    code=re.findall(r"``(?:.|\n)*?``", source)
     for text in code:
-        source = source.replace(text, "<code>" + text.strip("` ") + "</code>")
-    listitems = re.findall(r"(?<=\n)::::.+?[\r\n]", source)
+        source=source.replace(text, "<code>" + text.strip("` ") + "</code>")
+    listitems=re.findall(r"(?<=\n)::::.+?[\r\n]", source)
     for text in listitems:
-        source = source.replace(
+        source=source.replace(
             text, "<div class='listitem2'><span class='listmark'>※</span> " + text[4:].strip() + "</div>\n")
-    listitems = re.findall(r"(?<=\n)::.+?[\r\n]", source)
+    listitems=re.findall(r"(?<=\n)::.+?[\r\n]", source)
     for text in listitems:
-        source = source.replace(
+        source=source.replace(
             text, "<div class='listitem'><span class='listmark'>※</span> " + text[2:].strip() + "</div>\n")
     # Include includes
-    index = 0
+    index=0
     for include in includes:
-        source = source.replace(f"<INCLUDE_{index}>", load_and_compile(include, False))
+        source=source.replace(f"<INCLUDE_{index}>", load_and_compile(include, False))
         index += 1
     # Parse a few more times for nested things
     while True and do_multiple_passes:
-        new_source = compile(source, False, False)
+        new_source=compile(source, False, False)
         if new_source != source:
-            source = new_source
+            source=new_source
         else:
             break
     # Add boilerplate
     if with_head:
-        head = get_head(page_title, favicon, description)
-        source = f"<!DOCTYPE html>\n<html>\n{head}\n<body>\n{source}\n</body>\n</html>"
+        head=get_head(page_title, favicon, description)
+        source=f"<!DOCTYPE html>\n<html>\n{head}\n<body>\n{source}\n</body>\n</html>"
     # Add to sitemap
     if with_head:
-        sitemap[get_file_name(filename)] = page_title
+        sitemap[get_file_name(filename)]=page_title
     return source.strip()
 
 
@@ -353,10 +359,13 @@ os.system(f"rm -rf \"{DEST_DIR}\" && mkdir \"{DEST_DIR}\"")
 # Copy styles file
 os.system(f"cp \"{STYLE_FILE}\" \"{DEST_DIR}/styles.css\"")
 
+# Copy CNAME
+os.system(f"cp \"{CNAME_FILE}\" \"{DEST_DIR}/CNAME\"")
+
 # Create images directory
 os.system(f"mkdir \"{DEST_DIR}/images\"")
 os.system(f'''cp "{IMAGES_DIR}/{FAVICON}" "{DEST_DIR}/images/{FAVICON}"''')
-os.system(f'''cp -R "{IMAGES_DIR}/analisis" "{DEST_DIR}/images/analisis"''') # Imagenes de analisis
+os.system(f'''cp -R "{IMAGES_DIR}/analisis" "{DEST_DIR}/images/analisis"''')  # Imagenes de analisis
 os.system(f'''echo "forbidden" > "{DEST_DIR}/images/index.html"''')
 os.system(f'''echo "forbidden" > "{DEST_DIR}/images/analisis/index.html"''')
 
@@ -365,40 +374,40 @@ os.system(f'''cp -R "{FILES_DIR}" "{DEST_DIR}/files"''')
 os.system(f'''echo "forbidden" > "{DEST_DIR}/files/index.html"''')
 
 # Get source files
-directory = os.fsencode(SOURCES_DIR)
+directory=os.fsencode(SOURCES_DIR)
 
-want_sitemap = False
-want_changelog = False
+want_sitemap=False
+want_changelog=False
 
 for file in os.listdir(directory):
-    filename = os.fsdecode(file)
+    filename=os.fsdecode(file)
     if filename.endswith(".coso") and filename[0] != "_":
         if filename == SITEMAP_FILENAME:
-            want_sitemap = True
+            want_sitemap=True
             continue
         if filename == CHANGELOG_FILENAME:
-            want_changelog = True
+            want_changelog=True
             continue
-        compiled_source = load_and_compile(filename)
+        compiled_source=load_and_compile(filename)
         with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
             f.write(compiled_source)
 
 if want_changelog:
-    filename = CHANGELOG_FILENAME
-    compiled_source = load_and_compile(filename)
+    filename=CHANGELOG_FILENAME
+    compiled_source=load_and_compile(filename)
     with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
         f.write(compiled_source)
 
 if want_sitemap:
-    filename = SITEMAP_FILENAME
-    compiled_source = load_and_compile(filename)
+    filename=SITEMAP_FILENAME
+    compiled_source=load_and_compile(filename)
     with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
         f.write(compiled_source)
 
 # List linked but not found files
 show("All files have been compiled.")
 
-errors = 0
+errors=0
 for key in linkedpages:
     if not linkedpages[key] and ".coso" in key:
         error(f"The file {key} is linked but not found.")
