@@ -174,7 +174,6 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     page_title = MAIN_TITLE
     favicon = FAVICON
     description = DESCRIPTION
-    include_count = 0
     includes = []
     footnotes = []
     for tag in tags:
@@ -234,7 +233,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 source = source.replace(tag, "")
             elif tokens[0] == "include":
                 page_to_include = tokens[1].strip()
-                source = source.replace(tag, f"<INCLUDE_{include_count}>")
+                source = source.replace(tag, f"<INCLUDE_{len(includes)}>")
                 includes.append(page_to_include)
             elif tokens[0] == "favicon":
                 # DEPRECATED TAG
@@ -358,6 +357,9 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     for include in includes:
         source=source.replace(f"<INCLUDE_{index}>", load_and_compile(include, False))
         index += 1
+    # Add footer
+    '''if with_head:
+        source=f"{source}\n\n" + "{{ include _footer.coso }}"'''
     # Parse a few more times for nested things
     while True and do_multiple_passes:
         new_source=compile(source, False, False)
