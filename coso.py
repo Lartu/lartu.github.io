@@ -143,13 +143,12 @@ def get_changelog():
             chlogclass = '''class="bytespositive"'''
             diftext += f"<span {chlogclass}>-{neg_changes}</span>"
         changelog_lines.append(compile(f'<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd">{diftext}</td><td class="changelogtabletimetd">' + '{{date}} {{time}}</td></tr>', False))
-    
+
     source = ""
     old_changelogs = changelog_lines + old_changelogs
     for line in old_changelogs[0:100]:
         source += f"\n{line}"
-    
-    source = compile(source, False)
+
     return "<table class=\"changelogtable\">" + source + "\n</table>"
 
 
