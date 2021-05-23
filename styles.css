@@ -159,3 +159,9 @@ th {
 .separator {
     border-top: 1px solid black;
 }
+
+.mediabutton {
+    display: inline;
+    margin-top: initial;
+    margin-bottom: initial;
+}

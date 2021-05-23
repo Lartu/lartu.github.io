@@ -129,6 +129,8 @@ def get_changelog():
             continue
         tokens = line.split("|")
         key = get_file_name(tokens[0].strip().split("/")[-1].strip())
+        if key[0] == "_":
+            continue
         change_count = int(tokens[1].strip().split()[0])
         pos_changes = tokens[1].count('+')
         neg_changes = tokens[1].count('-')
@@ -170,20 +172,20 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             tokens = tag_content.split("=>")
             message = tokens[0].strip()
             destination = tokens[1].strip()
-            source = source.replace(tag, f'<a href="{destination}" class="external" target=_blank>{message}</a>')
+            source = source.replace(tag, f'<a href="{destination}" class="external" target=_blank>{message}</a>'.replace("\\}", "}"))
         elif "->" in tag_content:
             tokens = tag_content.split("->")
             message = tokens[0].strip()
             realfilename = tokens[1].strip()
             anchor = ""
-            if len(tokens) > 2:
+            if len(tokens) >= 3:
                 anchor = tokens[2].strip()
             if realfilename not in linkedpages:
                 linkedpages[realfilename] = False
             destination = get_file_name(realfilename)
             if anchor:
                 destination += "#" + anchor
-            source = source.replace(tag, f'<a href="{destination}">{message}</a>')
+            source = source.replace(tag, f'<a href="{destination}">{message}</a>'.replace("\\}", "}"))
         elif "~>" in tag_content:
             tokens = tag_content.split("~>")
             message = tokens[0].strip()
@@ -196,7 +198,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             destination = get_file_name(realfilename)
             if anchor:
                 destination += "#" + anchor
-            source = source.replace(tag, f'<a href="{destination}" target=_blank>{message}</a>')
+            source = source.replace(tag, f'<a href="{destination}" target=_blank>{message}</a>'.replace("\\}", "}"))
         else:
             tag_content = re.sub(r"\s+", " ", tag_content)
             tokens = tag_content.split(" ", 1)
@@ -232,7 +234,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             elif tokens[0] == "anchor":
                 anchorname = tokens[1].strip()
                 source = source.replace(tag, f"<div style='display: hidden' id='{anchorname}'></div>")
-            elif tokens[0] in ["bigimg", "img", "midimg"]:
+            elif tokens[0] in ["bigimg", "img", "midimg", "mediabutton"]:
                 # Bigimg es imagen comprimida ancho 100% con epígrafe
                 # Midimg es imagen comprimida ancho 50% con epígrafe
                 # img es imagen comprimida max ancho 100% sin epígrafe.
@@ -275,10 +277,12 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                         picture = picture.convert("RGB")
                         pal_image = picture.quantize(colors=8)
                         picture = picture.quantize(palette=pal_image)
-                        if compression_format != "GIF":
-                            picture = picture.convert("RGB")
-                    else:
-                        picture = new_image.convert("RGB")
+                    elif compression_format == "GIF":
+                        picture = picture.convert("RGB")
+                        pal_image = picture.quantize(colors=256)
+                        picture = picture.quantize(palette=pal_image)
+                    if picture.mode == "P" and compression_format != "GIF":
+                        picture = picture.convert("RGB")
                     compressed_filename = DEST_DIR + "/images/c_" + compresed_image_file
                     picture.save(compressed_filename, optimize=True, quality=75, format=compression_format)
                     show(f"Saved {compressed_filename}.")
@@ -291,12 +295,17 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                     if tokens[0] == "img":
                         source = source.replace(
                             tag,
-                            f"<img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
+                            f"<img  class=\"{tokens[0]}\" src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
                     else:
                         source = source.replace(
                             tag,
                             f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">"
                             + f"<small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
+                elif tokens[0] == "mediabutton":
+                    # NOTA: Los mediabutton tienen que ser chiquitos, en general 20x20
+                    source = source.replace(
+                        tag,
+                        f"<img src =\"images/{image_filename}\" class=\"{tokens[0]}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
                 else:
                     source = source.replace(
                         tag,
