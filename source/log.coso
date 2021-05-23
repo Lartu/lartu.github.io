@@ -1,6 +1,6 @@
 {{ pagetitle Lartunet — Log }}
 {{ favicon favicon.png }}
-{{ descr Log at lartunet. }}
+{{ descr Log of interesting things at lartunet. }}
 
 {{ include _header.coso }}
 
