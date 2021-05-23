@@ -257,9 +257,9 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 image_filename = f"{imghash}.{file_ext}"
                 os.system(f'''cp "{img_file}" "{DEST_DIR}/images/{image_filename}"''')  # Save original image
                 show(f"Copied {image_filename} to the images directory as {image_filename}.")
-                compresed_image_file = imghash + ".png" # Was gif
-                compression_format = "PNG"
-                jpeg_note = " (PNG) "
+                compression_format = "JPEG"
+                compresed_image_file = imghash + "." + compression_format # Was gif
+                jpeg_note = f" ({compression_format}) "
                 max_width = MAX_IMG_WIDTH
                 if tokens[0] == "midimg":
                     max_width = int(max_width / 2)
@@ -283,8 +283,10 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                         picture = picture.quantize(palette=pal_image)
                     if picture.mode == "P" and compression_format != "GIF":
                         picture = picture.convert("RGB")
+                    if compression_format == "JPEG":
+                        picture = picture.convert("RGB")
                     compressed_filename = DEST_DIR + "/images/c_" + compresed_image_file
-                    picture.save(compressed_filename, optimize=True, quality=75, format=compression_format)
+                    picture.save(compressed_filename, optimize=True, quality=90, format=compression_format)
                     show(f"Saved {compressed_filename}.")
                     filesize = os.path.getsize(img_file)
                     vieworiginal = "{{ view original ~> images/" + image_filename + " }} " + \
