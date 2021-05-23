@@ -251,6 +251,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 file_ext = file_ext.strip(".")
                 img_file = IMAGES_DIR + "/" + image_filename
                 picture = Image.open(img_file)
+                picture = ImageOps.exif_transpose(picture)
                 width = picture.size[0]
                 height = picture.size[1]
                 imghash = get_image_hash_name(image_title)
@@ -274,13 +275,6 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                     new_image.paste(picture, (0, 0), picture)
                     if black_and_white:
                         picture = ImageOps.grayscale(new_image)
-                        picture = picture.convert("RGB")
-                        pal_image = picture.quantize(colors=8)
-                        picture = picture.quantize(palette=pal_image)
-                    elif compression_format == "GIF":
-                        picture = picture.convert("RGB")
-                        pal_image = picture.quantize(colors=256)
-                        picture = picture.quantize(palette=pal_image)
                     if picture.mode == "P" and compression_format != "GIF":
                         picture = picture.convert("RGB")
                     if compression_format == "JPEG":
