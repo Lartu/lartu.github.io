@@ -167,29 +167,29 @@ and thus cannot be used anywhere else in the message.
 <div class="split"></div>
 Each section of a message represents a different type of information:
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> The <b>command</b> part tells the recipent of the message what we intend to do with this message (for example, change our nick or join a list).</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a fixed length of 4 characters.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section is always UPPERCASE.</div>
-<div class='listitem'><span class='listmark'>※</span> The <b>sender</b> part tells the recipient who is this message from.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a minimum length of 1 character.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a maximum length of 32 characters.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section is always lowercase.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section may not contain any spaces.</div>
-<div class='listitem'><span class='listmark'>※</span> The <b>recipient</b> part tells who was this message sent to.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a minimum length of 1 character.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a maximum length of 32 characters.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section is always lowercase.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section may not contain any spaces.</div>
-<div class='listitem'><span class='listmark'>※</span> The <b>extradata</b> section is a reserved part of the message used for sending error codes or other data.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a minimum length of 1 character.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has no maximum length.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section is always lowercase.</div>
-<div class='listitem2'><span class='listmark'>※</span> Multiple words in this section must be delimited by the character <code>|</code>.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section may not contain any spaces.</div>
-<div class='listitem'><span class='listmark'>※</span> The <b>content</b> part of the message is used for sending messages per sé, as in the content of a message (<i>"hi there!"</i>, <i>"how are you?"</i>).</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has a minimum length of 1 character.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section has no maximum length.</div>
-<div class='listitem2'><span class='listmark'>※</span> This section may contain spaces.</div>
+<div class='listitem'><span class='listmark'>&gt;</span> The <b>command</b> part tells the recipent of the message what we intend to do with this message (for example, change our nick or join a list).</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a fixed length of 4 characters.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section is always UPPERCASE.</div>
+<div class='listitem'><span class='listmark'>&gt;</span> The <b>sender</b> part tells the recipient who is this message from.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a maximum length of 32 characters.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section is always lowercase.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section may not contain any spaces.</div>
+<div class='listitem'><span class='listmark'>&gt;</span> The <b>recipient</b> part tells who was this message sent to.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a maximum length of 32 characters.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section is always lowercase.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section may not contain any spaces.</div>
+<div class='listitem'><span class='listmark'>&gt;</span> The <b>extradata</b> section is a reserved part of the message used for sending error codes or other data.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has no maximum length.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section is always lowercase.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Multiple words in this section must be delimited by the character <code>|</code>.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section may not contain any spaces.</div>
+<div class='listitem'><span class='listmark'>&gt;</span> The <b>content</b> part of the message is used for sending messages per sé, as in the content of a message (<i>"hi there!"</i>, <i>"how are you?"</i>).</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has a minimum length of 1 character.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section has no maximum length.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> This section may contain spaces.</div>
 <div class="split"></div>
 When a section is supposed to be empty (for example, when sending a message to the server that has no recipient) it must
 be filled with a single character, usually <code>#</code>.
@@ -217,62 +217,62 @@ to join a non-existant list, it is created.
 <div class="split"></div>
 All this said, the following messages are valid Mitsubachi messages:
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>NICK</b>: sent by a client to a server to change their nick. If the nick is in use by another client, the server should reply <code>OOPS # # 001 #\n</code> ("nick already in use"). It the nick is available to be used, the server should reply <code>OOPS # # 000 #\n</code> ("ok") and assign the nick to the client.</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: NICK</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: the desired nick</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>NICK myNick # # #\n</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>NICK</b>: sent by a client to a server to change their nick. If the nick is in use by another client, the server should reply <code>OOPS # # 001 #\n</code> ("nick already in use"). It the nick is available to be used, the server should reply <code>OOPS # # 000 #\n</code> ("ok") and assign the nick to the client.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: NICK</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: the desired nick</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>NICK myNick # # #\n</code></div>
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>JOIN</b>: sent by a client to a server to join a list. If the nick of the list to be joined is not a valid list nick, the server should reply <code>OOPS # # 003 #\n</code> ("invalid distribution list"). If the list is valid, the client should be joined to the list and the server should reply <code>OOPS # # 000 #\n</code> ("ok").</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: JOIN</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: nick of the list to be joined</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>JOIN # !mitsubachi # #\n</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>JOIN</b>: sent by a client to a server to join a list. If the nick of the list to be joined is not a valid list nick, the server should reply <code>OOPS # # 003 #\n</code> ("invalid distribution list"). If the list is valid, the client should be joined to the list and the server should reply <code>OOPS # # 000 #\n</code> ("ok").</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: JOIN</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: nick of the list to be joined</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>JOIN # !mitsubachi # #\n</code></div>
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>LEAV</b>: sent by a client to a server to leave a list. If the nick of the list to be left is not a valid list nick, the server should reply <code>OOPS # # 003 #\n</code> ("invalid distribution list"). If the list is valid, the client should be removed from the list and the server should reply <code>OOPS # # 000 #\n</code> ("ok").</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: LEAV</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: nick of the list to be left</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>LEAV # !lamelist # #\</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>LEAV</b>: sent by a client to a server to leave a list. If the nick of the list to be left is not a valid list nick, the server should reply <code>OOPS # # 003 #\n</code> ("invalid distribution list"). If the list is valid, the client should be removed from the list and the server should reply <code>OOPS # # 000 #\n</code> ("ok").</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: LEAV</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: nick of the list to be left</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>LEAV # !lamelist # #\</code></div>
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>MESG</b>: sent by a client to a server to deliver a message to another client or list. When this message is sent by the server to a client it means that said client has received a message.</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: MESG</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: nick of the sender of the message</div>
-<div class='listitem2'><span class='listmark'>※</span> When a client is the one that sends this message to a server, it may omit the contents of this section and just send a # in it instead. When this message is sent by a server to a client, the content of this section is always the nick of the user who sent the message originally.</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: nick of the recipient of the message (user or list)</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: actual contents of the message</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>MESG user1 coolUser # Hello there, coolUser, how are you?\n</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>MESG</b>: sent by a client to a server to deliver a message to another client or list. When this message is sent by the server to a client it means that said client has received a message.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: MESG</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: nick of the sender of the message</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> When a client is the one that sends this message to a server, it may omit the contents of this section and just send a # in it instead. When this message is sent by a server to a client, the content of this section is always the nick of the user who sent the message originally.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: nick of the recipient of the message (user or list)</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: actual contents of the message</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>MESG user1 coolUser # Hello there, coolUser, how are you?\n</code></div>
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>EXIT</b>: sent by a client to a server to close the connection.</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: EXIT</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>EXIT # # # #\n</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>EXIT</b>: sent by a client to a server to close the connection.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: EXIT</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>EXIT # # # #\n</code></div>
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>OOPS</b>: sent by a server to a client to inform the result of the requested operation. This message shouldn't be sent by clients.</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: OOPS</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: error code that represents the result of the requested operation</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>OOPS # # 000 #\n</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>OOPS</b>: sent by a server to a client to inform the result of the requested operation. This message shouldn't be sent by clients.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: OOPS</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: error code that represents the result of the requested operation</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>OOPS # # 000 #\n</code></div>
 <div class="split"></div>
-<div class='listitem'><span class='listmark'>※</span> <b>INFO</b>: an information message from the server with a text message. This is supposed to be read by the user. It may contain a MOTD or any valuable information the server administrator desires to send clients.</div>
-<div class='listitem2'><span class='listmark'>※</span> Command section value: INFO</div>
-<div class='listitem2'><span class='listmark'>※</span> Sender section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Recipient section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Extradata section value: #</div>
-<div class='listitem2'><span class='listmark'>※</span> Content section value: the contents of a message</div>
-<div class='listitem2'><span class='listmark'>※</span> Example: <code>INFO # # # Welcome to Mitsubachi!\n</code></div>
+<div class='listitem'><span class='listmark'>&gt;</span> <b>INFO</b>: an information message from the server with a text message. This is supposed to be read by the user. It may contain a MOTD or any valuable information the server administrator desires to send clients.</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Command section value: INFO</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Sender section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Recipient section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Extradata section value: #</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Content section value: the contents of a message</div>
+<div class='listitem2'><span class='listmark'>&gt;</span> Example: <code>INFO # # # Welcome to Mitsubachi!\n</code></div>
 <div class="split"></div>
 In order to request any command to a server, clients must
 first have chosen a nick (by issuing a NICK message). Should

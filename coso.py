@@ -142,7 +142,7 @@ def get_changelog():
         if neg_changes > 0:
             chlogclass = '''class="bytespositive"'''
             diftext += f"<span {chlogclass}>-{neg_changes}</span>"
-        changelog_lines.append(f'<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd">{diftext}</td><td class="changelogtabletimetd">' + '{{date}} {{time}}</td></tr>')
+        changelog_lines.append(compile(f'<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd">{diftext}</td><td class="changelogtabletimetd">' + '{{date}} {{time}}</td></tr>', False))
     
     source = ""
     old_changelogs = changelog_lines + old_changelogs
@@ -335,11 +335,11 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     listitems = re.findall(r"(?<=\n)::::.+?[\r\n]", source)
     for text in listitems:
         source = source.replace(
-            text, "<div class='listitem2'><span class='listmark'>※</span> " + text[4:].strip() + "</div>\n")
+            text, "<div class='listitem2'><span class='listmark'>&gt;</span> " + text[4:].strip() + "</div>\n")
     listitems = re.findall(r"(?<=\n)::.+?[\r\n]", source)
     for text in listitems:
         source = source.replace(
-            text, "<div class='listitem'><span class='listmark'>※</span> " + text[2:].strip() + "</div>\n")
+            text, "<div class='listitem'><span class='listmark'>&gt;</span> " + text[2:].strip() + "</div>\n")
     # Include includes
     index = 0
     for include in includes:
