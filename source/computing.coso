@@ -35,7 +35,7 @@ may or may not be supported on a case by case basis.
 
 {{ title projects }}
 
-::{{tmon => https://github.com/Lartu/tmon}}, the __[You]Tube Monitor__. It is a tool to make regular, local backups of your YouTube music playlists. It's pronounced __te-mon__, with __te__ like in __tetris__ and __mon_ like in __monitor__.
+::{{tmon => https://github.com/Lartu/tmon}}, the __[You]Tube Monitor__. It is a tool to make regular, local backups of your YouTube music playlists. It's pronounced __te-mon__, with __te__ like in __tetris__ and __mon__ like in __monitor__.
 
 --
 Right now I'm working on {{Eterspire (Beta II) => https://eterspire.com}}.
