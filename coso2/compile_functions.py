@@ -30,13 +30,17 @@ def generate_rss_file():
     for item in rss_items:
         d = item[1]
         rss_date_str = d.strftime('%a, %d %b %Y %H:%M:%S -0300')
+        title = item[3].replace("Lartunet — ", "")
+        content_body = item[2]
+        content_body = re.sub(r"href(\s*)=(\s*)\"(?!http)", "href=\"https://lartu.net/", content_body)
+        content_body = re.sub(r"src(\s*)=(\s*)\"(?!http)", "src=\"https://lartu.net/", content_body)
         item_content = "\t\t<item>\n"
-        item_content += f"\t\t\t<title>{document_title}</title>\n"
+        item_content += f"\t\t\t<title>{title}</title>\n"
         item_content += f"\t\t\t<link>https://lartu.net/{item[0]}</link>\n"
         item_content += f"\t\t\t<guid isPermaLink='false'>{item[0]}</guid>\n"
         item_content += f"\t\t\t<pubDate>{rss_date_str}</pubDate>\n"
         item_content += "\t\t\t<dc:creator><![CDATA[Lartu]]></dc:creator>\n"
-        item_content += f"\t\t\t<description><![CDATA[{item[2]}]]></description>\n"
+        item_content += f"\t\t\t<description><![CDATA[{content_body}]]></description>\n"
         item_content += "\t\t</item>\n"
         rss_contents += item_content
     rss_contents += get_rss_footer()
@@ -67,6 +71,7 @@ def set_global_page_title(title):
     '''Sets the global variable for the document title.
     '''
     global document_title
+    show(f"Set document title to «{title}».")
     document_title = title
 
 
@@ -105,6 +110,7 @@ def compile_source_and_rss(source_code, filename):
             get_compiled_filename(filename),
             rss_date,
             rss_body,
+            document_title,
         ))
     # Add page to sitemap
     sitemap[get_compiled_filename(filename)] = document_title
@@ -117,8 +123,8 @@ def compile_source(source_code):
     '''
     # Reset compilation flags for page
     reset_global_document_flags()
-    page_head = get_document_head(document_title, document_favicon, document_descr)
     page_body = compile_source_body(source_code)
+    page_head = get_document_head(document_title, document_favicon, document_descr)
     page_footer = compile_source_body("{{include _footer.coso}}")
     return f"{page_head}\n{page_body}\n{page_footer}"
 
@@ -281,7 +287,7 @@ def compile_tag(tag, use_custom_classes=True):
         image_filename = body
         os.system(f'''cp "{get_images_dir()}/{image_filename}" "{get_docs_dir()}/images/{image_filename}"''')
         show(f"Copied {image_filename} to the images directory.")
-        return f"<img src =\"images/{image_filename}\" class=\"mediabutton\">"
+        return f"<img src=\"images/{image_filename}\" class=\"mediabutton\">"
 
     elif command == "img":
         image_filename, grayscale = parse_image_tag(body)
@@ -300,7 +306,7 @@ def compile_tag(tag, use_custom_classes=True):
         image_filename = body
         os.system(f'''cp "{get_images_dir()}/{image_filename}" "{get_docs_dir()}/images/{image_filename}"''')
         show(f"Copied {image_filename} to the images directory.")
-        return f"<img src =\"images/{image_filename}\" class=\"logo\">"
+        return f"<img src=\"images/{image_filename}\" class=\"logo\">"
 
     elif command == "sitemap":
         return get_sitemap()
@@ -381,14 +387,14 @@ def get_image_tag(filename, compress=True, epigrafe=True, half_width=False, gray
             if grayscale:
                 bwnote = "(b&w version) "
         if not epigrafe:
-            return f"<p><img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></p>"
+            return f"<p><img src=\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></p>"
         else:
             class_tag = ""
             if half_width and use_custom_classes:
                 class_tag = "class=\"midimg\""
-            return f"<p><img {class_tag} src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"><small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></p>"
+            return f"<p><img {class_tag} src=\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"><small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></p>"
     else:
-        return f"<p><img src =\"images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></p>"
+        return f"<p><img src=\"images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></p>"
 
 
 def get_image_hash_name(original_name):
