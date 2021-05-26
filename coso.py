@@ -3,7 +3,7 @@
 
 import os
 import re
-from datetime import date
+from datetime import date, datetime
 import hashlib
 from PIL import Image, ImageOps
 import PIL
@@ -27,10 +27,62 @@ SITEMAP_FILENAME = "sitemap.coso"
 CHANGELOG_FILENAME = "changelog.coso"
 MAX_IMG_WIDTH = 800
 
+RSS_HEADER = '''
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel>
+
+        <title>Lartunet</title>
+        <link>https://lartu.net</link>
+        <description>Lartu's Log of Interesting Things</description>
+        <image>
+            <url>https://lartu.net/files/rss.jpg</url>
+            <title>Lartunet</title>
+            <link>https://lartu.net</link>
+        </image>
+'''
+
+RSS_FOOTER = '''
+    </channel>
+</rss>
+'''
+
+RSS_START_TOKEN = "<!--RSS-START-->"
+RSS_END_TOKEN = "<!--RSS-END-->"
+
+rss_items = []
+
 sitemap = {}
 linkedpages = {}
 
 old_changelogs = []
+
+
+def generar_rss():
+    global rss_items
+    validitems = []
+    for item in rss_items:
+        if item[2] is None:
+            error(f"The RSS entry for {item[1]} has no date.")
+            continue
+        validitems.append(item)
+    validitems.sort(key=lambda x: x[2], reverse=True)
+    rss_contents = RSS_HEADER
+    for item in validitems:
+        d = item[2]
+        rss_date = d.strftime('%a, %d %b %Y %H:%M:%S -0300')
+        item_content = "\t\t<item>\n"
+        item_content += f"\t\t\t<title>{item[0]}</title>\n"
+        item_content += f"\t\t\t<link>https://lartu.net/{item[1]}</link>\n"
+        item_content += f"\t\t\t<guid isPermaLink='false'>{item[1]}</guid>\n"
+        item_content += f"\t\t\t<pubDate>{rss_date}</pubDate>\n"
+        item_content += "\t\t\t<dc:creator><![CDATA[Lartu]]></dc:creator>\n"
+        item_content += f"\t\t\t<description><![CDATA[{item[3]}]]></description>\n"
+        item_content += "\t\t</item>\n"
+        rss_contents += item_content
+    rss_contents += RSS_FOOTER
+    with open(f"{DEST_DIR}/files/rss.xml.rss", "w+") as f:
+        f.write(rss_contents)
 
 
 def save_changelog():
@@ -97,14 +149,14 @@ def get_head(page_title=None, favicon=None, description=None):
     return head
 
 
-def load_and_compile(filename, with_head=True):
+def load_and_compile(filename, with_head=True, for_rss = False):
     global changelog, filesizes, files
-    show(f"Compiling {filename}")
+    show(f"Compiling {filename}" + (" for RSS" if for_rss else ""))
     linkedpages[filename] = True
     source = ""
     with open(SOURCES_DIR + "/" + filename, "r") as f:
         source = f.read()
-    compiled_source = compile(source, with_head, filename=filename)
+    compiled_source = compile(source, with_head, filename=filename, for_rss=for_rss)
     return compiled_source
 
 
@@ -144,7 +196,10 @@ def get_changelog():
         if neg_changes > 0:
             chlogclass = '''class="bytespositive"'''
             diftext += f"<span {chlogclass}>-{neg_changes}</span>"
-        changelog_lines.append(compile(f'<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd">{diftext}</td><td class="changelogtabletimetd">' + '{{date}} {{time}}</td></tr>', False))
+        changelog_lines.append(
+            compile(
+                f'<tr><td class="changelogtablefntd"><a href="{key}">{sitemap[key]}</a></td><td class="changelogtablesizetd">{diftext}</td><td class="changelogtabletimetd">'
+                + '{{date}} {{time}}</td></tr>', False))
 
     source = ""
     old_changelogs = changelog_lines + old_changelogs
@@ -154,9 +209,12 @@ def get_changelog():
     return "<table class=\"changelogtable\">" + source + "\n</table>"
 
 
-def compile(source, with_head=True, do_multiple_passes=True, filename=""):
+def compile(source, with_head=True, do_multiple_passes=True, filename="", for_rss=False):
     source = f"\n{source}\n"
-    source = re.sub(r"(?<=\n)--(?: *?)(?=\n)", "<div class=\"split\"></div>", source)
+    if not for_rss:
+        source = re.sub(r"(?<=\n)--(?: *?)(?=\n)", "<div class=\"split\"></div>", source)
+    else:
+        source = re.sub(r"(?<=\n)--(?: *?)(?=\n)", "<br><br>", source)
     source = re.sub(r"(?<=\n)-(?: *?)(?=\n)", "<br>", source)
     source = re.sub(r"/\*(?:(?:.|\s|\r|\n)*?)\*/", "", source)
     tags = re.findall(r"{{[^{}]*?}}", source)
@@ -165,6 +223,8 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     description = DESCRIPTION
     includes = []
     footnotes = []
+    requires_rss = False
+    rss_date = None
     for tag in tags:
         tag_content = tag.strip("{} \r\n\t")
         # Non command tags
@@ -172,7 +232,12 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             tokens = tag_content.split("=>")
             message = tokens[0].strip()
             destination = tokens[1].strip()
-            source = source.replace(tag, f'<a href="{destination}" class="external" target=_blank>{message}</a>'.replace("\\}", "}"))
+            if not for_rss:
+                source = source.replace(
+                    tag, f'<a href="{destination}" class="external" target=_blank>{message}</a>'.replace("\\}", "}"))
+            else:
+                source = source.replace(
+                    tag, f'<a href="{destination}"" target=_blank>{message}</a>'.replace("\\}", "}"))
         elif "->" in tag_content:
             tokens = tag_content.split("->")
             message = tokens[0].strip()
@@ -185,7 +250,11 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             destination = get_file_name(realfilename)
             if anchor:
                 destination += "#" + anchor
-            source = source.replace(tag, f'<a href="{destination}">{message}</a>'.replace("\\}", "}"))
+            if not for_rss:
+                source = source.replace(tag, f'<a href="{destination}">{message}</a>'.replace("\\}", "}"))
+            else:
+                source = source.replace(
+                    tag, f'<a href="https://lartu.net/{destination}">{message}</a>'.replace("\\}", "}"))
         elif "~>" in tag_content:
             tokens = tag_content.split("~>")
             message = tokens[0].strip()
@@ -198,7 +267,11 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             destination = get_file_name(realfilename)
             if anchor:
                 destination += "#" + anchor
-            source = source.replace(tag, f'<a href="{destination}" target=_blank>{message}</a>'.replace("\\}", "}"))
+            if not for_rss:
+                source = source.replace(tag, f'<a href="{destination}" target=_blank>{message}</a>'.replace("\\}", "}"))
+            else:
+                source = source.replace(
+                    tag, f'<a href="https://lartu.net/{destination}" target=_blank>{message}</a>'.replace("\\}", "}"))
         else:
             tag_content = re.sub(r"\s+", " ", tag_content)
             tokens = tag_content.split(" ", 1)
@@ -233,7 +306,10 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 source = source.replace(tag, "")
             elif tokens[0] == "anchor":
                 anchorname = tokens[1].strip()
-                source = source.replace(tag, f"<div style='display: hidden' id='{anchorname}'></div>")
+                if not for_rss:
+                    source = source.replace(tag, f"<div style='display: hidden' id='{anchorname}'></div>")
+                else:
+                    source = source.replace(tag, "")
             elif tokens[0] in ["bigimg", "img", "midimg", "mediabutton"]:
                 # Bigimg es imagen comprimida ancho 100% con epígrafe
                 # Midimg es imagen comprimida ancho 50% con epígrafe
@@ -259,7 +335,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                 os.system(f'''cp "{img_file}" "{DEST_DIR}/images/{image_filename}"''')  # Save original image
                 show(f"Copied {image_filename} to the images directory as {image_filename}.")
                 compression_format = "JPEG"
-                compresed_image_file = imghash + "." + compression_format # Was gif
+                compresed_image_file = imghash + "." + compression_format  # Was gif
                 jpeg_note = f" ({compression_format}) "
                 max_width = MAX_IMG_WIDTH
                 if tokens[0] == "midimg":
@@ -268,44 +344,60 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
                     compression_format = "PNG"
                     jpeg_note = ""
                 if width > max_width:
-                    show(f"Optimizing {image_filename}.")
-                    picture = picture.resize((max_width, int(height*max_width/width)))
-                    picture = picture.convert("RGBA")
-                    new_image = Image.new("RGBA", picture.size, "WHITE")
-                    new_image.paste(picture, (0, 0), picture)
-                    if black_and_white:
-                        picture = ImageOps.grayscale(new_image)
-                    if picture.mode == "P" and compression_format != "GIF":
-                        picture = picture.convert("RGB")
-                    if compression_format == "JPEG":
-                        picture = picture.convert("RGB")
                     compressed_filename = DEST_DIR + "/images/c_" + compresed_image_file
-                    picture.save(compressed_filename, optimize=True, quality=90, format=compression_format)
-                    show(f"Saved {compressed_filename}.")
-                    filesize = os.path.getsize(img_file)
-                    vieworiginal = "{{ view original ~> images/" + image_filename + " }} " + \
-                        f"({ceil(filesize / 1024)} KiB, {file_ext.upper()})"
-                    bwnote = ""
-                    if black_and_white:
-                        bwnote = "(b&w version) "
+                    if not for_rss:
+                        show(f"Optimizing {image_filename}.")
+                        picture = picture.resize((max_width, int(height*max_width/width)))
+                        picture = picture.convert("RGBA")
+                        new_image = Image.new("RGBA", picture.size, "WHITE")
+                        new_image.paste(picture, (0, 0), picture)
+                        if black_and_white:
+                            picture = ImageOps.grayscale(new_image)
+                        if picture.mode == "P" and compression_format != "GIF":
+                            picture = picture.convert("RGB")
+                        if compression_format == "JPEG":
+                            picture = picture.convert("RGB")
+                        picture.save(compressed_filename, optimize=True, quality=90, format=compression_format)
+                        show(f"Saved {compressed_filename}.")
+                        filesize = os.path.getsize(img_file)
+                        vieworiginal = "{{ view original ~> images/" + image_filename + " }} " + \
+                            f"({ceil(filesize / 1024)} KiB, {file_ext.upper()})"
+                        bwnote = ""
+                        if black_and_white:
+                            bwnote = "(b&w version) "
                     if tokens[0] == "img":
-                        source = source.replace(
-                            tag,
-                            f"<img  class=\"{tokens[0]}\" src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
+                        if not for_rss:
+                            source = source.replace(
+                                tag,
+                                f"<img  class=\"{tokens[0]}\" src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
+                        else:
+                            source = source.replace(
+                                tag,
+                                f"<img src =\"https://lartu.net/images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
                     else:
-                        source = source.replace(
-                            tag,
-                            f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">"
-                            + f"<small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
+                        if not for_rss:
+                            source = source.replace(
+                                tag,
+                                f"<div class=\"{tokens[0]}\"><img src =\"images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\">"
+                                + f"<small>— {imghash} {bwnote}{jpeg_note}- {vieworiginal}</small></div>")
+                        else:
+                            source = source.replace(
+                                tag,
+                                f"<a href=\"https://lartu.net/images/{image_filename}\"><img src =\"https://lartu.net/images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></a>")
                 elif tokens[0] == "mediabutton":
                     # NOTA: Los mediabutton tienen que ser chiquitos, en general 20x20
                     source = source.replace(
                         tag,
                         f"<img src =\"images/{image_filename}\" class=\"{tokens[0]}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
                 else:
-                    source = source.replace(
-                        tag,
-                        f"<div class=\"{tokens[0]}\"><img src =\"images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></div>")
+                    if not for_rss:
+                        source = source.replace(
+                            tag,
+                            f"<div class=\"{tokens[0]}\"><img src =\"images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></div>")
+                    else:
+                        source = source.replace(
+                            tag,
+                            f"<img src =\"https://lartu.net/images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\">")
             elif tokens[0] == "sitemap":
                 # Add to sitemap
                 if with_head:
@@ -319,6 +411,21 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
             elif tokens[0] == "footnote":
                 footnotes.append(tokens[1].strip())
                 source = source.replace(tag, f"<sup>{len(footnotes)}</sup>")
+            elif tokens[0] == "rss_start":
+                if for_rss:
+                    source = source.replace(tag, RSS_START_TOKEN)
+                else:
+                    requires_rss = True
+                    source = source.replace(tag, "")
+            elif tokens[0] == "rss_end":
+                if for_rss:
+                    source = source.replace(tag, RSS_END_TOKEN)
+                else:
+                    source = source.replace(tag, "")
+            elif tokens[0] == "rss_date":
+                if not for_rss:
+                    rss_date = datetime.strptime(tokens[1].strip(), "%Y-%m-%d %H:%M")
+                source = source.replace(tag, "")
     # Add footnotes
     if len(footnotes) > 0:
         source = source + "{{subtitle footnotes}}"
@@ -343,12 +450,22 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
         source = source.replace(text, "<code>" + text.strip("` ") + "</code>")
     listitems = re.findall(r"(?<=\n)::::.+?[\r\n]", source)
     for text in listitems:
-        source = source.replace(
-            text, "<div class='listitem2'><span class='listmark'>&gt;</span> " + text[4:].strip() + "</div>\n")
+        if not for_rss:
+            source = source.replace(
+                text, "<div class='listitem2'><span class='listmark'>&gt;</span> " + text[4:].strip() + "</div>\n")
+        else:
+            source = source.replace(
+                text, "<br>&gt;&gt; " + text[4:].strip() + "<br>\n")
     listitems = re.findall(r"(?<=\n)::.+?[\r\n]", source)
     for text in listitems:
-        source = source.replace(
-            text, "<div class='listitem'><span class='listmark'>&gt;</span> " + text[2:].strip() + "</div>\n")
+        if not for_rss:
+            source = source.replace(
+                text, "<div class='listitem'><span class='listmark'>&gt;</span> " + text[2:].strip() + "</div>\n")
+        else:
+            source = source.replace(
+                text, "<br>&gt;&gt;&gt;&gt; " + text[2:].strip() + "<br>\n")
+    # Replace double <br> in case there are multiple <br>s
+    source = re.sub(r"<br>\s*<br>\s*<br>", "<br><br>", source)
     # Include includes
     index = 0
     for include in includes:
@@ -372,7 +489,19 @@ def compile(source, with_head=True, do_multiple_passes=True, filename=""):
     # Add to sitemap
     if with_head:
         sitemap[get_file_name(filename)] = page_title
-    return source.strip()
+    # Add page to RSS if requested (request from main HTML compilation)
+    if requires_rss and with_head:
+        rss_source = load_and_compile(filename, False, True)
+        rss_start_token_position = rss_source.find(RSS_START_TOKEN)
+        rss_end_token_position = rss_source.find(RSS_END_TOKEN)
+        rss_description = rss_source[rss_start_token_position:rss_end_token_position].replace(
+            RSS_START_TOKEN, "").replace(RSS_END_TOKEN, "").strip()
+        rss_title = page_title
+        if "Lartunet — " in page_title:
+            rss_title = page_title.replace("Lartunet — ", "")
+        rss_items.append((rss_title, get_file_name(filename), rss_date, rss_description))
+    source = source.strip()
+    return source
 
 
 show("Compilation started.")
@@ -432,6 +561,9 @@ if want_sitemap:
 
 # List linked but not found files
 show("All files have been compiled.")
+
+# Generar RSS
+generar_rss()
 
 errors = 0
 for key in linkedpages:

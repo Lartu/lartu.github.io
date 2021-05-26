@@ -22,6 +22,7 @@
 :: Finish a project before you optimize it. A released project is better than a well-polished one that no-one will ever see.
 :: Most software out there is messy. That's why it's out there.
 :: Aesthetics is important.
+:: Design for the future. You will be there and have to deal with your current code.
 --
 ::Rule of Modularity: Write simple parts connected by clean interfaces.
 ::Rule of Composition: Design programs to be connected to other programs.

@@ -1,51 +1,61 @@
-{{ pagetitle Lartunet — Pickles and Rain }}
-{{ favicon favicon.png }}
-{{ descr Log entry at lartunet. }}
 
-{{ include _header.coso }}
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/'>
+    <channel>
 
-{{rss_start}}
-{{rss_date 2021-05-22 00:00}}
+        <title>Lartunet</title>
+        <link>https://lartu.net</link>
+        <description>Lartu's Log of Interesting Things</description>
+        <image>
+            <url>https://lartu.net/files/rss.jpg</url>
+            <title>Lartunet</title>
+            <link>https://lartu.net</link>
+        </image>
+		<item>
+			<title>Pickles and Rain</title>
+			<link>https://lartu.net/log_2021-05-22.html</link>
+			<guid isPermaLink='false'>log_2021-05-22.html</guid>
+			<pubDate>Sat, 22 May 2021 00:00:00 -0300</pubDate>
+			<dc:creator><![CDATA[Lartu]]></dc:creator>
+			<description><![CDATA[<h1>2021-05-22: Pickles and Rain</h1>
 
-{{ title 2021-05-22: Pickles and Rain }}
-
-Yesterday I read {{ this article => https://www.raptitude.com/2010/07/your-lifestyle-has-already-been-designed/}}
+Yesterday I read <a href="https://www.raptitude.com/2010/07/your-lifestyle-has-already-been-designed/"" target=_blank>this article</a>
 about how our routines (working all day and having a little free time
 during the evening) are functional to consumerism. It may be that way.
 It may not, I don't really care much. What I do care about is that
-__that's__ my routine. Every day the same four walls, same activities,
+<i>that's</i> my routine. Every day the same four walls, same activities,
 same everything.
---
+<br><br>
 This is not the first time I've noticed this, though. I visited my
 grandparents about two months ago after a long year of not seeing
 them during the 2020 quarantine. I had a lot of stuff to tell them:
 I had moved by myself, I was cooking a lot, I had started taking
 classes in a new university, etc. Lots of changes and news.
---
+<br><br>
 Then, a month later, I visited them again. This time, I had nothing
 new to tell.
---
+<br><br>
 The same goes for visiting my parents. I see them once a week or so.
 When I moved by myself I had a lot of things to tell them. Then,
 week after week, nothing. I cooked some stuff, I went to the same
 old shops, work, sleep, study. Eternal while true. I struggled trying
 to find something to talk about. What's next?
 I could do a lot more, why am I not doing so?
---
+<br><br>
 Well, I believe the main impediment right now is the COVID-19
 pandemic. We've been quarantined. Again. And traveling abroad is not
 particularly easy at this very moment. I live in a big city,
-though. There __should__ be things to do around here! Why am I not
+though. There <i>should</i> be things to do around here! Why am I not
 partaking in that? Then again, the answer is the pandemic.
---
+<br><br>
 In any case, though, there are other things I should be able to do
 to break the monotony. So I've started this log. I will try to do
 something new now and then. And who knows, maybe I'll be able to
 escape the oppressive cycle my life has turned into.
---
-So, **what did I do today?**
+<br><br>
+So, <b>what did I do today?</b>
 
-{{bigimg IMG_0637.JPG bw}}
+<a href="https://lartu.net/images/M72J76.JPG"><img src ="https://lartu.net/images/c_M72J76.JPEG" title="M72J76" alt="Image: M72J76"></a>
 
 Today it rained a lot. There's
 a cyclone alert and everything. 
@@ -56,41 +66,43 @@ quarantined -and thanks to the weather- the streets were rather
 empty. We went to the grocery store taking the longest possible
 route, seizing the opportunity to discover our neighbourhood. I love
 the way everything shines when it rains.
---
+<br><br>
 We even found some dumbells somebody had discarded on the street,
 so we took them home. They were in perfect shape!
---
+<br><br>
 We came back home wet and cold after buying some veggies. I
 cooked some soup and baked pumpkin, and we ate it
 outside in the patio, under the rain-turned-drizzle. Cool
 experience.
 
-{{bigimg IMG_0638.JPG bw}}
+<a href="https://lartu.net/images/I03C35.JPG"><img src ="https://lartu.net/images/c_I03C35.JPEG" title="I03C35" alt="Image: I03C35"></a>
 
 Having eaten and all, I pickled some onions and peppers and
 left them in a cupboard to marinate. In a week or two they'll
 be ready to eat.
 
-{{bigimg IMG_0639.JPG bw}}
+<a href="https://lartu.net/images/Y43C23.JPG"><img src ="https://lartu.net/images/c_Y43C23.JPEG" title="Y43C23" alt="Image: Y43C23"></a>
 
 I'm growing a leek. The rest of it went into the soup. Once it grows
 new roots I'll plant it in a pot.
 
---
+<br><br>
 
-Also, I started reading __The Catcher in the Rye__, by J. D. Salinger.
+Also, I started reading <i>The Catcher in the Rye</i>, by J. D. Salinger.
 My uncle had recommended it to me many times. He had even lent me his
 copy at some point. I hadn't had the chance to read it, though.
 I'm walfway through. Great book, the
 way it's written reminds me a lot of how 
-{{Night in the Woods => https://en.wikipedia.org/wiki/Night_in_the_Woods}}
+<a href="https://en.wikipedia.org/wiki/Night_in_the_Woods"" target=_blank>Night in the Woods</a>
 is written. That's never a bad thing.
 
---
+<br><br>
 
 Tomorrow I will try to go out and walk a little more. I can't go
-out for __too long__ because we've been requested to stay at home,
+out for <i>too long</i> because we've been requested to stay at home,
 but somewhere close should be fine. Maybe to a park or to get some
-take-away coffee.
+take-away coffee.]]></description>
+		</item>
 
-{{rss_end}}
+    </channel>
+</rss>
