@@ -1,5 +1,5 @@
-# Coso - Lartu's Website Compiler
-# 2021-05-02
+# Coso 2.0 - Lartu's Website Compiler
+# v2 2021-05-26
 
 import os
 import re
@@ -13,34 +13,11 @@ import pickle
 import time
 import sys
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-SOURCES_DIR = BASE_DIR + "/source"
-DEST_DIR = BASE_DIR + "/docs"
-IMAGES_DIR = BASE_DIR + "/images"
-FILES_DIR = BASE_DIR + "/files"
-STYLE_FILE = BASE_DIR + "/styles.css"
-CNAME_FILE = BASE_DIR + "/CNAME"
-MAIN_TITLE = "lartu.net"
-FAVICON = "fuyukogif2.png"
-DESCRIPTION = "Lartu's personal website, welcome to Lartu.net."
 SITEMAP_FILENAME = "sitemap.coso"
 CHANGELOG_FILENAME = "changelog.coso"
 MAX_IMG_WIDTH = 800
 
-RSS_HEADER = '''
-<?xml version='1.0' encoding='UTF-8'?>
-<rss version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/'>
-    <channel>
-
-        <title>Lartunet</title>
-        <link>https://lartu.net</link>
-        <description>Lartu's Log of Interesting Things</description>
-        <image>
-            <url>https://lartu.net/files/rss.jpg</url>
-            <title>Lartunet</title>
-            <link>https://lartu.net</link>
-        </image>
-'''
+RSS_HEADER = 
 
 RSS_FOOTER = '''
     </channel>
@@ -50,53 +27,13 @@ RSS_FOOTER = '''
 RSS_START_TOKEN = "<!--RSS-START-->"
 RSS_END_TOKEN = "<!--RSS-END-->"
 
-rss_items = []
-
 sitemap = {}
 linkedpages = {}
-
-old_changelogs = []
-
-
-def generar_rss():
-    global rss_items
-    validitems = []
-    for item in rss_items:
-        if item[2] is None:
-            error(f"The RSS entry for {item[1]} has no date.")
-            continue
-        validitems.append(item)
-    validitems.sort(key=lambda x: x[2], reverse=True)
-    rss_contents = RSS_HEADER
-    for item in validitems:
-        d = item[2]
-        rss_date = d.strftime('%a, %d %b %Y %H:%M:%S -0300')
-        item_content = "\t\t<item>\n"
-        item_content += f"\t\t\t<title>{item[0]}</title>\n"
-        item_content += f"\t\t\t<link>https://lartu.net/{item[1]}</link>\n"
-        item_content += f"\t\t\t<guid isPermaLink='false'>{item[1]}</guid>\n"
-        item_content += f"\t\t\t<pubDate>{rss_date}</pubDate>\n"
-        item_content += "\t\t\t<dc:creator><![CDATA[Lartu]]></dc:creator>\n"
-        item_content += f"\t\t\t<description><![CDATA[{item[3]}]]></description>\n"
-        item_content += "\t\t</item>\n"
-        rss_contents += item_content
-    rss_contents += RSS_FOOTER
-    with open(f"{DEST_DIR}/files/rss.xml.rss", "w+") as f:
-        f.write(rss_contents)
 
 
 def save_changelog():
     global old_changelogs
     pickle.dump(old_changelogs, open(BASE_DIR + "/oldchangelogs.p", "wb"))
-
-
-def load_changelog():
-    global old_changelogs
-    try:
-        old_changelogs = pickle.load(open(BASE_DIR + "/oldchangelogs.p", "rb"))
-        show("Loaded old changelogs.")
-    except:
-        old_changelogs = []
 
 
 def get_image_hash_name(original_name):
@@ -107,67 +44,6 @@ def get_image_hash_name(original_name):
     final_name = letters[int(numbers[0:2]) % len(
         letters)] + numbers[2:4] + letters[int(numbers[4:6]) % len(letters)] + numbers[6:8]
     return final_name
-
-
-def show(message):
-    print("\033[93m->\033[0m", message)
-
-
-def error(message):
-    print("\033[91m->\033[0m", message)
-
-
-def get_file_name(current_name):
-    return current_name.replace(".coso", ".html")
-
-
-def get_head(page_title=None, favicon=None, description=None):
-    if page_title is None:
-        page_title = MAIN_TITLE
-    if favicon is None:
-        favicon = FAVICON
-    if description is None:
-        description = DESCRIPTION
-    head = "<head>"
-    head += f'''\n<title>{page_title}</title>'''
-    head += '''\n<link rel="stylesheet" href="styles.css">'''
-    head += '''\n<meta charset="utf-8">'''
-    head += '''\n<meta name="viewport" content="width=device-width, initial-scale=1">'''
-    head += f'''\n<link rel="shortcut icon" type="image/png" href="images/{favicon}" />'''
-    head += f'''\n<meta name="description" content="{description}">'''
-    head += '''\n<link rel='alternate' type='application/rss+xml' title='RSS Feed' href='files/rss.xml.rss'/>'''
-    head += '''\n</head>'''
-    head += '''<!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130871915-2"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-130871915-2');
-            </script>
-            '''
-    return head
-
-
-def load_and_compile(filename, with_head=True, for_rss = False):
-    global changelog, filesizes, files
-    show(f"Compiling {filename}" + (" for RSS" if for_rss else ""))
-    linkedpages[filename] = True
-    source = ""
-    with open(SOURCES_DIR + "/" + filename, "r") as f:
-        source = f.read()
-    compiled_source = compile(source, with_head, filename=filename, for_rss=for_rss)
-    return compiled_source
-
-
-def get_sitemap():
-    global sitemap
-    sitemap_source = "<ul>"
-    for key in sitemap:
-        sitemap_source += f'\n<li><a href="{key}">{sitemap[key]}</a></li>'
-    sitemap_source += "\n</ul>"
-    return sitemap_source
 
 
 def get_changelog():
@@ -212,12 +88,7 @@ def get_changelog():
 
 def compile(source, with_head=True, do_multiple_passes=True, filename="", for_rss=False):
     source = f"\n{source}\n"
-    if not for_rss:
-        source = re.sub(r"(?<=\n)--(?: *?)(?=\n)", "<div class=\"split\"></div>", source)
-    else:
-        source = re.sub(r"(?<=\n)--(?: *?)(?=\n)", "<br><br>", source)
-    source = re.sub(r"(?<=\n)-(?: *?)(?=\n)", "<br>", source)
-    source = re.sub(r"/\*(?:(?:.|\s|\r|\n)*?)\*/", "", source)
+    source = re.sub(r"/\*(?:(?:.|\s|\r|\n)*?)\*/", "", source) # Remove comments /* ... */
     tags = re.findall(r"{{[^{}]*?}}", source)
     page_title = MAIN_TITLE
     favicon = FAVICON
@@ -505,49 +376,6 @@ def compile(source, with_head=True, do_multiple_passes=True, filename="", for_rs
     return source
 
 
-show("Compilation started.")
-load_changelog()
-
-# Clear build directory
-show(f"Cleaning build directory ({DEST_DIR})")
-os.system(f"rm -rf \"{DEST_DIR}\" && mkdir \"{DEST_DIR}\"")
-
-# Copy styles file
-os.system(f"cp \"{STYLE_FILE}\" \"{DEST_DIR}/styles.css\"")
-
-# Copy CNAME
-os.system(f"cp \"{CNAME_FILE}\" \"{DEST_DIR}/CNAME\"")
-
-# Create images directory
-os.system(f"mkdir \"{DEST_DIR}/images\"")
-os.system(f'''cp "{IMAGES_DIR}/{FAVICON}" "{DEST_DIR}/images/{FAVICON}"''')
-os.system(f'''cp -R "{IMAGES_DIR}/analisis" "{DEST_DIR}/images/analisis"''')  # Imagenes de analisis
-os.system(f'''echo "forbidden" > "{DEST_DIR}/images/index.html"''')
-os.system(f'''echo "forbidden" > "{DEST_DIR}/images/analisis/index.html"''')
-
-# Create files directory
-os.system(f'''cp -R "{FILES_DIR}" "{DEST_DIR}/files"''')
-os.system(f'''echo "forbidden" > "{DEST_DIR}/files/index.html"''')
-
-# Get source files
-directory = os.fsencode(SOURCES_DIR)
-
-want_sitemap = False
-want_changelog = False
-
-for file in os.listdir(directory):
-    filename = os.fsdecode(file)
-    if filename.endswith(".coso") and filename[0] != "_":
-        if filename == SITEMAP_FILENAME:
-            want_sitemap = True
-            continue
-        if filename == CHANGELOG_FILENAME:
-            want_changelog = True
-            continue
-        compiled_source = load_and_compile(filename)
-        with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
-            f.write(compiled_source)
-
 if want_changelog:
     filename = CHANGELOG_FILENAME
     compiled_source = load_and_compile(filename)
@@ -559,9 +387,6 @@ if want_sitemap:
     compiled_source = load_and_compile(filename)
     with open(DEST_DIR + "/" + get_file_name(filename), "w+") as f:
         f.write(compiled_source)
-
-# List linked but not found files
-show("All files have been compiled.")
 
 # Generar RSS
 generar_rss()

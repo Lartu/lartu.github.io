@@ -2,7 +2,7 @@
     <tr>
         <td style="vertical-align: middle">
             <div style="display: block; width: 50px;">
-            {{img fuyuko2.gif}}
+            {{logo fuyuko2.gif}}
             </div>
         </td>
         <td style="vertical-align: bottom">

@@ -8,6 +8,8 @@
 
 {{ bigimg IMG-20180203-WA0035.jpg }}
 
-Oops! This page couldn't be found. If you found a broken link,
-please contact me at {{ lartu@lartu.net => mailto:lartu@lartu.net }}
-and tell me about it so I can fix it.
+{{p
+    Oops! This page couldn't be found. If you found a broken link,
+    please contact me at {{ lartu@lartu.net => mailto:lartu@lartu.net }}
+    and tell me about it so I can fix it.
+}}

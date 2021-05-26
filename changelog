@@ -1,71 +1,25 @@
-Thu May 20 05:14:18 -03 2021
-Thu May 20 06:02:18 -03 2021
- source/everynotes.coso | 9 +++++++++
-Thu May 20 06:40:38 -03 2021
- source/everynotes.coso | 10 ++++++++++
-Sun May 23 00:33:11 -03 2021
- source/research.coso |   8 +++++++-
-Sun May 23 00:36:10 -03 2021
-Sun May 23 00:44:00 -03 2021
- source/log.coso | 2 +-
-Sun May 23 00:47:36 -03 2021
-Sun May 23 00:49:16 -03 2021
- source/log.coso | 5 ++++-
-Sun May 23 00:50:23 -03 2021
-Sun May 23 00:53:26 -03 2021
-Sun May 23 00:57:30 -03 2021
- source/computing.coso | 4 +++-
-Sun May 23 01:00:06 -03 2021
- source/computing.coso | 1 +
-Sun May 23 01:00:46 -03 2021
- source/computing.coso | 2 +-
-Sun May 23 01:07:20 -03 2021
- source/log_2021-05-22.coso | 5 +++++
-Sun May 23 01:09:00 -03 2021
-Sun May 23 01:57:04 -03 2021
-Sun May 23 01:59:41 -03 2021
-Sun May 23 03:35:05 -03 2021
- source/_footer.coso | 9 ++++++++-
-Sun May 23 03:37:24 -03 2021
-Sun May 23 03:40:54 -03 2021
-Sun May 23 03:42:34 -03 2021
-Sun May 23 03:55:22 -03 2021
-Sun May 23 03:58:37 -03 2021
- source/computing.coso | 7 ++-----
-Sun May 23 03:59:25 -03 2021
- source/changelog.coso | 2 +-
-Sun May 23 04:13:17 -03 2021
- source/log_2021-05-22.coso | 2 +-
-Sun May 23 20:56:28 -03 2021
-Sun May 23 20:58:23 -03 2021
- source/log.coso | 3 ++-
-Sun May 23 21:00:49 -03 2021
- source/log_2021-05-23.coso | 2 +-
-Tue May 25 06:10:36 -03 2021
- source/_header.coso | 4 ++--
-Tue May 25 06:10:58 -03 2021
- source/_header.coso | 4 ++--
- source/log.coso     | 3 ++-
-Tue May 25 06:12:11 -03 2021
- source/log_2021-05-24.coso | 2 +-
-Tue May 25 06:12:50 -03 2021
- source/log_2021-05-24.coso | 2 --
-Tue May 25 06:13:28 -03 2021
- source/log_2021-05-24.coso | 4 ++--
-Tue May 25 06:17:02 -03 2021
- source/log_2021-05-24.coso | 4 ++--
-Tue May 25 06:19:09 -03 2021
- source/log_2021-05-24.coso | 2 +-
-Tue May 25 06:19:33 -03 2021
-Tue May 25 06:20:17 -03 2021
- source/log_2021-05-24.coso | 2 +-
-Wed May 26 05:39:58 -03 2021
- source/_footer.coso        | 1 +
- source/everynotes.coso     | 1 +
- source/log_2021-05-22.coso | 7 ++++++-
-Wed May 26 05:43:05 -03 2021
-Wed May 26 05:45:38 -03 2021
-Wed May 26 05:53:11 -03 2021
-Wed May 26 06:00:00 -03 2021
- source/log_2021-05-23.coso | 7 ++++++-
- source/log_2021-05-24.coso | 7 ++++++-
+Wed May 26 10:41:17 -03 2021
+ source/404.coso              |   8 +-
+ source/_header.coso          |   2 +-
+ source/analisis.coso         |   5 +-
+ source/changelog.coso        |  14 ---
+ source/computing.coso        |  35 ++++--
+ source/cookbook.coso         |  31 +++--
+ source/everynotes.coso       |  65 ++++++----
+ source/gamedev.coso          |  29 +++--
+ source/gamesart.coso         |  44 ++++---
+ source/garden.coso           |  32 +++--
+ source/hangman.coso          | 113 +++++++++++++----
+ source/ideas.coso            |  12 +-
+ source/index.coso            |  54 ++++----
+ source/lartips.coso          |  54 ++++----
+ source/legacy_computing.coso | 141 +++++++++++++++------
+ source/log.coso              |  20 ++-
+ source/log_2021-05-22.coso   | 108 +++++++++-------
+ source/log_2021-05-23.coso   |  28 +++--
+ source/log_2021-05-24.coso   |  31 +++--
+ source/log_2021-05-25.coso   |  57 ---------
+ source/mitsubachi.coso       | 292 +++++++++++++++++++++++++++++--------------
+ source/research.coso         |  76 +++++------
+ source/sitemap.coso          |   2 +-
+ source/talks.coso            |  30 +++--

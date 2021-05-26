@@ -10,59 +10,75 @@
 
 {{ subtitle project development }}
 
+{{ l
 :: Work on projects you'll still want to work on tomorrow.
 :: Break your projects down into as many tiny tasks as possible.
 :: Remove as much content from your project as possible. Keep only what's essential.
 :: Focus on your current project.
 :: Work on your project at least a tiny bit every single day.
 :: Post about your project on social media whenever possible to gather feedback and build a following.
---
+}}
+
+{{p
 <small>These previous points are part of the {{ Lartips -> lartips.coso }}.</small>
---
+}}
+
+{{l
 :: Finish a project before you optimize it. A released project is better than a well-polished one that no-one will ever see.
 :: Most software out there is messy. That's why it's out there.
 :: Aesthetics is important.
-:: Design for the future. You will be there and have to deal with your current code.
---
+:: Design for the future. You will be there and have to deal with your current code.}}
+
+{{l
 ::Rule of Modularity: Write simple parts connected by clean interfaces.
 ::Rule of Composition: Design programs to be connected to other programs.
-::Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.
---
-<small>(__The Art of Unix Programming__, by Eric S. Raymond)</small>
---
+::Rule of Parsimony: Write a big program only when it is clear by demonstration that nothing else will do.}}
+
+{{p
+<small>(__The Art of Unix Programming__, by Eric S. Raymond)</small>}}
+
+{{l
 ::{{A tool can be __too large__ or __to small__ => https://brandur.org/small-sharp-tools}}. The boundaries of any service should be considered in depth, and if built to be small, it should be for more reason than virtue of size alone.
-::Everything should be made as simple as possible, but not simpler.
+::Everything should be made as simple as possible, but not simpler.}}
 
 {{ subtitle health }}
 
+{{l
 :: If you feel like everyone hates you, you need to sleep.
 :: If you feel like you have everyone else, you need to eat.
-:: If you are pulling an all-nighter, keep a bottle of water by your side. It's very easy to forget to drink water while working late.
+:: If you are pulling an all-nighter, keep a bottle of water by your side. It's very easy to forget to drink water while working late.}}
 
 {{ subtitle Work }}
 
-These points have been taken from {{ XXIIVV's Knowledge Portal => https://wiki.xxiivv.com/site/knowledge.html}}.
---
-**Work Knowledge**
---
+{{p
+These points have been taken from {{ XXIIVV's Knowledge Portal => https://wiki.xxiivv.com/site/knowledge.html}}.}}
+
+{{p
+**Work Knowledge**}}
+
+{{l
 :: Find your passion and figure out how to get paid for it.
 :: Do whatever you want to do, but be the best at it.
 :: Strive for simplicity and competence, but embrace the messiness along the way.
 :: Under-promise and over-deliver, and own up to your screw-ups.
 :: Doing what everybody else is doing feels like the safest thing to do, making it the most competitive, and thus the riskiest.
 :: No one is on their deathbed is wishing they spent more time at work.
-:: Never stop learning.
---
-**Work Habits**
---
+:: Never stop learning.}}
+
+{{p
+**Work Habits**}}
+
+{{l
 :: Doing the right tasks is more important than doing your tasks efficiently.
 :: Write down your goals. Break them down into manageable tasks.
 :: Tackle one task at a time, and group similar tasks together.
 :: Drink plenty of water.
-:: Keep a record of your time use.
---
-**Work Charisma**
---
+:: Keep a record of your time use.}}
+
+{{p
+**Work Charisma**}}
+
+{{l
 :: Always look a person in the eye when you talk to them.
 :: Always stand up to shake someone's hand.
 :: Be conscious of your body language.
@@ -70,12 +86,13 @@ These points have been taken from {{ XXIIVV's Knowledge Portal => https://wiki.x
 :: First impressions matter.
 :: When you walk, look straight ahead, not at your feet.
 :: Never hit anyone unless they are an immediate threat.
-:: No matter their job or status, everyone deserves your respect.
+:: No matter their job or status, everyone deserves your respect.}}
 
 {{ subtitle food & ingredients }}
 
+{{l
 :: Moisture accelerates rot.
-:: Potatoes and onions will last months if kept in a dark dry place.
+:: Potatoes and onions will last for months if kept in a dark dry place.}}
 
 /*
     EL COMANDO ulartu PUEDE USARSE PARA SUBIR TODO EL SITIO CON SOLO ABRIR

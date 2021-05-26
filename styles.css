@@ -27,23 +27,6 @@ a:visited {
     color: grey;
 }
 
-
-/*a::before {
-    content: "{";
-}
-
-a::after {
-    content: "}";
-}
-
-.external::before {
-    content: "[";
-}
-
-.external::after {
-    content: "]";
-}*/
-
 a:hover {
     background-color: black;
     color: white;
@@ -110,37 +93,19 @@ td {
     /* ※ */
 }
 
+.logo {
+    display: block;
+}
+
 img {
     max-width: 100%;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.bigimg {
-    display: block;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.bigimg img {
     max-height: 500px;
+    display: block;
 }
 
 .midimg {
-    display: block;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
     max-width: 50%;
-}
-
-.midimg img {
     max-height: 300px;
-}
-
-.bigimg img,
-.midimg img {
-    margin: initial;
 }
 
 td img {

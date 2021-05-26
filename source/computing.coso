@@ -10,40 +10,57 @@
 
 {{ title philosophy }}
 
+{{p
 I separate {{videogames -> gamedev.coso}} from general software as a matter
 of principle.
---
+}}
+
+{{p
 I tend to develop software that works on old software and unsupported
 operating systems as well as modern computing platforms. Older computers
 are incredible pieces of engineering that are still very powerful.
 Software nowadays is too bloated and energy hungry.
 Planned obsolescence {{is a thing => https://thedorkweb.substack.com/p/tales-from-the-dork-web-3}}.
---
+}}
+
+{{p
 Whenever possible, I like to develop software that's self contained and
 dependency free. Software that you can uninstall by just
 deleting the folder it is in.
---
+}}
+
+{{p
 The software I write is released for free and it's open-source. You are
 welcome to download it, study it, modify if, break it and fix it. And,
 if you want, to send a pull request to improve it for everybody.
---
+}}
+
+{{p
 My software runs, for the most part, on __*nix__ systems. Other systems
 may or may not be supported on a case by case basis.
---
- You are also welcome to visit my
-{{ GitHub => https://github.com/lartu }} page.
+}}
+
+{{p
+You are also welcome to visit my {{ GitHub => https://github.com/lartu }} page.
+}}
 
 {{ title projects }}
 
+{{p
 None. Right now I'm working on {{Eterspire (Beta II) => https://eterspire.com}}.
+}}
 
 {{ title legacy projects }}
 
+{{p
 I've worked on multiple other {{programming projects -> legacy_computing.coso}}. 
 Most of these aren't maintained anymore.
---
+}}
+
+{{p
 I've decided to reduce the number of projects I work on and maintain to leave more
 time to work on more meaningful ones. Most of my legacy projects
 reinvent the wheel in some way or another. I now try to work on software
 that improves over existing alternatives; or on
 minimal, self-contained experiments.
+}}

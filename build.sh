@@ -1,1 +1,1 @@
-python3 coso.py
+python3 coso2/coso_fp.py

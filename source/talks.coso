@@ -11,42 +11,48 @@ I enjoy public speaking very much and I've spoken at several conferences on topi
 {{ bigimg 20190106_133828.jpg }}
 
 {{ subtitle SdC 2019 }}
+{{p
 **Title:** Conociendo LDPL: una mala idea con dos buenos mensajes
--
+<br>
 **Description:** Workshop on my programming language LDPL and the lessons it 
 taught me – Department of Computing, Universidad de Buenos Aires (2019)
--
+<br>
 **Multimedia:** Can be watched {{ here => https://youtu.be/vPBwFRr-qEk }}. 
-Get the slides for the workshop {{ here => https://drive.google.com/file/d/1t94f94o12lNTAbt0C21wj8Wb7A9qzbR5/view?usp=sharing }}.
+Get the slides for the workshop {{ here => https://drive.google.com/file/d/1t94f94o12lNTAbt0C21wj8Wb7A9qzbR5/view?usp=sharing }}.}}
 
 {{ subtitle Google Devfest 2018 }}
+{{p
 **Title:** Aplicaciones multiusuario en 15 minutos con Firebase Database
--
+<br>
 **Description:** Lecture on Google Firebase and how it can be used to develop 
-and quickly deploy multiuser applications – Google DevFest Buenos Aires (2018)
+and quickly deploy multiuser applications – Google DevFest Buenos Aires (2018)}}
 
 {{ subtitle SdC 2018 }}
+{{p
 **Title:** De Boole a los Microprocesadores
--
+<br>
 **Description:** Workshop on Boolean algebra and its relation to microprocessor 
-development – Department of Computing, Universidad de Buenos Aires (2018)
+development – Department of Computing, Universidad de Buenos Aires (2018)}}
 
 {{ subtitle SdC 2017 }}
+{{p
 **Title:** Un Paseo por el Desarrollo de Software de Generación Estadística 
 de Música
--
+<br>
 **Description:** Workshop on statistical techniques for computer aided music 
 composition software development – Department of Computing, Universidad de 
-Buenos Aires (2017)
+Buenos Aires (2017)}}
 
 {{ subtitle SdM 2017 }}
+{{p
 **Title:** Musiqué, la Computadora que Compone Música
--
+<br>
 **Description:** Presentation on Analysis and Statistics in the field of 
 computer aided music composition – Semana de la Matemática – Department of 
-Mathematics, Universidad de Buenos Aires (2017)
+Mathematics, Universidad de Buenos Aires (2017)}}
 
 {{ subtitle Others }}
+{{p
 I've also given a few smaller presentations on the history of probability 
 (2017) and space maximization algorithms applied to the placement of oil 
-drilling platforms (2018).
+drilling platforms (2018).}}

@@ -8,12 +8,16 @@
 
 {{ img mitsubachi.png }}
 
+{{p
+
 Mitsubachi is a tiny and open chat protocol, designed to be minimal, easy to
 implement, easy to use and easy to understand. Mitsubachi supports nicknames,
 nickname changing, user-to-user messaging and channel / group (known in
 Mitsubachi as "distribution lists") chat.
 
---
+}}
+
+{{p
 
 I designed the Mitsubachi protocol because I found that most common, open chat
 protocols (IRC, XMPP, etc.) are to complex too implement properly and
@@ -25,13 +29,21 @@ all these issues.
 
 {{ subtitle protocol tl;dr }}
 
+{{p
+
 Connection is done via plain sockets on TCP port 7107.
---
+}}
+
+{{p
 Messages between client and server are divided in 5 sections
 separated by a single space.
---
+}}
+
+{{p
 Messages end with a \n character.
---
+}}
+
+{{p
 <table border="1">
 <tr>
 <th colspan=5>Mitsubachi Message Format</th>
@@ -51,19 +63,29 @@ Messages end with a \n character.
     <td>&gt;1 chars</td>
 </tr>
 </table>
---
+}}
+
+{{p
 All clients and lists have a nick that identifies them. Nicks
 are unique.
---
+}}
+
+{{p
 Lists also have nicks, but list nicks begin with the character !.
---
+}}
+
+{{p
 Clients may join and leave lists. Messages sent to a client
 are delivered to that client. Messages sent to lists are sent
 to every client on that list.
---
+}}
+
+{{p
 When a client joins a list that doesn't exist, it is created
 and the client is added to it.
---
+}}
+
+{{p
 Below is a list of valid commands. These commands can both be
 sent to a Mitsubachi server or be received by a Mitsubachi client:
 <table border="1">
@@ -107,7 +129,9 @@ stated in the previous table. <code>#</code> means the literal
 character #. This character (or any other character really, as it
 should be ignored) is used to fulfill the character requirement
 of at least one character of unused sections.
---
+}}
+
+{{p
 **Error codes:**
 A server should reply __000__ ("ok") when a client changes their nick successfully. Otherwise it should reply __001__ ("nick already in
 use") or __002__ ("invalid nick", for nicks beginning in ! for users). __003__ should
@@ -117,53 +141,82 @@ they are not a member of. __006__ should be sent when an invalid command
 is received by the server. __007__ should be sent to clients that have
 not chosen a nick when the server has received a command from them
 other than NICK.
+}}
 
 {{ subtitle protocol details }}
 
+
+{{p
 By default and standard, Mitsubachi servers listen for connections
 on TCP port 7107. Clients (users) connect to a server by plain socket connection.
---
+}}
+
+{{p
 Exchange between server and client is handled via messages. A message is a
 string sent from a client to the server or from the server to a client.
 Messages have a maximum length of 1024 bytes (1024 characters), are divided in
 5 sections and follow the format:
---
+}}
+
+{{p
 <code>command sender recipient extradata content\n</code>
---
+}}
+
+{{p
 Note the \n at the end. This character is used to delimit the end of the message
 and thus cannot be used anywhere else in the message.
---
+}}
+
+{{p
 Each section of a message represents a different type of information:
---
+}}
+
+{{l
 :: The **command** part tells the recipent of the message what we intend to do with this message (for example, change our nick or join a list).
-:::: This section has a fixed length of 4 characters.
-:::: This section is always UPPERCASE.
+  {{l
+  :: This section has a fixed length of 4 characters.
+  :: This section is always UPPERCASE.
+  }}
 :: The **sender** part tells the recipient who is this message from.
-:::: This section has a minimum length of 1 character.
-:::: This section has a maximum length of 32 characters.
-:::: This section is always lowercase.
-:::: This section may not contain any spaces.
+  {{l
+  :: This section has a minimum length of 1 character.
+  :: This section has a maximum length of 32 characters.
+  :: This section is always lowercase.
+  :: This section may not contain any spaces.
+  }}
 :: The **recipient** part tells who was this message sent to.
-:::: This section has a minimum length of 1 character.
-:::: This section has a maximum length of 32 characters.
-:::: This section is always lowercase.
-:::: This section may not contain any spaces.
+  {{l
+  :: This section has a minimum length of 1 character.
+  :: This section has a maximum length of 32 characters.
+  :: This section is always lowercase.
+  :: This section may not contain any spaces.
+  }}
 :: The **extradata** section is a reserved part of the message used for sending error codes or other data.
-:::: This section has a minimum length of 1 character.
-:::: This section has no maximum length.
-:::: This section is always lowercase.
-:::: Multiple words in this section must be delimited by the character <code>|</code>.
-:::: This section may not contain any spaces.
+  {{l
+  :: This section has a minimum length of 1 character.
+  :: This section has no maximum length.
+  :: This section is always lowercase.
+  :: Multiple words in this section must be delimited by the character <code>|</code>.
+  :: This section may not contain any spaces.
+  }}
 :: The **content** part of the message is used for sending messages per sé, as in the content of a message (__"hi there!"__, __"how are you?"__).
-:::: This section has a minimum length of 1 character.
-:::: This section has no maximum length.
-:::: This section may contain spaces.
---
+  {{l
+  :: This section has a minimum length of 1 character.
+  :: This section has no maximum length.
+  :: This section may contain spaces.
+  }}
+}}
+
+{{p
 When a section is supposed to be empty (for example, when sending a message to the server that has no recipient) it must
 be filled with a single character, usually <code>#</code>.
---
+}}
+
+{{p
 The minimum length of any message is 13: ``XXXX # # # #\n``.
---
+}}
+
+{{p
 **Nicks** identify users. Each user has a nick (or nickname) and no 
 two users can have the same nickname. When a user disconnects from
 the server, their nickname becomes available to be used by other
@@ -172,7 +225,9 @@ length of 32 characters. Nicknames that start with the character ``!``
 identify lists. As such, user nicknames cannot contain this
 character in the first position. Nicks can contain any character
 except spaces.
---
+}}
+
+{{p
 **Lists** are lists of users. They have a nickname just like any other user, but
 messages sent to a list are sent to every member of the list.
 In order to be able to send a message to a list, a client must
@@ -182,77 +237,113 @@ client). When a message is sent to a list, it is broadcast to
 every member of the list except the one who sent the message. 
 Users may join and leave lists at any time. When a client tries 
 to join a non-existant list, it is created.
---
+}}
+
+{{p
 All this said, the following messages are valid Mitsubachi messages:
---
+}}
+
+{{l
 :: **NICK**: sent by a client to a server to change their nick. If the nick is in use by another client, the server should reply ``OOPS # # 001 #\n`` ("nick already in use"). It the nick is available to be used, the server should reply ``OOPS # # 000 #\n`` ("ok") and assign the nick to the client.
-:::: Command section value: NICK
-:::: Sender section value: the desired nick
-:::: Recipient section value: #
-:::: Extradata section value: #
-:::: Content section value: #
-:::: Example: ``NICK myNick # # #\n``
---
+{{l
+  :: Command section value: NICK
+  :: Sender section value: the desired nick
+  :: Recipient section value: #
+  :: Extradata section value: #
+  :: Content section value: #
+  :: Example: ``NICK myNick # # #\n``
+}}
+}}
+
+{{l
 :: **JOIN**: sent by a client to a server to join a list. If the nick of the list to be joined is not a valid list nick, the server should reply ``OOPS # # 003 #\n`` ("invalid distribution list"). If the list is valid, the client should be joined to the list and the server should reply ``OOPS # # 000 #\n`` ("ok").
-:::: Command section value: JOIN
-:::: Sender section value: #
-:::: Recipient section value: nick of the list to be joined
-:::: Extradata section value: #
-:::: Content section value: #
-:::: Example: ``JOIN # !mitsubachi # #\n``
---
+{{l
+  :: Command section value: JOIN
+  :: Sender section value: #
+  :: Recipient section value: nick of the list to be joined
+  :: Extradata section value: #
+  :: Content section value: #
+  :: Example: ``JOIN # !mitsubachi # #\n``
+}}
+}}
+
+{{l
 :: **LEAV**: sent by a client to a server to leave a list. If the nick of the list to be left is not a valid list nick, the server should reply ``OOPS # # 003 #\n`` ("invalid distribution list"). If the list is valid, the client should be removed from the list and the server should reply ``OOPS # # 000 #\n`` ("ok").
-:::: Command section value: LEAV
-:::: Sender section value: #
-:::: Recipient section value: nick of the list to be left
-:::: Extradata section value: #
-:::: Content section value: #
-:::: Example: ``LEAV # !lamelist # #\``
---
+{{l
+  :: Command section value: LEAV
+  :: Sender section value: #
+  :: Recipient section value: nick of the list to be left
+  :: Extradata section value: #
+  :: Content section value: #
+  :: Example: ``LEAV # !lamelist # #\``
+}}
+}}
+
+{{l
 :: **MESG**: sent by a client to a server to deliver a message to another client or list. When this message is sent by the server to a client it means that said client has received a message.
-:::: Command section value: MESG
-:::: Sender section value: nick of the sender of the message
-:::: When a client is the one that sends this message to a server, it may omit the contents of this section and just send a # in it instead. When this message is sent by a server to a client, the content of this section is always the nick of the user who sent the message originally.
-:::: Recipient section value: nick of the recipient of the message (user or list)
-:::: Extradata section value: #
-:::: Content section value: actual contents of the message
-:::: Example: ``MESG user1 coolUser # Hello there, coolUser, how are you?\n``
---
+{{l
+  :: Command section value: MESG
+  :: Sender section value: nick of the sender of the message
+  :: When a client is the one that sends this message to a server, it may omit the contents of this section and just send a # in it instead. When this message is sent by a server to a client, the content of this section is always the nick of the user who sent the message originally.
+  :: Recipient section value: nick of the recipient of the message (user or list)
+  :: Extradata section value: #
+  :: Content section value: actual contents of the message
+  :: Example: ``MESG user1 coolUser # Hello there, coolUser, how are you?\n``
+}}
+}}
+
+{{l
 :: **EXIT**: sent by a client to a server to close the connection.
-:::: Command section value: EXIT
-:::: Sender section value: #
-:::: Recipient section value: #
-:::: Extradata section value: #
-:::: Content section value: #
-:::: Example: ``EXIT # # # #\n``
---
+{{l
+  :: Command section value: EXIT
+  :: Sender section value: #
+  :: Recipient section value: #
+  :: Extradata section value: #
+  :: Content section value: #
+  :: Example: ``EXIT # # # #\n``
+}}
+}}
+
+{{l
 :: **OOPS**: sent by a server to a client to inform the result of the requested operation. This message shouldn't be sent by clients.
-:::: Command section value: OOPS
-:::: Sender section value: #
-:::: Recipient section value: #
-:::: Extradata section value: error code that represents the result of the requested operation
-:::: Content section value: #
-:::: Example: ``OOPS # # 000 #\n``
---
+{{l
+  :: Command section value: OOPS
+  :: Sender section value: #
+  :: Recipient section value: #
+  :: Extradata section value: error code that represents the result of the requested operation
+  :: Content section value: #
+  :: Example: ``OOPS # # 000 #\n``
+}}
+}}
+
+{{l
 :: **INFO**: an information message from the server with a text message. This is supposed to be read by the user. It may contain a MOTD or any valuable information the server administrator desires to send clients.
-:::: Command section value: INFO
-:::: Sender section value: #
-:::: Recipient section value: #
-:::: Extradata section value: #
-:::: Content section value: the contents of a message
-:::: Example: ``INFO # # # Welcome to Mitsubachi!\n``
---
+{{l
+  :: Command section value: INFO
+  :: Sender section value: #
+  :: Recipient section value: #
+  :: Extradata section value: #
+  :: Content section value: the contents of a message
+  :: Example: ``INFO # # # Welcome to Mitsubachi!\n``
+}}
+}}
+
+{{p
 In order to request any command to a server, clients must
 first have chosen a nick (by issuing a NICK message). Should
 they try to send any other message to the server other than a
 NICK command, the server should reply ``OOPS # # 007 #\n``
 ("please log in").
---
+}}
+
+{{p
 Should a message not in the list above be received by a server,
 it should reply ``OOPS # # 006 #\n`` ("unknown command").
+}}
 
 {{ subtitle implementations }}
 
+{{p
 A Mitsubachi Server written in {{ LDPL => https://ldpl-lang.org }}
 is uploaded {{ here => https://github.com/Lartu/mitsubachi/blob/master/mitsubachi-server.ldpl }}.
 You are allowed to use and
@@ -262,31 +353,42 @@ your own Mitsubachi servers!
 In order to build and run this server implementation you must run
 the following commands:
 
---
+}}
+
+{{p
 
 ```
 ldpl mitsubachi-server.ldpl -o=mitsubachi-server
 ```
 
---
+}}
+
+{{p
 
 This server implementation requires the
 {{ LDPL Net Server => https://github.com/Lartu/ldpl-net-server/ }}
 and the text package from the {{LDPL Standard Library => https://github.com/Lartu/ldpl-std }}.
 
---
+}}
+
+{{p
 
 If at the time of reading the LDPL Library Library is still
 available, you can install both libraries by running:
---
+}}
+
+{{p
 ```
 lpm install ldpl_net_server
 lpm install std-text
 ```
+}}
 
 {{ subtitle license }}
 
+{{p
 The Mitsubachi protocol is released under the MIT license and
 may be freely reproduced and translated. The Mitsubachi bee logo
 is released under the MIT license and may be freely reproduced
 on any medium.
+}}
