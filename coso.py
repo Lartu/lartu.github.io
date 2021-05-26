@@ -373,7 +373,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename="", for_rs
                         else:
                             source = source.replace(
                                 tag,
-                                f"<br><img src =\"https://lartu.net/images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"><br>")
+                                f"<br><br><img src =\"https://lartu.net/images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"><br><br>")
                     else:
                         if not for_rss:
                             source = source.replace(
@@ -383,7 +383,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename="", for_rs
                         else:
                             source = source.replace(
                                 tag,
-                                f"<br><a href=\"https://lartu.net/images/{image_filename}\"><img src =\"https://lartu.net/images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></a><br>")
+                                f"<br><br><a href=\"https://lartu.net/images/{image_filename}\"><img src =\"https://lartu.net/images/c_{compresed_image_file}\" title=\"{imghash}\" alt=\"Image: {imghash}\"></a><br><br>")
                 elif tokens[0] == "mediabutton":
                     # NOTA: Los mediabutton tienen que ser chiquitos, en general 20x20
                     source = source.replace(
@@ -397,7 +397,7 @@ def compile(source, with_head=True, do_multiple_passes=True, filename="", for_rs
                     else:
                         source = source.replace(
                             tag,
-                            f"<br><img src =\"https://lartu.net/images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"><br>")
+                            f"<br><br><img src =\"https://lartu.net/images/{image_filename}\" title=\"{imghash}\" alt=\"Image: {imghash}\"><br><br>")
             elif tokens[0] == "sitemap":
                 # Add to sitemap
                 if with_head:
