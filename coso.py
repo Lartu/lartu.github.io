@@ -135,6 +135,7 @@ def get_head(page_title=None, favicon=None, description=None):
     head += '''\n<meta name="viewport" content="width=device-width, initial-scale=1">'''
     head += f'''\n<link rel="shortcut icon" type="image/png" href="images/{favicon}" />'''
     head += f'''\n<meta name="description" content="{description}">'''
+    head += '''\n<link rel='alternate' type='application/rss+xml' title='RSS Feed' href='files/rss.xml.rss'/>'''
     head += '''\n</head>'''
     head += '''<!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130871915-2"></script>

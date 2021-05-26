@@ -4,6 +4,9 @@
 
 {{ include _header.coso }}
 
+{{rss_start}}
+{{rss_date 2021-05-23 00:00}}
+
 {{ title 2021-05-23: Walking around }}
 
 Second day in a row I'm writting in this log. Don't get used to it,
@@ -65,3 +68,5 @@ to begin working on the content sprint. An afternoon spent world-building,
 a dream come true! And hopefully, an interesting day to talk about.
 
 {{bigimg IMG_0650.JPG bw}}
+
+{{rss_end}}

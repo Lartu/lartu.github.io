@@ -4,6 +4,9 @@
 
 {{ include _header.coso }}
 
+{{rss_start}}
+{{rss_date 2021-05-24 00:00}}
+
 {{ title 2021-05-24: Worldbuilding }}
 
 With my friend {{Tejo => https://twitter.com/tejo240}}, we are working on this
@@ -61,3 +64,5 @@ so much to do. I can barely wait.
 Tomorrow we are going to a farmers' market and I'll meet my family for lunch afterwards,
 with strict sanitary precautions. I hope after all of that I'll have something
 new to write about.
+
+{{rss_end}}
