@@ -35,8 +35,6 @@ if __name__ == "__main__":
     # Generate RSS feed
     generate_rss_file()
 
-    # Compile changelog
-
     # Compile sitemap
     filename = "sitemap.coso"
     file_contents = load_file_contents(filename)
