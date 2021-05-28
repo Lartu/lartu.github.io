@@ -15,16 +15,16 @@ is heavily connected with that one. Two for the price
 of one.
 }}
 
-/*{{p
+{{p
 Also, this entry is going to be in full colour. I like
 the colours of the pictures I've taken to go with
 it, and turning on the grayscale filter wouldn't do
 them any justice.
-}}*/
+}}
 
 {{subtitle Yesterday}}
 
-{{bigimg IMG_0678.JPG bw}}
+{{bigimg IMG_0678.JPG}}
 
 {{p
 First of all, the leek has grown even more. In fact,
@@ -38,7 +38,7 @@ Also, I've started trying to grow a carrot. Apparently like
 growing a single specimen per vegetable.
 }}
 
-{{bigimg IMG_0682.JPG bw}}
+{{bigimg IMG_0682.JPG}}
 
 {{p
 I had this little can of **S&B Spicy Curry** I'd brought
@@ -78,7 +78,7 @@ readings on the fly. Great tools, cannot recommend
 they enough if you are struggling with the language.
 }}
 
-{{bigimg IMG_0683.JPG bw}}
+{{bigimg IMG_0683.JPG}}
 
 {{p
 For lunch we had patties with chopped onions and
@@ -96,7 +96,7 @@ rather pleasant read so far. I want to improve my C, this is the
 first step. {{SDL2 => https://www.libsdl.org}}, you are next!
 }}
 
-{{bigimg IMG_0687.JPG bw}}
+{{bigimg IMG_0687.JPG}}
 
 {{p
 We spent the better part of the afternoon working
@@ -117,7 +117,7 @@ explains the process in detailed, yet
 easy to follow steps.
 }}
 
-{{bigimg IMG_0689.JPG bw}}
+{{bigimg IMG_0689.JPG}}
 
 {{p
 For dinner, following the recipe in the can, I
@@ -169,7 +169,12 @@ kinda mushy). Add salt and pepper to taste and
 serve on white rice.
 }}
 
-{{bigimg IMG_0693.JPG bw}}
+{{p
+(You can also find this recipe in the 
+{{cookbook => cookbook.coso}}.
+}}
+
+{{bigimg IMG_0693.JPG}}
 
 {{p
 It was amazing. Oh my, I cannot stress enough how much
@@ -178,7 +183,7 @@ I like curry. I ate like three plates, then fell asleep for hours.
 
 {{subtitle Today}}
 
-{{bigimg IMG_0698.JPG bw}}
+{{bigimg IMG_0698.JPG}}
 
 {{p
 Today I went back to the patio, set up a
@@ -228,7 +233,7 @@ It's looking quite alright! Today
 I'll carry on with that.
 }}
 
-{{bigimg IMG_0700.JPG bw}}
+{{bigimg IMG_0700.JPG}}
 
 {{p
 After writing all of that, I went out and
