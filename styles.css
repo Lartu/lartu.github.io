@@ -130,3 +130,31 @@ th {
     margin-top: initial;
     margin-bottom: initial;
 }
+
+@media (prefers-color-scheme: dark) {
+    .separator {
+        border-color: white;
+    }
+    th {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    a:hover {
+        background-color: white;
+        color: black;
+    }
+    .external:hover {
+        background-color: deeppink;
+        color: black;
+    }
+    body {
+        background-color: black;
+        color: white;
+    }
+    a {
+        color: white;
+    }
+    .mediabutton,
+    .logo {
+        filter: invert(1);
+    }
+}
