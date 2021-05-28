@@ -30,7 +30,7 @@ def generate_rss_file():
     for item in rss_items:
         d = item[1]
         rss_date_str = d.strftime('%a, %d %b %Y %H:%M:%S -0300')
-        title = item[3].replace("Lartunet — ", "")
+        title = item[3].replace("Lartunet — ", "").replace("&", "&amp;")
         content_body = item[2]
         content_body = re.sub(r"href(\s*)=(\s*)\"(?!http)", "href=\"https://lartu.net/", content_body)
         content_body = re.sub(r"src(\s*)=(\s*)\"(?!http)", "src=\"https://lartu.net/", content_body)
