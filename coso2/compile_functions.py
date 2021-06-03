@@ -16,6 +16,7 @@ rss_items = []
 document_title = None
 document_favicon = None
 document_descr = None
+document_list_in_sitemap = True
 rss_date = None
 document_footnotes = None
 sitemap = {}
@@ -52,11 +53,12 @@ def reset_global_document_flags():
     '''Resets global variables used for compilation of the full document,
     such as the document title.
     '''
-    global document_title, document_favicon, document_descr, rss_date
+    global document_title, document_favicon, document_descr, rss_date, document_list_in_sitemap
     document_title = get_default_page_title()
     document_favicon = f"images/{get_favicon_name()}"
     document_descr = get_default_page_description()
     rss_date = None
+    document_list_in_sitemap = True
 
 
 def reset_global_body_flags():
@@ -89,6 +91,13 @@ def set_global_page_description(descr):
     document_descr = descr
 
 
+def set_document_list_sitemap_status(status):
+    '''Sets the global variable for the document sitemap listing status.
+    '''
+    global document_list_in_sitemap
+    document_list_in_sitemap = status
+
+
 def add_footnote(note):
     '''Adds a footnote to the page and returns a number for that footnote.
     '''
@@ -113,7 +122,8 @@ def compile_source_and_rss(source_code, filename):
             document_title,
         ))
     # Add page to sitemap
-    sitemap[get_compiled_filename(filename)] = document_title
+    if document_list_in_sitemap:
+        sitemap[get_compiled_filename(filename)] = document_title
     return html_source
 
 
@@ -316,6 +326,10 @@ def compile_tag(tag, use_custom_classes=True):
         body = body.replace("\n", "</li>")
         body = body.replace("::", "<li>")
         return f"<ul>\n{body}\n</ul>"
+
+    elif command == "sitemaplist":
+        set_document_list_sitemap_status(body.lower() == "no")
+        return ""
 
     # If we didn't return by this point, the tag was not recognized.
     warning(f"The tag {tag} was not recognized.")
