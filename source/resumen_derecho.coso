@@ -1,3 +1,6 @@
+{{ pagetitle Lartunet — Resumen de Derecho  }}
+{{ favicon favicon.png }}
+
 {{sitemaplist no }}
 {{title Resumen de Derecho }}
 
@@ -759,9 +762,11 @@ La Ley Argentina Digital declara el interés público en el desarrollo de las TI
 {{title Unidad III }}
 
 {{l
-::
+::{{Los derechos personalísimos -> -> u3personalisismos}}
+::{{el derecho a la intimidad y las acciones privadas -> -> u3intimidad}}
 }}
 
+{{anchor u3personalisismos}}
 {{title Los derechos personalísimos }}
 
 {{p
@@ -830,6 +835,7 @@ que se le cause un daño a un tercero por sus propios medios. Hay **daño**
 cuando se **lesiona** un derecho.
 }}
 
+{{anchor u3intimidad}}
 {{title El derecho a la intimidad y las acciones privadas }}
 {{subtitle Concepto }}
 
