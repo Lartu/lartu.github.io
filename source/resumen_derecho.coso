@@ -1,6 +1,8 @@
 {{ pagetitle Lartunet — Resumen de Derecho  }}
 {{ favicon favicon.png }}
 
+{{ include _header.coso }}
+
 {{sitemaplist no }}
 {{title Resumen de Derecho }}
 
@@ -922,6 +924,10 @@ deshonrosa. De lo contrario: **el revisionismo histórico pasaría a ser materia
 Also cuando uno se muere pueden pasar varias cosas. Puede haber una **herencia
 de información** a la familia etc, o puede haber una **última voluntad** que
 prohiba la apertura o ingreso a bases de datos.
+}}
+
+{{p
+``TO BE COMPLETED``
 }}
 
 /* Acá ya va lo que está en rojo */
