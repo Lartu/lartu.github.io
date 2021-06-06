@@ -300,17 +300,17 @@ def compile_tag(tag, use_custom_classes=True):
         return f"<img src=\"images/{image_filename}\" class=\"mediabutton\">"
 
     elif command == "img":
-        image_filename, grayscale = parse_image_tag(body)
-        return get_image_tag(image_filename, epigrafe=False, grayscale=grayscale, use_custom_classes=use_custom_classes)
+        image_filename, grayscale, quantize = parse_image_tag(body)
+        return get_image_tag(image_filename, epigrafe=False, grayscale=grayscale, use_custom_classes=use_custom_classes, quantize_gif=quantize)
 
     elif command == "midimg":
-        image_filename, grayscale = parse_image_tag(body)
+        image_filename, grayscale, quantize = parse_image_tag(body)
         return get_image_tag(image_filename, grayscale=grayscale, half_width=True,
-                             use_custom_classes=use_custom_classes)
+                             use_custom_classes=use_custom_classes, quantize_gif=quantize)
 
     elif command == "bigimg":
-        image_filename, grayscale = parse_image_tag(body)
-        return get_image_tag(image_filename, grayscale=grayscale, use_custom_classes=use_custom_classes)
+        image_filename, grayscale, quantize = parse_image_tag(body)
+        return get_image_tag(image_filename, grayscale=grayscale, use_custom_classes=use_custom_classes, quantize_gif=quantize)
 
     elif command == "logo":
         image_filename = body
@@ -328,7 +328,7 @@ def compile_tag(tag, use_custom_classes=True):
         return f"<ul>\n{body}\n</ul>"
 
     elif command == "sitemaplist":
-        set_document_list_sitemap_status(body.lower() == "no")
+        set_document_list_sitemap_status(body.lower() == "yes")
         return ""
 
     # If we didn't return by this point, the tag was not recognized.
@@ -351,15 +351,18 @@ def parse_image_tag(tag_body):
     img_tokens = tag_body.split()
     image_filename = img_tokens[0]
     grayscale = False
+    quantize = False
     if "bw" in img_tokens:
         grayscale = True
-    return image_filename, grayscale
+        quantize = True
+    return image_filename, grayscale, quantize
 
 
-def get_image_tag(filename, compress=True, epigrafe=True, half_width=False, grayscale=False, use_custom_classes=True):
+def get_image_tag(filename, compress=True, epigrafe=True, half_width=False, grayscale=False, use_custom_classes=True, quantize_gif = False):
     '''Takes an image and returns a tag according to the requested type of image.
     '''
     MAX_IMG_WIDTH = 800
+    MAX_IMG_HEIGHT = 500
     image_title, file_ext = os.path.splitext(filename)
     file_ext = file_ext.strip(".")
     img_file = get_images_dir() + "/" + filename
@@ -373,25 +376,42 @@ def get_image_tag(filename, compress=True, epigrafe=True, half_width=False, gray
     compresed_image_file = imghash + "." + compression_format
     jpeg_note = f" ({compression_format}) "
     max_width = MAX_IMG_WIDTH
+    max_height = MAX_IMG_HEIGHT
     if half_width:
         max_width = int(max_width / 2)
         compresed_image_file = imghash + ".png"
         compression_format = "PNG"
         jpeg_note = ""
-    if width > max_width:
+    if quantize_gif:
+        compresed_image_file = imghash + ".gif"
+        compression_format = "GIF"
+        quantization_color_count = 64
+        jpeg_note = f"(quantized {quantization_color_count}C) "
+    if width > max_width or height > max_height or quantize_gif:
         compressed_filename = get_docs_dir() + "/images/c_" + compresed_image_file
         if compress:
             show(f"Optimizing {image_filename}.")
             picture = picture.resize((max_width, int(height*max_width/width)))
+            newwidth, newheight = picture.size
+            if newheight > max_height:
+                picture = picture.resize((int(newwidth*max_height/newheight), max_height))
             picture = picture.convert("RGBA")
             new_image = Image.new("RGBA", picture.size, "WHITE")
             new_image.paste(picture, (0, 0), picture)
+            if grayscale or compression_format == "GIF":
+                picture = new_image # La imagen flat sin transparencia
             if grayscale:
-                picture = ImageOps.grayscale(new_image)
+                picture = ImageOps.grayscale(picture)
+                quantization_color_count = 16
+                jpeg_note = f"(quantized {quantization_color_count}C) "
             if picture.mode == "P" and compression_format != "GIF":
                 picture = picture.convert("RGB")
             if compression_format == "JPEG":
                 picture = picture.convert("RGB")
+            if compression_format == "GIF":
+                picture = picture.convert("RGB")
+                pal_image = picture.quantize(colors=quantization_color_count)
+                picture = picture.quantize(palette=pal_image)
             picture.save(compressed_filename, optimize=True, quality=90, format=compression_format)
             show(f"Saved {compressed_filename}.")
             filesize = os.path.getsize(img_file)

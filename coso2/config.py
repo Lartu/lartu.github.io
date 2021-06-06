@@ -87,9 +87,8 @@ def get_rss_header():
     '''
     return '''
         <?xml version='1.0' encoding='UTF-8'?>
-        <rss version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/'>
+        <rss version='2.0'>
             <channel>
-
                 <title>Lartunet</title>
                 <link>https://lartu.net</link>
                 <description>Lartu's Log of Interesting Things</description>
