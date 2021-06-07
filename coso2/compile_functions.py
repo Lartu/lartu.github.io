@@ -147,11 +147,13 @@ def compile_source_body(source_code, for_rss=False):
     # Reset compilation flags for body
     reset_global_body_flags()
 
-    # Remove source code comments /* ... */
-    result = re.sub(r"/\*(?:(?:.|\s|\r|\n)*?)\*/", "", source_code)
+    result = source_code
 
     # Compile the source until there are no more tags left.
     while True:
+        # Remove source code comments /* ... */
+        result = re.sub(r"/\*(?:(?:.|\s|\r|\n)*?)\*/", "", result)
+
         # Get coso source tags {{ ... }}
         tags = re.findall(r"{{[^{}]*?}}", result)
         if len(tags) == 0:
