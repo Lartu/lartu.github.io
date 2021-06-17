@@ -47,7 +47,12 @@ You are also welcome to visit my {{ GitHub => https://github.com/lartu }} page.
 {{ title projects }}
 
 {{p
-None. Right now I'm working on {{Eterspire (Beta II) => https://eterspire.com}}.
+{{Excal -> excal.coso}}, the expense calculator, is a tool I created to keep
+track of my expenses.
+}}
+
+{{p
+Right now I'm working on {{Eterspire (Beta II) => https://eterspire.com}}.
 }}
 
 {{ title legacy projects }}

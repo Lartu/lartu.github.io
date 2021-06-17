@@ -261,9 +261,15 @@ def compile_tag(tag, use_custom_classes=True):
         return today.strftime("%Y")
 
     elif command == "title":
-        return f"<h1>{body}</h1>"
+        return f"<h1>{body.lower()}.</h1>"
 
     elif command == "subtitle":
+        return f"<h2>{body.lower()}.</h2>"
+
+    elif command == "titlenolc":
+        return f"<h1>{body}</h1>"
+
+    elif command == "subtitlenolc":
         return f"<h2>{body}</h2>"
 
     elif command == "pagetitle":

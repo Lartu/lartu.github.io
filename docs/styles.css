@@ -43,14 +43,15 @@ h3 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     vertical-align: baseline;
-    text-transform: lowercase;
+    /*text-transform: lowercase;*/
 }
 
-h1::after,
+
+/*h1::after,
 h2::after,
 h3::after {
     content: ".";
-}
+}*/
 
 td h1 {
     text-transform: none;

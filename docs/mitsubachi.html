@@ -33,7 +33,7 @@
     </tr>
 </table>
 
-<h1>Mitsubachi</h1>
+<h1>mitsubachi.</h1>
 
 <p><img src="images/W18N70.png" title="W18N70" alt="Image: W18N70"></p>
 
@@ -49,7 +49,7 @@ high-latency, low-bandwidth networks. The protocol is also very complex for an
 amateur, casual client / server writer to implement. Mitsubachi aims to address
 all these issues.
 
-<h2>protocol tl;dr</h2>
+<h2>protocol tl;dr.</h2>
 
 <p>Connection is done via plain sockets on TCP port 7107.</p>
 
@@ -71,7 +71,7 @@ all these issues.
 
 <p><b>Error codes:</b> A server should reply <i>000</i> ("ok") when a client changes their nick successfully. Otherwise it should reply <i>001</i> ("nick already in use") or <i>002</i> ("invalid nick", for nicks beginning in ! for users). <i>003</i> should be sent when trying to join an invalid list (using a client nick). <i>005</i> should be sent when a client tries to send a message to a list they are not a member of. <i>006</i> should be sent when an invalid command is received by the server. <i>007</i> should be sent to clients that have not chosen a nick when the server has received a command from them other than NICK.</p>
 
-<h2>protocol details</h2>
+<h2>protocol details.</h2>
 
 <p>By default and standard, Mitsubachi servers listen for connections on TCP port 7107. Clients (users) connect to a server by plain socket connection.</p>
 
@@ -129,7 +129,7 @@ all these issues.
 
 <p>Should a message not in the list above be received by a server, it should reply <code>OOPS # # 006 #\n</code> ("unknown command").</p>
 
-<h2>implementations</h2>
+<h2>implementations.</h2>
 
 <p>A Mitsubachi Server written in <a href="https://ldpl-lang.org" class=external target=_blank>LDPL</a> is uploaded <a href="https://github.com/Lartu/mitsubachi/blob/master/mitsubachi-server.ldpl" class=external target=_blank>here</a>. You are allowed to use and modify it in any way you see fit. You are encouraged to host your own Mitsubachi servers! In order to build and run this server implementation you must run the following commands:</p>
 
@@ -141,7 +141,7 @@ all these issues.
 
 <p><pre>lpm install ldpl_net_server lpm install std-text</pre></p>
 
-<h2>license</h2>
+<h2>license.</h2>
 
 <p>The Mitsubachi protocol is released under the MIT license and may be freely reproduced and translated. The Mitsubachi bee logo is released under the MIT license and may be freely reproduced on any medium.</p>
 <br>
