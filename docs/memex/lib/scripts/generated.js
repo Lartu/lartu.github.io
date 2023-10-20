@@ -1,0 +1,1 @@
+let nodes={paths:["about/memex.html","ad-hoc/obsidian-organization.html","research/the-tao-of-mox.html","index.html"],nodeCount:4,linkSources:[1,1,3,3,3],linkTargets:[3,0,0,2,1],labels:["Memex","Obsidian Organization","The Tao of Mox","Index"],radii:[6.4375,6.984375,5.109375,7],linkCount:5},attractionForce=1,linkLength=10,repulsionForce=150,centralForce=3,edgePruning=100
