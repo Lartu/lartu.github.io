@@ -1,5 +1,5 @@
 #!/bin/bash
-status_list=$(git diff --names-status HEAD HEAD~1 | grep '.html' | awk 'ORS="<br>\n"')
+status_list=$(git diff --name-status HEAD HEAD~1 | grep '.html' | awk 'ORS="<br>\n"')
 status_list="${status_list/docs\//}"
 status_list=$(echo "$status_list" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | tr -d '\n')
 
