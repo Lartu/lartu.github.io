@@ -1,5 +1,5 @@
 <head>
-    <title>Cool Sites @ Lartu.net</title>
+    <title>Changelog @ Lartu.net</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -17,17 +17,16 @@
 
 <style>
     body {
-        font-family: 'Times New Roman', Times, serif;
+        font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Meiryo, "メイリオ", "ＭＳ Ｐゴシック", Arial, Helvetica, sans-serif;
         margin: 1.5rem;
+        letter-spacing: 0.1em;
         line-height: 1.5rem;
-        background-color: #000;
-        background-image: url("images/copyrightsunshiney.jpg");
+        background-color: white;
         background-repeat: repeat;
-        color: #0f0;
+        color: black;
         text-align: center;
         margin: auto;
         padding-bottom: 100px;
-        text-shadow: 0px 0px 5px black;
     }
 
     .par {
@@ -37,16 +36,11 @@
         width: 90%;
     }
 
-    sup {
-        font-size: 8pt;
-    }
-
     .header {
         margin-top: 150px;
         margin-bottom: 150px;
         font-size: 40pt;
         line-height: 40pt;
-        text-shadow: 0.2em 0.2em blue;
     }
 
     .par {
@@ -54,33 +48,37 @@
     }
 
     a {
-        color: #ff0;
+        color: blue;
     }
 
     #navigation {
-        background-color: rgba(0, 0, 255, 0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 10px;
         font-family: monospace;
-        color: #0f0;
+        letter-spacing: initial;
+        color: white;
         position: fixed;
         width: 100%;
         left: 0px;
         top: 0px;
     }
 
-    .topic {
-        font-weight: bold;
-        font-size: 14pt;
-        text-shadow: 0px 0px 10px #f00;
-    }
-
     #navigation a,
     #navigation a:visited {
-        color: #0f0
+        color: white
     }
 
-    .list {
+    .changelog {
         text-align: left;
+        font-family: monospace;
+    }
+
+    .rem {
+        color: #f00;
+    }
+
+    .add {
+        color: rgb(0, 214, 0);
     }
 </style>
 
@@ -88,120 +86,20 @@
     <div id="navigation">
         <a href="index.html">Index</a>
         • <a href="cool-sites.html">Cool Sites</a>
+        • <a href="changelog.html">Changelog</a>
     </div>
     <div class="header">
-        Lartu's List of<br>Cool Sites
+        changelog
     </div>
-    <h3 style="text-shadow: 0px 0px 10px #0ff;">
-        What and Why
-    </h3>
-    <p class="par">
-        Google and Bing have become crappy. Every day I find it harder and harder to find stuff there.
-        Some time ago I wrote a tweet stating that <i>"I was a Google user, now it doesn't find anything.
-            I moved to Bing a month ago, it's now become the same. It's all AI nonsense.
-            It's time to go back to "Cool Sites" links on personal webpages. We've gone full circle."</i>
-        This is my response to that.
+    <p class="par" style="margin-bottom: 100px">
+        This file lists the changes that have been made to the lartunet. Each modified file is listed
+        along with the date it was updated. This log is automatically updated every time I upload a new
+        version of the website.
     </p>
 
-    <p class="par">
-        I've recently learned about <i>Awesome Lists</i><sup>*</sup>. I don't think this qualifies as one.
-        But here's some stuff I found interesting. I'm mostly into game design and development (particularly MMORPGs),
-        so I expect to end up adding a lot of resources about that here. And other things. I hope you find it interesing
-        too!
-    </p>
 
-    <p class="par" style="font-size: 10pt">
-        <sup>*</sup>Awesome Lists are curated lists of resources about a specific topic.
-        These lists are often created and maintained by enthusiasts and experts in the respective field.
-    </p>
-
-    <h2 style="margin-top: 100px;  text-shadow: 0px 0px 10px #f0f;">
-        The List
-    </h2>
-
-    <!-- MMORPG Design -->
-    <p class="par topic">MMORPG Design</p>
-    <ul class="par list">
-        <li>
-            <a href="https://www.gamedeveloper.com/business/virtual-economic-theory-how-mmos-really-work#close-modal">Virtual
-                Economic Theory: How MMOs Really Work</a>
-        </li>
-        <li>
-            <a href="https://play.google.com/console/about/static/pdf/google-play-mmorpg-genre-report.pdf">
-                Google Play MMORPG Report</a> (PDF)
-        </li>
-        <li>
-            <a href="https://jb-dev.net/2020/10/07/iap-packs-in-mobile-f2p-analysis-and-design/">
-                IAP Packs in Mobile F2P: Analysis and Design</a>
-        </li>
-    </ul>
-
-    <!-- Shaders & Visual Effects -->
-    <p class="par topic">Shaders & Visual Effects</p>
-    <ul class="par list">
-        <li>
-            <a href="https://www.artstation.com/blogs/bjayers/9oOD/blender-npr-recreating-the-genshin-impact-shader">Blender
-                NPR: Recreating the Genshin Impact Shader</a>
-        </li>
-    </ul>
-
-    <!-- Game Design -->
-    <p class="par topic">General Game Design</p>
-    <ul class="par list">
-        <li>
-            <a href="https://www.gamedeveloper.com/design/the-case-for-movie-length-narrative-video-games">The case for
-                movie-length, narrative video games</a>
-        </li>
-    </ul>
-
-    <!-- General Programming & Computing-->
-    <p class="par topic">General Programming & Computing</p>
-    <ul class="par list">
-        <li>
-            <a href="https://pointersgonewild.com/2022/02/11/code-that-doesnt-rot/">Code that Doesn't Rot</a>
-        </li>
-        <li>
-            <a
-                href="https://stackoverflow.com/questions/3637668/why-are-scripting-languages-e-g-perl-python-and-ruby-not-suitable-as-shell">Why
-                are scripting languages (e.g. Perl, Python, and Ruby) not suitable as shell languages?</a>
-        </li>
-        <li>
-            <a href="https://tratt.net/laurie/blog/2023/how_big_should_a_programming_language_be.html">How Big Should a
-                Programming Language Be?</a>
-        </li>
-    </ul>
-
-    <!-- Retrocomputing -->
-    <p class="par topic">Retrocomputing</p>
-    <ul class="par list">
-        <li>
-            <a href="https://neustadt.fr/essays/the-small-web/">Rediscovering the Small Web</a>
-        </li>
-    </ul>
-
-    <!-- Other Fun Reads -->
-    <p class="par topic">Other Fun Reads</p>
-    <ul class="par list">
-        <li>
-            <a href="https://www.ediblegeography.com/the-rise-of-wackaging/">The Rise of Wackaging</a>
-        </li>
-        <li>
-            <a href="https://web.archive.org/web/20190206235833/http://johnvigor.com/Black_Box_Theory.html">The Black Box Theory</a> (Archived)
-        </li>
-    </ul>
-
-    <!-- Games -->
-    <p class="par topic">Games</p>
-    <ul class="par list">
-        <li>
-            <a href="https://www.eterspire.com">Eterspire</a>
-        </li>
-        <li>
-            <a href="https://www.battleon.com">AdventureQuest</a>
-        </li>
-        <li>
-            <a href="https://web.archive.org/web/20151104022424/http://queville.com/">Queville</a> (dead, but
-            interesting for archaeological reasons)
-        </li>
-    </ul>
-</body>
+<h5>Sat Jan  6 21:46:36 -03 2024</h5>
+<p class="par changelog">
+<i> 1 file changed, 207 deletions(-) </i><br>
+ changelog.html | 207 <span class="rem">--<span><br>
+</p>
