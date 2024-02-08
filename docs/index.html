@@ -18,14 +18,13 @@
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
-        margin: 1.5rem;
         line-height: 1.5rem;
         background-color: #ff99bb;
         color: white;
         text-align: center;
         margin: auto;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .cart,
@@ -116,23 +115,27 @@
     }
 
     #navigation{
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: white;
         padding: 10px;
         font-family: monospace;
+        box-sizing: border-box;
         letter-spacing: initial;
-        color: white;
-        position: fixed;
-        width: 100%;
-        left: 0px;
-        top: 0px;
+        color: #ff99bb;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+
+    #navigation a, #navigation a:visited{
+        color: inherit;
     }
 </style>
 
 <body>
     <div id="navigation">
-        <a href="index.html">Home</a>
+        Home
         • <a href="cool-sites.html">Cool Sites</a>
-        • <a href="changelog.html">Changes</a>
+        • <a href="about.html">About</a>
     </div>
     <div class="header">
         <img src="images/lartusigil1.png" class="sigil" title="Lartu" alt="Lartu">
@@ -141,8 +144,8 @@
         About
     </h3>
     <p class="par">
-        Heyo! Welcome to the <strong>Lartunet</strong>, Lartu's part of the internet. Here you'll find
-        information about the games and software I've developed. Me? I make videogames and other software.
+        Heyo! Welcome to the <strong>Lartunet</strong>, Lartu's corner of the internet. Here you'll find
+        information about games and software I've worked on. <a href="about.html">Me?</a> I make videogames and other code stuff.
         I love food and rainy days. Thank you for passing by!
     </p>
 

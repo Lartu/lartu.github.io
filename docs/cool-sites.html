@@ -11,14 +11,13 @@
     <link rel="shortcut icon" href="/files/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/files/browserconfig.xml">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0000FF">
     <meta name="description" content="Lartu's Personal Collection of Cool Links!">
 </head>
 
 <style>
     body {
         font-family: 'Times New Roman', Times, serif;
-        margin: 1.5rem;
         line-height: 1.5rem;
         background-color: #000;
         background-image: url("images/copyrightsunshiney.jpg");
@@ -59,18 +58,6 @@
         color: #ff0;
     }
 
-    #navigation {
-        background-color: rgba(0, 0, 255, 0.5);
-        padding: 10px;
-        font-family: monospace;
-        letter-spacing: initial;
-        color: #0f0;
-        position: fixed;
-        width: 100%;
-        left: 0px;
-        top: 0px;
-    }
-
     .topic {
         font-weight: bold;
         font-size: 14pt;
@@ -79,9 +66,20 @@
         margin-bottom: 0px;
     }
 
-    #navigation a,
-    #navigation a:visited {
-        color: #0f0
+    #navigation{
+        background-color: rgba(0, 0, 255, 0.5);
+        padding: 10px;
+        font-family: monospace;
+        box-sizing: border-box;
+        letter-spacing: initial;
+        color: #0f0;
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+
+    #navigation a, #navigation a:visited{
+        color: inherit;
     }
 
     .list {
@@ -92,8 +90,8 @@
 <body>
     <div id="navigation">
         <a href="index.html">Home</a>
-        • <a href="cool-sites.html">Cool Sites</a>
-        • <a href="changelog.html">Changes</a>
+        • Cool Sites
+        • <a href="about.html">About</a>
     </div>
     <div class="header">
         Lartu's List of<br>Cool Sites
