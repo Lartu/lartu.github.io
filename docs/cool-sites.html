@@ -67,7 +67,7 @@
         margin-bottom: 0px;
     }
 
-    #navigation{
+    #navigation {
         background-color: rgba(0, 0, 255, 0.5);
         padding: 10px;
         font-family: monospace;
@@ -79,7 +79,8 @@
         margin-right: -1rem;
     }
 
-    #navigation a, #navigation a:visited{
+    #navigation a,
+    #navigation a:visited {
         color: inherit;
     }
 
@@ -230,5 +231,7 @@
 </body>
 
 <script>
-    new emojiCursor({ emoji: ["🌐", "🛜", "🌎"] });
+    window.addEventListener("load", (event) => {
+        new emojiCursor({ emoji: ["🌐", "🛜", "🌎"] });
+    });
 </script>
