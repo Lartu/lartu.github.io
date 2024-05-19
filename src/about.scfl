@@ -1,0 +1,33 @@
+HEAD:
+INCLUDE     general_header.html
+BACKGROUND  tumblr_inline_n5br2sjbGJ1r4ugnn540.gif
+STYLE       style.css
+PAGETITLE   About @ Lartu.net
+DESCRIPTION About Lartu
+
+BODY:
+IMAGE       lartusigil1.png, lartusigil
+TITLE       About
+LINK        <center>(home)</center>, index.html
+
+HEADER      About Me
+WRITE       Hello, I'm Lartu. This is my personal website.
+BREAK
+WRITE       I'm mostly a game developer.
+WRITE       Mostly, because I work on other stuff from time to time.
+WRITE       You can check my games on the
+LINK        homepage, index.html, .
+WRITE       Some of them are also hosted on
+LINK        Itch.io, https://lartu.itch.io/, .
+NEWLINE
+WRITE       You can also check other things I've worked on on my
+LINK        GitHub, https://github.com/lartu
+WRITE       page.
+NEWLINE
+WRITE       You can follow me on
+LINK        X (Twitter), https://twitter.com/martulartu, .
+BREAK
+WRITE       You can e-mail me at <i>lartu at lartu dot net</i>.
+BREAK
+WRITE       If you see a lartu anywhere else, that's also probably me.
+COMPILENOTE
