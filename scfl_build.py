@@ -3,7 +3,7 @@
 # Lartu's WebSCFL Builder
 # 18Y24
 # WebSCFL stands for Web Sectioned Command First Language
-# Version 1.4
+# Version 1.5
 
 import os
 import shutil
@@ -202,9 +202,12 @@ def compile_file(filename: str):
                         linktext = linktokens[0].strip().replace("&doublepipe;", "||")  # DOCUMENTAR
                         linkdest = linktokens[1].strip()
                         othertext = "" if len(linktokens) < 3 else linktokens[2].strip()
+                        target = ""
+                        if "http://" in linkdest or "https://" in linkdest:
+                            target = "target=_blank"
                         if othertext and othertext[0] not in "),.;:!?":
                             othertext = f" {othertext}"
-                        add_line_to_file(f"<a class='link' href='{linkdest}'>{linktext}</a>{othertext}")
+                        add_line_to_file(f"<a class='link' href='{linkdest}' {target}>{linktext}</a>{othertext}")
                         added_visible_content = True
                     elif command == "WRITE":
                         just_added_title_importance = 0
@@ -269,7 +272,10 @@ def compile_file(filename: str):
                             othertext = "" if len(linktokens) < 3 else linktokens[2].strip()
                             if othertext and othertext[0] not in "),.;:!?":
                                 othertext = f" {othertext}"
-                            add_line_to_file(f"<li class='list_item'><a class='link' href='{linkdest}'>{linktext}</a>{othertext}</li>")
+                            target = ""
+                            if "http://" in linkdest or "https://" in linkdest:
+                                target = "target=_blank"
+                            add_line_to_file(f"<li class='list_item'><a class='link' {target} href='{linkdest}'>{linktext}</a>{othertext}</li>")
                         else:
                             # Line without link
                             argument = argument.strip().replace("&doublepipe;", "||")  # DOCUMENTAR
