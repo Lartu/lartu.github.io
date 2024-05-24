@@ -80,6 +80,29 @@ def compile_file(filename: str):
 
     def add_line_to_file(line: str):
         nonlocal result_file_contents
+        while "[[" in line:  # DOCUMENTAR
+            index = line.index("[[")
+            if "]]" not in line:
+                error(f"[[ without ]] found in line {line}.")
+            else:
+                endindex = line.index("]]")
+            rawlink = line[index:endindex+2]
+            if "||" not in rawlink:
+                tokens = rawlink[2:-2].split(sep=None, maxsplit=1)
+                linkdest = tokens[0].strip()
+                linktext = tokens[1].strip()
+            else:
+                tokens = rawlink[2:-2].split(sep="||", maxsplit=1)
+                linkdest = tokens[1].strip()
+                linktext = tokens[0].strip()
+            target = ""
+            external = ""
+            if "http://" in linkdest or "https://" in linkdest:
+                target = "target=_blank"
+                external = f"<img src='{RESULT_IMAGES_DIR}/external-link.png'>"
+            link = f"<a class='link' href='{linkdest}' {target}>{linktext}{external}</a>"
+            link = link.replace("&doublepipe;", "||")  # DOCUMENTAR
+            line = line.replace(rawlink, link)
         result_file_contents = f"{result_file_contents}\n{line}"
 
     compile_mode = HEAD
@@ -92,6 +115,10 @@ def compile_file(filename: str):
     with open(filename, "r") as file:
         for line in file.readlines():
             line = line.strip()
+
+            if line and line[0] in ["#", "!"]:
+                continue
+
             tokens = line.split(None, 1)
             if tokens:
                 command = tokens[0].upper().strip()
@@ -199,7 +226,7 @@ def compile_file(filename: str):
                             separator = ","
                         linktokens = argument.split(separator, 2)
                         linktext = linktokens[0].strip().replace("&com;", ",")  # DOCUMENTAR
-                        linktext = linktokens[0].strip().replace("&doublepipe;", "||")  # DOCUMENTAR
+                        linktext = linktext.replace("&doublepipe;", "||")  # DOCUMENTAR
                         linkdest = linktokens[1].strip()
                         othertext = "" if len(linktokens) < 3 else linktokens[2].strip()
                         target = ""
@@ -267,26 +294,7 @@ def compile_file(filename: str):
                             add_line_to_file("<div class='small_separator'></div>")
                         requires_margin_above = False
                         added_visible_content = True
-                        separator = "||"
-                        if separator in argument:
-                            # Line with link
-                            argument = argument.strip()
-                            linktokens = argument.split(separator, 3)
-                            linktext = linktokens[0].strip().replace("&doublepipe;", "||")  # DOCUMENTAR
-                            linkdest = linktokens[1].strip()
-                            othertext = "" if len(linktokens) < 3 else linktokens[2].strip()
-                            if othertext and othertext[0] not in "),.;:!?":
-                                othertext = f" {othertext}"
-                            target = ""
-                            external = ""
-                            if "http://" in linkdest or "https://" in linkdest:
-                                target = "target=_blank"
-                                external = f"<img src='{RESULT_IMAGES_DIR}/external-link.png'>"
-                            add_line_to_file(f"<li class='list_item'><a class='link' {target} href='{linkdest}'>{linktext}{external}</a>{othertext}</li>")
-                        else:
-                            # Line without link
-                            argument = argument.strip().replace("&doublepipe;", "||")  # DOCUMENTAR
-                            add_line_to_file(f"<li class='list_item'>{argument}</li>")
+                        add_line_to_file(f"<li class='list_item'>{argument}</li>")
                     elif command == "NEWLINE":
                         just_added_title_importance = 0
                         add_line_to_file("<br>")

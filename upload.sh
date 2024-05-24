@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 python3 scfl_build.py
 echo "lartu.net" > docs/CNAME
 git add --all

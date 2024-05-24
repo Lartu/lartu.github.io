@@ -40,8 +40,7 @@ WRITE       It's written in
 LINK        WebSCFL, https://github.com/Lartu/WebSCFL/, .
 
 BREAK
-WRITE       The lartunet is part of the
-LINK        LOW TECH WEBRING, https://emreed.net/LowTech_Directory, !
+WRITE       The lartunet is part of the [[https://emreed.net/LowTech_Directory LOW TECH WEBRING]]!
 
 
 
