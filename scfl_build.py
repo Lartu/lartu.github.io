@@ -240,7 +240,10 @@ def compile_file(filename: str):
                         imagesrc = imagetokens[0].strip()
                         destination = imagetokens[1].strip()
                         classes = imagetokens[2].strip().replace(",", " ") if len(imagetokens) >= 3 else ""
-                        add_line_to_file(f"<div><a class='linkimage' href='{destination}'><img src='{RESULT_IMAGES_DIR}/{imagesrc}' class='{classes}'><img src='{RESULT_IMAGES_DIR}/external-link.png'></a></div>")
+                        target = ""
+                        if "http://" in destination or "https://" in destination:
+                            target = "target=_blank"
+                        add_line_to_file(f"<div><a class='linkimage' href='{destination}' {target}><img src='{RESULT_IMAGES_DIR}/{imagesrc}' class='{classes}'><img src='{RESULT_IMAGES_DIR}/external-link.png'></a></div>")
                         try:
                             copy_file_relative(f"{IMAGES_DIR}/{imagesrc}", f"{RESULT_DIR}/{RESULT_IMAGES_DIR}/{imagesrc}")
                         except:
