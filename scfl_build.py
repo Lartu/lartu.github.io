@@ -61,7 +61,7 @@ def replace_extension(file_path, new_extension):
 
 def webpage_compiled_message():
     current_time = datetime.now().strftime("%Y-%m-%d, %H:%M")
-    return f"Webpage compiled on {current_time} using <a href='https://github.com/Lartu/WebSCFL/' class='link'>WebSCFL</a>."
+    return f"Webpage compiled on {current_time} using [[https://github.com/Lartu/WebSCFL/ WebSCFL]]."
 
 
 def error(message: str):
@@ -80,7 +80,7 @@ def compile_file(filename: str):
 
     def add_line_to_file(line: str):
         nonlocal result_file_contents
-        while "[[" in line:  # DOCUMENTAR
+        while "[[" in line:
             index = line.index("[[")
             if "]]" not in line:
                 error(f"[[ without ]] found in line {line}.")
@@ -101,7 +101,7 @@ def compile_file(filename: str):
                 target = "target=_blank"
                 external = f"<img src='{RESULT_IMAGES_DIR}/external-link.png'>"
             link = f"<a class='link' href='{linkdest}' {target}>{linktext}{external}</a>"
-            link = link.replace("&doublepipe;", "||")  # DOCUMENTAR
+            link = link.replace("&doublepipe;", "||")
             line = line.replace(rawlink, link)
         result_file_contents = f"{result_file_contents}\n{line}"
 
@@ -136,16 +136,16 @@ def compile_file(filename: str):
                 elif command == "COPY":
                     origin, destination = argument.split(",", 1)
                     origin = origin.strip()
-                    destination = destination.strip()
+                    destination = f"{RESULT_DIR}/{destination.strip()}"
                     try:
                         copy_file_relative(origin, destination)
                     except Exception as e:
                         error(f"Couldn't copy file {origin} to {destination}: {e}")
                     continue
-                elif command == "COPYDIR":  # DOCUMENTAR
+                elif command == "COPYDIR":
                     origin, destination = argument.split(",", 1)
                     origin = origin.strip()
-                    destination = destination.strip()
+                    destination = f"{RESULT_DIR}/{destination.strip()}"
                     try:
                         copy_dir_relative(origin, destination)
                     except Exception as e:
@@ -225,8 +225,8 @@ def compile_file(filename: str):
                         if separator not in argument:
                             separator = ","
                         linktokens = argument.split(separator, 2)
-                        linktext = linktokens[0].strip().replace("&com;", ",")  # DOCUMENTAR
-                        linktext = linktext.replace("&doublepipe;", "||")  # DOCUMENTAR
+                        linktext = linktokens[0].strip().replace("&com;", ",")
+                        linktext = linktext.replace("&doublepipe;", "||")
                         linkdest = linktokens[1].strip()
                         othertext = "" if len(linktokens) < 3 else linktokens[2].strip()
                         target = ""
@@ -324,7 +324,7 @@ def setup():
     create_directory("docs")
     create_directory("docs/images")
     try:
-        shutil.copytree("files", "docs/files")  # DOCUMENTAR
+        shutil.copytree("files", "docs/files")
         print("Copied the files directory to docs/files")
     except Exception as e:
         print(f"Warning: files director not found. Skipping copy.")
