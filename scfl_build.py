@@ -203,11 +203,13 @@ def compile_file(filename: str):
                         linkdest = linktokens[1].strip()
                         othertext = "" if len(linktokens) < 3 else linktokens[2].strip()
                         target = ""
+                        external = ""
                         if "http://" in linkdest or "https://" in linkdest:
                             target = "target=_blank"
+                            external = f"<img src='{RESULT_IMAGES_DIR}/external-link.png'>"
                         if othertext and othertext[0] not in "),.;:!?":
                             othertext = f" {othertext}"
-                        add_line_to_file(f"<a class='link' href='{linkdest}' {target}>{linktext}</a>{othertext}")
+                        add_line_to_file(f"<a class='link' href='{linkdest}' {target}>{linktext}{external}</a>{othertext}")
                         added_visible_content = True
                     elif command == "WRITE":
                         just_added_title_importance = 0
@@ -273,9 +275,11 @@ def compile_file(filename: str):
                             if othertext and othertext[0] not in "),.;:!?":
                                 othertext = f" {othertext}"
                             target = ""
+                            external = ""
                             if "http://" in linkdest or "https://" in linkdest:
                                 target = "target=_blank"
-                            add_line_to_file(f"<li class='list_item'><a class='link' {target} href='{linkdest}'>{linktext}</a>{othertext}</li>")
+                                external = f"<img src='{RESULT_IMAGES_DIR}/external-link.png'>"
+                            add_line_to_file(f"<li class='list_item'><a class='link' {target} href='{linkdest}'>{linktext}{external}</a>{othertext}</li>")
                         else:
                             # Line without link
                             argument = argument.strip().replace("&doublepipe;", "||")  # DOCUMENTAR
