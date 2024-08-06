@@ -80,6 +80,7 @@ def compile_file(filename: str):
 
     def add_line_to_file(line: str):
         nonlocal result_file_contents
+        # Replace wikimedia-like links
         while "[[" in line:
             index = line.index("[[")
             if "]]" not in line:
@@ -101,8 +102,27 @@ def compile_file(filename: str):
                 target = "target=_blank"
                 external = f"<img src='{RESULT_IMAGES_DIR}/external-link.png'>"
             link = f"<a class='link' href='{linkdest}' {target}>{linktext}{external}</a>"
-            link = link.replace("&doublepipe;", "||")
             line = line.replace(rawlink, link)
+        # Replace tooltips
+        while "[(" in line:   # DOCUMENTAR
+            index = line.index("[(")
+            if ")]" not in line:
+                error(f"[( without )] found in line {line}.")
+            else:
+                endindex = line.index(")]")
+            rawtooltip = line[index:endindex+2]
+            if "||" not in rawtooltip:
+                error(f"[( ... )] tooltip without || found in line {line}.")
+            else:
+                tokens = rawtooltip[2:-2].split(sep="||", maxsplit=1)
+                text = tokens[0].strip()
+                info = tokens[1].strip()
+            tooltip = f"<span class='tooltip' title='{info}'>{text}</span>"
+            line = line.replace(rawtooltip, tooltip)
+        # Replacements
+        line = line.replace("&[;", "[")  # DOCUMENTAR
+        line = line.replace("&];", "]")  # DOCUMENTAR
+        line = line.replace("&doublepipe;", "||")  # DOCUMENTAR
         result_file_contents = f"{result_file_contents}\n{line}"
 
     compile_mode = HEAD

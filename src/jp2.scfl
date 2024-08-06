@@ -1,0 +1,41 @@
+HEAD:
+INCLUDE     general_header.html
+BACKGROUND  tumblr_lzxkhw34cK1r9g6hvo2_100.png
+STYLE       style.css
+PAGETITLE   イルーナ戦記について (N5)
+DESCRIPTION Japanese Articles About Various Topics
+
+BODY:
+IMAGE       lartusigil1.png, lartusigil
+BREAK
+LINK        <center>(home)</center>, index.html
+
+HEADER イルーナ戦記について (N5)
+
+IMAGE jp2.webp, articleimage
+
+WRITE <div style="font-size: 1.2rem; line-height: 2.2rem;">
+
+WRITE イルーナ[(戦記||せんき (chronicles))]は[(日本||にほん (Japan))]で[(作られた||つくられた (created))][(MMORPG||エムエムオーアールピージー (MMORPG))]です。
+WRITE この[(ゲーム||game)]は[(アソビモ||ASOBIMO)]によって[(開発||かいはつ (developed))]されました。
+WRITE イルーナ戦記は2008年に[(リリース||release)]されました。
+WRITE このゲームは[(スマートフォン||smartphone)]や[(パソコン||computer)]で[(プレイ||play)]できます。
+WRITE [(多く||おおく (many))]の[(プレイヤー||player)]がイルーナ戦記を[(楽しんでいます||たのしんでいます (enjoy))]。
+BREAK
+WRITE イルーナ戦記の[(世界||せかい (world))]は[(広大||こうだい (vast))]で、[(美しいです||うつくしいです (beautiful))]。
+WRITE プレイヤーは[(キャラクター||character)]を[(作り||つくり (create))]、[(冒険||ぼうけん (adventure))]します。
+WRITE [(戦闘||せんとう (combat))]や[(クエスト||quest)]を[(通して||とおして (through))]、[(経験値||けいけんち (experience points))]を[(獲得||かくとく (earn))]します。
+WRITE [(仲間||なかま (companions))]と[(一緒||いっしょ (together))]に[(協力||きょうりょく (cooperate))]して[(強敵||きょうてき (strong enemies))]に[(挑戦||ちょうせん (challenge))]します。
+WRITE いろいろな[(職業||しょくぎょう (professions))]や[(スキル||skills)]を[(選べる||えらべる (choose))]ので、[(プレイスタイル||play style)]は[(自由||じゆう (freely))]です。
+BREAK
+WRITE このゲームは[(定期的||ていきてき (regularly))]に[(更新||こうしん (updates))]され、[(新しい||あたらしい (new))][(コンテンツ||content)]が[(追加されます||ついかされます (added))]。
+WRITE [(イベント||event)]や[(キャンペーン||campaigns)]もよく[(行われます||おこなわれます (held))]。
+WRITE [(プレイヤー同士||プレイヤーどうし (players among themselves))]で[(コミュニケーション||communication)]を[(取ることができます||とることができます (able to communicate))]。
+WRITE [(ギルド||guilds)]に[(参加して||さんかして (participate))]、[(仲間||なかま (companions))]と[(一緒||いっしょ (together))]に[(活動||かつどう (activities))]できます。
+WRITE イルーナ戦記は[(長い間||ながいあいだ (for a long time))][(愛されている||あいされている (beloved))]ゲームです。
+BREAK
+WRITE [(豆知識||まめちしき (fun fact))]: イルーナ戦記は、[(日本||にほん (Japan))]だけでなく、[(世界中||せかいじゅう (worldwide))]の[(プレイヤー||player)]にも[(人気||にんき (popular))]があります。
+
+WRITE </div>
+
+COMPILENOTE

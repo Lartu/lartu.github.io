@@ -94,6 +94,12 @@ img {
     margin-top: 1rem;
 }
 
+/* Tooltip Styling */
+.tooltip{
+    border-bottom: 1px dotted black;
+    color: red;
+}
+
 /* --- User Defined Styling for Images --- */
 
 .cartridge {
@@ -108,4 +114,10 @@ img {
     max-height: 150px;
     margin: auto;
     display: block;
+}
+
+.articleimage{
+    max-height: 200px;
+    float: right;
+    margin: 20px;
 }

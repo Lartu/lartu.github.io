@@ -1,5 +1,6 @@
 HEAD:
 INCLUDE     general_header.html
+INCLUDE     p_redirect.html
 BACKGROUND  tumblr_inline_ml9aukB3661qz4rgp540.gif
 STYLE       style.css
 PAGETITLE   Lartu.net
