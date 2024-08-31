@@ -1,0 +1,66 @@
+import "web.kat";
+
+def title_link;
+    return 
+        h3(link($_[1], $_[4], $true), " ", small("(", $_[2], ")")) 
+        & link(img($_[3]), $_[4], $true);
+ok;
+
+print(
+    include("head.kat"),
+    body(
+        center(link(img("images/lartusigil.png"), "index.html")),
+        center(h1("Programming Languages & Esolangs")),
+
+        par("This page talks abouts the programming languages I've developed (to varying degrees of esotericism)."),
+
+        title_link(
+            "WebSCFL", "2024",
+            "images/webscfl.png", "https://github.com/Lartu/WebSCFL/"
+        ),
+        parc("WebSCFL stands for Web Sectioned Command First Language.
+        It's a programming language designed to make simple Prof. Dr. Style websites.
+        This website used to be written and compiled using WebSCFL."),
+
+        title_link(
+            "Polaris Twist", "2024",
+            "images/polaris2.png", "https://github.com/Lartu/Polaris-Twist/"
+        ),
+        parc("Polaris Twist is a refreshing stack-based, concatenative,
+        interpreted programming language with strings as its only data type.
+        It's a revision of my original Polaris, much faster and with Foreign
+        Function Interface support. It has been designed to be small in size
+        and minimal in language features. Written in C++98, so it can probably
+        be compiled with any C++ compiler out there."),
+
+        title_link(
+            "Nari", "2023",
+            "images/nari.png", "https://github.com/Lartu/nari2023"
+        ),
+        parc("Nari (2023) is a new iteration of my Nari programming language.
+        I develop it to relax, so I call Nari 'programming language programming as therapy'.
+        Nari is inspired by Forth, or how I imagine Forth to be, as I've never written a
+        single line of Forth. Nari is a weakly typed language. Its only data types are
+        strings and integers. I don't know if it's fast or not (it probably isn't).
+        I might expand it over time. I also might not."),
+        parc(small("Nari was also the guinea pig in the picture above (2012-2020).")),
+
+        title_link(
+            "Polaris", "2020",
+            "images/polaris1.png", "https://github.com/Lartu/polaris"
+        ),
+        parc("A minimal, experimental stack-based, concatenative, interpreted programming
+        language with strings as its only data type. Written in C++98, designed to run on
+        Unix systems, backported to MS-DOS."),
+
+        title_link(
+            "LDPL", "2019",
+            "images/ldpl.png", "https://www.ldpl-lang.org/"
+        ),
+        parc("A COBOL-inspired programming language, designed to be expressive, readable,
+        fast and easy to learn. Considered complete and in minimal evolution mode since
+        LDPL 5. One of the best things I've ever made, for a number of reasons."),
+
+        include("footer.kat"),
+    )
+);

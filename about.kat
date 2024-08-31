@@ -1,0 +1,25 @@
+import "web.kat";
+
+print(
+    include("head.kat"),
+    body(
+        center(link(img("images/picture.png"), "index.html")),
+        center(h1("About")),
+        par("Hello, I'm Lartu. This is my personal website."),
+        parc(
+            "I'm mostly a game developer. Mostly, because I work on other ",
+            "stuff from time to time. You can check my games on the ",
+            link("homepage", "index.html"), ". ",
+            "Some of them are also hosted on ", link("Itch.io", "https://lartu.itch.io", $true), ". ",
+            "You can also check other things I've worked on on my ",
+            link("GitHub", "https://www.github.com/lartu", $true), " page. ",
+            "You can also follow me on ",
+            link("X (Twitter)", "https://www.x.com/martulartu", $true), "."
+        ),
+        parc(
+            "You can e-mail me at ", i("lartu at lartu dot net"), "."
+        ),
+        par("If you see a lartu anywhere else, that's also probably me."),
+        include("footer.kat"),
+    )
+);

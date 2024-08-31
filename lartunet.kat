@@ -1,0 +1,36 @@
+import "web.kat";
+
+print(
+    include("head.kat"),
+    body(
+        center(link(img("images/lartusigil.png"), "index.html")),
+        center(h1("Lartunet")),
+        par(
+            "Hello! Welcome to the lartunet, Lartu's corner of the internet.", 
+            "Here you'll find information about games and software I've worked on.",
+            link("Me?", "about.html"),
+            "I make videogames and other code stuff. I love food and rainy days.",
+            "Thank you for passing by!"
+        ),
+        par("You may be interested in the", link("videogames", "games.html"), "I've worked on,",
+        "or the", link("programming languages", "langs.html"), "I've developed."),
+        #parc("I can also offer you my ", link("List of Cool Links", "links.html"), "."),
+        parc("I use a SyncMaster 550v CRT, and this website looks pretty on it."),
+        parc("Find me on ",
+            link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
+            link("GitHub", "https://www.github.com/lartu", $true), ", ",
+            "and ", link("Itch.io", "https://lartu.itch.io", $true), ". ",
+            "You may also send e-mail lartu (at) lartu dot net."
+        ),
+        parc(
+            "The source code for this website can be found ",
+            link("here", "https://github.com/lartu/lartu.github.io", $true), ". ",
+            "It's generated using ", link("Katalyn", "https://github.com/Lartu/katalyn", $true), "."
+        ),
+        parc(
+            "The lartunet is part of the ",
+            link("LOW TECH WEBRING", "https://emreed.net/LowTech_Directory", $true), "!",
+        ),
+        include("footer.kat"),
+    )
+);

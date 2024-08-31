@@ -1,0 +1,100 @@
+import "web.kat";
+
+def title_link;
+    return 
+        h3(link($_[1], $_[4], $true), " ", small("(", $_[2], ")")) 
+        & link(img($_[3]), $_[4], $true);
+ok;
+
+print(
+    include("head.kat"),
+    body(
+        center(link(img("images/lartusigil.png"), "index.html")),
+        center(h1("Videogames")),
+
+        par("This page talks abouts the videogames I've developed.",
+        "Most of them can also be found on my",
+        link("Itch.io", "https://lartu.itch.io", $true), "page."),
+
+        title_link(
+            "Eterspire: Journey Anew!", "iOS & Android, 2024",
+            "images/eterspire4.png", "https://www.eterspire.com"
+        ),
+        par("Eterspire: Journey Anew is a rework of most content from Eterspire (2023),
+        focused on streamlining the gameplay experience and making it more welcoming to
+        new players. It introduces a main storyline and multiple quality of life features
+        that make the game much better."),
+
+        title_link(
+            "Eterspire", "iOS & Android, 2023",
+            "images/eterspire3.png", "https://www.eterspire.com"
+        ),
+        parc("A complete, graphically superior rewrite of Eterspire, focused on questing,
+        befriending wacky characters, exploring, and upgrading your gear.
+        We felt the game was now more suited for mobile devices, so we took the leap.
+        Dubbed ", i("\"the best mobile MMORPG in the history of the universe\""), " ",
+        small("(by ourselves)"), "."),
+
+        title_link(
+            "Eterspire: Return of Salgaraak", "Web & Windows, 2022-2023",
+            "images/eterspire2.png", "https://web.archive.org/web/20211223154610/https://eterspire.com/"
+        ),
+        parc(small("No longer playable, linked to archived version on the Wayback Machine.")),
+        parc("Known initially as Eterspire - Beta II, it was a complete overhaul of Eterspire,
+        focused on exploring a world and completing quests. It started as a hobby project with
+        a friend before eventually becoming our full-time job. Offline since the release of
+        Eterspire (2023)."),
+
+        title_link(
+            "Eterspire", "Web, 2021",
+            "images/eterspire1.png", "https://web.archive.org/web/20210416113913/https://www.eterspire.com/"
+        ),
+        parc(small("No longer playable, linked to archived version on the Wayback Machine.")),
+        parc("A minimal MMORPG about exploring an infinite tower, fighting monsters, finding
+        equipment, and climbing higher than everyone else. Made over the course of four months.
+        Eventually replaced by Eterspire: Return of Salgaraak.
+        Lovingly nicknamed 'Eterspire: Beta I'."),
+
+        title_link(
+            "Soft Drizzle: B-Track", "Windows & macOS, 2020",
+            "images/softdrizzle2.png", "https://lartu.itch.io/soft-drizzle-b-track"
+        ),
+        parc("A short visual novel about friendship and Halloween Festivals. Sequel to Soft Drizzle.
+        Made in a month for the Spooktober Visual Novel Jam. Awarded Best Unity Submission."),
+
+        title_link(
+            "Soft Drizzle", "Web, 2020",
+            "images/softdrizzle1.png", "https://lartu.itch.io/soft-drizzle"
+        ),
+        parc("A short, 64x64 resolution visual novel about friendship and rainy days, made in
+        7 days for LOWREZJAM 2020. Full of typos, as the screenplay was written during a long,
+        coffee fueled night writing session. I'd love to remake it someday."),
+
+        title_link(
+            "Fateful Lore", "Android & iOS, 2020",
+            "images/fatefullore.png", "https://www.fatefullore.com/"
+        ),
+        parc("Critically acclaimed retro-inspired RPG for Android and iOS devices. We found
+        no RPGs on these platforms that looked and played the way we wanted, so we made one."),
+
+        title_link(
+            "Eternal Lux", "Android, 2014",
+            "images/eternallux.png", "https://lartu.itch.io/eternal-lux"
+        ),
+        parc(small("No longer available on the Google Play store.")),
+        parc("A mobile SRPG for Android Devices inspired by the Ultima games.
+        Designed to be as lightweight as possible. Downloaded by tens of thousands of
+        players worldwide."),
+
+        title_link(
+            "Aidinia: An Epic Adventure!", "Android, 2013",
+            "images/aidinia.png", "https://lartu.itch.io/aidinia"
+        ),
+        parc(small("No longer available on the Google Play store.")),
+        parc("A mobile RPG for Android Devices inspired by Gameboy Color RPGs
+        such as Dragon Quest I & II. Although it's not the first game I
+        ever released, it's the first 'big' one."),
+
+        include("footer.kat"),
+    )
+);

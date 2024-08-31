@@ -1,7 +1,12 @@
 #!/bin/bash
 set -e
-python3 scfl_build.py
+rm -rf docs
+sh regenerate.sh
+mkdir docs
+mv *.html docs
+cp -r include docs
+cp -r images docs
 echo "lartu.net" > docs/CNAME
-git add --all
-git commit -m "Upload $(date)"
-git push
+#git add --all
+#git commit -m "Upload $(date)"
+#git push

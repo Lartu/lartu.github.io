@@ -1,0 +1,9 @@
+import "web.kat";
+
+# Footer
+exec("date");
+$datetime: trim($_stdout);
+
+print(
+    center(parc(small("Webpage compiled on ", $datetime, ".")))
+);

@@ -1,0 +1,166 @@
+def img;
+# Generated HTML for an image tag
+    $buffer: "";
+    $url: $_[1];
+    $buffer: join($buffer, "<img src=\"", $url, "\" ");
+    if is($_[2]);
+        $_[2]: trim($_[2]);
+        if len($_[2]);
+            $buffer: join($buffer, "class=\"", $_[2], "\" ");
+        ok;
+    ok;
+    if is($_[3]);
+        $_[3]: trim($_[3]);
+        if len($_[3]);
+            $buffer: join($buffer, "style=\"", $_[2], "\" ");
+        ok;
+    ok;
+    $buffer: join($buffer, "/>");
+    return $buffer;
+ok;
+
+def bold;
+    $buffer: join("<b>", $_[1], "</b>");
+    return $buffer;
+ok;
+
+def link;
+    $blank: "";
+    if $_[3];
+        $blank: " target=_blank";
+    ok;
+    $buffer: join("<a href=\"", $_[2],"\"", $blank, ">", $_[1], "</a>");
+    return $buffer;
+ok;
+
+def center;
+    $buffer: join("<center>", $_[1], "</center>");
+    return $buffer;
+ok;
+
+def par;
+    $buffer: "<p>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+        if $_r < len($_);
+            $buffer: $buffer & " ";
+        ok;
+    ok;
+    $buffer: $buffer & "</p>";
+    return $buffer;
+ok;
+
+def parc;
+    $buffer: "<p>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</p>";
+    return $buffer;
+ok;
+
+def h1;
+    $buffer: "<h1>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</h1>";
+    return $buffer;
+ok;
+
+def h2;
+    $buffer: "<h2>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</h2>";
+    return $buffer;
+ok;
+
+def h3;
+    $buffer: "<h3>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</h3>";
+    return $buffer;
+ok;
+
+def title;
+    $buffer: "<title>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</title>";
+    return $buffer;
+ok;
+
+def description;
+    $buffer: "<meta name=\"description\" content=\"";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "\">";
+    return $buffer;
+ok;
+
+def head;
+    $buffer: "<head><meta charset='utf-8'>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</head>";
+    return $buffer;
+ok;
+
+def body;
+    $buffer: "<body>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</body>";
+    return $buffer;
+ok;
+
+def css;
+    $buffer: "<link rel=\"stylesheet\" href=\"";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "\">";
+    return $buffer;
+ok;
+
+def small;
+    $buffer: "<small>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</small>";
+    return $buffer;
+ok;
+
+def include;
+    $command: "kat \"" & replace($_[1], "\"", "'") & "\"";
+    exec($command);
+    return $_stdout;
+ok;
+
+def i;
+    $buffer: "<i>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</i>";
+    return $buffer;
+ok;
+
+def hr;
+    return "<hr>";
+ok;
+
+(*
+img("https://lartu.img", "image");
+bold("https://lartu.img");
+link("Visit the lartunet!", "https://www.lartu.net");
+link("Visit the lartunet on a new window!", "https://www.lartu.net", $true);
