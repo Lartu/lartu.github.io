@@ -8,7 +8,9 @@ print(
         par("Hello, I'm Lartu. This is my personal website."),
         parc(
             "I'm mostly a game developer. Mostly, because I work on other ",
-            "stuff from time to time. You can check my games on the ",
+            "stuff from time to time. I co-founded ",
+            link("Stonehollow Workshop", "https://stonehollow-workshop.com", $true), ". ",
+            "You can check my games on the ",
             link("homepage", "index.html"), ". ",
             "Some of them are also hosted on ", link("Itch.io", "https://lartu.itch.io", $true), ". ",
             "You can also check other things I've worked on on my ",
