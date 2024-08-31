@@ -159,6 +159,15 @@ def hr;
     return "<hr>";
 ok;
 
+def olist;
+    $buffer: "<ol>";
+    for $_;
+        $buffer: $buffer & "<li>" & $_[$_r] & "</li>";
+    ok;
+    $buffer: $buffer & "</ol>";
+    return $buffer;
+ok;
+
 (*
 img("https://lartu.img", "image");
 bold("https://lartu.img");
