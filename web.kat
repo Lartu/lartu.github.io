@@ -110,6 +110,7 @@ ok;
 
 def head;
     $buffer: "<head><meta charset='utf-8'>";
+    $buffer: $buffer & "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
     for $_;
         $buffer: $buffer & $_[$_r];
     ok;
