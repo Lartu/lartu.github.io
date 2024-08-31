@@ -5,5 +5,9 @@ exec("date");
 $datetime: trim($_stdout);
 
 print(
-    center(parc(small("Webpage compiled on ", $datetime, ".")))
+    center(parc(
+        small("Webpage compiled on ", $datetime, ". If it's been some time
+        since that date, refresh the page to see if there's something new!
+        (but probably not)"))
+    )
 );
