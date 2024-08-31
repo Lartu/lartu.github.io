@@ -6,7 +6,7 @@ $datetime: trim($_stdout);
 
 print(
     center(parc(
-        small("Webpage compiled on ", $datetime, ". If it's been some time
+        small("Webpage compiled on ", $datetime, ".<br>If it's been a while
         since that date, refresh the page to see if there's something new!
         (but probably not)"))
     )
