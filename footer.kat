@@ -8,6 +8,6 @@ print(
     center(parc(
         small("Webpage compiled on ", $datetime, ".", small("<br>If it's been a while
         since that date, refresh the page to see if there's something new!
-        " & small("<br>(but probably not)")))
+        " & small("<br>(but probably not)"))))
     )
 );
