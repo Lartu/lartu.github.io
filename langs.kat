@@ -14,7 +14,8 @@ print(
 
         parc("This page talks abouts the programming languages I've developed ",
         "(to varying degrees of ",
-        link("esotericism", "https://en.wikipedia.org/wiki/Esoteric_programming_language"),")."),
+        link("esotericism", "https://en.wikipedia.org/wiki/Esoteric_programming_language", $true),
+        ")."),
 
         title_link(
             "WebSCFL", "2024",
