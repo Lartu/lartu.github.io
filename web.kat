@@ -34,7 +34,11 @@ def link;
 ok;
 
 def center;
-    $buffer: join("<center>", $_[1], "</center>");
+    $buffer: "<center>";
+    for $_;
+        $buffer: $buffer & $_[$_r];
+    ok;
+    $buffer: $buffer & "</center>";
     return $buffer;
 ok;
 

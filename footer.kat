@@ -5,11 +5,8 @@ exec("date");
 $datetime: trim($_stdout);
 
 print(
-    center(parc(
-        small("Webpage compiled on ", $datetime, "." (*& "<br>", small("If it's been a while
-        since that date, refresh the page to see if there's something new!<br>
-        " & small("(but probably not)"))
-        *)
-        ))
+    center(
+        parc(small("Webpage compiled on ", $datetime, ".")),
+        img("images/katbadge.png"),
     )
 );
