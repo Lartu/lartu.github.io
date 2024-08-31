@@ -9,7 +9,7 @@ ok;
 print(
     include("head.kat"),
     body(
-        center(link(img("images/lartusigil.png"), "index.html")),
+        center(link(img("images/arcade.png"), "index.html")),
         center(h1("Videogames")),
 
         par("This page talks abouts the videogames I've developed.",

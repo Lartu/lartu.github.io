@@ -9,7 +9,7 @@ ok;
 print(
     include("head.kat"),
     body(
-        center(link(img("images/lartusigil.png"), "index.html")),
+        center(link(img("images/dinosaurs.png"), "index.html")),
         center(h1("Programming Languages & Esolangs")),
 
         par("This page talks abouts the programming languages I've developed (to varying degrees of esotericism)."),
