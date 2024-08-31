@@ -20,7 +20,7 @@ print(
             link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
             link("GitHub", "https://www.github.com/lartu", $true), ", ",
             "and ", link("Itch.io", "https://lartu.itch.io", $true), ". ",
-            "You may also send e-mail lartu (at) lartu dot net."
+            "You may also e-mail lartu (at) lartu dot net."
         ),
         parc(
             "The source code for this website can be found ",
