@@ -1,0 +1,11 @@
+import "web.kat";
+
+print(
+    include("head.kat"),
+    body(
+        center(link(img("images/thoughts.png"), "index.html")),
+        center(h1("Thoughts")),
+        par("No thoughts yet!"),
+        include("footer.kat"),
+    )
+);

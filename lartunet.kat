@@ -14,7 +14,11 @@ print(
         ),
         par("You may be interested in the", link("videogames", "games.html"), "I've worked on,",
         "or the", link("programming languages", "langs.html"), "I've developed."),
-        parc("I can also offer you my ", link("List of Cool Links", "links.html"), "."),
+        parc(
+            "I can also offer you my ", link("List of Cool Links", "links.html"), ". ",
+            "If I have any thoughts I'd like to share, I'll post them ",
+            link("here", "thoughts.html"), "."
+        ),
         parc("I use a SyncMaster 550v CRT, and this website looks pretty on it."),
         parc("Find me on ",
             link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
