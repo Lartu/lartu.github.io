@@ -12,7 +12,9 @@ print(
         center(link(img("images/dinosaurs.png"), "index.html")),
         center(h1("Programming Languages & Esolangs")),
 
-        par("This page talks abouts the programming languages I've developed (to varying degrees of esotericism)."),
+        parc("This page talks abouts the programming languages I've developed ",
+        "(to varying degrees of ",
+        link("esotericism", "https://en.wikipedia.org/wiki/Esoteric_programming_language"),")."),
 
         title_link(
             "WebSCFL", "2024",
