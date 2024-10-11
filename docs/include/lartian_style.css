@@ -4,7 +4,7 @@ body {
     padding: 2rem;
     box-sizing: border-box;
     background-color: white;
-    background-color: gray;
+    background-color: #ffffeb /*gray*/;
     color: black;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -15,10 +15,10 @@ img {
 }
 
 a {
-    color: black;
+    color: blue;
 }
 
 a:visited {
-    color: black;
+    color: blue;
     text-decoration: line-through;
 }

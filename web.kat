@@ -173,6 +173,15 @@ def olist;
     return $buffer;
 ok;
 
+def ulist;
+    $buffer: "<ul>";
+    for $_;
+        $buffer: $buffer & "<li>" & $_[$_r] & "</li>";
+    ok;
+    $buffer: $buffer & "</ul>";
+    return $buffer;
+ok;
+
 (*
 img("https://lartu.img", "image");
 bold("https://lartu.img");
