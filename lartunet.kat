@@ -22,6 +22,7 @@ print(
         parc("I use a SyncMaster 550v CRT, and this website looks pretty on it."),
         parc("Find me on ",
             link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
+            link("Bluesky", "https://bsky.app/profile/lartu.net", $true), ", ",
             link("GitHub", "https://www.github.com/lartu", $true), ", ",
             "and ", link("Itch.io", "https://lartu.itch.io", $true), ". ",
             "You may also e-mail lartu (at) lartu dot net."
