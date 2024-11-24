@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larturead</title>
+</head>
+<style>
+    html {
+        margin: 0px;
+        padding: 1em;
+    }
+
+    body {
+        margin: auto;
+        background-color: black;
+        color: gainsboro;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    a {
+        color: #ff9900;
+    }
+
+    #fileContent {
+        width: 100%;
+        display: block;
+        margin-top: 1em;
+        height: 5em;
+    }
+
+    button,
+    input {
+        font-size: 12pt;
+    }
+
+    textarea {
+        background-color: black;
+        color: grey;
+        font-size: 12pt;
+    }
+
+    #readArea {
+        width: 100%;
+        margin-top: 200px;
+        margin-bottom: 200px;
+        text-align: center;
+    }
+
+    #editablearea,
+    #editablearea-pre,
+    #editablearea-post {
+        font-family: monospace;
+        font-size: 20px;
+    }
+
+    #editablearea {
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    #editablearea-pre,
+    #editablearea-post {
+        color: rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<body>
+    <h1>Larturead</h1>
+    <p>Larturead is a tool based on <a href="https://github.com/lartu/beknowledge">BeKnowledge</a>, designed to help you
+        read faster.
+        Load a text file or paste the text in the box below and then scroll down and press "Read" to start reading it
+        one word at a
+        time.
+    </p>
+    <h3>Load a file...</h3>
+    <div>
+        <input type="file" id="fileInput" accept=".txt" />
+        <br>
+        <button id="readButton" style="margin-top: 10px;">Load text file</button>
+    </div>
+    <h3>...or paste text here.</h3>
+    <textarea id="fileContent" placeholder="Write something here or load a file!"></textarea>
+
+    <p>
+        Reading speed:
+    </p>
+    <input type="range" id="speedSlider" min="10" max="500" step="10" value=120 style="width: 100%; max-width: 300px;">
+    <p style="font-size: 10pt;">
+        Current Value: <span id="sliderValue">120</span>ms per word
+    </p>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="startReading">Start Reading</button>
+        <button id="stopReading">Stop Reading</button>
+    </div>
+
+
+
+    <div id="readArea">
+        <span id="editablearea-pre">
+        </span><span id="editablearea">
+            Loading...
+        </span><span id="editablearea-post">
+        </span>
+        <br>
+        <br>
+        <a style="font-size: 8pt; color: black; background-color: gray; cursor:pointer; text-decoration: none; padding: 5px;"
+            id="pause">Pause</a>
+        <a style="font-size: 8pt; color: black; background-color: gray; cursor:pointer; text-decoration: none; padding: 5px;"
+            id="continue">Continue</a>
+    </div>
+
+    <script>
+        document.getElementById('readButton').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Por favor, selecciona un archivo primero.');
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                const fileContent = event.target.result; // Aquí se carga el contenido del archivo como string
+                console.log(fileContent); // Puedes verlo en la consola
+                document.getElementById('fileContent').innerText = fileContent; // Mostrar en el DOM
+            };
+
+            reader.onerror = function () {
+                alert('Error al leer el archivo');
+            };
+
+            reader.readAsText(file); // Lee el archivo como texto
+        });
+
+        const readArea = document.getElementById('editablearea');
+        const readArea_pre = document.getElementById('editablearea-pre');
+        const readArea_post = document.getElementById('editablearea-post');
+        resetReadArea();
+
+        function resetReadArea() {
+            readArea.innerHTML = "Words from your text will appear here.<br><small>Focus your eyes here.</small>";
+            setPreText("");
+            setPostText("");
+            document.getElementById('continue').style.display = "none";
+            document.getElementById('pause').style.display = "none";
+        }
+
+        document.getElementById('startReading').addEventListener('click', async () => {
+            const textContents = document.getElementById('fileContent');
+            const split_text = textContents.value.replace(/[-–—]/g, " ").split(/\s/).filter(str => str !== "");
+            await stopReadText(); // Ensure any running instance is stopped
+            console.log("Starting new execution...");
+            if (split_text.length > 0) {
+                await readText(split_text);
+            } else {
+                setText("Enter some text first!");
+            }
+        });
+
+        let paused = false;
+
+        document.getElementById('pause').addEventListener('click', () => {
+            setPause(true);
+        });
+
+        document.getElementById('continue').addEventListener('click', () => {
+            setPause(false);
+        });
+
+        function setPause(pause_state) {
+            paused = pause_state;
+            document.getElementById('continue').style.display = paused ? "initial" : "none";
+            document.getElementById('pause').style.display = !paused ? "initial" : "none";
+        }
+
+        const slider = document.getElementById('speedSlider');
+        const speed_display = document.getElementById('sliderValue');
+        document.getElementById('speedSlider').addEventListener('input', (event) => {
+            sliderValue = event.target.value;
+            speed_display.textContent = sliderValue;
+            pause_time = Math.floor(sliderValue);
+        });
+
+        let pause_time = 150; // <- Default pause time
+        slider.value = pause_time;
+        speed_display.textContent = pause_time;
+
+        document.getElementById('stopReading').addEventListener('click', async () => {
+            await stopReadText(); // Ensure any running instance is stopped
+        });
+
+        function setText(text) {
+            readArea.innerText = text;
+        }
+
+        function setPreText(text) {
+            readArea_pre.innerText = text;
+        }
+
+        function setPostText(text) {
+            readArea_post.innerText = text;
+        }
+
+        function sleep(ms) {
+            if (ms > 1000) {
+                ms = 1000;
+            }
+            console.log("Paused for " + ms + " ms. Pause time is: " + pause_time);
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        let isRunning = false; // Flag to indicate if readText is running
+        let stopExecution = false; // Flag to signal stopping
+        let currentExecutionPromise = null; // Promise to track current execution
+
+        function get_empty_char() {
+            return String.fromCharCode(97 + Math.floor(Math.random() * 26));
+        }
+
+        function getAverageWordLength(words) {
+            // Calculate the total length of all words
+            const totalLength = words.reduce((sum, word) => sum + word.length, 0);
+
+            // Calculate and return the average word length
+            return totalLength / words.length;
+        }
+
+        async function readText(split_text) {
+            if (isRunning) {
+                console.log("Already running!");
+                return currentExecutionPromise; // Return current promise if already running
+            }
+
+            let long_word_length = 2 * getAverageWordLength(split_text);
+
+            let speed_handycap = 30;
+            isRunning = true; // Mark as running
+            stopExecution = false; // Reset stop flag
+            let pre_word_length = 10;
+            let post_word_length = 10;
+            let last_word = "";
+
+            // Find longest word
+            const longest = split_text.reduce((longest, current) => {
+                return current.length > longest.length ? current : longest;
+            }, "");
+            const max_word_length = longest.length;
+            let line_length = max_word_length * 3;
+
+            currentExecutionPromise = (async () => {
+                let counter = 0;
+
+                setPause(false);
+
+                setPreText("");
+                setPostText("");
+                setText("3");
+                await sleep(1000);
+                if (stopExecution) {
+                    isRunning = false
+                    return;
+                } while (paused) {
+                    await sleep(10);
+                }
+                setText("2");
+                await sleep(1000);
+                if (stopExecution) {
+                    isRunning = false
+                    return;
+                } while (paused) {
+                    await sleep(10);
+                }
+                setText("1");
+                await sleep(1000);
+                if (stopExecution) {
+                    isRunning = false
+                    return;
+                } while (paused) {
+                    await sleep(10);
+                }
+
+                while (counter < split_text.length) {
+                    if (stopExecution) {
+                        console.log("Execution stopped!");
+                        break; // Exit the loop if stop is requested
+                    }
+
+                    let next_word = split_text[counter];
+                    setText(next_word);
+                    pre_word_length = Math.floor((line_length - next_word.length) / 2);
+                    post_word_length = pre_word_length;
+
+                    let pre_word = "";
+                    if (counter > 0) {
+                        pre_word = split_text[counter - 1];
+                        if (pre_word.length > pre_word_length) {
+                            pre_word = pre_word.substring(pre_word.length - pre_word_length);
+                        }
+                    }
+                    pre_word = pre_word + " ";
+                    if (pre_word.length < pre_word_length) {
+                        while (pre_word.length < pre_word_length) {
+                            pre_word = get_empty_char() + pre_word;
+                        }
+                    }
+                    setPreText(pre_word);
+
+                    let post_word = "";
+                    if (counter < split_text.length - 1) {
+                        post_word = split_text[counter + 1];
+                        if (post_word.length > post_word_length) {
+                            post_word = post_word.substring(post_word.length - post_word_length);
+                        }
+                    }
+                    if (next_word.endsWith(".") || next_word.endsWith("?") || next_word.endsWith("!") || next_word.endsWith(";") || next_word.endsWith(":")) {
+                        post_word = "";
+                    }
+                    post_word = " " + post_word;
+                    if (post_word.length < post_word_length) {
+                        while (post_word.length < post_word_length) {
+                            post_word = post_word + get_empty_char();
+                        }
+                    }
+                    if (next_word.length % 2 == 1) {
+                        post_word += get_empty_char();
+                    }
+                    setPostText(post_word);
+
+                    //if (next_word.endsWith(",") || next_word.endsWith(";") || next_word.endsWith(":")) {
+                    //    await sleep(pause_time);
+                    //} else
+                    if (next_word.endsWith(".") || next_word.endsWith("?") || next_word.endsWith("!") || next_word.endsWith(";") || next_word.endsWith(":")) {
+                        await sleep(pause_time * 1.5 + speed_handycap);
+                    } else {
+                        await sleep(pause_time + speed_handycap);
+                    }
+
+                    if (next_word.length < long_word_length && last_word.length >= long_word_length) {
+                        speed_handycap = 30;
+                    }
+
+                    if (speed_handycap > 0) {
+                        speed_handycap -= 10;
+                    }
+
+                    if (next_word.length >= long_word_length) {
+                        await sleep(pause_time * 0.5);
+                        // If this word was too long, pause a bit more.
+                    }
+                    if (next_word.length < long_word_length && last_word.length >= long_word_length) {
+                        await sleep(pause_time * 0.5);
+                        // If the last word was too long, but this one isn't,
+                        // pause twice for the next word,
+                        // otherwise my brain explodes
+                    }
+                    last_word = next_word;
+
+                    let waspaused = false;
+                    while (paused) {
+                        waspaused = true;
+                        await sleep(10);
+                    }
+                    if (waspaused) {
+                        await sleep(pause_time * 2 + speed_handycap);
+                        speed_handycap = 30;
+                    }
+                    counter++;
+                }
+                isRunning = false; // Reset running flag
+                document.getElementById('continue').style.display = "none";
+                document.getElementById('pause').style.display = "none";
+                return "Finished"; // Resolve the promise
+            })();
+
+            return currentExecutionPromise;
+        }
+
+        function stopReadText() {
+            setPause(false);
+            document.getElementById('continue').style.display = "none";
+            document.getElementById('pause').style.display = "none";
+            if (isRunning) {
+                stopExecution = true; // Signal the function to stop
+                return currentExecutionPromise; // Return the promise to wait for completion
+            } else {
+                console.log("No execution to stop.");
+                return Promise.resolve(); // Resolve immediately if nothing is running
+            }
+        }
+    </script>
+</body>
+
+</html>
