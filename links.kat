@@ -90,6 +90,11 @@ print(
             link("Worst MMO Ever? - Nodiatis", "https://www.youtube.com/watch?v=cjITJ5pgWyw", $true),
         ),
 
+        h2("Personal Stuff"),
+        olist(
+            link("Larturead " & small("(web reimplementation of BeKnowledge, my reading tool)"), "files/larturead.html", $false),
+        ),
+
         include("footer.kat"),
     )
 );
