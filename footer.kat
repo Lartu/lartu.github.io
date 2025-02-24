@@ -5,7 +5,7 @@ exec("date");
 $datetime: trim($_stdout);
 
 exec("git rev-list --count HEAD");
-$commit_count: trim($_stdout);
+$commit_count: to_num(trim($_stdout)) + 1;
 
 print(
     parc(small("Webpage compiled for the ", $commit_count, "<sup>th</sup> time on ", $datetime, ".")),

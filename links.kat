@@ -87,4 +87,9 @@ print(
         link("Worst MMO Ever? - Nostale", "https://www.youtube.com/watch?v=i38zoixie3Q", $true),
         link("Worst MMO Ever? - Nodiatis", "https://www.youtube.com/watch?v=cjITJ5pgWyw", $true),
     ),
+
+    par(
+        "This whole section should be updated to pull data from a series of TXT files, allowing me to simply dump the links instead of manually adding them here.",
+        "A project for the future."
+    )
 );

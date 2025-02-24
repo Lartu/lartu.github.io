@@ -7,7 +7,7 @@ def title_link;
 ok;
 
 print(
-    h1a("games", "Videogames"),
+    h1a("games", "My Videogames"),
     link(img("images/arcade.png", "section_header"), "index.html"),
 
     par("This section talks abouts the videogames I've developed.",

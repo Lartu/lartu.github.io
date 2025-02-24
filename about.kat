@@ -7,9 +7,12 @@ print(
     parc(
         "I'm mostly a game developer. Mostly, because I work on other ",
         "stuff from time to time. I co-founded ",
-        link("Stonehollow Workshop", "https://stonehollow-workshop.com", $true), ". ",
+        link("Stonehollow Workshop", "https://www.stonehollow-workshop.com", $true), ". ",
     ),
-    parc("I have studied Computer Science and Anthropology of Religion, and I have a license to pilot sailships."),
+    par(
+        "I have studied Computer Science and Anthropology of Religion, and I have a license to pilot sailships.",
+        "I can speak English, Spanish and Japanese."
+    ),
     parc("Find me on ",
         link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
         (*link("Bluesky", "https://bsky.app/profile/lartu.net", $true), " ",

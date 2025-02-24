@@ -43,6 +43,8 @@ print(
         hr(),
         include("computers.kat"),
         hr(),
+        include("travel.kat"),
+        hr(),
         include("thoughts.kat"),
         hr(),
         include("links.kat"),
