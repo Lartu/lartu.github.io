@@ -1,0 +1,77 @@
+import "web.kat";
+
+print(
+    h1a("projects", "Other Computer Projects"),
+    link(img("images/computer.png"), "index.html"),
+
+    parc("This section highlights some of my projects, though I've developed many others that aren't included,
+    either because they don't fit here or because I don't find them significant enough to add. Oh bother."),
+
+    ulist(
+        (* P5 Clickable *)
+        join(
+            bold(link("p5.clickable", "https://github.com/Lartu/p5.clickable")),
+            break(),
+            i("2019"),
+            break(),
+            "Event driven, easy-to-use button library for P5.js. It even ended up in a P5 book. I'm in a book!"
+        ),
+        (* Larturead *)
+        join(
+            bold(link("Larturead", "files/larturead.html")),
+            break(),
+            i("2024"),
+            break(),
+            "Web reimplementation of BeKnowledge, my reading tool for reading fast."
+        ),
+        (* Dir *)
+        join(
+            bold(link("dir", "https://github.com/Lartu/dir")),
+            break(),
+            i("2024"),
+            break(),
+            "This is a tiny script I use to display the contents of a directory in my terminal in a fashion similar to MS-DOS's dir, which I like better than the usual ls."
+        ),
+        (* GBA-DEV *)
+        join(
+            bold(link("GBA-Dev", "https://github.com/Lartu/GBA-Dev")),
+            break(),
+            i("2023"),
+            break(),
+            "Some tests and a half-baked (but very performant) pixel graphical library for Gameboy Advance game development."
+        ),
+        (* TunaBB *)
+        join(
+            bold(link("TunaBB", "https://github.com/Lartu/TunaBB")),
+            break(),
+            i("2023"),
+            break(),
+            "A bulletin board designed from scratch to be self-contained, easy to deploy, easy to customize and easy to extend."
+        ),
+        (* Mitsubachi *)
+        join(
+            bold(link("Mitsubachi", "https://github.com/Lartu/mitsubachi")),
+            break(),
+            i("2019"),
+            break(),
+            "Mitsubachi is a tiny and open chat protocol, designed to be minimal, easy to implement, easy to use and easy to understand. Mitsubachi supports nicknames, nickname changing, user-to-user messaging and channel / group (known in Mitsubachi as 'distribution lists') chat."
+        ),
+        (* tmon *)
+        join(
+            bold(link("tmon", "https://github.com/Lartu/tmon")),
+            break(),
+            i("2020"),
+            break(),
+            "tmon, the [You]Tube Monitor, is a tool to make regular, local backups of your YouTube music playlists. It's pronounced te-mon, with te like in tetris and mon like in monitor."
+        ),
+        (* OpenNapkin *)
+        join(
+            bold(link("OpenNapkin", "https://github.com/Lartu/OpenNapkin")),
+            break(),
+            i("2020"),
+            break(),
+            "OpenNapkin is a graphical Gopher client written in Gambas3. I wrote OpenNapkin because I wasn't able to find another Gopher client that wasn't written only for console or that wasn't part of a much bigger web-browsing suite."
+        ),
+        "I'm most probably forgetting something."
+    ),
+);

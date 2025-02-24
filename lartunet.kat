@@ -3,29 +3,23 @@ import "web.kat";
 print(
     include("head.kat"),
     body(
-        center(link(img("images/lartusigil.png"), "index.html")),
-        center(h1("Lartunet")),
+        link(img("images/lartusigil.png"), "index.html"),
+        h1a("home", "Lartunet"),
         par(
             "Hello! Welcome to the lartunet, Lartu's corner of the internet.", 
             "Here you'll find information about games and software I've worked on.",
-            link("Me?", "about.html"),
+            link("Me?", "#about"),
             "I make videogames and other code stuff. I love food and rainy days.",
             "Thank you for passing by!"
         ),
-        par("You may be interested in the", link("videogames", "games.html"), "I've worked on,",
-        "or the", link("programming languages", "langs.html"), "I've developed."),
+        par("You may be interested in the", link("videogames", "#games"), "I've worked on,",
+        "or the", link("programming languages", "#langs"), "I've developed.",
+        "Or maybe", link("other projects", "#projects") & "."),
         parc(
-            "I can also offer you my ", link("List of Cool Links", "links.html"), ". ",
+            "I can also offer you my ", link("List of Cool Links", "#links"), " ",
+            "and ", link("Books", "#books"), ". ",
             "If I have any thoughts I'd like to share, I'll post them ",
-            link("here", "thoughts.html"), "."
-        ),
-        parc("I use a SyncMaster 550v CRT, and this website looks pretty on it."),
-        parc("Find me on ",
-            link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
-            link("Bluesky", "https://bsky.app/profile/lartu.net", $true), ", ",
-            link("GitHub", "https://www.github.com/lartu", $true), ", ",
-            "and ", link("Itch.io", "https://lartu.itch.io", $true), ". ",
-            "You may also e-mail lartu (at) lartu dot net."
+            link("here", "#thoughts"), "."
         ),
         parc(
             "The source code for this website can be found ",
@@ -36,6 +30,20 @@ print(
             "The lartunet is part of the ",
             link("LOW TECH WEBRING", "https://emreed.net/LowTech_Directory", $true), "!",
         ),
+        include("about.kat"),
+        hr(),
+        include("games.kat"),
+        hr(),
+        include("langs.kat"),
+        hr(),
+        include("projects.kat"),
+        hr(),
+        include("books.kat"),
+        hr(),
+        include("thoughts.kat"),
+        hr(),
+        include("links.kat"),
+        hr(),
         include("footer.kat"),
     )
 );

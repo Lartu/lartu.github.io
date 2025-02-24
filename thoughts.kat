@@ -1,11 +1,7 @@
 import "web.kat";
 
 print(
-    include("head.kat"),
-    body(
-        center(link(img("images/thoughts.png"), "index.html")),
-        center(h1("Thoughts")),
-        par("No thoughts yet!"),
-        include("footer.kat"),
-    )
+    h1a("thoughts", "Thoughts"),
+    link(img("images/thoughts.png"), "index.html"),
+    par("No thoughts yet!"),
 );

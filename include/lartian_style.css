@@ -1,12 +1,15 @@
+html{
+    margin: none;
+    border-left: 40px solid rgb(152, 152, 255);
+}
+
 body {
-    margin: auto;
-    max-width: 1024px;
+    max-width: 800px;
     padding: 2rem;
     box-sizing: border-box;
     background-color: white;
-    background-color: #ffffeb /*gray*/;
     color: black;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: monospace;
 }
 
 img {

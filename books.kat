@@ -1,0 +1,32 @@
+import "web.kat";
+
+print(
+    h1a("books", "Curated Reads"),
+    link(img("images/books.png"), "index.html"),
+
+    parc("Also known as 'Books I Really Like'."),
+
+    ulist(
+        join(
+            bold("World of Warcraft"),
+            break(),
+            i("Daniel Lisi, 2016, Boss Fight Books"),
+            break(),
+            "With over 100 million accounts and $10 billion in revenue, World of Warcraft is the most-subscribed MMORPG and highest-grossing game ever. Daniel Lisi, a lifelong WoW player turned game developer, explores its origins, addictive gameplay, social impact, and the deep connections forged within its world."
+        ),
+        join(
+            bold("EverQuest"),
+            break(),
+            i("Matthew S. Smith, 2024, Boss Fight Books"),
+            break(),
+            "«You're in our world now.» Sony's 1999 ad for EverQuest invited players into a groundbreaking MMORPG. It became the top subscription game in North America for five years until World of Warcraft took over. Journalist Matthew S. Smith explores its creation, impact on gaming addiction, and lasting legacy."
+        ),
+        join(
+            bold(".hack//AI Buster"),
+            break(),
+            i("Tatsuya Hamazaki, 2002. My edition is by Tokyopop, published in 2006."),
+            break(),
+            "AI Buster, the prequel to .hack follows the avatar Albireo, as he tries to discover why The World -- the most advanced game ever created is in danger of falling apart. I haven't played the hack games as of this writing, but this book is an amazing MMORPG read regardless. Also my favourite book."
+        ),
+    ),
+);

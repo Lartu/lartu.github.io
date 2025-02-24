@@ -72,6 +72,19 @@ def h1;
     return $buffer;
 ok;
 
+def h1a;
+    $buffer: "<h1 id='" & $_[1] & "'>";
+    for $_;
+        $i: $_r;
+        if $i = 1;
+            continue;
+        ok;
+        $buffer: $buffer & $_[$i];
+    ok;
+    $buffer: $buffer & "</h1>";
+    return $buffer;
+ok;
+
 def h2;
     $buffer: "<h2>";
     for $_;
@@ -180,6 +193,10 @@ def ulist;
     ok;
     $buffer: $buffer & "</ul>";
     return $buffer;
+ok;
+
+def break;
+    return "<br>";
 ok;
 
 (*

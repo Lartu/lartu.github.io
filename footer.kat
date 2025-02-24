@@ -5,8 +5,6 @@ exec("date");
 $datetime: trim($_stdout);
 
 print(
-    center(
-        parc(small("Webpage compiled on ", $datetime, ".")),
-        link(img("images/katbadge.png"), "https://github.com/Lartu/katalyn", $true),
-    )
+    parc(small("Webpage compiled on ", $datetime, ".")),
+    link(img("images/katbadge.png"), "https://github.com/Lartu/katalyn", $true)
 );
