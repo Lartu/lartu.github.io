@@ -8,7 +8,7 @@ ok;
 
 print(
     h1a("games", "Videogames"),
-    link(img("images/arcade.png"), "index.html"),
+    link(img("images/arcade.png", "section_header"), "index.html"),
 
     par("This section talks abouts the videogames I've developed.",
     "Most of them can also be found on my",

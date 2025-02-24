@@ -2,13 +2,14 @@ import "web.kat";
 
 print(
     h1a("about", "About Me"),
-    link(img("images/picture.png"), "index.html"),
+    link(img("images/picture.png", "section_header"), "index.html"),
     par("Hello, I'm Lartu. This is my personal website."),
     parc(
         "I'm mostly a game developer. Mostly, because I work on other ",
         "stuff from time to time. I co-founded ",
         link("Stonehollow Workshop", "https://stonehollow-workshop.com", $true), ". ",
     ),
+    parc("I have studied Computer Science and Anthropology of Religion, and I have a license to pilot sailships."),
     parc("Find me on ",
         link("X (Twitter)", "https://www.x.com/martulartu", $true), ", ",
         (*link("Bluesky", "https://bsky.app/profile/lartu.net", $true), " ",

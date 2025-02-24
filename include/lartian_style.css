@@ -17,6 +17,11 @@ img {
     max-width: 80%;
 }
 
+.section_header {
+    background-color: rgb(152, 152, 255);
+    /* black works fine too */
+}
+
 a {
     color: blue;
 }

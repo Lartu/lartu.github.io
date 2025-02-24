@@ -8,7 +8,7 @@ ok;
 
 print(
     h1a("langs", "Programming Languages & Esolangs"),
-    link(img("images/dinosaurs.png"), "index.html"),
+    link(img("images/dinosaurs.png", "section_header"), "index.html"),
 
     parc("This section talks abouts the programming languages I've developed ",
     "(to varying degrees of ",

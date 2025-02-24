@@ -2,7 +2,7 @@ import "web.kat";
 
 print(
     h1("My Primary Computers"),
-    link(img("images/laptop.png"), "index.html"),
+    link(img("images/laptop.png", "section_header"), "index.html"),
 
     parc("Practically a ripoff from Ken Silverman's website. My main computers over time."),
 

@@ -2,7 +2,7 @@ import "web.kat";
 
 print(
     h1a("projects", "Other Computer Projects"),
-    link(img("images/computer.png"), "index.html"),
+    link(img("images/computer.png", "section_header"), "index.html"),
 
     parc("This section highlights some of my projects, though I've developed many others that aren't included,
     either because they don't fit here or because I don't find them significant enough to add. Oh bother."),

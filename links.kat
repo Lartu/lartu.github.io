@@ -8,7 +8,7 @@ ok;
 
 print(
     h1a("links", "List of Cool Links"),
-    link(img("images/links.png"), "index.html"),
+    link(img("images/links.png", "section_header"), "index.html"),
     
     h2("What and Why"),
     par("Google and Bing have become very crappy. Every day I find it harder and harder",

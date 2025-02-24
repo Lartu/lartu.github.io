@@ -2,6 +2,6 @@ import "web.kat";
 
 print(
     h1a("thoughts", "Thoughts"),
-    link(img("images/thoughts.png"), "index.html"),
+    link(img("images/thoughts.png", "section_header"), "index.html"),
     par("No thoughts yet!"),
 );

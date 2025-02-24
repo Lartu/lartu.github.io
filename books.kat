@@ -2,7 +2,7 @@ import "web.kat";
 
 print(
     h1a("books", "Curated Reads"),
-    link(img("images/books.png"), "index.html"),
+    link(img("images/books.png", "section_header"), "index.html"),
 
     parc("Also known as 'Books I Really Like'."),
 
