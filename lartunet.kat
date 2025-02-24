@@ -18,7 +18,7 @@ print(
         parc(
             "I can also offer you my ", link("List of Cool Links", "#links"), " ",
             "and ", link("Books", "#books"), ". ",
-            "Or you can just scroll and see what you find.",
+            "Or you can just scroll and see what you find. ",
             "If I have any thoughts I'd like to share, I'll post them ",
             link("here", "#thoughts"), "."
         ),
@@ -40,6 +40,8 @@ print(
         include("projects.kat"),
         hr(),
         include("books.kat"),
+        hr(),
+        include("computers.kat"),
         hr(),
         include("thoughts.kat"),
         hr(),
