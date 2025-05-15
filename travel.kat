@@ -11,7 +11,7 @@ print(
         "🇦🇷 Argentina", ", ",
         "🇦🇺 Australia", ", ",
         "🇦🇹 Austria", ", ",
-        "🇧🇷 Brazil ", small("(although just the airport)"), ", ",
+        "🇧🇷 Brazil", ", ",
         "🇨🇦 Canada ", small("(again, just the airport)"), ", ",
         "🇨🇳 China", ", ",
         "🇨🇿 Czech Republic", ", ",
