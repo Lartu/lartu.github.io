@@ -7,7 +7,7 @@ def title_link;
 ok;
 
 print(
-    h1a("langs", "Programming Languages & Esolangs"),
+    h1a("langs", "Programming Languages " & amp() & " Esolangs"),
     link(img("images/dinosaurs.png", "section_header"), "index.html"),
 
     parc("This section talks abouts the programming languages I've developed ",

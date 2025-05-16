@@ -41,7 +41,7 @@ print(
         link("Game Squares (Tiles) in RuneScape", "https://runescape.wiki/w/Game_square", $true),
     ),
 
-    h2("Links About Shaders & Visual Effects"),
+    h2("Links About Shaders " & amp() & " Visual Effects"),
     olist(
         link("Blender NPR: Recreating the Genshin Impact Shader", "https://www.artstation.com/blogs/bjayers/9oOD/blender-npr-recreating-the-genshin-impact-shader", $true),
     ),
@@ -51,7 +51,7 @@ print(
         link("The case for movie-length, narrative video games", "https://www.gamedeveloper.com/design/the-case-for-movie-length-narrative-video-games", $true),
     ),
 
-    h2("Links About General Programming & Computing"),
+    h2("Links About General Programming " & amp() & " Computing"),
     olist(
         link("Code that Doesn't Rot", "https://pointersgonewild.com/2022/02/11/code-that-doesnt-rot/", $true),
         link("Why are scripting languages (e.g. Perl, Python, and Ruby) not suitable as shell languages?", "https://stackoverflow.com/questions/3637668/why-are-scripting-languages-e-g-perl-python-and-ruby-not-suitable-as-shell", $true),

@@ -199,6 +199,10 @@ def break;
     return "<br>";
 ok;
 
+def amp;
+    return "&amp;";
+ok;
+
 (*
 img("https://lartu.img", "image");
 bold("https://lartu.img");
