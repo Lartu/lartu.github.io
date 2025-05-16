@@ -59,9 +59,10 @@ print(
         link("After self-hosting my email for twenty-three years I have thrown in the towel. The oligopoly has won.", "https://cfenollosa.com/blog/after-self-hosting-my-email-for-twenty-three-years-i-have-thrown-in-the-towel-the-oligopoly-has-won.html", $true),
     ),
 
-    h2("Links About Retrocomputing"),
+    h2("Links About <small>(retro)<small>Computing"),
     olist(
         link("Rediscovering the Small Web", "https://neustadt.fr/essays/the-small-web/", $true),
+        link("Just fucking use HTML", "https://justfuckingusehtml.com", $true),
     ),
 
     h2("Links About Other Fun Stuff"),
