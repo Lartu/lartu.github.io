@@ -16,6 +16,7 @@ print(
         "2019: HP Laptop (I don't remember the model) - Intel i5",
         "2021: Macbook Pro (2019) - Intel i9",
         "2022: Macbook Air (2017) - Intel i5",
-        "2023: Macbook Air (2022) - Apple M2",
+        "2023: Macbook Air (2022) - Apple M2 (8GB)",
+        "2025: Macbook Air (2025) - Apple M4 (24GB)",
     ),
 );
