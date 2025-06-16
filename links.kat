@@ -20,7 +20,7 @@ print(
     par("This is my (self) response to that."),
 
     par("(BTW I use", link("Ecosia", "https://www.ecosia.org", $true), "now, and it seems
-    to work much better than the alternatives. It's a keyword based search engine, so it
+    to work much better than the alternatives. It's a keyword based search engine ", small("(citation needed)"), ", so it
     doesn't search by matching your query to website profiles; it actually tries to match
     the words you requested.)"),
 
