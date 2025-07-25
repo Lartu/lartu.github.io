@@ -26,14 +26,14 @@ a:visited {
     color: purple;
 }
 
-#header-div {
+.header-div {
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-#header-div a,
+.header-div a,
 #footer a {
     color: blue;
 }
