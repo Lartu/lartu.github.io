@@ -1,6 +1,6 @@
-[[img images/lartusigil.png ]]
-
 # Lartunet
+
+[[img images/lartusigil.png ]]
 
 Hello! Welcome to the lartunet, Lartu's corner of the internet.
 Here you'll find information about games and software I've worked on.
