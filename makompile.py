@@ -315,6 +315,8 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     </style>
     <body>
 
+    <hr>
+
     <div class="header-div">
         {home_link}
         <a href=sitemap.html>Index</a> |
