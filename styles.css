@@ -23,7 +23,7 @@ a {
 }
 
 a:visited {
-    color: purple;
+    color: rgb(119, 176, 255);
 }
 
 .header-div {
