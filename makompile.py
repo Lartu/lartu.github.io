@@ -457,4 +457,9 @@ if __name__ == "__main__":
     page_html += "\n</ol>"
     previous_doc = translate_page_name(Path(files[- 1].stem))
     next_doc = translate_page_name(Path(files[0].stem))
-    save_page("sitemap", "Index", page_html, previous_doc, next_doc, "Index", has_home)
+    pager_text = "Index"
+    if len(document_names) != 1:
+        pager_text += f" ({len(document_names)} pages)"
+    else:
+        pager_text += f" ({len(document_names)} page)"
+    save_page("sitemap", "Index", page_html, previous_doc, next_doc, pager_text, has_home)
