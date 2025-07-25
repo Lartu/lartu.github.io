@@ -9,6 +9,7 @@
     html {
     margin: none;
     border-left: 40px solid maroon;
+    min-height: 100%;
 }
 
 body {
@@ -35,51 +36,46 @@ a:visited {
 }
 
 #header-div {
-    text-align: right;
-    display: flex;
-    justify-content: space-between;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-#header-div a, #footer a{
+#header-div a,
+#footer a {
     color: blue;
 }
 
 #footer {
     font-size: 10pt;
-    display: flex;
-    justify-content: space-between;
-}
-
-#footer img {
-    max-height: 100%;
-    height: auto;
-    width: auto;
-    flex-shrink: 0;
 }
 
 #page-number {
     font-style: italic;
+    font-size: 10pt;
 }
 
-code, pre{
+code,
+pre {
     background-color: #EEE;
     color: #777;
     padding: 2px;
     border-radius: 4px;
 }
 
-pre{
+pre {
     padding: 10px;
 }
     </style>
     <body>
 
     <div id="header-div">
+        <a href="index.html">Home</a> |
+        <a href=sitemap.html>Index</a> |
+        <a href="list of cool links.html">←</a> |
+        <a href="my computers.html">→</a> |
         <span id="page-number">6 / 11 – Makompile</span>
-        <span>[<a href="index.html">Home</a>]
-        [<a href=sitemap.html>Index</a>]
-        [<a href="list of cool links.html">←</a>]
-        [<a href="my computers.html">→</a>]
     </div>
 
     <hr>
@@ -95,7 +91,13 @@ To create a Makompile project, you need the following directory structure:</p>
 <ul>
 <li>
 
-<code>/docs</code> <i>(you will store your <code>.txt</code> files here)</i>
+<code>/source</code> <i>(you will store your <code>.txt</code> files here)</i>
+</li>
+</ul>
+<ul>
+<li>
+
+<code>/include</code> <i>(optional, see below)</i>
 </li>
 </ul>
 <ul>
@@ -117,11 +119,13 @@ sure their contents are formatted used the Makompile format (more on this below)
 The name of the <code>.txt</code> file <b>MUST</b> be in lowercase.</p>
 <p>If you have a file called <code>home.txt</code>, this will also act as the homepage
 of your website.</p>
+<p>If you have a folder called <code>/include</code>, the contents of that folder will be copied into the
+<code>/docs</code> folder every time you rebuild your site.</p>
 <p>For technical reasons, you cannot have a file named <code>index.txt</code> in your <code>/docs</code> directory.
 You've been warned!</p>
 <h2>Compiling your Makompile Project</h2>
 <p>To compile your Makompile project just run <code>python3 makompile.py</code> from the
-root of your project. A <code>/web</code> directory will be created with all your site inside
+root of your project. A <code>/docs</code> directory will be created with all your site inside
 of it.</p>
 <h2>The Makompile Document Format</h2>
 <h3>Titles</h3>
@@ -255,25 +259,10 @@ Pull requests are welcome, as are bug reports, issues or whatever.</p>
     <hr>
 
     <div id="footer">
-        <table style="
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            padding: 0;
-            margin: 0;
-            font: inherit;
-        ">
-            <tr style="padding: 0; margin: 0;">
-                <td style="padding: 0; margin: 0; font: inherit;">
-                    Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 17:14:19  2025</i>.
-                </td>
-                <td style="padding: 0; margin: 0; font: inherit; text-align: right;">
-                    <a href="https://github.com/lartu/makompile" target=_blank>
-                        <img src="images/makompile_badge.png">
-                    </a>
-                </td>
-            </tr>
-        </table>
+        <a href="https://github.com/lartu/makompile" target=_blank>
+            <img src="images/makompile_badge.png">
+        </a>
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 18:37:46  2025</i>.
     </div>
     </body>
     </html>

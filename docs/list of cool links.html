@@ -2,13 +2,14 @@
     <html>
     <head>
         <meta charset="utf-8">
-        <title>Links About Other Fun Stuff</title>
+        <title>List of Cool Links</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
     html {
     margin: none;
     border-left: 40px solid maroon;
+    min-height: 100%;
 }
 
 body {
@@ -35,51 +36,46 @@ a:visited {
 }
 
 #header-div {
-    text-align: right;
-    display: flex;
-    justify-content: space-between;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-#header-div a, #footer a{
+#header-div a,
+#footer a {
     color: blue;
 }
 
 #footer {
     font-size: 10pt;
-    display: flex;
-    justify-content: space-between;
-}
-
-#footer img {
-    max-height: 100%;
-    height: auto;
-    width: auto;
-    flex-shrink: 0;
 }
 
 #page-number {
     font-style: italic;
+    font-size: 10pt;
 }
 
-code, pre{
+code,
+pre {
     background-color: #EEE;
     color: #777;
     padding: 2px;
     border-radius: 4px;
 }
 
-pre{
+pre {
     padding: 10px;
 }
     </style>
     <body>
 
     <div id="header-div">
-        <span id="page-number">5 / 11 – Links About Other Fun Stuff</span>
-        <span>[<a href="index.html">Home</a>]
-        [<a href=sitemap.html>Index</a>]
-        [<a href="index.html">←</a>]
-        [<a href="makompile.html">→</a>]
+        <a href="index.html">Home</a> |
+        <a href=sitemap.html>Index</a> |
+        <a href="index.html">←</a> |
+        <a href="makompile.html">→</a> |
+        <span id="page-number">5 / 11 – List of Cool Links</span>
     </div>
 
     <hr>
@@ -233,25 +229,10 @@ field.</small></p>
     <hr>
 
     <div id="footer">
-        <table style="
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            padding: 0;
-            margin: 0;
-            font: inherit;
-        ">
-            <tr style="padding: 0; margin: 0;">
-                <td style="padding: 0; margin: 0; font: inherit;">
-                    Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 17:14:19  2025</i>.
-                </td>
-                <td style="padding: 0; margin: 0; font: inherit; text-align: right;">
-                    <a href="https://github.com/lartu/makompile" target=_blank>
-                        <img src="images/makompile_badge.png">
-                    </a>
-                </td>
-            </tr>
-        </table>
+        <a href="https://github.com/lartu/makompile" target=_blank>
+            <img src="images/makompile_badge.png">
+        </a>
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 18:37:46  2025</i>.
     </div>
     </body>
     </html>

@@ -302,7 +302,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     compiled_date = now.strftime("%a %b %d %H:%M:%S %z %Y")
     home_link = ""
     if link_home:
-        home_link = "[<a href=\"index.html\">Home</a>]"
+        home_link = "<a href=\"index.html\">Home</a> |"
     page_html = f"""
     <html>
     <head>
@@ -316,11 +316,11 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     <body>
 
     <div id="header-div">
+        {home_link}
+        <a href=sitemap.html>Index</a> |
+        <a href="{previous_doc}">←</a> |
+        <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
-        <span>{home_link}
-        [<a href=sitemap.html>Index</a>]
-        [<a href="{previous_doc}">←</a>]
-        [<a href="{next_doc}">→</a>]
     </div>
 
     <hr>
@@ -329,25 +329,10 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     <hr>
 
     <div id="footer">
-        <table style="
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            padding: 0;
-            margin: 0;
-            font: inherit;
-        ">
-            <tr style="padding: 0; margin: 0;">
-                <td style="padding: 0; margin: 0; font: inherit;">
-                    Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>{compiled_date}</i>.
-                </td>
-                <td style="padding: 0; margin: 0; font: inherit; text-align: right;">
-                    <a href="https://github.com/lartu/makompile" target=_blank>
-                        <img src="images/makompile_badge.png">
-                    </a>
-                </td>
-            </tr>
-        </table>
+        <a href="https://github.com/lartu/makompile" target=_blank>
+            <img src="images/makompile_badge.png">
+        </a>
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>{compiled_date}</i>.
     </div>
     </body>
     </html>
@@ -376,14 +361,16 @@ def copy_included():
             elif os.path.isdir(item_path):
                 shutil.rmtree(item_path)
 
-    # Copy contents from INCLUDED_FOLDER to RESULT_DIRECTORY
-    for item in os.listdir(INCLUDED_FOLDER):
-        src_path = os.path.join(INCLUDED_FOLDER, item)
-        dest_path = os.path.join(RESULT_DIRECTORY, item)
-        if os.path.isdir(src_path):
-            shutil.copytree(src_path, dest_path)
-        else:
-            shutil.copy2(src_path, dest_path)
+    # Ensure INCLUDED_FOLDER exists
+    if os.path.exists(INCLUDED_FOLDER):
+        # Copy contents from INCLUDED_FOLDER to RESULT_DIRECTORY
+        for item in os.listdir(INCLUDED_FOLDER):
+            src_path = os.path.join(INCLUDED_FOLDER, item)
+            dest_path = os.path.join(RESULT_DIRECTORY, item)
+            if os.path.isdir(src_path):
+                shutil.copytree(src_path, dest_path)
+            else:
+                shutil.copy2(src_path, dest_path)
 
 
 if __name__ == "__main__":
@@ -428,7 +415,7 @@ if __name__ == "__main__":
                     section_html = section
                 else:
                     section_html = compile_section(section)
-                if section_html[0:4] == "<h1>":
+                if section_html[0:4] == "<h1>" and not title:
                     title = section_html[4:-5]
                 page_html += "\n" + section_html
         if not title:
@@ -442,9 +429,6 @@ if __name__ == "__main__":
             next_doc = translate_page_name(Path(files[i + 1].stem))
         page_number = f"{i + 1} / {len(files)}"
         if file.stem != "home":
-            short_title = title
-            if len(title) > 30:
-                title = title[0:27] + "..."
             page_number += f" – {title}"
         else:
             page_number += f" – Homepage"
