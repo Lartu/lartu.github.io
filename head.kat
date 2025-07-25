@@ -1,9 +1,0 @@
-import "web.kat";
-
-print(
-    head(
-        title("Lartu.net"),
-        description("Lartu's Personal Website"),
-        css("include/lartian_style.css")
-    )
-);

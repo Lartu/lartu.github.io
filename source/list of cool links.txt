@@ -1,0 +1,77 @@
+[[img images/links.png ]]
+
+# List of Cool Links
+
+## What and Why
+
+Google and Bing have become very crappy. Every day I find it harder and
+harder to find stuff there. Some time ago I wrote a tweet stating that
+__'I used to be a Google user, now it doesn't find anything. I moved to
+Bing a month ago, it's now become the same. It's all AI nonsense. It's
+time to go back to 'Cool Sites' links on personal webpages. We've gone
+full circle.'__
+
+This is my (self) response to that.
+
+(BTW I use Ecosia now, and it seems to work much better than the alternatives.
+It's a keyword based search engine (citation needed) , so it doesn't search by
+matching your query to website profiles; it actually tries to match the words
+you requested.)
+
+I've recently learned about Awesome Lists*. I don't think this qualifies as one.
+But here's some stuff I found interesting. I'm mostly into game design and
+development (particularly MMORPGs), so I expect to end up adding a lot of
+resources about that here. And other things. I hope you find it interesing too!
+
+_**Awesome Lists are curated lists of resources about a specific topic. These
+lists are often created and maintained by enthusiasts and experts in the respective
+field.*_
+
+## Links About MMORPG Design
+
+% [ Virtual Economic Theory: How MMOs Really Work | https://www.gamedeveloper.com/business/virtual-economic-theory-how-mmos-really-work#close-modal ]
+% [ Google Play MMORPG Report (PDF) | https://play.google.com/console/about/static/pdf/google-play-mmorpg-genre-report.pdf ]
+% [ IAP Packs in Mobile F2P: Analysis and Design | https://jb-dev.net/2020/10/07/iap-packs-in-mobile-f2p-analysis-and-design/ ]
+% [ Game Ticks (Server Cycles) in RuneScape | https://runescape.wiki/w/Game_tick ]
+% [ Game Squares (Tiles) in RuneScape | https://runescape.wiki/w/Game_square ]
+
+## Links About Shaders & Visual Effects
+
+% [ Blender NPR: Recreating the Genshin Impact Shader | https://www.artstation.com/blogs/bjayers/9oOD/blender-npr-recreating-the-genshin-impact-shader]
+
+## Links About General Game Design
+
+% [The case for movie-length, narrative video games | https://www.gamedeveloper.com/design/the-case-for-movie-length-narrative-video-games ]
+
+## Links About General Programming & Computing
+
+% [ Code that Doesn't Rot | https://pointersgonewild.com/2022/02/11/code-that-doesnt-rot/]
+% [ Why are scripting languages (e.g. Perl, Python, and  Ruby) not suitable as shell languages? | https://stackoverflow.com/questions/3637668/why-are-scripting-languages-e-g-perl-python-and-ruby-not-suitable-as-shell]
+% [ How Big Should a Programming Language Be? | https://tratt.net/laurie/blog/2023/how_big_should_a_programming_language_be.html]
+% [ After self-hosting my email for twenty-three years I have thrown in the towel. The oligopoly has won. | https://cfenollosa.com/blog/after-self-hosting-my-email-for-twenty-three-years-i-have-thrown-in-the-towel-the-oligopoly-has-won.html]
+
+## Links About Retrocomputing
+
+% [ Rediscovering the Small Web | https://neustadt.fr/essays/the-small-web/]
+% [ Just fucking use HTML | https://justfuckingusehtml.com/]
+
+#  Links About Other Fun Stuff
+
+% [ The Rise of Wackaging | https://www.ediblegeography.com/the-rise-of-wackaging/]
+% [ The Black Box Theory | https://web.archive.org/web/20190206235833/http://johnvigor.com/Black_Box_Theory.html]
+% [ How to Succeed in Business While Really Trying | https://www.bloomberg.com/news/features/2017-06-08/how-to-succeed-in-business-while-really-trying]
+
+## Links to Games
+
+% [ Eterspire _*(Best MMORPG in the history of the universe)*_ | https://www.eterspire.com/]
+% [ AdventureQuest | https://www.battleon.com/]
+% [ Queville _*(dead, but interesting for archaeological reasons)*_ | https://web.archive.org/web/20151104022424/http://queville.com/]
+% [ Nodiatis | https://nodiatis.com/]
+
+## Video Essays
+
+% [RuneScape is Awesome, And Here's Why | https://www.youtube.com/watch?v=LpPJY-xdA3M]
+% [Making Night in the Woods Better with Open Source | https://www.youtube.com/watch?v=Qsiu-zzDYww]
+% [Crafting A Tiny Open World: A Short Hike Postmortem | https://www.youtube.com/watch?v=ZW8gWgpptI8]
+% [Worst MMO Ever? - Nostale | https://www.youtube.com/watch?v=i38zoixie3Q]
+% [Worst MMO Ever? - Nodiatis | https://www.youtube.com/watch?v=cjITJ5pgWyw]
