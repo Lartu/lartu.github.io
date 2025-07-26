@@ -25,7 +25,7 @@ img {
 }
 
 .header-div a,
-#footer a {
+#footer a:link {
     color: blue;
 }
 
