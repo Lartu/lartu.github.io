@@ -23,7 +23,8 @@ a {
 }
 
 a:visited {
-    color: rgb(119, 176, 255);
+    color: blue;
+    font-style: italic;
 }
 
 .header-div {
