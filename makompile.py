@@ -341,9 +341,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     <hr>
 
     <div id="footer">
-        <a href="https://github.com/lartu/makompile" target=_blank>
-            <img src="images/makompile_badge.png">
-        </a>
+        <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
         Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>{compiled_date}</i>.
     </div>
     </body>
@@ -354,10 +352,14 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
         f.write(page_html)
 
 
+def sanitize_url_string(text):
+    return re.sub(r'[^A-Za-z0-9\-._~]', '_', text)
+
+
 def translate_page_name(filename):
     if str(filename) == "home":
         return "index.html"
-    return filename.with_suffix(".html")
+    return sanitize_url_string(str(filename.with_suffix(".html")))
 
 
 def copy_included():
@@ -447,7 +449,7 @@ if __name__ == "__main__":
         save_page(filename.stem, title, page_html, previous_doc, next_doc, page_number, has_home)
 
     # Create table of contents
-    page_html = "<h1>Table of Contents</h1>\n<ol>"
+    page_html = "<h1>Table of Contents</h1>\n<ol id=\"table-of-contents\">"
     for file in files:
         page_path = translate_page_name(Path(file.stem))
         page_title = document_titles[file]

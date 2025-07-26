@@ -6,15 +6,35 @@ html {
 body {
     max-width: 800px;
     padding: 2rem;
+    padding-left: 3rem;
     box-sizing: border-box;
     background-color: white;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url("images/background.png");
+    background-position: 0px 0px;
+    background-repeat: repeat-y;
+    background-size: 32px 32px;
+    line-height: 1.5em;
 }
 
 img {
     width: auto;
     max-width: 80%;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+#table-of-contents {
+    list-style-type: upper-roman;
+}
+
+a:active, a:hover {
+    color: red;
 }
 
 .header-div {
@@ -25,8 +45,8 @@ img {
 }
 
 .header-div a,
-#footer a:link {
-    color: blue;
+#footer a {
+    /*color: blue;*/
 }
 
 #footer {
@@ -52,4 +72,10 @@ pre {
 
 h1, h2, h3 {
     text-transform: lowercase;
+}
+
+hr {
+    height: 0px;
+    background: black;
+    background: black;
 }

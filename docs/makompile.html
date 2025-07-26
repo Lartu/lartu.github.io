@@ -14,15 +14,35 @@
 body {
     max-width: 800px;
     padding: 2rem;
+    padding-left: 3rem;
     box-sizing: border-box;
     background-color: white;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url("images/background.png");
+    background-position: 0px 0px;
+    background-repeat: repeat-y;
+    background-size: 32px 32px;
+    line-height: 1.5em;
 }
 
 img {
     width: auto;
     max-width: 80%;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+#table-of-contents {
+    list-style-type: upper-roman;
+}
+
+a:active, a:hover {
+    color: red;
 }
 
 .header-div {
@@ -33,8 +53,8 @@ img {
 }
 
 .header-div a,
-#footer a:link {
-    color: blue;
+#footer a {
+    /*color: blue;*/
 }
 
 #footer {
@@ -61,6 +81,12 @@ pre {
 h1, h2, h3 {
     text-transform: lowercase;
 }
+
+hr {
+    height: 0px;
+    background: black;
+    background: black;
+}
     </style>
     <body>
 
@@ -69,8 +95,8 @@ h1, h2, h3 {
     <div class="header-div">
         <a href="index.html">Home</a> |
         <a href=sitemap.html>Contents</a> |
-        <a href="list of cool links.html">←</a> |
-        <a href="my computers.html">→</a> |
+        <a href="list_of_cool_links.html">←</a> |
+        <a href="my_computers.html">→</a> |
         <span id="page-number">6 / 11 – Makompile</span>
     </div>
 
@@ -119,11 +145,14 @@ To create a Makompile project, you need the following directory structure:</p>
 sure their contents are formatted used the Makompile format (more on this below).
 The name of the <code>.txt</code> file <b>MUST</b> be in lowercase.</p>
 <p>If you have a file called <code>home.txt</code>, this will also act as the homepage
-of your website.</p>
+of your website. Since websites require a homepage, if you host it on a server without
+having written your <code>home.txt</code> your website might not work properly.</p>
 <p>If you have a folder called <code>/include</code>, the contents of that folder will be copied into the
 <code>/docs</code> folder every time you rebuild your site.</p>
 <p>For technical reasons, you cannot have a file named <code>index.txt</code> in your <code>/docs</code> directory.
 You've been warned!</p>
+<p>Try to keep the names of your txt files in only <code>A-z</code> letters, numbers, and the characters
+<code>_</code>, <code>-</code>, <code>~</code> and <code>.</code>, otherwise some errors may arise.</p>
 <h2>Compiling your Makompile Project</h2>
 <p>To compile your Makompile project just run <code>python3 makompile.py</code> from the
 root of your project. A <code>/docs</code> directory will be created with all your site inside
@@ -262,18 +291,16 @@ Pull requests are welcome, as are bug reports, issues or whatever.</p>
     <div class="header-div">
         <a href="index.html">Home</a> |
         <a href=sitemap.html>Contents</a> |
-        <a href="list of cool links.html">←</a> |
-        <a href="my computers.html">→</a> |
+        <a href="list_of_cool_links.html">←</a> |
+        <a href="my_computers.html">→</a> |
         <span id="page-number">6 / 11 – Makompile</span>
     </div>
 
     <hr>
 
     <div id="footer">
-        <a href="https://github.com/lartu/makompile" target=_blank>
-            <img src="images/makompile_badge.png">
-        </a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 22:51:55  2025</i>.
+        <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 23:35:39  2025</i>.
     </div>
     </body>
     </html>

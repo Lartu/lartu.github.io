@@ -14,15 +14,35 @@
 body {
     max-width: 800px;
     padding: 2rem;
+    padding-left: 3rem;
     box-sizing: border-box;
     background-color: white;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
+    background-image: url("images/background.png");
+    background-position: 0px 0px;
+    background-repeat: repeat-y;
+    background-size: 32px 32px;
+    line-height: 1.5em;
 }
 
 img {
     width: auto;
     max-width: 80%;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+#table-of-contents {
+    list-style-type: upper-roman;
+}
+
+a:active, a:hover {
+    color: red;
 }
 
 .header-div {
@@ -33,8 +53,8 @@ img {
 }
 
 .header-div a,
-#footer a:link {
-    color: blue;
+#footer a {
+    /*color: blue;*/
 }
 
 #footer {
@@ -61,6 +81,12 @@ pre {
 h1, h2, h3 {
     text-transform: lowercase;
 }
+
+hr {
+    height: 0px;
+    background: black;
+    background: black;
+}
     </style>
     <body>
 
@@ -69,7 +95,7 @@ h1, h2, h3 {
     <div class="header-div">
         <a href="index.html">Home</a> |
         <a href=sitemap.html>Contents</a> |
-        <a href="other projects.html">←</a> |
+        <a href="other_projects.html">←</a> |
         <a href="thoughts.html">→</a> |
         <span id="page-number">9 / 11 – Programming Languages & Esolangs</span>
     </div>
@@ -150,7 +176,7 @@ isn't). I might expand it over time. I also might not.
     <div class="header-div">
         <a href="index.html">Home</a> |
         <a href=sitemap.html>Contents</a> |
-        <a href="other projects.html">←</a> |
+        <a href="other_projects.html">←</a> |
         <a href="thoughts.html">→</a> |
         <span id="page-number">9 / 11 – Programming Languages & Esolangs</span>
     </div>
@@ -158,10 +184,8 @@ isn't). I might expand it over time. I also might not.
     <hr>
 
     <div id="footer">
-        <a href="https://github.com/lartu/makompile" target=_blank>
-            <img src="images/makompile_badge.png">
-        </a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 22:51:55  2025</i>.
+        <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 23:35:39  2025</i>.
     </div>
     </body>
     </html>
