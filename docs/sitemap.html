@@ -11,13 +11,17 @@
     min-height: 100%;
 }
 
+:root {
+  color-scheme: light dark;
+}
+
 body {
     max-width: 800px;
     padding: 2rem;
     padding-left: 3rem;
     box-sizing: border-box;
-    background-color: white;
-    color: black;
+    background-color: light-dark(white, black);
+    color: light-dark(black, white);
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("images/background.png");
     background-position: 0px 0px;
@@ -32,7 +36,7 @@ img {
 }
 
 a {
-    color: black;
+    color: light-dark(black, white);
     text-decoration: underline;
     text-decoration-style: wavy;
 }
@@ -52,11 +56,6 @@ a:active, a:hover {
     overflow: hidden;
 }
 
-.header-div a,
-#footer a {
-    /*color: blue;*/
-}
-
 #footer {
     font-size: 10pt;
 }
@@ -68,8 +67,8 @@ a:active, a:hover {
 
 code,
 pre {
-    background-color: #EEE;
-    color: #777;
+    background-color: light-dark(#EEE, #777);
+    color: light-dark(#777, #EEE);
     padding: 2px;
     border-radius: 4px;
 }
@@ -84,8 +83,11 @@ h1, h2, h3 {
 
 hr {
     height: 0px;
-    background: black;
-    background: black;
+    background: light-dark(black, white);
+    background: light-dark(black, white);
+}
+
+@media (prefers-color-scheme: dark) {
 }
     </style>
     <body>
@@ -130,7 +132,7 @@ hr {
 
     <div id="footer">
         <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 23:35:39  2025</i>.
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 23:52:57  2025</i>.
     </div>
     </body>
     </html>
