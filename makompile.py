@@ -457,7 +457,7 @@ if __name__ == "__main__":
     page_html += "\n</ol>"
     previous_doc = translate_page_name(Path(files[- 1].stem))
     next_doc = translate_page_name(Path(files[0].stem))
-    pager_text = "Contents"
+    pager_text = "Table of Contents"
     if len(document_names) != 1:
         pager_text += f" ({len(document_names)} pages)"
     else:
