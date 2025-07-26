@@ -22,10 +22,6 @@ a {
     text-decoration: none;
 }
 
-a:visited {
-    color: red;
-}
-
 .header-div {
     text-align: left;
     text-overflow: ellipsis;
