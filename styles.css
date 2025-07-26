@@ -23,8 +23,7 @@ a {
 }
 
 a:visited {
-    color: blue;
-    font-style: italic;
+    color: red;
 }
 
 .header-div {
