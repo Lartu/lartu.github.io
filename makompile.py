@@ -319,7 +319,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
 
     <div class="header-div">
         {home_link}
-        <a href=sitemap.html>Index</a> |
+        <a href=sitemap.html>Contents</a> |
         <a href="{previous_doc}">←</a> |
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
@@ -332,7 +332,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
 
     <div class="header-div">
         {home_link}
-        <a href=sitemap.html>Index</a> |
+        <a href=sitemap.html>Contents</a> |
         <a href="{previous_doc}">←</a> |
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
@@ -446,8 +446,8 @@ if __name__ == "__main__":
             page_number += f" – Homepage"
         save_page(filename.stem, title, page_html, previous_doc, next_doc, page_number, has_home)
 
-    # Create index
-    page_html = "<h1>Index</h1>\n<ol>"
+    # Create table of contents
+    page_html = "<h1>Table of Contents</h1>\n<ol>"
     for file in files:
         page_path = translate_page_name(Path(file.stem))
         page_title = document_titles[file]
@@ -457,9 +457,9 @@ if __name__ == "__main__":
     page_html += "\n</ol>"
     previous_doc = translate_page_name(Path(files[- 1].stem))
     next_doc = translate_page_name(Path(files[0].stem))
-    pager_text = "Index"
+    pager_text = "Contents"
     if len(document_names) != 1:
         pager_text += f" ({len(document_names)} pages)"
     else:
         pager_text += f" ({len(document_names)} page)"
-    save_page("sitemap", "Index", page_html, previous_doc, next_doc, pager_text, has_home)
+    save_page("sitemap", "Table of Contents", page_html, previous_doc, next_doc, pager_text, has_home)
