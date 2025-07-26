@@ -12,7 +12,7 @@
 }
 
 :root {
-  color-scheme: light dark;
+    color-scheme: light dark;
 }
 
 body {
@@ -33,7 +33,6 @@ body {
 img {
     width: auto;
     max-width: 80%;
-    background-color: white;
 }
 
 a {
@@ -46,7 +45,8 @@ a {
     list-style-type: upper-roman;
 }
 
-a:active, a:hover {
+a:active,
+a:hover {
     color: red;
 }
 
@@ -78,7 +78,9 @@ pre {
     padding: 10px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     text-transform: lowercase;
 }
 
@@ -86,6 +88,16 @@ hr {
     height: 0px;
     background: light-dark(black, white);
     background: light-dark(black, white);
+}
+
+@media (prefers-color-scheme: dark) {
+    img {
+        background-color: white;
+    }
+
+    .lartian-sigil {
+        filter: invert(1);
+    }
 }
     </style>
     <body>
@@ -129,7 +141,7 @@ You may also e-mail lartu (at) lartu dot net.</p>
 
     <div id="footer">
         <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 23:53:51  2025</i>.
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Fri Jul 25 23:54:55  2025</i>.
     </div>
     </body>
     </html>
