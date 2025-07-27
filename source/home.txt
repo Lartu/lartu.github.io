@@ -22,4 +22,5 @@ It's generated using [Makompile | https://github.com/Lartu/makompile].
 
 The lartunet is part of the [LOW TECH WEBRING | https://emreed.net/LowTech_Directory]!
 
-This site supports light and dark modes (depending on your OS configuration)!
+This site supports light and dark modes (depending on your OS configuration)! But the cannonical
+version is the light one.
