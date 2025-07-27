@@ -62,15 +62,23 @@ worth mentioning, as it is what Japan thinks Italian food is like. The food is q
 
 * **Tokyo Sky Tree**
     <br>Tokyo Skytree is both a shopping mall and an observation deck.
-    I’ve never been to the observation deck, but I love the rest of the mall. It also has the Sumida Aquarium which is great.
-* Hobby Off / Book Off
-* Janpara
+    I’ve never been to the observation deck, but I love the rest of the mall. It also has the **Sumida Aquarium** which is great.
+* **Hobby Off / Book Off**
+    <br>Secondhand stores where you can find everything from used books and games to figures, electronics, and collectibles.
+    Worth visiting each different shop you find.
+* **Janpara**
+    <br>A chain of used electronics shops, especially good for finding secondhand phones, laptops, cameras, and accessories.
 * **Yodobashi Camera Akiba**
     <br>Particularly the Akiba station one. It's huge, it has everything. Worth spending a whole day in there. Also visit the Uniqlo
     that's on the upmost floor. It also has a food court (but it closes rather early, like all food places in Japan).
-* Uniqlo Akiba (literally above the Yodobashi Camera Akiba)
-* Pokémon Center
-* Daiso
+* **Uniqlo Akiba**
+    <br>Literally above the Yodobashi Camera Akiba. Must visit if you go to Yodobashi Camera Akiba.
+* **Pokémon Center**
+    <br>Specially the one close to the Marunouchi station, which is the main one. This one has the Pokemon Cafe, but to
+    eat there you have to get a reservation and it's rather hard.
+* **Daiso**
+    <br>A popular 100-yen shop offering an impressive variety of household goods, stationery, snacks, and more.
+    Surprisingly high quality for the price. Great for gifts and souvenirs!
 
 
 [[ img images/rocket.png ]]
@@ -78,9 +86,12 @@ worth mentioning, as it is what Japan thinks Italian food is like. The food is q
 
 ## Museums
 
-* Tokyo National Museum
-* Edo-Tokyo Museum
-* Small Worlds
+* **Tokyo National Museum**
+    <br>Japan’s oldest and largest museum, showcasing traditional art, samurai armor, Buddhist sculptures, and historical artifacts from across the country.
+* **Edo-Tokyo Museum**
+    <br>A fascinating museum that explores the transformation of Tokyo from the Edo period to the modern era, with large-scale models and immersive exhibits. Mind that it was closed for renovations the last two times I tried to visit it.
+* **Small Worlds**
+    <br>A detailed miniature theme park with moving dioramas of cityscapes, spaceports, and anime worlds. Has a tiny Messi stuck to the wall at the entrance.
 
 
 [[ img images/takao.png ]]
@@ -88,9 +99,12 @@ worth mentioning, as it is what Japan thinks Italian food is like. The food is q
 
 ## Other towns and cities
 
-* Takao (close to Tokyo)
-* Sagamiko (close to Tokyo)
-* Takayama
+* **Takao** (close to Tokyo)
+    <br>A scenic mountain just outside Tokyo, perfect for a day hike. It offers lush trails, a temple near the summit, and beautiful autumn foliage. The Tokyo metro takes you there.
+* **Sagamiko** (close to Tokyo)
+    <br>A lakeside area known for its nature, hot springs, and seasonal attractions. The Tokyo metro takes you there.
+* **Takayama**
+    <br>A historic town in the mountains of Gifu Prefecture, known for its preserved Edo-period streets and local crafts. Great sake places as well.
 
 
 [[ img images/michoripan.png ]]
@@ -108,3 +122,6 @@ text and read what they say.
 And download the full map of Tokyo on Google Maps so you can navigate offline.
 
 The aquariums are also really nice.
+
+
+[[ img images/messi.png ]]
