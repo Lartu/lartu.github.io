@@ -449,7 +449,13 @@ if __name__ == "__main__":
         save_page(filename.stem, title, page_html, previous_doc, next_doc, page_number, has_home)
 
     # Create table of contents
-    page_html = "<h1>Table of Contents</h1>\n<ol id=\"table-of-contents\">"
+    page_html = """
+    <h1>Table of Contents</h1>
+    <p>
+        <img src="images/sail.png">
+    </p>
+    <ol id=\"table-of-contents\">
+    """
     for file in files:
         page_path = translate_page_name(Path(file.stem))
         page_title = document_titles[file]
