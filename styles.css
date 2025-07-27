@@ -1,6 +1,7 @@
 html {
     margin: none;
     min-height: 100%;
+    border-left: 32px solid light-dark(#ffdd00, rgb(72, 0, 255));
 }
 
 :root {
@@ -10,15 +11,10 @@ html {
 body {
     max-width: 800px;
     padding: 2rem;
-    padding-left: 3rem;
     box-sizing: border-box;
     background-color: light-dark(white, black);
     color: light-dark(black, white);
     font-family: monospace;
-    background-image: url("images/background.png");
-    background-position: 0px 0px;
-    background-repeat: repeat-y;
-    background-size: 32px 32px;
     line-height: 1.5em;
 }
 
@@ -28,7 +24,7 @@ img {
 }
 
 a {
-    color: light-dark(black, white);
+    color: light-dark(#0000FF, #00FF00);
     text-decoration: underline;
     text-decoration-style: wavy;
 }
