@@ -1,11 +1,11 @@
-[[img images/lartusigil.png | class lartian-sigil ]]
-
 # Lartunet
 
 Hello! Welcome to the lartunet, Lartu's corner of the internet.
 Here you'll find information about games and software I've worked on.
 [Me? | about me] I make videogames and other code stuff. I love food and rainy days.
 Thank you for passing by!
+
+[[img images/lartusigil.png | class lartian-sigil ]]
 
 You may be interested in the [videogames] I've worked on,
 or the [programming languages] I've developed.
@@ -14,6 +14,8 @@ Or maybe my [other projects].
 I can also offer you my [List of Cool Links] and [Books].
 Or you can just scroll and see what you find.
 If I have any thoughts I'd like to share, I'll post them [here | thoughts].
+
+[[img images/citynight.png ]]
 
 The source code for this website can be found [here | https://github.com/lartu/lartu.github.io].
 It's generated using [Makompile | https://github.com/Lartu/makompile].
