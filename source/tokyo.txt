@@ -1,7 +1,7 @@
 # Places Worth Visiting in Tokyo
 
 Many of my friends are going to Tokyo soon. This is a list of places
-I’d recommend they visit while they’re there (and also a future reference for me when I go back!).
+I'd recommend they visit while they're there (and also a future reference for me when I go back!).
 Most of the food places are chains that can be found all across Tokyo.
 
 
@@ -12,11 +12,11 @@ Most of the food places are chains that can be found all across Tokyo.
 
 * **[Yoshinoya | https://www.yoshinoya.com/en/]**
     <br>A fast-food chain known for its affordable gyūdon. Amazing, amazing gyudon. Order it with raw egg and spring onions / scallions / cebollita de verdeo.
-    Learn to recognize the logo, as it's almost always only in Japanese.
-    <br>_* **Important:** Eggs don’t have salmonella in Japan because food safety standards are extremely strict, and eggs are produced, cleaned, transported, and sold under tightly controlled conditions that minimize the risk of contamination; even when eaten raw.*_
+    Learn to recognize the logo, as it's almost always only in Japanese. They have Wifi.
+    <br>_* **Important:** Eggs don't have salmonella in Japan because food safety standards are extremely strict, and eggs are produced, cleaned, transported, and sold under tightly controlled conditions that minimize the risk of contamination; even when eaten raw.*_
 * **[Matsuya | https://www.matsuyafoods.co.jp/english/menu/]**
     <br>Same as Yoshinoya, also amazing and super affordable. Do try the same things there!
-    Learn to recognize the logo, as it's almost always only in Japanese. Some open 24hs.
+    Learn to recognize the logo, as it's almost always only in Japanese. Some open 24hs. They have Wifi.
 * **[Matsunoya | https://www.ecosia.org/images?q=matsunoya+japan+tonkatsu ]**
     <br>Not to be confused with Matsuya. Amazing, affordable tonkatsu.
     Learn to recognize the logo, as it's almost always only in Japanese.
@@ -32,10 +32,12 @@ Most of the food places are chains that can be found all across Tokyo.
 * **[Rāmen Kagetsu Arashi | https://www.kagetsu.co.jp/menu/english/] **
     <br>Amazing ramen.
 * **[Jonathan's | https://www.skylark.co.jp/en/jonathan/]**
-    <br>Best place to have breakfast. Very affordable if you go while the breakfast menu is available (iirc until 10:30 am or 11 am).
+    <br>Best place to have breakfast. Very affordable if you go while the breakfast menu is available (iirc until 10:30 am or 11 am). They have Wifi.
     I haven't tried their non-breakfast food.
 * **[Café Gusto | https://www.skylark.co.jp/gusto/index.html]**
     <br>Owned by the same people as Jonathan's, great curry.
+
+If I don't explicitly mention that a place is open 24 hours or has Wi-Fi, that doesn't mean it doesn't. It's just that I don't remember if it does.
 
 
 [[ img images/matsuya2.png ]]
@@ -63,7 +65,7 @@ worth mentioning, as it is what Japan thinks Italian food is like. The food is q
 
 * **Tokyo Sky Tree**
     <br>Tokyo Skytree is both a shopping mall and an observation deck.
-    I’ve never been to the observation deck, but I love the rest of the mall. It also has the **Sumida Aquarium** which is great.
+    I've never been to the observation deck, but I love the rest of the mall. It also has the **Sumida Aquarium** which is great.
 * **Hobby Off / Book Off**
     <br>Secondhand stores where you can find everything from used books and games to figures, electronics, and collectibles.
     Worth visiting each different shop you find.
@@ -71,7 +73,8 @@ worth mentioning, as it is what Japan thinks Italian food is like. The food is q
     <br>A chain of used electronics shops, especially good for finding secondhand phones, laptops, cameras, and accessories.
 * **Yodobashi Camera Akiba**
     <br>Particularly the Akiba station one. It's huge, it has everything. Worth spending a whole day in there. Also visit the Uniqlo
-    that's on the upmost floor. It also has a food court (but it closes rather early, like all food places in Japan).
+    that's on the upmost floor. It also has a food court (but it closes rather early, like all food places in Japan). Yodobashi
+    Camera always has Wifi.
 * **Uniqlo Akiba**
     <br>Literally above the Yodobashi Camera Akiba. Must visit if you go to Yodobashi Camera Akiba.
 * **Pokémon Center**
@@ -88,7 +91,7 @@ worth mentioning, as it is what Japan thinks Italian food is like. The food is q
 ## Museums
 
 * **Tokyo National Museum**
-    <br>Japan’s oldest and largest museum, showcasing traditional art, samurai armor, Buddhist sculptures, and historical artifacts from across the country.
+    <br>Japan's oldest and largest museum, showcasing traditional art, samurai armor, Buddhist sculptures, and historical artifacts from across the country.
 * **Edo-Tokyo Museum**
     <br>A fascinating museum that explores the transformation of Tokyo from the Edo period to the modern era, with large-scale models and immersive exhibits. Mind that it was closed for renovations the last two times I tried to visit it.
 * **Small Worlds**
