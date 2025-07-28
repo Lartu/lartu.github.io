@@ -597,46 +597,24 @@ if __name__ == "__main__":
     save_page("sitemap", "Table of Contents", page_html, previous_doc, next_doc, pager_text, has_home)
 
     # Generate Changelog
-    #modified_files_and_dates = get_git_last_modified_dates(SOURCE_DIRECTORY)
-    commit_count = 100
+    modified_files_and_dates = get_git_last_modified_dates(SOURCE_DIRECTORY)
     page_html = f"""
     <h1>List of Changes</h1>
     <p>
         <img src="images/spaceship.png">
     </p>
-    <p>
-        Tracking the pages updated in the last {commit_count} commits.
-        This isn't the best way to list changes. 
-        If all {commit_count} commits happened today, then only one day will show up. Also, it's super slow.
-        But it's what we've got for now.
-    </p>
+    <ul>
     """
         
     documents_with_date = {}
 
-    for i in range(0, commit_count):
-        commit_date = get_commit_date(-i)
-        if commit_date not in documents_with_date:
-            documents_with_date[commit_date] = []
-        files_changed = get_changed_files_in_git(-i)
-        for file in files_changed:
-            filename = Path(file).name
-            page_path = translate_page_name(Path(Path(file).stem))
-            if filename in document_titles:
-                link = f"\n<li>Updated <a href=\"{page_path}\">{document_titles[filename]}</a></li>"
-                if link not in documents_with_date[commit_date]:
-                    documents_with_date[commit_date].append(link)
-
-    for date_str in documents_with_date:
-        if documents_with_date[date_str]:
-            page_html += f"""\n
-            <p>{date_str}:
-            <ul>
-            """
-            for link in documents_with_date[date_str]:
-                page_html += link
-            page_html += "\n</ul>"
-
+    for file_date in modified_files_and_dates:
+        file, date = file_date
+        filename = Path(file).name
+        page_path = translate_page_name(Path(Path(file).stem))
+        if filename in document_titles:
+            link = f"\n<li>({date}) <a href=\"{page_path}\">{document_titles[filename]}</a></li>"
+    page_html += "\n</ul>"
     previous_doc = "sitemap.html"
     next_doc = translate_page_name(Path(files[0].stem))
     save_page("changelog", "List of Changes", page_html, previous_doc, next_doc, "List of Changes", has_home)
