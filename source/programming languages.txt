@@ -8,7 +8,7 @@ This section talks abouts the programming languages I've developed
 * [ Makompile ]
 <br>__2025__
 <br>A static website, book and / or documentation writing system. This site is
-written using makompile.
+written using Makompile.
 * [ LDPL | https://www.ldpl-lang.org/ ]
 <br>__2019__
 <br>Lartu's Definitive Programming Language, or LDPL the Dinosaur Programming 

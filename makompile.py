@@ -10,7 +10,7 @@
 # - If the file is a local link and is not found (relative), become red and crossed.
 # - If the file is external, add an arrow or something.
 
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 from enum import Enum
 import re
 import sys
@@ -18,6 +18,7 @@ from pathlib import Path
 from datetime import datetime
 import os
 import shutil
+import subprocess
 
 
 SOURCE_DIRECTORY = "source"
@@ -50,10 +51,6 @@ def make_link(text: str, destination: str) -> str:
 
 
 def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_replacements = []) -> str:
-    #print("")
-    #print("------")
-    #print("Compiling:")
-    #print(section)
     if not section:
         return ""
 
@@ -124,7 +121,6 @@ def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_re
     # +------------+
     if SCSET.NO_LISTS not in settings:
         if section[0] == "*" or section[0] == "%":
-            #print("FOUND A LIST IN THIS SECTION!")
             list_bullet = section[0]
             section_lines = section.split("\n")
             list_items = []
@@ -133,7 +129,6 @@ def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_re
                     list_items.append(line)
                 else:
                     list_items[-1] += f"\n{line}"
-            #print("List items:", list_items)
             if list_bullet == "*":
                 list_html = "<ul>"
             else:
@@ -141,18 +136,15 @@ def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_re
             for list_item in list_items:
                 content = list_item[1:].strip()
                 content_lines = content.split("\n")
-                #print("Content lines:", content_lines)
                 list_html += "\n<li>"
                 sublist_parts = [""]
                 depth = 2 if SCSET.LIST_DEPTH not in settings else settings[SCSET.LIST_DEPTH] + 2
-                #print("Depth:", depth)
                 for content_line in content_lines:
                     if len(content_line) >= depth + 1 and content_line[0:depth+1] == f"{depth * ' '}{list_bullet}":
                         content_line = content_line[depth:]
                         sublist_parts.append(content_line)
                     else:
                         sublist_parts[-1] += f"\n{content_line}"
-                #print("Sublist parts:", sublist_parts)
                 for sublist_part in sublist_parts:
                     list_html += "\n" + compile_section(
                         sublist_part, 
@@ -320,7 +312,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     <div class="header-div">
         {home_link}
         <a href=sitemap.html>Contents</a> |
-        <a href=sitemap.html>Changes</a> |
+        <a href=changelog.html>Changes</a> |
         <a href="{previous_doc}">←</a> |
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
@@ -337,7 +329,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     <div class="header-div">
         {home_link}
         <a href=sitemap.html>Contents</a> |
-        <a href=sitemap.html>Changes</a> |
+        <a href=changelog.html>Changes</a> |
         <a href="{previous_doc}">←</a> |
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
@@ -392,6 +384,132 @@ def copy_included():
                 shutil.copy2(src_path, dest_path)
 
 
+def get_changed_files_in_git(commit_offset: int = 0) -> List[str]:
+    """
+    Returns a list of file paths in the SOURCE_DIRECTORY that have changed 
+    according to Git.
+    
+    commit_offset:
+        0  => changes in working directory vs HEAD (unstaged/staged changes)
+       -1 => changes between HEAD and HEAD~1
+       -2 => changes between HEAD~1 and HEAD~2, etc.
+    """
+    source_path = Path(SOURCE_DIRECTORY).resolve()
+
+    if not source_path.is_dir():
+        error(f"{SOURCE_DIRECTORY} is not a valid directory")
+
+    try:
+        changed_files = []
+
+        if commit_offset == 0:
+            # Use git status for working directory changes
+            result = subprocess.run(
+                ["git", "status", "--porcelain"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                cwd=source_path
+            )
+            if result.returncode != 0:
+                error(f"Git error: {result.stderr.strip()}")
+            
+        elif commit_offset < 0:
+            # Compare commit pairs: e.g. HEAD~1 vs HEAD, or HEAD~2 vs HEAD~1
+            commit_offset -= 1
+            newer_commit = f"HEAD~{-commit_offset - 1}" if commit_offset < -1 else "HEAD"
+            older_commit = f"HEAD~{-commit_offset}"
+
+            result = subprocess.run(
+                ["git", "diff", "--name-only", older_commit, newer_commit],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                cwd=source_path
+            )
+            if result.returncode != 0:
+                error(f"Git error: {result.stderr.strip()}")
+
+        for line in result.stdout.strip().splitlines():
+            parts = line.strip().split(maxsplit=1)
+            if len(parts) < 2:
+                raw_path = parts[0]
+            else:
+                raw_path = parts[1]
+            if raw_path.startswith('"') and raw_path.endswith('"'):
+                raw_path = raw_path[1:-1].replace('\\"', '"')
+            full_path = Path(raw_path).resolve()
+            if full_path.exists() and full_path.is_file() and str(full_path).startswith(str(source_path)):
+                changed_files.append(str(full_path))
+
+        return changed_files
+
+    except Exception as e:
+        return []
+
+
+def get_commit_date(offset: int = 0, repo_path: str = ".") -> str:
+    """
+    Returns the date (YYYY-MM-DD) of the Git commit at the given offset.
+    
+    offset:
+        0  => HEAD (current commit)
+       -1 => HEAD~1 (previous commit)
+       -2 => HEAD~2 (and so on)
+    """
+    try:
+        commit_ref = "HEAD" if offset == 0 else f"HEAD~{-offset}"
+        result = subprocess.run(
+            ["git", "show", "-s", "--date=short", "--format=%cd", commit_ref],
+            cwd=repo_path,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True
+        )
+        return result.stdout.strip()
+    except subprocess.CalledProcessError as e:
+        return ""
+    
+
+def get_git_last_modified_dates(directory: str) -> List[Tuple[str, str]]:
+    """
+    Returns a list of (file_path, last_modified_date) tuples for all files in the directory,
+    where last_modified_date is the most recent Git commit date in YYYY-MM-DD format.
+    The list is sorted by date descending (newest first).
+    """
+    directory_path = Path(directory).resolve()
+
+    if not directory_path.is_dir():
+        raise ValueError(f"{directory} is not a valid directory")
+
+    results = []
+
+    for file_path in directory_path.rglob("*"):
+        if not file_path.is_file():
+            continue
+
+        rel_path = file_path.relative_to(directory_path)
+        try:
+            result = subprocess.run(
+                ["git", "log", "-1", "--format=%cd", "--date=short", "--", str(rel_path)],
+                cwd=directory_path,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                check=True
+            )
+            date = result.stdout.strip()
+            if date:
+                results.append((str(file_path), date))
+        except subprocess.CalledProcessError:
+            continue  # Skip files not tracked by Git
+
+    # Sort descending by date
+    results.sort(key=lambda x: x[1], reverse=True)
+    return results
+
+
 if __name__ == "__main__":
     try:
         with open('styles.css', 'r') as f:
@@ -439,7 +557,7 @@ if __name__ == "__main__":
                 page_html += "\n" + section_html
         if not title:
             title = str(file.stem).title()
-        document_titles[filename] = title
+        document_titles[filename.name] = title
         previous_doc = "sitemap.html"
         if i > 0:
             previous_doc = translate_page_name(Path(files[i - 1].stem))
@@ -463,16 +581,62 @@ if __name__ == "__main__":
     """
     for file in files:
         page_path = translate_page_name(Path(file.stem))
-        page_title = document_titles[file]
+        page_title = document_titles[file.name]
         if file.stem == "home":
             page_title += " <i><small>(Homepage)</small></i>"
         page_html += f"\n<li><a href=\"{page_path}\">{page_title}</a></li>"
     page_html += "\n</ol>"
     previous_doc = translate_page_name(Path(files[- 1].stem))
-    next_doc = translate_page_name(Path(files[0].stem))
+    # next_doc = translate_page_name(Path(files[0].stem))
+    next_doc = "changelog.html"
     pager_text = "Table of Contents"
     if len(document_names) != 1:
         pager_text += f" ({len(document_names)} pages)"
     else:
         pager_text += f" ({len(document_names)} page)"
     save_page("sitemap", "Table of Contents", page_html, previous_doc, next_doc, pager_text, has_home)
+
+    # Generate Changelog
+    #modified_files_and_dates = get_git_last_modified_dates(SOURCE_DIRECTORY)
+    commit_count = 100
+    page_html = f"""
+    <h1>List of Changes</h1>
+    <p>
+        <img src="images/spaceship.png">
+    </p>
+    <p>
+        Tracking the pages updated in the last {commit_count} commits.
+        This isn't the best way to list changes. 
+        If all {commit_count} commits happened today, then only one day will show up. Also, it's super slow.
+        But it's what we've got for now.
+    </p>
+    """
+        
+    documents_with_date = {}
+
+    for i in range(0, commit_count):
+        commit_date = get_commit_date(-i)
+        if commit_date not in documents_with_date:
+            documents_with_date[commit_date] = []
+        files_changed = get_changed_files_in_git(-i)
+        for file in files_changed:
+            filename = Path(file).name
+            page_path = translate_page_name(Path(Path(file).stem))
+            if filename in document_titles:
+                link = f"\n<li>Updated <a href=\"{page_path}\">{document_titles[filename]}</a></li>"
+                if link not in documents_with_date[commit_date]:
+                    documents_with_date[commit_date].append(link)
+
+    for date_str in documents_with_date:
+        if documents_with_date[date_str]:
+            page_html += f"""\n
+            <p>{date_str}:
+            <ul>
+            """
+            for link in documents_with_date[date_str]:
+                page_html += link
+            page_html += "\n</ul>"
+
+    previous_doc = "sitemap.html"
+    next_doc = translate_page_name(Path(files[0].stem))
+    save_page("changelog", "List of Changes", page_html, previous_doc, next_doc, "List of Changes", has_home)
