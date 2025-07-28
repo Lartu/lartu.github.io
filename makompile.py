@@ -320,19 +320,24 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     <div class="header-div">
         {home_link}
         <a href=sitemap.html>Contents</a> |
+        <a href=sitemap.html>Changes</a> |
         <a href="{previous_doc}">←</a> |
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
     </div>
 
     <hr>
+
+    <!-- CONTENT -->
     {page_html}
+    <!-- CONTENT END -->
 
     <hr>
 
     <div class="header-div">
         {home_link}
         <a href=sitemap.html>Contents</a> |
+        <a href=sitemap.html>Changes</a> |
         <a href="{previous_doc}">←</a> |
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
