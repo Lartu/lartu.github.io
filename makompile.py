@@ -597,24 +597,38 @@ if __name__ == "__main__":
     save_page("sitemap", "Table of Contents", page_html, previous_doc, next_doc, pager_text, has_home)
 
     # Generate Changelog
-    modified_files_and_dates = get_git_last_modified_dates(SOURCE_DIRECTORY)
+    file_count = 15
+    modified_files_and_dates = get_git_last_modified_dates(SOURCE_DIRECTORY)[0:file_count]
     page_html = f"""
     <h1>List of Changes</h1>
     <p>
         <img src="images/spaceship.png">
     </p>
-    <ul>
+    <p>
+        This changelog is not a standard part of Makompile because it depends on my particular stack.
+    </p>
     """
         
-    documents_with_date = {}
+    last_date = ""
 
+    links_added = 0
     for file_date in modified_files_and_dates:
         file, date = file_date
         filename = Path(file).name
         page_path = translate_page_name(Path(Path(file).stem))
         if filename in document_titles:
-            link = f"\n<li>({date}) <a href=\"{page_path}\">{document_titles[filename]}</a></li>"
-    page_html += "\n</ul>"
+            if date != last_date:
+                if last_date:
+                    page_html += f"\n</ul>"
+                last_date = date
+                page_html += f"\n<p>Last updated on {date}</p><ul>"
+            page_html += f"\n<li><a href=\"{page_path}\">{document_titles[filename]}</a></li>"
+            links_added += 1
+            if links_added >= file_count:
+                break
+    if last_date:
+        page_html += f"\n</ul>"
+    page_html += f"\n<p>Only the {links_added} most recently updated files are listed.</p>"
     previous_doc = "sitemap.html"
     next_doc = translate_page_name(Path(files[0].stem))
     save_page("changelog", "List of Changes", page_html, previous_doc, next_doc, "List of Changes", has_home)
