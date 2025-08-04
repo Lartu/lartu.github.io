@@ -22,11 +22,11 @@ Eterspire went through many iterations:
 * [ **Eterspire (Mobile, Alpha 3)** | https://www.eterspire.com/ ]
 <br>__iOS & Android, 2023__
 <br>A complete, graphically superior rewrite of Eterspire, focused on questing, befriending wacky characters, exploring, and upgrading your gear. We felt the game was now more suited for mobile devices, so we took the leap. Dubbed "the best mobile MMORPG in the history of the universe" by ourselves.
-* [ **Eterspire: Return of Salgaraak (Beta II)** | ]
+* [ **Eterspire: Return of Salgaraak (Beta II)** | https://web.archive.org/web/20211223154610/https://eterspire.com/]
 <br>__Web & Windows, 2022-2023__
 <br>_*No longer playable, linked to archived version on the Wayback Machine.*_
 Known initially as Eterspire - Beta II, it was a complete overhaul of Eterspire, focused on exploring a world and completing quests. It started as a hobby project with a friend before eventually becoming our full-time job. Offline since the release of Eterspire (2023).
-* [ **Eterspire (Beta I)** | ]
+* [ **Eterspire (Beta I)** | https://web.archive.org/web/20210416113913/https://www.eterspire.com/]
 <br>__Web, 2021__
 <br>_*No longer playable, linked to archived version on the Wayback Machine.*_
 A minimal MMORPG about exploring an infinite tower, fighting monsters, finding equipment, and climbing higher than everyone else. Made over the course of four months. Eventually replaced by Eterspire: Return of Salgaraak. Lovingly nicknamed 'Eterspire: Beta I'.
@@ -39,10 +39,10 @@ A minimal MMORPG about exploring an infinite tower, fighting monsters, finding e
 
 A series of short visual novels about friendship.
 
-* [ **Soft Drizzle: B-Track** | ]
+* [ **Soft Drizzle: B-Track** | https://lartu.itch.io/soft-drizzle-b-track]
 <br>__Windows & macOS, 2020__
 <br>A short visual novel about friendship and Halloween Festivals. Sequel to Soft Drizzle. Made in a month for the Spooktober Visual Novel Jam. Awarded Best Unity Submission.
-* [ **Soft Drizzle** | ]
+* [ **Soft Drizzle** | https://lartu.itch.io/soft-drizzle]
 <br>__Web, 2020__
 <br>A short, 64x64 resolution visual novel about friendship and rainy days, made in 7 days for LOWREZJAM 2020. Full of typos, as the screenplay was written during a long, coffee fueled night writing session. I'd love to remake it someday.
 
@@ -52,14 +52,14 @@ A series of short visual novels about friendship.
 
 ## Others
 
-* [ **Fateful Lore** | ]
+* [ **Fateful Lore** | https://www.fatefullore.com/]
 <br>__Android & iOS, 2020__
 <br>Critically acclaimed retro-inspired RPG for Android and iOS devices. We found no RPGs on these platforms that looked and played the way we wanted, so we made one. The company that published League of Legends in Korea almost published it over there, but then the pandemic struck.
-* [ **Eternal Lux** | ]
+* [ **Eternal Lux** | https://lartu.itch.io/eternal-lux]
 <br>__Android, 2014__
 <br>_*No longer available on the Google Play store.*_
 <br>A mobile SRPG for Android Devices inspired by the Ultima games. Designed to be as lightweight as possible. Downloaded by tens of thousands of players worldwide.
-* [ **Aidinia: An Epic Adventure!** | ]
+* [ **Aidinia: An Epic Adventure!** | https://lartu.itch.io/aidinia]
 <br>__Android, 2013__
 <br>_*No longer available on the Google Play store.*_
 <br>A mobile RPG for Android Devices inspired by Gameboy Color RPGs such as Dragon Quest I & II. Although it's not the first game I ever released, it's the first 'serious' one.
