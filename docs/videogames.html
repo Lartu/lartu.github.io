@@ -9,7 +9,13 @@
     html {
     margin: none;
     min-height: 100%;
-    border-left: 32px solid #ffdd00;
+    /*border-left: 32px solid #ffdd00;*/
+    background-image: url("images/border.png");
+    background-repeat: repeat-y;
+    background-position: 0px 0px;
+    background-size: auto 48px;
+    padding-left: 48px;
+    background-color: light-dark(white, black);
 }
 
 :root {
@@ -20,9 +26,9 @@ body {
     max-width: 800px;
     padding: 2rem;
     box-sizing: border-box;
-    background-color: light-dark(white, black);
     color: light-dark(black, white);
-    font-family: monospace;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
     line-height: 1.5em;
 }
 
@@ -32,9 +38,9 @@ img {
 }
 
 a {
-    color: light-dark(#0000FF, #ffdd00);
+    color: light-dark(rgb(14, 14, 210), #ffdd00);
     text-decoration: underline;
-    text-decoration-style: wavy;
+    text-decoration-style: solid;
 }
 
 #table-of-contents {
@@ -201,7 +207,7 @@ A minimal MMORPG about exploring an infinite tower, fighting monsters, finding e
 
     <div id="footer">
         <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Tue Aug 05 13:28:27  2025</i>.
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Tue Aug 05 14:32:01  2025</i>.
     </div>
     </body>
     </html>
