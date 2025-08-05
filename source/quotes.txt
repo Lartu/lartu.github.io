@@ -67,6 +67,8 @@ Some other management quotes are in the business section below. I should move th
     <br>_*Sebastián K., 2021-09-15*_
 % "Part of being a leader is letting your staff do their jobs, and doing your part to make sure they are freed up to do it. Leadership isn’t about doing, it’s about enabling and empowering a team to have a coordinated response."
     <br>_*No Stupid Questions podcast*_
+% "A computer can never be held accountable. Therefore a computer must never make a management decision."
+    <br>_*[IBM, 1979 internal training manual | https://simonwillison.net/2025/Feb/3/a-computer-can-never-be-held-accountable/]*_
 
 
 [[ img images/bar.png ]]
