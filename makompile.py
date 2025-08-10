@@ -317,8 +317,7 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
         Welcome to the Lartunet: Lartu's corner of the internet!
         Visit the <a href="changelog.html">changelog</a> to see the latest updates to this website.
         Also try <a href="https://www.eterspire.com" target=_blank>Eterspire</a>, the greatest on-line adventure!
-        If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a>.
-        Information superhighway!
+        If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on the information superhighway!
         </marquee>
         </div>
     <hr>
