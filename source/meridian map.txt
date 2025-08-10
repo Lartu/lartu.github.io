@@ -11,6 +11,8 @@ to be long offline.
 
 [[ img images/meridian_world_map.gif | expand ]]
 
+It's very MUD-like, I love it.
+
 As far as I can see, it's a map of the "Meridian 59 Mainlands". I don't know
 what that means. Some areas seem to be missing from it, such as –for example– a place called the __Decaying City of Brax__,
 so I'm guessing it's a partial map of some particular area. __Brax Castle__ and the surrounding areas
