@@ -24,11 +24,11 @@ The source code for this website can be found [here | https://github.com/lartu/l
 It's generated using [Makompile | https://github.com/Lartu/makompile].
 
 The lartunet is part of the [LOW TECH WEBRING | https://emreed.net/LowTech_Directory]!
-Although the webring is __retired__ and no longer updated, you can continue exploring the
+Although the webring is __retired and no longer updated__, you can continue exploring the
 pages that comprised it using that link. It was a webring for homepages of people interested
 in [low tech | https://walkerart.org/magazine/low-tech-magazine-kris-de-decker], small game tools,
 and other forms of Web 1.0 inspired creativity. It was created
-by Em, who started it because they were inspired [Olia Lialina's | https://art.teleportacia.org]
+by Em, who started it because they were inspired by [Olia Lialina's | https://art.teleportacia.org]
 work documenting Geocities communities, Kris De Decker's work at
 [LOW←TECH Magazine | https://solar.lowtechmagazine.com/], and their own internet childhood.
 I like to keep this brief summary here as a testament of what it was.
