@@ -33,5 +33,6 @@ work documenting Geocities communities, Kris De Decker's work at
 [LOW←TECH Magazine | https://solar.lowtechmagazine.com/], and their own internet childhood.
 I like to keep this brief summary here as a testament of what it was.
 
-If you want to create your own webring (and maybe invite me), you can do so with [onionring.js | https://garlic.garden/onionring/],
-which is one of the most popular webring solutions out there, and it's certainly low-tech.
+If you want to create your own webring (and maybe invite me to join), you can do so with
+[onionring.js | https://garlic.garden/onionring/], which is one of the most popular webring
+solutions out there, and it's certainly low-tech.
