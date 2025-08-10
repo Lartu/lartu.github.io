@@ -194,14 +194,18 @@ def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_re
         for token in tokens:
             token = token.strip()
             parts = token.split(" ", 1)
-            if len(parts) != 2:
-                error(f"The image tag '{image_match}' has an invalid parameter: '{token}'.")
             command = parts[0].lower()
             if command in image_info:
+                if len(parts) != 2:
+                    error(f"The image tag '{image_match}' has an invalid parameter: '{token}'.")
                 if image_info[command]:
                     error(f"The image tag '{image_match}' has duplicated too many '{command}' parameters.")
                 else:
                     image_info[command] = parts[1]
+            elif command == "expand":
+                image_info["link"] = image_info["img"]
+            else:
+                error(f"The image tag '{image_match}' has an unknown parameter '{command}'.")
         if not image_info["img"]:
             error(f"The image tag '{image_match}' is missing the image path.")
         html_image_tag = f"<img src=\"{image_info['img']}\""
