@@ -45,9 +45,15 @@ def error(message: str):
 
 def make_link(text: str, destination: str) -> str:
     if destination.lower().strip() in document_names:
+        # Local Makompile Links
         destination = translate_page_name(Path(destination.lower().strip()))
         return f"<a href=\"{destination}\">{text}</a>"
-    return f"<a href=\"{destination}\" target=_blank>{text}</a>"
+    elif ("https://" or "http://" not in destination) and (".html" in destination):
+        # Local HTML Links
+        return f"<a href=\"{destination}\">{text}</a>"
+    else:
+        # External Links
+        return f"<a href=\"{destination}\" target=_blank>{text}</a>"
 
 
 def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_replacements = []) -> str:
@@ -306,7 +312,14 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
     {css}
     </style>
     <body>
-
+        <div>
+        <marquee>
+        Welcome to the Lartunet: Lartu's corner of the internet!
+        Visit the <a href="changelog.html">changelog</a> to see the latest updates to this website.
+        Also try <a href="https://www.eterspire.com" target=_blank>Eterspire</a>, the greatest on-line adventure!
+        If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a>.
+        </marquee>
+        </div>
     <hr>
 
     <div class="header-div">

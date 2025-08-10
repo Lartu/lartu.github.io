@@ -12,8 +12,11 @@ or the [programming languages] I've developed.
 Or maybe my [other projects].
 
 I can also offer you my [List of Cool Links] and [Books].
-Or you can just scroll and see what you find.
+Or you can just browse and see what you find.
 If I have any thoughts I'd like to share, I'll post them [here | thoughts].
+
+To navigate this website, use the arrows above to turn to the next page,
+visit the [Table of Contents | sitemap.html] or check the [Log of Changes | changelog.html].
 
 [[ img images/citynight.png ]]
 
@@ -21,6 +24,14 @@ The source code for this website can be found [here | https://github.com/lartu/l
 It's generated using [Makompile | https://github.com/Lartu/makompile].
 
 The lartunet is part of the [LOW TECH WEBRING | https://emreed.net/LowTech_Directory]!
+Although the webring is __retired__ and no longer updated, you can continue exploring the
+pages that comprised it using that link. It was a webring for homepages of people interested
+in [low tech | https://walkerart.org/magazine/low-tech-magazine-kris-de-decker], small game tools,
+and other forms of Web 1.0 inspired creativity. It was created
+by Em, who started it because they were inspired [Olia Lialina's | https://art.teleportacia.org]
+work documenting Geocities communities, Kris De Decker's work at
+[LOW←TECH Magazine | https://solar.lowtechmagazine.com/], and their own internet childhood.
+I like to keep this brief summary here as a testament of what it was.
 
-This site supports light and dark modes (depending on your OS configuration)!
-_*But the cannonical version is the light one.*_
+If you want to create your own webring (and maybe invite me), you can do so with [onionring.js | https://garlic.garden/onionring/],
+which is one of the most popular webring solutions out there, and it's certainly low-tech.

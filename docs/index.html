@@ -9,24 +9,27 @@
     html {
     margin: none;
     min-height: 100%;
-    /*border-left: 32px solid #ffdd00;*/
     background-image: url("images/border.png");
     background-repeat: repeat-y;
     background-position: 0px 0px;
     background-size: auto 48px;
     padding-left: 48px;
-    background-color: light-dark(white, black);
+    background-color: black
+        /*light-dark(white, black)*/
+    ;
 }
 
-:root {
+/*:root {
     color-scheme: light dark;
-}
+}*/
 
 body {
     max-width: 800px;
     padding: 2rem;
     box-sizing: border-box;
-    color: light-dark(black, white);
+    color: #00ff00
+        /*light-dark(black, white)*/
+    ;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     line-height: 1.5em;
@@ -38,7 +41,9 @@ img {
 }
 
 a {
-    color: light-dark(rgb(14, 14, 210), #ffdd00);
+    color: #00ffff
+        /*light-dark(rgb(14, 14, 210), #ffdd00)*/
+    ;
     text-decoration: underline;
     text-decoration-style: solid;
 }
@@ -70,8 +75,12 @@ a:hover {
 
 code,
 pre {
-    background-color: light-dark(#EEE, #777);
-    color: light-dark(#777, #EEE);
+    background-color: #777
+        /*light-dark(#EEE, #777)*/
+    ;
+    color: #EEE
+        /*light-dark(#777, #EEE)*/
+    ;
     padding: 2px;
     border-radius: 4px;
 }
@@ -87,13 +96,25 @@ h3 {
 }
 
 hr {
-    height: 0px;
-    background: light-dark(black, white);
-    background: light-dark(black, white);
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #EEE
+        /*light-dark(black, white)*/
+    ;
+    margin: 0.5em 0px;
+    padding: 0;
 }
     </style>
     <body>
-
+        <div>
+        <marquee>
+        Welcome to the Lartunet: Lartu's corner of the internet!
+        Visit the <a href="changelog.html">changelog</a> to see the latest updates to this website.
+        Also try <a href="https://www.eterspire.com" target=_blank>Eterspire</a>, the greatest on-line adventure!
+        If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a>.
+        </marquee>
+        </div>
     <hr>
 
     <div class="header-div">
@@ -119,14 +140,24 @@ Thank you for passing by!</p>
 or the <a href="programming_languages.html">programming languages</a> I've developed.
 Or maybe my <a href="other_projects.html">other projects</a>.</p>
 <p>I can also offer you my <a href="list_of_cool_links.html">List of Cool Links</a> and <a href="books.html">Books</a>.
-Or you can just scroll and see what you find.
+Or you can just browse and see what you find.
 If I have any thoughts I'd like to share, I'll post them <a href="thoughts.html">here</a>.</p>
+<p>To navigate this website, use the arrows above to turn to the next page,
+visit the <a href="sitemap.html">Table of Contents</a> or check the <a href="changelog.html">Log of Changes</a>.</p>
 <p><img src="images/citynight.png"></p>
 <p>The source code for this website can be found <a href="https://github.com/lartu/lartu.github.io" target=_blank>here</a>.
 It's generated using <a href="https://github.com/Lartu/makompile" target=_blank>Makompile</a>.</p>
-<p>The lartunet is part of the <a href="https://emreed.net/LowTech_Directory" target=_blank>LOW TECH WEBRING</a>!</p>
-<p>This site supports light and dark modes (depending on your OS configuration)!
-<small>But the cannonical version is the light one.</small></p>
+<p>The lartunet is part of the <a href="https://emreed.net/LowTech_Directory" target=_blank>LOW TECH WEBRING</a>!
+Although the webring is <i>retired</i> and no longer updated, you can continue exploring the
+pages that comprised it using that link. It was a webring for homepages of people interested
+in <a href="https://walkerart.org/magazine/low-tech-magazine-kris-de-decker" target=_blank>low tech</a>, small game tools,
+and other forms of Web 1.0 inspired creativity. It was created
+by Em, who started it because they were inspired <a href="https://art.teleportacia.org" target=_blank>Olia Lialina's</a>
+work documenting Geocities communities, Kris De Decker's work at
+<a href="https://solar.lowtechmagazine.com/" target=_blank>LOW←TECH Magazine</a>, and their own internet childhood.
+I like to keep this brief summary here as a testament of what it was.</p>
+<p>If you want to create your own webring (and maybe invite me), you can do so with <a href="https://garlic.garden/onionring/" target=_blank>onionring.js</a>,
+which is one of the most popular webring solutions out there, and it's certainly low-tech.</p>
     <!-- CONTENT END -->
 
     <hr>
@@ -144,7 +175,7 @@ It's generated using <a href="https://github.com/Lartu/makompile" target=_blank>
 
     <div id="footer">
         <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Wed Aug 06 12:45:27  2025</i>.
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Sun Aug 10 16:07:37  2025</i>.
     </div>
     </body>
     </html>

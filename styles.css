@@ -1,24 +1,27 @@
 html {
     margin: none;
     min-height: 100%;
-    /*border-left: 32px solid #ffdd00;*/
     background-image: url("images/border.png");
     background-repeat: repeat-y;
     background-position: 0px 0px;
     background-size: auto 48px;
     padding-left: 48px;
-    background-color: light-dark(white, black);
+    background-color: black
+        /*light-dark(white, black)*/
+    ;
 }
 
-:root {
+/*:root {
     color-scheme: light dark;
-}
+}*/
 
 body {
     max-width: 800px;
     padding: 2rem;
     box-sizing: border-box;
-    color: light-dark(black, white);
+    color: #00ff00
+        /*light-dark(black, white)*/
+    ;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     line-height: 1.5em;
@@ -30,7 +33,9 @@ img {
 }
 
 a {
-    color: light-dark(rgb(14, 14, 210), #ffdd00);
+    color: #00ffff
+        /*light-dark(rgb(14, 14, 210), #ffdd00)*/
+    ;
     text-decoration: underline;
     text-decoration-style: solid;
 }
@@ -62,8 +67,12 @@ a:hover {
 
 code,
 pre {
-    background-color: light-dark(#EEE, #777);
-    color: light-dark(#777, #EEE);
+    background-color: #777
+        /*light-dark(#EEE, #777)*/
+    ;
+    color: #EEE
+        /*light-dark(#777, #EEE)*/
+    ;
     padding: 2px;
     border-radius: 4px;
 }
@@ -79,7 +88,12 @@ h3 {
 }
 
 hr {
-    height: 0px;
-    background: light-dark(black, white);
-    background: light-dark(black, white);
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #EEE
+        /*light-dark(black, white)*/
+    ;
+    margin: 0.5em 0px;
+    padding: 0;
 }
