@@ -35,4 +35,4 @@ I like to keep this brief summary here as a testament of what it was.
 
 If you want to create your own webring (and maybe invite me to join), you can do so with
 [onionring.js | https://garlic.garden/onionring/], which is one of the most popular webring
-solutions out there, and it's certainly low-tech.
+solutions out there, and is certainly low-tech.
