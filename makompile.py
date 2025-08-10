@@ -44,6 +44,7 @@ def error(message: str):
 
 
 def make_link(text: str, destination: str) -> str:
+    # TODO add this to full Makompile
     if destination.lower().strip() in document_names:
         # Local Makompile Links
         destination = translate_page_name(Path(destination.lower().strip()))
@@ -203,6 +204,7 @@ def compile_section(section: str, settings: Dict[SCSET, Any] = {}, code_match_re
                 else:
                     image_info[command] = parts[1]
             elif command == "expand":
+                # TODO add this to full Makompile
                 image_info["link"] = image_info["img"]
             else:
                 error(f"The image tag '{image_match}' has an unknown parameter '{command}'.")
@@ -596,12 +598,18 @@ if __name__ == "__main__":
     </p>
     <ol id=\"table-of-contents\">
     """
+    # TODO add this to full Makompile
+    files_to_link = []
     for file in files:
         page_path = translate_page_name(Path(file.stem))
         page_title = document_titles[file.name]
         if file.stem == "home":
             page_title += " <i><small>(Homepage)</small></i>"
-        page_html += f"\n<li><a href=\"{page_path}\">{page_title}</a></li>"
+        files_to_link.append((page_title, page_path))
+    files_to_link.sort(key=lambda x: x[0])
+    for file_tuple in files_to_link:
+        page_title, page_path = file_tuple
+        page_html += f"\n<li><a href=\"{page_path}\">{page_title}</a> <small style='color:rgba(255, 255, 255, 0.2);'>→ {page_path}</small></li>"
     page_html += "\n</ol>"
     previous_doc = translate_page_name(Path(files[- 1].stem))
     # next_doc = translate_page_name(Path(files[0].stem))
