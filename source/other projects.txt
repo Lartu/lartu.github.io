@@ -26,7 +26,7 @@ find them significant enough to add. Oh bother.
 <br>Mitsubachi is a tiny and open chat protocol, designed to be minimal, easy to implement, easy to use and easy to understand. Mitsubachi supports nicknames, nickname changing, user-to-user messaging and channel / group (known in Mitsubachi as 'distribution lists') chat.
 * [ tmon | https://github.com/Lartu/tmon]
 <br>__2020__
-<br>tmon, the [You]Tube Monitor, is a tool to make regular, local backups of your YouTube music playlists. It's pronounced te-mon, with te like in tetris and mon like in monitor.
+<br>tmon, the (You)Tube Monitor, is a tool to make regular, local backups of your YouTube music playlists. It's pronounced te-mon, with te like in tetris and mon like in monitor.
 * [ OpenNapkin | https://github.com/Lartu/OpenNapkin]
 <br>__2020__
 <br>OpenNapkin is a graphical Gopher client written in Gambas3. I wrote OpenNapkin because I wasn't able to find another Gopher client that wasn't written only for console or that wasn't part of a much bigger web-browsing suite.
