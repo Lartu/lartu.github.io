@@ -1,3 +1,14 @@
+<style>
+li:not(:first-child)
+{
+    border: 0px;
+    border-top: 1px solid gray;
+    border-style: dotted;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+</style>
+
 # Quotes & Scraps
 
 This is a list of quotes and scraps I've collected over the years.
@@ -106,8 +117,8 @@ Some other management quotes are in the business section below. I should move th
     <br>_*(I can't find the source for this one.)*_
 % "Your vision has to be service oriented. In every relationship there’s a benefactor and a benefiter. Service orientation means that the primary benefit goes to those other than the contributor."
     <br>_*(I can't find the source for this one.)*_
-% "If you want to set a trend, you have to tell the customer, “I’m going to offer you this experience, and you’re going to like it.”"
-    <br>_*An Uber driver, Easter 2024*_
+% "If you want to set a trend, you have to tell the customer, 'I’m going to offer you this experience, and you’re going to like it.'"
+    <br>_*An Uber driver, Easter 2024 – (dubious, but it resonated with me for some reason)*_
 % "Union relations are based on cooperation between managers and workers. Collective bargaining negotiations revolve around employee security. For example, staff cuts can only occur in severe economic crises and, before resorting to layoffs, managers' salaries and hiring levels will be reduced."
 % "Managers must take into account two types of factors when organizing. First, they must define the organization’s goals, its strategic plans to pursue those goals, and the capacity of their organizations to implement those strategic plans."
 % "In the early 20th century, various authors attempted to determine the maximum number of people a manager could supervise, and many concluded that the universal maximum was six."
