@@ -1,0 +1,625 @@
+# NariVM Opcode Reference
+
+The NariVM is a portable virtual machine I created (and that was heavily optimized by Mario Rugiero),
+that is designed to help me implement programming languages. This is the documentation for the
+opcodes it supports.
+
+# About the NariVM
+
+Opcodes support inline arguments in certain cases. In that case, they are listed as:
+
+Inline Arguments: `Argument`
+
+The NariVM is stack based. Arguments and return values for the opcodes below are listed like this:
+
+Arguments: `Value 1` `Value 2` Etc.
+
+Return: `Value 1` `Value 2` Etc.
+
+Where Value 1 is closer to the top of the stack and Value 2 is closer to the bottom after all
+values have been pushed to the stack.
+Values are popped from the top of the stack and inserted atop the stack as well.
+
+The stack supports values of the `Value` type. Values can be numbers (internally represented
+as `double`), strings (`std::string`), tables (which are `map` that map from `std::string`
+to `Value`), the __nil__ value (non-value), __iterators__, and __list limits__.
+
+NariVM Assembly (__Nambly__) to be compiled and executed by the NariVM must consist of
+lines of text with only a single opcode and its eventual arguments separated by spaces.
+
+NariVM tries to convert between types transparently, so a string number can be added to
+an actual number, numbers and tables can be concatenated and substring-ed, etc.
+
+Tables are always pushed to the stack by reference and garbage collected if references
+cease to exist. Other values are passed by value instead.
+
+Most values in NariVM can evaluate to true or false. The number 0, the nil value,
+en empty table or an empty string are all false. All other values are true.
+
+# Opcodes
+
+
+## PUSH _*(Push)*_
+
+Pushes a value to the stack.
+
+Inline Arguments: `value`
+
+
+## PNIL _*(Push Nil)*_
+
+Pushes the nil value to the stack.
+
+
+## PLIM _*(Push List Limit)*_
+
+Pushes the list limit value to the stack.
+
+
+## ADDV _*(Add Values)*_
+
+Adds two values and pushes the result to the stack.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 + Value2`
+
+
+## SUBT _*(Subtract)*_
+
+Subtracts two values and pushes the result to the stack.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 - Value2`
+
+
+## MULT _*(Multiply)*_
+
+Multiplies two values and pushes the result to the stack.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 * Value2`
+
+
+## FDIV _*(Floating Point Division)*_
+
+Divides two values and pushes the result to the stack.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 / Value2`
+
+
+## IDIV _*(Integer Division)*_
+
+Divides two values using integer division and pushes the result to the stack.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `floor(Value1 / Value2)`
+
+
+## POWR _*(Power)*_
+
+Raises a number to the power of another number.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 ^ Value2`
+
+
+## MODL _*(Modulo)*_
+
+Modulo operation between two integer values and pushes the result to the stack.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `floor(Value1) % floor(Value2)`
+
+
+## ISGT _*(Is Greater Than)*_
+
+Compares two values and pushes `1` or `0` to the stack, depending on whether the comparison was true or false, respectively.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 > Value2`
+
+
+## ISLT _*(Is Less Than)*_
+
+Compares two values and pushes `1` or `0` to the stack, depending on whether the comparison was true or false, respectively.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 < Value2`
+
+
+## ISGE _*(Is Greater Than or Equal to)*_
+
+Compares two values and pushes `1` or `0` to the stack, depending on whether the comparison was true or false, respectively.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 >= Value2`
+
+
+## ISLE _*(Is Less Than or Equal to)*_
+
+Compares two values and pushes `1` or `0` to the stack, depending on whether the comparison was true or false, respectively.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1 <= Value2`
+
+
+## ISEQ _*(Is Equal to)*_
+
+Compares two values and pushes `1` or `0` to the stack, depending on whether the comparison was true or false, respectively.
+
+Arguments: `Value2` `Value1`
+
+Return: `(type(Value1) == type(Value2) and Value1 == Value2) or number(Value1) == number(Value2)`
+
+
+## ISNE _*(Is Not Equal to)*_
+
+Compares two values and pushes `1` or `0` to the stack, depending on whether the comparison was true or false, respectively.
+
+Arguments: `Value2` `Value1`
+
+Return: `not((type(Value1) == type(Value2) and Value1 == Value2) or number(Value1) == number(Value2))`
+
+
+## VSET _*(Variable Set)*_
+
+Sets the value of the variable `variable name` in the current scope to `Value1`. If the variable exists,
+its current value is replaced, otherwise it's created.
+
+Inline Arguments: `variable name`
+
+Arguments: `Value1`
+
+
+## GSET _*(Global Variable Set)*_
+
+Sets the value of the variable `variable name` in the global scope to `Value1`. If the variable exists,
+its current value is replaced, otherwise it's created.
+
+Inline Arguments: `variable name`
+
+Arguments: `Value1`
+
+
+## VGET _*(Variable Get)*_
+
+Gets the value of the variable `variable name` in the nearest scope. If the variable exists,
+its current value is pushed to the stack, otherwise the nil value is.
+
+Inline Arguments: `variable name`
+
+Return: `variable value` or `nil`
+
+
+## JOIN _*(Join Strings)*_
+
+Takes the literal representation of two values and concatenates them.
+
+Arguments: `Value2 (number)` `Value1 (number)`
+
+Return: `Value1Value2`
+
+
+## SSTR _*(Sub-String)*_
+
+Substrings a string. If the start index is less than 0 it's reset to -1. Negative start indexes count
+back from the end of the string (-1 being the last index, -2 the one before last, etc.) If `number of characters`
+is out of bounds, it's capped to remaining character count. If the `start index` is longer than the
+string, an empty substring is returned.
+
+Arguments: `Number of characters` `Start Index` `String`
+
+Return: `String[Start Index:Number of characters]`
+
+
+## REPL _*(Replace)*_
+
+Replaces all instances of the string `needle` with the string `replacement` in the string `haystack`
+
+Arguments: `replacement` `needle` `haystack`
+
+Return: `haystack.replace(needle, replacement)`
+
+
+## EXPL _*(Explode)*_
+
+Splits `text` by the delimiter `delimiter`.
+The maximum number of splits to perform is defined by `max_splits`. If `max_splits` is -1, no maximum
+number of splits is defined.
+Empty cuts can be ommited from the final list by setting `add_empties` to 1 (0 to keep them).
+
+Arguments: `text` `delimiter` `max_splits` `add_empties`
+
+Return: `table value with all cuts indexed numerically starting from 1`
+
+
+## MXPL _*(Multi-Explode)*_
+
+Splits `text` by the any of the chars in `delimiter`.
+The maximum number of splits to perform is defined by `max_splits`. If `max_splits` is -1, no maximum
+number of splits is defined.
+Empty cuts can be ommited from the final list by setting `add_empties` to 1 (0 to keep them).
+
+Arguments: `text` `delimiter` `max_splits` `add_empties`
+
+Return: `table value with all cuts indexed numerically starting from 1`
+
+
+## @ _*(tag)*_
+
+Sets a tag in the code jump to.
+
+Inline Arguments: `tag name`
+
+
+## ; _*(Comment)*_
+
+Sets a comment in the code.
+
+Inline Arguments: `comment`
+
+
+## ;line _*(Nambly Source Line Number)*_
+
+Adds an execution tag so that if an error pops in a line after this one, NariVM can tell the
+user which line from the code that was compiled into this nambly generated the error.
+
+Inline Arguments: `line number`
+
+
+## ;file _*(Nambly Source File)*_
+
+Adds an execution tag so that if an error pops in a line after this one, NariVM can tell the
+user which file contained the code that was compiled into the nambly that generated the error.
+
+Inline Arguments: `file name`
+
+
+## JUMP _*(Jump)*_
+
+Jumps execution to the location of the inline tag.
+
+Inline Arguments: `tag name`
+
+
+## CALL _*(Call)*_
+
+Jumps execution to the location of the inline tag, but also pushes the current code location to
+the return stack so that execution can later continue from this point.
+
+Inline Arguments: `tag name`
+
+
+## RTRN _*(Return)*_
+
+Pops a location from the top of the return stack and returns to that location.
+
+
+## JPIF _*(Jump If False)*_
+
+Pops a value from the stack. If the value can be considered false, jumps to the inline tag.
+
+Inline Arguments: `tag name`
+
+Arguments: `value`
+
+
+## TABL _*(Table)*_
+
+Pushes an empty table value to the stack.
+
+Return: `table value`
+
+
+## PSET _*(Position Set)*_
+
+Sets the `value` of a `position` (casted to string) in a `table`.
+
+Arguments: `value` `index` `table`
+
+
+## PGET _*(Position Get)*_
+
+Gets the `value` of a `position` (casted to string) in a `table`. If the position is not
+in the table, `nil` is returned.
+
+Arguments: `index` `table`
+
+Return: `value` or `nil`
+
+
+## ARRR _*(Array)*_
+
+Like the pirates. Pops values to the stack and adds them to a table starting on position 1
+and counting up until a __list limit__ value is found. __Nil__ values and __iterator__ values
+cannot be added to tables and will raise a runtime error if a value with such typing is popped.
+
+The generated table is then pushed into the stack.
+
+Arguments: mutiple `value` `list limit`
+
+Return: `table array`
+
+
+## DUPL _*(Duplicate)*_
+
+Duplicates the value atop the stack.
+
+Arguments: `value`
+
+Return: `value` `value`
+
+
+## DISP _*(Display)*_
+
+Prints the string representation of a value to the screen.
+
+Arguments: `value`
+
+
+## ACCP _*(Accept)*_
+
+Prints the `prompt` and asks the user for `input`.
+
+Arguments: `prompt`
+
+Return: `input`
+
+
+## POPV _*(Pop Value)*_
+
+Deletes the topmost value of the stack.
+
+Arguments: `value`
+
+
+## EXIT _*(Pop Value)*_
+
+Exits with `exit code`.
+
+Arguments: `exit code`
+
+
+## UNST _*(Unset Variable)*_
+
+If a variable with this name exists in the uppermost scope or the global scope, it's deleted.
+
+Inline Arguments: `variable name`
+
+
+## PUST _*(Position Unset)*_
+
+If the position `index` exists in the `table`, delete the position.
+
+Inline Arguments: `index` `table`
+
+
+## FORW _*(File Open for Read and Write)*_
+
+Opens the file at path `filename` if it already existed, or creates it otherwise. The file is
+prepared for reading from it and writing to it (overwriting all its contents).
+
+Arguments: `filename`
+
+Return: `filename`
+
+
+## FORA _*(File Open for Read and Append)*_
+
+Opens the file at path `filename` if it already existed, or creates it otherwise. The file is
+prepared for reading from it and appending to it.
+
+Arguments: `filename`
+
+Return: `filename`
+
+
+## FORE _*(File Open for Reading)*_
+
+Opens the file at path `filename` if it already exists. The file is loaded as a read-only file.
+
+Arguments: `filename`
+
+Return: `filename`
+
+
+## RFIL _*(Read File)*_
+
+Reads the previously opened file with name `filename`. You should use the `filename` returned
+by the `FORW`, `FORA` and `FORE` opcodes. If the file isn't open or it didn't exist and wasn't
+created, `nil` is returned when trying to read from it. Otherwise, its `contents` are pushed to
+the stack.
+
+Arguments: `filename`
+
+Return: `contents` or `nil`
+
+
+## FCLS _*(File Close)*_
+
+Closes the file `filename` if it was open. You should use the `filename` returned
+by the `FORW`, `FORA` and `FORE` opcodes.
+
+Arguments: `filename`
+
+
+## ISOP _*(Is File Open)*_
+
+Returns if the file `filename` is open (`1`) or not (`0`). You should use the `filename` returned
+by the `FORW`, `FORA` and `FORE` opcodes.
+
+Arguments: `filename`
+
+Return `1` or `0`
+
+
+## RLNE _*(File Read Line)*_
+
+Reads the next `line` form the previously opened file with name `filename`. You should use the `filename` returned
+by the `FORW`, `FORA` and `FORE` opcodes. If the file isn't open, a runtime error is thrown.
+If all lines have been already read, `nil` is pushed.
+
+Arguments: `filename`
+
+Return: `line` or `nil`
+
+
+## FWRT _*(File Write)*_
+
+Writes a `value` (as string) to the file `filename`. You should use the `filename` returned
+by the `FORW`, `FORA` and `FORE` opcodes. If the file isn't open, a runtime error is thrown.
+If the file was opened for writing, it's contents are replaced by `value`. Otherwise the `value` is 
+appended to them.
+
+Arguments: `filename`
+
+Return: `line` or `nil`
+
+
+## LNOT _*(Logic Not)*_
+
+Negates the logical value of `value`. If `value` is not a number, a string or a table, an
+error is thrown.
+
+Arguments: `value`
+
+Return: `not value`
+
+
+## LAND _*(Logic And)*_
+
+ANDs the logical values of two values.
+
+Arguments: `value1` `value2`
+
+Return: `value1 and value2`
+
+
+## LGOR _*(Logic Or)*_
+
+ORs the logical values of two values.
+
+Arguments: `value1` `value2`
+
+Return: `value1 or value2`
+
+
+## TRIM _*(Trim Whitespace)*_
+
+Trims whitespace around `value`
+
+Arguments: `value`
+
+Return: `trimmed value`
+
+
+## SLEN _*(String or Table Length)*_
+
+Pushes the number of characters or the number of elements in the string or table `value`.
+
+Arguments: `value`
+
+Return: `element count`
+
+
+## SWAP _*(Swap)*_
+
+Swaps the position in the stack of the two topmost values.
+
+Arguments: `value1` `value2`
+
+Return: `value2` `value1`
+
+
+## ISIN _*(Is In)*_
+
+If the `container` is a string, it checks if the substring `value` is part of it.
+If the `container` is a table, it checks if contains the position with key `value`.
+
+Arguments: `container` `value`
+
+Return: `1` or `0`
+
+
+## FLOR _*(Floor)*_
+
+Rounds down a numerical value to the nearest integer.
+
+Arguments: `value`
+
+Return: `floor(value)`
+
+
+## ADSC _*(Add Scope)*_
+
+Creates a new variable scope on top of the previous one.
+
+
+## DLSC _*(Delete Scope)*_
+
+Deletes the uppermost variable scope. If only the global scope remains, a runtime error is thrown.
+
+
+## EXEC _*(Execute)*_
+
+Executes the sytem command `command` and returns its `exit code`, its `stderr` output and its `stdout` output.
+
+Arguments: `command`
+
+Return: `stdout_value` `stderr_value` `exit_code_value`
+
+
+## WAIT _*(Wait)*_
+
+Sleeps for a number of `seconds`.
+
+Arguments: `seconds`
+
+
+## KEYS _*(Get Table Keys)*_
+
+Given a `table`, a `new table` is pushed into the stack with all keys of `table` indexed
+into the `new table` from 1 to n.
+
+Arguments: `table`
+
+Return: `new table`
+
+
+## GITR _*(Get Iterator)*_
+
+Pushes an iterator for a table `value` or a `value` cast to string. An iterator is an object
+that contains references to all elements of the original `value` and can return them one after
+the other.
+
+Arguments: `value`
+
+Return: `iterator for value`
+
+
+## NEXT _*(Get Next Iterator Value)*_
+
+Given an `iterator`, if it still has elements in it, the next element is pushed into the stack
+above the `iterator`, which is not consumed. Otherwise, if the iterator is depleted, it's
+consumed and `nil` is pushed instead.
+
+Arguments: `iterator`
+
+Return: `next element` `iterator` or `nil`
+
+
+## DEBUG _*(Get Next Iterator Value)*_
+
+Prints NariVM debug information to the screen.

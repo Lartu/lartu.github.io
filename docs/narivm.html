@@ -1,0 +1,457 @@
+
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>NariVM Opcode Reference</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+    html {
+    margin: none;
+    min-height: 100%;
+    background-image: url("images/border.png");
+    background-repeat: repeat-y;
+    background-position: 0px 0px;
+    background-size: auto 48px;
+    padding-left: 48px;
+    background-color: black
+        /*light-dark(white, black)*/
+    ;
+}
+
+/*:root {
+    color-scheme: light dark;
+}*/
+
+body {
+    max-width: 800px;
+    padding: 2rem;
+    box-sizing: border-box;
+    color: #00ff00
+        /*light-dark(black, white)*/
+    ;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+img {
+    width: auto;
+    max-width: 80%;
+}
+
+a {
+    color: #00ffff
+        /*light-dark(rgb(14, 14, 210), #ffdd00)*/
+    ;
+    text-decoration: underline;
+    text-decoration-style: solid;
+}
+
+#table-of-contents {
+    list-style-type: upper-roman;
+}
+
+a:active,
+a:hover {
+    color: red;
+}
+
+.header-div {
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#footer {
+    font-size: 10pt;
+}
+
+#page-number {
+    font-style: italic;
+    font-size: 10pt;
+}
+
+code,
+pre {
+    background-color: #777
+        /*light-dark(#EEE, #777)*/
+    ;
+    color: #EEE
+        /*light-dark(#777, #EEE)*/
+    ;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+pre {
+    padding: 10px;
+}
+
+h1,
+h2,
+h3 {
+    text-transform: lowercase;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #EEE
+        /*light-dark(black, white)*/
+    ;
+    margin: 0.5em 0px;
+    padding: 0;
+}
+    </style>
+    <body>
+        <div>
+        <marquee>
+        Welcome to the Lartunet: Lartu's corner of the internet!
+        Visit the <a href="changelog.html">changelog</a> to see the latest updates to this website.
+        Also try <a href="https://www.eterspire.com" target=_blank>Eterspire</a>, the greatest on-line adventure!
+        If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on the information superhighway!
+        </marquee>
+        </div>
+    <hr>
+
+    <div class="header-div">
+        <a href="index.html">Home</a> |
+        <a href=sitemap.html>Contents</a> |
+        <a href=changelog.html>Changes</a> |
+        <a href="my_computers.html">←</a> |
+        <a href="other_projects.html">→</a> |
+        <span id="page-number">10 / 16 – NariVM Opcode Reference</span>
+    </div>
+
+    <hr>
+
+    <!-- CONTENT -->
+    
+<h1>NariVM Opcode Reference</h1>
+<p>The NariVM is a portable virtual machine I created (and that was heavily optimized by Mario Rugiero),
+that is designed to help me implement programming languages. This is the documentation for the
+opcodes it supports.</p>
+<h1>About the NariVM</h1>
+<p>Opcodes support inline arguments in certain cases. In that case, they are listed as:</p>
+<p>Inline Arguments: <code>Argument</code></p>
+<p>The NariVM is stack based. Arguments and return values for the opcodes below are listed like this:</p>
+<p>Arguments: <code>Value 1</code> <code>Value 2</code> Etc.</p>
+<p>Return: <code>Value 1</code> <code>Value 2</code> Etc.</p>
+<p>Where Value 1 is closer to the top of the stack and Value 2 is closer to the bottom after all
+values have been pushed to the stack.
+Values are popped from the top of the stack and inserted atop the stack as well.</p>
+<p>The stack supports values of the <code>Value</code> type. Values can be numbers (internally represented
+as <code>double</code>), strings (<code>std::string</code>), tables (which are <code>map</code> that map from <code>std::string</code>
+to <code>Value</code>), the <i>nil</i> value (non-value), <i>iterators</i>, and <i>list limits</i>.</p>
+<p>NariVM Assembly (<i>Nambly</i>) to be compiled and executed by the NariVM must consist of
+lines of text with only a single opcode and its eventual arguments separated by spaces.</p>
+<p>NariVM tries to convert between types transparently, so a string number can be added to
+an actual number, numbers and tables can be concatenated and substring-ed, etc.</p>
+<p>Tables are always pushed to the stack by reference and garbage collected if references
+cease to exist. Other values are passed by value instead.</p>
+<p>Most values in NariVM can evaluate to true or false. The number 0, the nil value,
+en empty table or an empty string are all false. All other values are true.</p>
+<h1>Opcodes</h1>
+<h2>PUSH <small>(Push)</small></h2>
+<p>Pushes a value to the stack.</p>
+<p>Inline Arguments: <code>value</code></p>
+<h2>PNIL <small>(Push Nil)</small></h2>
+<p>Pushes the nil value to the stack.</p>
+<h2>PLIM <small>(Push List Limit)</small></h2>
+<p>Pushes the list limit value to the stack.</p>
+<h2>ADDV <small>(Add Values)</small></h2>
+<p>Adds two values and pushes the result to the stack.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 + Value2</code></p>
+<h2>SUBT <small>(Subtract)</small></h2>
+<p>Subtracts two values and pushes the result to the stack.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 - Value2</code></p>
+<h2>MULT <small>(Multiply)</small></h2>
+<p>Multiplies two values and pushes the result to the stack.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 * Value2</code></p>
+<h2>FDIV <small>(Floating Point Division)</small></h2>
+<p>Divides two values and pushes the result to the stack.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 / Value2</code></p>
+<h2>IDIV <small>(Integer Division)</small></h2>
+<p>Divides two values using integer division and pushes the result to the stack.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>floor(Value1 / Value2)</code></p>
+<h2>POWR <small>(Power)</small></h2>
+<p>Raises a number to the power of another number.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 ^ Value2</code></p>
+<h2>MODL <small>(Modulo)</small></h2>
+<p>Modulo operation between two integer values and pushes the result to the stack.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>floor(Value1) % floor(Value2)</code></p>
+<h2>ISGT <small>(Is Greater Than)</small></h2>
+<p>Compares two values and pushes <code>1</code> or <code>0</code> to the stack, depending on whether the comparison was true or false, respectively.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 > Value2</code></p>
+<h2>ISLT <small>(Is Less Than)</small></h2>
+<p>Compares two values and pushes <code>1</code> or <code>0</code> to the stack, depending on whether the comparison was true or false, respectively.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 < Value2</code></p>
+<h2>ISGE <small>(Is Greater Than or Equal to)</small></h2>
+<p>Compares two values and pushes <code>1</code> or <code>0</code> to the stack, depending on whether the comparison was true or false, respectively.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 >= Value2</code></p>
+<h2>ISLE <small>(Is Less Than or Equal to)</small></h2>
+<p>Compares two values and pushes <code>1</code> or <code>0</code> to the stack, depending on whether the comparison was true or false, respectively.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1 <= Value2</code></p>
+<h2>ISEQ <small>(Is Equal to)</small></h2>
+<p>Compares two values and pushes <code>1</code> or <code>0</code> to the stack, depending on whether the comparison was true or false, respectively.</p>
+<p>Arguments: <code>Value2</code> <code>Value1</code></p>
+<p>Return: <code>(type(Value1) == type(Value2) and Value1 == Value2) or number(Value1) == number(Value2)</code></p>
+<h2>ISNE <small>(Is Not Equal to)</small></h2>
+<p>Compares two values and pushes <code>1</code> or <code>0</code> to the stack, depending on whether the comparison was true or false, respectively.</p>
+<p>Arguments: <code>Value2</code> <code>Value1</code></p>
+<p>Return: <code>not((type(Value1) == type(Value2) and Value1 == Value2) or number(Value1) == number(Value2))</code></p>
+<h2>VSET <small>(Variable Set)</small></h2>
+<p>Sets the value of the variable <code>variable name</code> in the current scope to <code>Value1</code>. If the variable exists,
+its current value is replaced, otherwise it's created.</p>
+<p>Inline Arguments: <code>variable name</code></p>
+<p>Arguments: <code>Value1</code></p>
+<h2>GSET <small>(Global Variable Set)</small></h2>
+<p>Sets the value of the variable <code>variable name</code> in the global scope to <code>Value1</code>. If the variable exists,
+its current value is replaced, otherwise it's created.</p>
+<p>Inline Arguments: <code>variable name</code></p>
+<p>Arguments: <code>Value1</code></p>
+<h2>VGET <small>(Variable Get)</small></h2>
+<p>Gets the value of the variable <code>variable name</code> in the nearest scope. If the variable exists,
+its current value is pushed to the stack, otherwise the nil value is.</p>
+<p>Inline Arguments: <code>variable name</code></p>
+<p>Return: <code>variable value</code> or <code>nil</code></p>
+<h2>JOIN <small>(Join Strings)</small></h2>
+<p>Takes the literal representation of two values and concatenates them.</p>
+<p>Arguments: <code>Value2 (number)</code> <code>Value1 (number)</code></p>
+<p>Return: <code>Value1Value2</code></p>
+<h2>SSTR <small>(Sub-String)</small></h2>
+<p>Substrings a string. If the start index is less than 0 it's reset to -1. Negative start indexes count
+back from the end of the string (-1 being the last index, -2 the one before last, etc.) If <code>number of characters</code>
+is out of bounds, it's capped to remaining character count. If the <code>start index</code> is longer than the
+string, an empty substring is returned.</p>
+<p>Arguments: <code>Number of characters</code> <code>Start Index</code> <code>String</code></p>
+<p>Return: <code>String[Start Index:Number of characters]</code></p>
+<h2>REPL <small>(Replace)</small></h2>
+<p>Replaces all instances of the string <code>needle</code> with the string <code>replacement</code> in the string <code>haystack</code></p>
+<p>Arguments: <code>replacement</code> <code>needle</code> <code>haystack</code></p>
+<p>Return: <code>haystack.replace(needle, replacement)</code></p>
+<h2>EXPL <small>(Explode)</small></h2>
+<p>Splits <code>text</code> by the delimiter <code>delimiter</code>.
+The maximum number of splits to perform is defined by <code>max_splits</code>. If <code>max_splits</code> is -1, no maximum
+number of splits is defined.
+Empty cuts can be ommited from the final list by setting <code>add_empties</code> to 1 (0 to keep them).</p>
+<p>Arguments: <code>text</code> <code>delimiter</code> <code>max_splits</code> <code>add_empties</code></p>
+<p>Return: <code>table value with all cuts indexed numerically starting from 1</code></p>
+<h2>MXPL <small>(Multi-Explode)</small></h2>
+<p>Splits <code>text</code> by the any of the chars in <code>delimiter</code>.
+The maximum number of splits to perform is defined by <code>max_splits</code>. If <code>max_splits</code> is -1, no maximum
+number of splits is defined.
+Empty cuts can be ommited from the final list by setting <code>add_empties</code> to 1 (0 to keep them).</p>
+<p>Arguments: <code>text</code> <code>delimiter</code> <code>max_splits</code> <code>add_empties</code></p>
+<p>Return: <code>table value with all cuts indexed numerically starting from 1</code></p>
+<h2>@ <small>(tag)</small></h2>
+<p>Sets a tag in the code jump to.</p>
+<p>Inline Arguments: <code>tag name</code></p>
+<h2>; <small>(Comment)</small></h2>
+<p>Sets a comment in the code.</p>
+<p>Inline Arguments: <code>comment</code></p>
+<h2>;line <small>(Nambly Source Line Number)</small></h2>
+<p>Adds an execution tag so that if an error pops in a line after this one, NariVM can tell the
+user which line from the code that was compiled into this nambly generated the error.</p>
+<p>Inline Arguments: <code>line number</code></p>
+<h2>;file <small>(Nambly Source File)</small></h2>
+<p>Adds an execution tag so that if an error pops in a line after this one, NariVM can tell the
+user which file contained the code that was compiled into the nambly that generated the error.</p>
+<p>Inline Arguments: <code>file name</code></p>
+<h2>JUMP <small>(Jump)</small></h2>
+<p>Jumps execution to the location of the inline tag.</p>
+<p>Inline Arguments: <code>tag name</code></p>
+<h2>CALL <small>(Call)</small></h2>
+<p>Jumps execution to the location of the inline tag, but also pushes the current code location to
+the return stack so that execution can later continue from this point.</p>
+<p>Inline Arguments: <code>tag name</code></p>
+<h2>RTRN <small>(Return)</small></h2>
+<p>Pops a location from the top of the return stack and returns to that location.</p>
+<h2>JPIF <small>(Jump If False)</small></h2>
+<p>Pops a value from the stack. If the value can be considered false, jumps to the inline tag.</p>
+<p>Inline Arguments: <code>tag name</code></p>
+<p>Arguments: <code>value</code></p>
+<h2>TABL <small>(Table)</small></h2>
+<p>Pushes an empty table value to the stack.</p>
+<p>Return: <code>table value</code></p>
+<h2>PSET <small>(Position Set)</small></h2>
+<p>Sets the <code>value</code> of a <code>position</code> (casted to string) in a <code>table</code>.</p>
+<p>Arguments: <code>value</code> <code>index</code> <code>table</code></p>
+<h2>PGET <small>(Position Get)</small></h2>
+<p>Gets the <code>value</code> of a <code>position</code> (casted to string) in a <code>table</code>. If the position is not
+in the table, <code>nil</code> is returned.</p>
+<p>Arguments: <code>index</code> <code>table</code></p>
+<p>Return: <code>value</code> or <code>nil</code></p>
+<h2>ARRR <small>(Array)</small></h2>
+<p>Like the pirates. Pops values to the stack and adds them to a table starting on position 1
+and counting up until a <i>list limit</i> value is found. <i>Nil</i> values and <i>iterator</i> values
+cannot be added to tables and will raise a runtime error if a value with such typing is popped.</p>
+<p>The generated table is then pushed into the stack.</p>
+<p>Arguments: mutiple <code>value</code> <code>list limit</code></p>
+<p>Return: <code>table array</code></p>
+<h2>DUPL <small>(Duplicate)</small></h2>
+<p>Duplicates the value atop the stack.</p>
+<p>Arguments: <code>value</code></p>
+<p>Return: <code>value</code> <code>value</code></p>
+<h2>DISP <small>(Display)</small></h2>
+<p>Prints the string representation of a value to the screen.</p>
+<p>Arguments: <code>value</code></p>
+<h2>ACCP <small>(Accept)</small></h2>
+<p>Prints the <code>prompt</code> and asks the user for <code>input</code>.</p>
+<p>Arguments: <code>prompt</code></p>
+<p>Return: <code>input</code></p>
+<h2>POPV <small>(Pop Value)</small></h2>
+<p>Deletes the topmost value of the stack.</p>
+<p>Arguments: <code>value</code></p>
+<h2>EXIT <small>(Pop Value)</small></h2>
+<p>Exits with <code>exit code</code>.</p>
+<p>Arguments: <code>exit code</code></p>
+<h2>UNST <small>(Unset Variable)</small></h2>
+<p>If a variable with this name exists in the uppermost scope or the global scope, it's deleted.</p>
+<p>Inline Arguments: <code>variable name</code></p>
+<h2>PUST <small>(Position Unset)</small></h2>
+<p>If the position <code>index</code> exists in the <code>table</code>, delete the position.</p>
+<p>Inline Arguments: <code>index</code> <code>table</code></p>
+<h2>FORW <small>(File Open for Read and Write)</small></h2>
+<p>Opens the file at path <code>filename</code> if it already existed, or creates it otherwise. The file is
+prepared for reading from it and writing to it (overwriting all its contents).</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return: <code>filename</code></p>
+<h2>FORA <small>(File Open for Read and Append)</small></h2>
+<p>Opens the file at path <code>filename</code> if it already existed, or creates it otherwise. The file is
+prepared for reading from it and appending to it.</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return: <code>filename</code></p>
+<h2>FORE <small>(File Open for Reading)</small></h2>
+<p>Opens the file at path <code>filename</code> if it already exists. The file is loaded as a read-only file.</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return: <code>filename</code></p>
+<h2>RFIL <small>(Read File)</small></h2>
+<p>Reads the previously opened file with name <code>filename</code>. You should use the <code>filename</code> returned
+by the <code>FORW</code>, <code>FORA</code> and <code>FORE</code> opcodes. If the file isn't open or it didn't exist and wasn't
+created, <code>nil</code> is returned when trying to read from it. Otherwise, its <code>contents</code> are pushed to
+the stack.</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return: <code>contents</code> or <code>nil</code></p>
+<h2>FCLS <small>(File Close)</small></h2>
+<p>Closes the file <code>filename</code> if it was open. You should use the <code>filename</code> returned
+by the <code>FORW</code>, <code>FORA</code> and <code>FORE</code> opcodes.</p>
+<p>Arguments: <code>filename</code></p>
+<h2>ISOP <small>(Is File Open)</small></h2>
+<p>Returns if the file <code>filename</code> is open (<code>1</code>) or not (<code>0</code>). You should use the <code>filename</code> returned
+by the <code>FORW</code>, <code>FORA</code> and <code>FORE</code> opcodes.</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return <code>1</code> or <code>0</code></p>
+<h2>RLNE <small>(File Read Line)</small></h2>
+<p>Reads the next <code>line</code> form the previously opened file with name <code>filename</code>. You should use the <code>filename</code> returned
+by the <code>FORW</code>, <code>FORA</code> and <code>FORE</code> opcodes. If the file isn't open, a runtime error is thrown.
+If all lines have been already read, <code>nil</code> is pushed.</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return: <code>line</code> or <code>nil</code></p>
+<h2>FWRT <small>(File Write)</small></h2>
+<p>Writes a <code>value</code> (as string) to the file <code>filename</code>. You should use the <code>filename</code> returned
+by the <code>FORW</code>, <code>FORA</code> and <code>FORE</code> opcodes. If the file isn't open, a runtime error is thrown.
+If the file was opened for writing, it's contents are replaced by <code>value</code>. Otherwise the <code>value</code> is 
+appended to them.</p>
+<p>Arguments: <code>filename</code></p>
+<p>Return: <code>line</code> or <code>nil</code></p>
+<h2>LNOT <small>(Logic Not)</small></h2>
+<p>Negates the logical value of <code>value</code>. If <code>value</code> is not a number, a string or a table, an
+error is thrown.</p>
+<p>Arguments: <code>value</code></p>
+<p>Return: <code>not value</code></p>
+<h2>LAND <small>(Logic And)</small></h2>
+<p>ANDs the logical values of two values.</p>
+<p>Arguments: <code>value1</code> <code>value2</code></p>
+<p>Return: <code>value1 and value2</code></p>
+<h2>LGOR <small>(Logic Or)</small></h2>
+<p>ORs the logical values of two values.</p>
+<p>Arguments: <code>value1</code> <code>value2</code></p>
+<p>Return: <code>value1 or value2</code></p>
+<h2>TRIM <small>(Trim Whitespace)</small></h2>
+<p>Trims whitespace around <code>value</code></p>
+<p>Arguments: <code>value</code></p>
+<p>Return: <code>trimmed value</code></p>
+<h2>SLEN <small>(String or Table Length)</small></h2>
+<p>Pushes the number of characters or the number of elements in the string or table <code>value</code>.</p>
+<p>Arguments: <code>value</code></p>
+<p>Return: <code>element count</code></p>
+<h2>SWAP <small>(Swap)</small></h2>
+<p>Swaps the position in the stack of the two topmost values.</p>
+<p>Arguments: <code>value1</code> <code>value2</code></p>
+<p>Return: <code>value2</code> <code>value1</code></p>
+<h2>ISIN <small>(Is In)</small></h2>
+<p>If the <code>container</code> is a string, it checks if the substring <code>value</code> is part of it.
+If the <code>container</code> is a table, it checks if contains the position with key <code>value</code>.</p>
+<p>Arguments: <code>container</code> <code>value</code></p>
+<p>Return: <code>1</code> or <code>0</code></p>
+<h2>FLOR <small>(Floor)</small></h2>
+<p>Rounds down a numerical value to the nearest integer.</p>
+<p>Arguments: <code>value</code></p>
+<p>Return: <code>floor(value)</code></p>
+<h2>ADSC <small>(Add Scope)</small></h2>
+<p>Creates a new variable scope on top of the previous one.</p>
+<h2>DLSC <small>(Delete Scope)</small></h2>
+<p>Deletes the uppermost variable scope. If only the global scope remains, a runtime error is thrown.</p>
+<h2>EXEC <small>(Execute)</small></h2>
+<p>Executes the sytem command <code>command</code> and returns its <code>exit code</code>, its <code>stderr</code> output and its <code>stdout</code> output.</p>
+<p>Arguments: <code>command</code></p>
+<p>Return: <code>stdout_value</code> <code>stderr_value</code> <code>exit_code_value</code></p>
+<h2>WAIT <small>(Wait)</small></h2>
+<p>Sleeps for a number of <code>seconds</code>.</p>
+<p>Arguments: <code>seconds</code></p>
+<h2>KEYS <small>(Get Table Keys)</small></h2>
+<p>Given a <code>table</code>, a <code>new table</code> is pushed into the stack with all keys of <code>table</code> indexed
+into the <code>new table</code> from 1 to n.</p>
+<p>Arguments: <code>table</code></p>
+<p>Return: <code>new table</code></p>
+<h2>GITR <small>(Get Iterator)</small></h2>
+<p>Pushes an iterator for a table <code>value</code> or a <code>value</code> cast to string. An iterator is an object
+that contains references to all elements of the original <code>value</code> and can return them one after
+the other.</p>
+<p>Arguments: <code>value</code></p>
+<p>Return: <code>iterator for value</code></p>
+<h2>NEXT <small>(Get Next Iterator Value)</small></h2>
+<p>Given an <code>iterator</code>, if it still has elements in it, the next element is pushed into the stack
+above the <code>iterator</code>, which is not consumed. Otherwise, if the iterator is depleted, it's
+consumed and <code>nil</code> is pushed instead.</p>
+<p>Arguments: <code>iterator</code></p>
+<p>Return: <code>next element</code> <code>iterator</code> or <code>nil</code></p>
+<h2>DEBUG <small>(Get Next Iterator Value)</small></h2>
+<p>Prints NariVM debug information to the screen.</p>
+    <!-- CONTENT END -->
+
+    <hr>
+
+    <div class="header-div">
+        <a href="index.html">Home</a> |
+        <a href=sitemap.html>Contents</a> |
+        <a href=changelog.html>Changes</a> |
+        <a href="my_computers.html">←</a> |
+        <a href="other_projects.html">→</a> |
+        <span id="page-number">10 / 16 – NariVM Opcode Reference</span>
+    </div>
+
+    <hr>
+
+    <div id="footer">
+        <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Thu Aug 28 19:55:41  2025</i>.
+    </div>
+    </body>
+    </html>
+    
