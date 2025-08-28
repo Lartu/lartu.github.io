@@ -4,6 +4,8 @@ The NariVM is a portable virtual machine I created (and that was heavily optimiz
 that is designed to help me implement programming languages. This is the documentation for the
 opcodes it supports.
 
+[[img images/nari.png ]]
+
 # About the NariVM
 
 Opcodes support inline arguments in certain cases. In that case, they are listed as:
