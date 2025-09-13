@@ -6,30 +6,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <style>
-    html {
+    /* COLORS */
+html {
+    background-color: #FCE7C8;
+}
+
+body {
+    color: #C75D2C;
+}
+
+a {
+    background-color: #F8B259;
+    color: #C75D2C;
+}
+
+a:active,
+a:hover {
+    background-color: #F8B259;
+    color: #FCE7C8;
+}
+
+code,
+pre {
+    background-color: #777;
+    color: #EEE;
+}
+
+hr {
+    border-top: 1px solid #C75D2C;
+}
+
+.header-div{
+    background-color: #C75D2C;
+    color: #FCE7C8;
+}
+
+.header-div a{
+    color: #F8B259;
+    background: none;
+}
+
+.header-div a:hover{
+    color: #FCE7C8;
+}
+
+
+/* OTHER CSS */
+html {
     margin: none;
     min-height: 100%;
-    background-image: url("images/border.png");
     background-repeat: repeat-y;
     background-position: 0px 0px;
     background-size: auto 48px;
-    padding-left: 48px;
-    background-color: black
-        /*light-dark(white, black)*/
-    ;
 }
 
-/*:root {
-    color-scheme: light dark;
-}*/
-
 body {
-    max-width: 800px;
+    max-width: 1240px;
     padding: 2rem;
     box-sizing: border-box;
-    color: #00ff00
-        /*light-dark(black, white)*/
-    ;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     line-height: 1.5em;
@@ -38,23 +72,16 @@ body {
 img {
     width: auto;
     max-width: 80%;
+    vertical-align: bottom;
 }
 
 a {
-    color: #00ffff
-        /*light-dark(rgb(14, 14, 210), #ffdd00)*/
-    ;
-    text-decoration: underline;
-    text-decoration-style: solid;
+    text-decoration: none;
+    text-decoration-style: none;
 }
 
 #table-of-contents {
     list-style-type: upper-roman;
-}
-
-a:active,
-a:hover {
-    color: red;
 }
 
 .header-div {
@@ -62,6 +89,10 @@ a:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 #footer {
@@ -75,12 +106,6 @@ a:hover {
 
 code,
 pre {
-    background-color: #777
-        /*light-dark(#EEE, #777)*/
-    ;
-    color: #EEE
-        /*light-dark(#777, #EEE)*/
-    ;
     padding: 2px;
     border-radius: 4px;
 }
@@ -98,10 +123,9 @@ h3 {
 hr {
     display: block;
     height: 1px;
-    border: 0;
-    border-top: 1px solid #EEE
-        /*light-dark(black, white)*/
-    ;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
     margin: 0.5em 0px;
     padding: 0;
 }
@@ -115,7 +139,6 @@ hr {
         If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on the information superhighway!
         </marquee>
         </div>
-    <hr>
 
     <div class="header-div">
         <a href="index.html">Home</a> |
@@ -125,8 +148,6 @@ hr {
         <a href="about_me.html">→</a> |
         <span id="page-number">List of Changes</span>
     </div>
-
-    <hr>
 
     <!-- CONTENT -->
     
@@ -170,8 +191,6 @@ hr {
 <p>Only the 15 most recently updated files are listed.</p>
     <!-- CONTENT END -->
 
-    <hr>
-
     <div class="header-div">
         <a href="index.html">Home</a> |
         <a href=sitemap.html>Contents</a> |
@@ -181,11 +200,9 @@ hr {
         <span id="page-number">List of Changes</span>
     </div>
 
-    <hr>
-
     <div id="footer">
         <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
-        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Thu Aug 28 19:57:46  2025</i>.
+        Page compiled using <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on <i>Sat Sep 13 16:53:47  2025</i>.
     </div>
     </body>
     </html>

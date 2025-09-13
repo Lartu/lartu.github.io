@@ -4,6 +4,8 @@ The NariVM is a portable virtual machine I created (and that was heavily optimiz
 that is designed to help me implement programming languages. This is the documentation for the
 opcodes it supports.
 
+You can find an implementation of the NariVM [here | https://github.com/Lartu/katalyn/blob/main/narivm.cpp].
+
 [[img images/nari.png ]]
 
 # About the NariVM

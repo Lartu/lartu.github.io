@@ -326,7 +326,6 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
         If you want to make your own website like this one, check <a href="https://github.com/lartu/makompile" target=_blank>Makompile</a> on the information superhighway!
         </marquee>
         </div>
-    <hr>
 
     <div class="header-div">
         {home_link}
@@ -336,15 +335,11 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
     </div>
-
-    <hr>
 
     <!-- CONTENT -->
     {page_html}
     <!-- CONTENT END -->
 
-    <hr>
-
     <div class="header-div">
         {home_link}
         <a href=sitemap.html>Contents</a> |
@@ -353,8 +348,6 @@ def save_page(filename_stem, title, page_html, previous_doc, next_doc, page_numb
         <a href="{next_doc}">→</a> |
         <span id="page-number">{page_number}</span>
     </div>
-
-    <hr>
 
     <div id="footer">
         <a href="https://github.com/lartu/makompile" target=_blank><img src="images/makompile_badge.png"></a>
