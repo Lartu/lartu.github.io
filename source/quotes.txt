@@ -65,7 +65,7 @@ If you want to quote me, please check [how to quote me].
     <br>_*Jim Carrey*_
 % "The most satisfying jobs are mostly professions including those involving caring for, teaching and protecting others and creative pursuits."
     <br>_*No Stupid Questions Podcast, Episode 31: How Much Do Your Friends Affect Your Future? 2025-07-19*_
-% "If you want to go fast, go alone. If you want to go far, go together"
+% "If you want to go fast, go alone. If you want to go far, go together."
     <br>_*[Probably an African proberv | https://wiki.collapsible.systems/w/index.php?title=Main_Page]*_
 
 
