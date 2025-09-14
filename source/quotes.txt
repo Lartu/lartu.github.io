@@ -98,9 +98,9 @@ Some other management quotes are in the business section below. I should move th
 % "There are two reasons somebody will buy something: (1) to solve a problem (to have a need met), or (2) to experience a lifestyle."
     <br>_*Josh Strife Hayes*_
 % "My recipe for success is always taking one part familiar, one part novel, and mixing them. So I always try to find something that fits that formula."
-    <br>_*C.*_
+    <br>_*C.W.*_
 % "I like to spend as little money as possible and accumulate zero debt. That has always been my competitive advantage."
-    <br>_*C.*_
+    <br>_*C.W.*_
 % "If we understand what the extremes are, the middle will take care of itself."
     <br>_*[Dan Formosa, Objectified | https://en.wikipedia.org/wiki/Objectified]*_
 % "The measure of a leader’s caliber is their ability to remain calm before their subordinates in the face of adversity."
@@ -135,9 +135,9 @@ Some other management quotes are in the business section below. I should move th
 % "Marketing is the tax you pay for being unremarkable."
     <br>_*Simon Bailey, Being Remarkable*_
 % "That's how we did our marketing: we made it easy for them to invite their friends, their colleages, their co-workers."
-    <br>_*C.*_
+    <br>_*C.W.*_
 % "We put 100% of our effort into pleasing our users. That was our only goal, every single day."
-    <br>_*C.*_
+    <br>_*C.W.*_
 
 
 [[ img images/plaza.png ]]
@@ -148,7 +148,7 @@ Some other management quotes are in the business section below. I should move th
 % "There also seems to be a difference in philosophy when it comes to player retention. When FF14 starts losing players, Yoshi-P doesn't panic and go 'We must retain what's left!' he stops and asks 'Okay, what are we doing wrong that is making them leave?' He also doesn't panic over natural churn. In fact he's said in interviews 'Go ahead, leave for a bit, play some other games, there's lots out there, we'll be waiting when you get back.' There's no pressure to log in every day or FOMO."
     <br>_*Interview on the development of Final Fantasy XIV: A Realm Reborn*_
 % "(In games), basically there are two parts: what __gets__ me playing the game and what __keeps__ me playing the game."
-    <br>_*C.*_
+    <br>_*C.W.*_
 
 From Daniel Lisi, World of Warcraft, Boss Fight Books:
 
