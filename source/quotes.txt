@@ -151,6 +151,8 @@ Some other management quotes are in the business section below. I should move th
 
 % "There also seems to be a difference in philosophy when it comes to player retention. When FF14 starts losing players, Yoshi-P doesn't panic and go 'We must retain what's left!' he stops and asks 'Okay, what are we doing wrong that is making them leave?' He also doesn't panic over natural churn. In fact he's said in interviews 'Go ahead, leave for a bit, play some other games, there's lots out there, we'll be waiting when you get back.' There's no pressure to log in every day or FOMO."
     <br>_*Interview on the development of Final Fantasy XIV: A Realm Reborn*_
+% "(In games), basically there are two parts: what __gets__ me playing the game and what __keeps__ me playing the game."
+    <br>_*C.*_
 
 From Daniel Lisi, World of Warcraft, Boss Fight Books:
 
@@ -159,9 +161,6 @@ From Daniel Lisi, World of Warcraft, Boss Fight Books:
 % "World of Warcraft requires a different formula: kill stuff → level up → get loot → repeat until endgame; then kill stuff → get loot → kill harder stuff → get better loot → repeat. The 'meaning of life' in World of Warcraft is to grow a powerful character, defeat the endgame content, and gear up enough to repeat the loop when new challenges arrive."
 % "I similarly remember the euphoric rush of my guild’s first boss kills: the onscreen event of a boss’s health hitting 0%, the ensuing screams over Ventrilo, the praise between guildmates, the distribution of loot. It was a party. This is what hardcore raiders returned to, over and over again—not only the experience of the kill, but the reveling in it, the praise and celebration amongst your team. What a loop."
 % "As Jonathan Blow points out, “MMOs are notorious for having relatively empty gameplay, but keeping players hooked with constant fake rewards—this creates ‘the treadmill.’ Rewards are a way of lying to the player so they feel good and continue to play the game.” He noted some extreme examples of this, such as reported incidents of Chinese and Korean MMO players dying at the computer. “As long as players are hooked, it doesn’t matter how good the core gameplay is. As long as they want to get the nicer sword, they’ll still play the game, and as long as they play it’s all the same to us as designers—I’m sure at this point, people think I’m needlessly babbling on about this point. But I want to put forth this question: Would they still play a game if it took out all the scheduled rewards?”"
-
-% "(In games), basically there are two parts: what __gets__ me playing the game and what __keeps__ me playing the game."
-    <br>_*C.*_
 
 
 [[ img images/train.png ]]
