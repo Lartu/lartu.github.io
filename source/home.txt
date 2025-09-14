@@ -3,7 +3,7 @@
 Hello! Welcome to the lartunet, Lartu's corner of the internet.
 Here you'll find information about games and software I've worked on.
 [Me? | about me] I make videogames and other code stuff. I love food and rainy days.
-Thank you for passing by!
+Thank you for stopping by!
 
 [[ img images/lartusigil.png | class lartian-sigil ]]
 
