@@ -45,7 +45,7 @@ If you want to quote me, please check [how to quote me].
 % "Life is what happens to us while we are busy making other plans."
     <br>_*John Lennon (from Marcelo E.'s WhatsApp bio)*_
 % "Don’t take criticism from someone you wouldn’t take advice from."
-% "El que come callado come dos veces." (_*__"He who eats in silence eats twice."__*_)
+% "El que come callado come dos veces." _*__("He who eats in silence eats twice.")__*_
     <br>_*Fran on Sol's communion day.*_
 % "Use new experiences to reframe challenges, change your routine. If you shake up your routine when the curveball comes, you’ll be able to knock it out of the park."
     <br>_*I don't remember!*_"
