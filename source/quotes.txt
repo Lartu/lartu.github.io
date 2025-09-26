@@ -11,9 +11,10 @@ li:not(:first-child)
 
 # Quotes & Scraps
 
-This is a list of quotes and scraps I've collected over the years.
+This is a list of quotes and scraps I've collected over the years. These are here because I like them,
+not because they are necessarily true or right.
 
-I also collect quotes from people I know personally that have said things that have inspired
+I also collect quotes from people I know personally that have said things that inspire
 me, so if any of these quotes is by you and you'd like to be quoted by name, please do let me know.
 
 If I do not name who said a particular quote, it is because I could not find the source.
@@ -175,3 +176,5 @@ From Daniel Lisi, World of Warcraft, Boss Fight Books:
     <br>_*GS (in reference to buying material things)*_
 % "By buying something that doesn’t —cannot— overdo what I wanted it to do, it reminded me how I see life and how I actually want to live it."
     <br>_*[This $17 watch is (slowly) replacing my phone | https://www.youtube.com/watch?v=uE8T7mVO9jU], by Good At Life, in reference to how a phone can tell the time, but you’re always fighting the temptation to start messing around with it—and even if you usually win, eventually you lose and end up scrolling through Instagram; whereas a watch can’t do anything else, and therefore doesn’t work against you by trying to tempt you.*_
+% "I love downloading any new app that gets released, especially early builds folks share on TestFlight. I usually end up with a bunch of screenshots and screen recordings that I revisit to spark new ideas."
+    <br>_*[Jon Rundle | https://www.workspaces.xyz/p/500-jon-rundle]*_
