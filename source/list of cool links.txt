@@ -45,15 +45,16 @@ field.*_
 
 ## Links About General Programming & Computing
 
-% [ Code that Doesn't Rot | https://pointersgonewild.com/2022/02/11/code-that-doesnt-rot/]
 % [ Why are scripting languages (e.g. Perl, Python, and  Ruby) not suitable as shell languages? | https://stackoverflow.com/questions/3637668/why-are-scripting-languages-e-g-perl-python-and-ruby-not-suitable-as-shell]
 % [ How Big Should a Programming Language Be? | https://tratt.net/laurie/blog/2023/how_big_should_a_programming_language_be.html]
+
+## Links About Retrocomputing, Solarpunk, Permacomputing, etc.
+
 % [ After self-hosting my email for twenty-three years I have thrown in the towel. The oligopoly has won. | https://cfenollosa.com/blog/after-self-hosting-my-email-for-twenty-three-years-i-have-thrown-in-the-towel-the-oligopoly-has-won.html]
-
-## Links About Retrocomputing
-
+% [ Code that Doesn't Rot | https://pointersgonewild.com/2022/02/11/code-that-doesnt-rot/]
 % [ Rediscovering the Small Web | https://neustadt.fr/essays/the-small-web/]
 % [ Just fucking use HTML | https://justfuckingusehtml.com/]
+% [ Futel | https://futel.net ]
 
 #  Links About Other Fun Stuff
 
