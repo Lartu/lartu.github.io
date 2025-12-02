@@ -68,6 +68,8 @@ If you want to quote me, please check [how to quote me].
     <br>_*No Stupid Questions Podcast, Episode 31: How Much Do Your Friends Affect Your Future? 2025-07-19*_
 % "If you want to go fast, go alone. If you want to go far, go together."
     <br>_*[Probably an African proberv | https://wiki.collapsible.systems/w/index.php?title=Main_Page]*_
+% "More is lost by indecision than wrong decision."
+    <br>_*Cicero*_
 
 
 [[ img images/capi.png ]]
