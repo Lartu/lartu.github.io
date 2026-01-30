@@ -1,6 +1,6 @@
 [[img images/mu.png ]]
 
-# An (rather long) Analysis on MU Online's Design and Popularity
+# A (rather long) Analysis on MU Online's Design and Popularity
 
 MU Online is a medieval fantasy MMORPG developed by Webzen, first launched in South Korea in late 2001 and later reaching global audiences by 2003.
 It quickly amassed millions of players, becoming one of the most popular online games of the early 2000s.
