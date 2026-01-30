@@ -12,6 +12,8 @@ but I highly encourage you to read the sources I cite below, as they also give y
 into what the MMORPG scene was (specially in Asia and LATAM) when MU Online launched in the
 early 2000s.
 
+[[img images/mu1.png ]]
+
 ## Introduction
 
 MU Online is a medieval fantasy MMORPG developed by Webzen, first launched in South Korea in late 2001 and later reaching global audiences by 2003.
@@ -24,7 +26,7 @@ and World of Warcraft.
 Regional differences in player reception (notably in South Korea, Latin America, and Europe) are highlighted, alongside an overview of the transition
 from the classic PC version to recent mobile titles in the MU franchise.
 
-[[img images/mu1.png ]]
+[[img images/mu6.png ]]
 
 ## Early Popularity
 
@@ -39,11 +41,7 @@ licenses were quickly signed to launch the game in China and Taiwan, attracting 
 By the mid-2000s, MU Online had established itself as a pioneering ARPGMMO hybrid, seamlessly melding hack-and-slash combat and loot hunting with
 persistent online world elements.
 
-
-
-[[img images/mu6.png ]]
-
-
+[[img images/mu2.png ]]
 
 ## Distinctive Gameplay Design
 
@@ -71,9 +69,7 @@ Socially, MU Online encouraged group play in its own way despite minimal quest c
 mixed-level members, as an incentive for higher-level players to help newbies. While the game world lacked a deep story, the player-driven experiences,
 from co-op monster hunts to the excitement of seeing a rare jewel drop, created lasting memories in the player community.
 
-
-
-[[img images/mu2.png ]]
+[[img images/mu3.png ]]
 
 ## Design Limitations
 
@@ -108,9 +104,7 @@ for players.
 Taken together, these design shortcomings (repetitive gameplay, outdated presentation, limited customization, and later monetization issues) likely
 constrained MU Online's growth outside of its core fan bubble.
 
-
-
-[[img images/mu3.png ]]
+[[img images/mu7.png ]]
 
 ## Regional Reception
 
@@ -185,7 +179,7 @@ not deep questlines and written lore, players with no English backgrounds could 
 made it an obvious choice for players looking for modern, but modest and understandable, MMORPGs.
 
 
-[[img images/mu7.png ]]
+[[img images/mu4.png ]]
 
 ## Mobile MU and Future
 
@@ -195,12 +189,9 @@ for mobile titles, most notably MU Origin (2015) and its sequels (MU Origin 2 in
 the spirit of MU Online's gameplay while adjusting to mobile user habits.
 
 
-
-[[img images/mu4.png ]]
-
 ### MU Origin (2015)
 
-Developed by a Chinese studio under Webzen's supervision, MU Origin was a fast-paced, combat-heavy mobile MMORPG that transplanted MU's setting and classes
+Pictured above and developed by a Chinese studio under Webzen's supervision, MU Origin was a fast-paced, combat-heavy mobile MMORPG that transplanted MU's setting and classes
 onto smartphones. It streamlined the experience for quick sessions: players chose from only three classic classes (Dark Knight, Dark Wizard, Elf) and dived
 into instanced dungeons and automated quests.
 
