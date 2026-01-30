@@ -41,6 +41,10 @@ persistent online world elements.
 
 
 
+[[img images/mu6.png ]]
+
+
+
 ## Distinctive Gameplay Design
 
 MU Online's core gameplay was strongly inspired by action RPGs like Diablo, which set it apart from many contemporaneous MMORPGs.
@@ -180,6 +184,8 @@ I believe there might be a correlation here between English literacy and MU popu
 not deep questlines and written lore, players with no English backgrounds could equally enjoy the game. This, coupled with the low specs expected by the title,
 made it an obvious choice for players looking for modern, but modest and understandable, MMORPGs.
 
+
+[[img images/mu7.png ]]
 
 ## Mobile MU and Future
 
