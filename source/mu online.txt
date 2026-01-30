@@ -102,7 +102,7 @@ constrained MU Online's growth outside of its core fan bubble.
 
 In its home country, MU Online was a household name among early 2000s gamers. It ranked among the top online games, famously trailing only StarCraft
 and Lineage in popularity at PC cafés. Korean gamers' affinity for MMORPGs meant MU enjoyed enormous popularity alongside its rivals during the golden
-age of PC bang gaming. MU was initially a subscription game in Korea (₩27,500 monthly fee), which positioned it as a premium experience, yet its growth
+age of PC bang gaming. MU was initially a subscription game in Korea (₩27,500 monthly fee, about $20 USD), which positioned it as a premium experience, yet its growth
 was explosive. The success was aided by South Korea's widespread broadband by 2003, which fostered a booming online game culture.
 
 Culturally, MU fit well with the competitive gaming spirit in Korea. The open PK system and guild battles resonated with players who enjoyed proving their
