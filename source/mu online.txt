@@ -13,7 +13,7 @@ Regional differences in player reception (notably in South Korea, Latin America,
 from the classic PC version to recent mobile titles in the MU franchise.
 
 
-## Early Popularity (2001–2010)
+## Early Popularity
 
 MU Online debuted as South Korea’s first fully 3D online RPG and quickly rose in prominence. By 2003, Webzen’s sole product “MU” boasted 3.3 million
 registered subscribers in Korea, with up to 500,000 concurrent players. This massive following made MU a close rival to NCsoft’s Lineage, which had
@@ -138,6 +138,11 @@ Similarly, in Romania MU was (and still is) commonly played; reports in 2021 not
 and even Romanian guilds active on the official global server. Southern Europe (e.g. Italy, Spain, Greece) also had pockets of MU fandom, often introduced
 via local cyber cafés or word-of-mouth. One Reddit comment summarized it: “Free-to-play games or private servers were popular in certain regions like eastern
 & south Europe and South America”, whereas the Anglosphere was in a different bubble of MMOs.
+
+
+### North America
+
+(TO DO)
 
 
 ### Personal Thoughts
