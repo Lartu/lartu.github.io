@@ -2,6 +2,18 @@
 
 # A (rather long) Analysis on MU Online's Design and Popularity
 
+## Preface
+
+This is rather long. I can probably summarize it further, as some parts
+feel a little redundant. My main motivation behind this analysis was to understand
+why MU became so popular in Korea and Latin America (where I first played it), and what
+has it's legacy become. I think I have answered both questions satisfactorily here,
+but I highly encourage you to read the sources I cite below, as they also give you a glimpse
+into what the MMORPG scene was (specially in Asia and LATAM) when MU Online launched in the
+early 2000s.
+
+## Introduction
+
 MU Online is a medieval fantasy MMORPG developed by Webzen, first launched in South Korea in late 2001 and later reaching global audiences by 2003.
 It quickly amassed millions of players, becoming one of the most popular online games of the early 2000s.
 
