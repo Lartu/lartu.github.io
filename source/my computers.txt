@@ -15,3 +15,4 @@ Practically a ripoff from Ken Silverman's website. My main computers over time.
 * 2022: Macbook Air (2017) - Intel i5 (8GB)
 * 2023: Macbook Air (2022) - Apple M2 (8GB)
 * 2025: Macbook Air (2025) - Apple M4 (24GB)
+* 2025: Lenovo Lenovo LOQ Gen 9 (15" Intel) GeForce RTX 3050 - 12th Gen Intel® Core™ i5-12450HX (24GB)
