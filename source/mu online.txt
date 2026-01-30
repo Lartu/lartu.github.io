@@ -12,6 +12,7 @@ and World of Warcraft.
 Regional differences in player reception (notably in South Korea, Latin America, and Europe) are highlighted, alongside an overview of the transition
 from the classic PC version to recent mobile titles in the MU franchise.
 
+[[img images/mu1.png ]]
 
 ## Early Popularity
 
@@ -25,6 +26,7 @@ licenses were quickly signed to launch the game in China and Taiwan, attracting 
 
 By the mid-2000s, MU Online had established itself as a pioneering ARPGMMO hybrid, seamlessly melding hack-and-slash combat and loot hunting with
 persistent online world elements.
+
 
 
 ## Distinctive Gameplay Design
@@ -53,6 +55,9 @@ Socially, MU Online encouraged group play in its own way despite minimal quest c
 mixed-level members, as an incentive for higher-level players to help newbies. While the game world lacked a deep story, the player-driven experiences,
 from co-op monster hunts to the excitement of seeing a rare jewel drop, created lasting memories in the player community.
 
+
+
+[[img images/mu2.png ]]
 
 ## Design Limitations
 
@@ -87,6 +92,9 @@ for players.
 Taken together, these design shortcomings (repetitive gameplay, outdated presentation, limited customization, and later monetization issues) likely
 constrained MU Online's growth outside of its core fan bubble.
 
+
+
+[[img images/mu3.png ]]
 
 ## Regional Reception
 
@@ -168,6 +176,10 @@ adding classes, maps, etc.) and still maintains an active (if niche) playerbase.
 for mobile titles, most notably MU Origin (2015) and its sequels (MU Origin 2 in 2018, and MU Origin 3 in 2022). These mobile adaptations have tried to (re)capture
 the spirit of MU Online's gameplay while adjusting to mobile user habits.
 
+
+
+[[img images/mu4.png ]]
+
 ### MU Origin (2015)
 
 Developed by a Chinese studio under Webzen's supervision, MU Origin was a fast-paced, combat-heavy mobile MMORPG that transplanted MU's setting and classes
@@ -187,6 +199,10 @@ In terms of reception, MU Origin was extremely successful in East Asia, topping 
 rode on nostalgia: many players in their 30s who remembered MU flocked to the mobile version, as well as on the free-to-play, event-heavy design that drives mobile
 MMORPG monetization.
 
+
+
+[[img images/mu5.png ]]
+
 ### MU Origin 2, etc.
 
 The sequels have iterated on the formula with improved graphics and more content. MU Origin 2 (2018) presented a visual upgrade and reintroduced some classic
@@ -201,6 +217,7 @@ though it had a more modest impact globally.
 The continued investment in the IP, whether via mobile sequels or events like a planned Web3 version presented at Brazil Game Show 2025, indicates that MU's core design still holds appeal.
 It's a design rooted in nostalgia and simple, satisfying feedback loops: the joy of hearing great item drop, the glow of a new shiny armor piece,
 or the camaraderie of a guild party grinding overnight.
+
 
 ### Mobile Monetization
 
