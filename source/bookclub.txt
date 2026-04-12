@@ -1,4 +1,4 @@
-[[img images/bookclub.gif ]]
+[[img images/bookclub.png ]]
 
 # The LartuNet Book Club
 
