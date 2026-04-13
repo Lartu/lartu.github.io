@@ -1,18 +1,3 @@
-[[img images/picture.png ]]
+# Larturead
 
-# About Me
-
-Hello, I'm Lartu. This is my personal website.
-
-I'm mostly a game developer. Mostly, because I work on other stuff from time to time.
-I co-founded [ Stonehollow Workshop | https://www.stonehollow-workshop.com/ ].
-
-I have studied Computer Science and Anthropology of Religion,
-and I have a license to pilot sailships. I also have a driving license!
-I can speak English, Spanish and Japanese.
-
-Find me on [X (Twitter) | https://www.x.com/martulartu], 
-[GitHub | https://www.github.com/lartu], and [Itch.io | https://lartu.itch.io/].
-You may also e-mail __lartu (at) lartu dot net__. Feel free to do so, e-mails are so much fun!
-
-If you see a lartu anywhere else, that's also probably me.
+Larturead is a tool that helps you read faster. You can check it out [here | ./files/larturead.html].
