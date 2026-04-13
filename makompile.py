@@ -602,7 +602,7 @@ if __name__ == "__main__":
     files_to_link.sort(key=lambda x: x[0])
     for file_tuple in files_to_link:
         page_title, page_path = file_tuple
-        page_html += f"\n<li><a href=\"{page_path}\">{page_title}</a> <small style='color:rgba(255, 255, 255, 0.2);'>→ {page_path}</small></li>"
+        page_html += f"\n<li><a href=\"{page_path}\">{page_title}</a></li>"
     page_html += "\n</ol>"
     previous_doc = translate_page_name(Path(files[- 1].stem))
     # next_doc = translate_page_name(Path(files[0].stem))
