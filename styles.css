@@ -124,6 +124,6 @@ hr {
     padding: 0;
 }
 
-main ::selection {
+html ::selection {
     background-color: #F8B259;
 }
