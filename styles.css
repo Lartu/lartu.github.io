@@ -125,5 +125,6 @@ hr {
 }
 
 html ::selection {
-    background-color: #F8B259;
+    background-color: #C75D2C;
+    color: #FCE7C8;
 }
