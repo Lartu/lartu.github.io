@@ -70,6 +70,12 @@ If you want to quote me, please check [how to quote me].
     <br>_*[Probably an African proberv | https://wiki.collapsible.systems/w/index.php?title=Main_Page]*_
 % "More is lost by indecision than wrong decision."
     <br>_*Cicero*_
+% "More is lost by indecision than wrong decision."
+    <br>_*Cicero*_
+% "It does not matter how slowly you go as long as you do not stop."
+    <br>_* Confucius*_
+% “Never be afraid to try something new. Amateurs built the Ark and pros built the Titanic”
+    <br>_*Steven Tyler's Mom (Top Gear Season 20, episode 5)*_
 
 
 [[ img images/capi.png ]]
@@ -85,6 +91,7 @@ Some other management quotes are in the business section below. I should move th
     <br>_*No Stupid Questions podcast*_
 % "A computer can never be held accountable. Therefore a computer must never make a management decision."
     <br>_*[IBM, 1979 internal training manual | https://simonwillison.net/2025/Feb/3/a-computer-can-never-be-held-accountable/]*_
+% "If an employee is surprised by their termination, their manager has failed them and failed at their job."
 
 
 [[ img images/bar.png ]]
