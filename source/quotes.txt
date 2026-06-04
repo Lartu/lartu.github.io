@@ -74,7 +74,7 @@ If you want to quote me, please check [how to quote me].
     <br>_*Cicero*_
 % "It does not matter how slowly you go as long as you do not stop."
     <br>_* Confucius*_
-% “Never be afraid to try something new. Amateurs built the Ark and pros built the Titanic”
+% "Never be afraid to try something new. Amateurs built the Ark and pros built the Titanic."
     <br>_*Steven Tyler's Mom (Top Gear Season 20, episode 5)*_
 
 
