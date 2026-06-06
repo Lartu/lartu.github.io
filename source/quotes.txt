@@ -70,8 +70,6 @@ If you want to quote me, please check [how to quote me].
     <br>_*[Probably an African proberv | https://wiki.collapsible.systems/w/index.php?title=Main_Page]*_
 % "More is lost by indecision than wrong decision."
     <br>_*Cicero*_
-% "More is lost by indecision than wrong decision."
-    <br>_*Cicero*_
 % "It does not matter how slowly you go as long as you do not stop."
     <br>_* Confucius*_
 % "Never be afraid to try something new. Amateurs built the Ark and pros built the Titanic."
