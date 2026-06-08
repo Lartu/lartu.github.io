@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Galle's Theorem is a mathematical theorem that states that if A, then A. Deceptively simple, it establishes the foundational principle of propositional self-implication: every statement necessarily implies itself. The theorem has been described as one of the most immediate consequences of classical logic and serves as a cornerstone for the study of tautological structures.
+Galle's Theorem is a mathematical theorem that states that if __A__, then __A__.
+
+Deceptively simple, it establishes the foundational principle of propositional self-implication: every statement necessarily implies itself. The theorem has been described as one of the most immediate consequences of classical logic and serves as a cornerstone for the study of tautological structures.
 
 ## Basic Form (Galle's Theorem)
 
