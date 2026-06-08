@@ -6,19 +6,19 @@ Galle's Theorem is a mathematical theorem that states that if A, then A. Decepti
 
 ## Basic Form (Galle's Theorem)
 
-Let _A_ be any proposition.
+Let __A__ be any proposition.
 
-Then _A_ ⇒ _A_
+Then __A__ ⇒ __A__
 
 □
 
 ## Proof
 
-Assume that A is true.
+Assume that __A__ is true.
 
-Since A is true, it follows that A is true.
+Since __A__ is true, it follows that __A__ is true.
 
-Then A is true.
+Then __A__ is true.
 
 ## Corollary 1: Self-Sufficiency of Propositions
 
@@ -28,7 +28,7 @@ Every proposition is a sufficient condition for itself.
 
 For any proposition A belonging to the set of all propositions P,
 
-∀ _A_ ∈ _P_, _A_ ⇒ _A_
+∀ __A__ ∈ __P__, __A__ ⇒ __A__
 
 by Galle's Theorem.
 
@@ -42,11 +42,11 @@ The implication relation is reflexive.
 
 Since every proposition implies itself,
 
-∀ _A_ ∈ _P_, _A_ ⇒ _A_
+∀ __A__ ∈ __P__, __A__ ⇒ __A__
 
 satisfies the reflexive property, and thus
 
-∀ _A_ ∈ _P_, _A_ ⇒ _A_ so that also _A_ ⇒ _A_
+∀ __A__ ∈ __P__, __A__ ⇒ __A__ so that also __A__ ⇒ __A__
 
 □
 
