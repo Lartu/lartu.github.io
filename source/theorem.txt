@@ -12,8 +12,6 @@ Let __A__ be any proposition.
 
 Then __A__ ⇒ __A__
 
-□
-
 ### Proof
 
 Assume that __A__ is true.
@@ -21,6 +19,8 @@ Assume that __A__ is true.
 Since __A__ is true, it follows that __A__ is true.
 
 Then __A__ is true.
+
+□
 
 ## Corollary 1: Self-Sufficiency of Propositions
 
