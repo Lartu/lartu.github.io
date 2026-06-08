@@ -14,7 +14,7 @@ Then __A__ ⇒ __A__
 
 □
 
-## Proof
+### Proof
 
 Assume that __A__ is true.
 
