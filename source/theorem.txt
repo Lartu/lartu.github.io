@@ -1,0 +1,52 @@
+# Galle's Theorem
+
+## Introduction
+
+Galle's Theorem is a mathematical theorem that states that if A, then A. Deceptively simple, it establishes the foundational principle of propositional self-implication: every statement necessarily implies itself. The theorem has been described as one of the most immediate consequences of classical logic and serves as a cornerstone for the study of tautological structures.
+
+## Basic Form (Galle's Theorem)
+
+Let _A_ be any proposition.
+
+Then _A_ ⇒ _A_
+
+□
+
+## Proof
+
+Assume that A is true.
+
+Since A is true, it follows that A is true.
+
+Then A is true.
+
+## Corollary 1: Self-Sufficiency of Propositions
+
+Every proposition is a sufficient condition for itself.
+
+### Proof
+
+For any proposition A belonging to the set of all propositions P,
+
+∀ _A_ ∈ _P_, _A_ ⇒ _A_
+
+by Galle's Theorem.
+
+□
+
+## Corollary 2: Reflexivity of Implication
+
+The implication relation is reflexive.
+
+### Proof
+
+Since every proposition implies itself,
+
+∀ _A_ ∈ _P_, _A_ ⇒ _A_
+
+satisfies the reflexive property, and thus
+
+∀ _A_ ∈ _P_, _A_ ⇒ _A_ so that also _A_ ⇒ _A_
+
+□
+
