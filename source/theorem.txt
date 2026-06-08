@@ -38,6 +38,8 @@ by Galle's Theorem.
 
 □
 
+<hr>
+
 ## Corollary 2: Reflexivity of Implication
 
 The implication relation is reflexive.
