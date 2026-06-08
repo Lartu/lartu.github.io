@@ -22,6 +22,8 @@ Then __A__ is true.
 
 □
 
+<hr>
+
 ## Corollary 1: Self-Sufficiency of Propositions
 
 Every proposition is a sufficient condition for itself.
