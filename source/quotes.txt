@@ -74,6 +74,8 @@ If you want to quote me, please check [how to quote me].
     <br>_* Confucius*_
 % "Never be afraid to try something new. Amateurs built the Ark and pros built the Titanic."
     <br>_*Steven Tyler's Mom (Top Gear Season 20, episode 5)*_
+% "Anyone who’s a chef, who loves food, ultimately knows that all that matters is: ‘Is it good? Does it give pleasure?’"
+    <br>_*Anthony Bourdain*_
 
 
 [[ img images/capi.png ]]
