@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+  <title>Eterspire</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      overflow: auto;
+      background: black;
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 11pt;
+    }
+
+    #gameContainer {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      min-width: 800px;
+      min-height: 600px;
+      display: block;
+      background: #000000;
+    }
+
+    canvas+* {
+      z-index: 2;
+    }
+
+    .progress {
+      margin: 1.5em;
+      border: 1px solid rgb(186, 103, 9);
+      width: min(400px, calc(100vw - 3em));
+      display: none;
+    }
+
+    .progress .full {
+      margin: 2px;
+      background: rgb(186, 103, 9);
+      height: 2em;
+      transform: scaleX(0);
+      transform-origin: top left;
+    }
+
+    #loader {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="gameContainer">
+    <canvas id="unity-canvas" width=800 height=600 tabindex="-1"></canvas>
+  </div>
+  <div id="loader">
+    <div class="progress">
+      <div class="full"></div>
+    </div>
+    <p>Please Wait, Eterspire is Loading...</p>
+  </div>
+
+  <script>
+    var canvas = document.querySelector("#unity-canvas");
+    var buildUrl = "Build";
+    var loaderUrl = buildUrl + "/eterspire.loader.js";
+    var config = {
+      arguments: [],
+      dataUrl: buildUrl + "/eterspire.data.unityweb",
+      frameworkUrl: buildUrl + "/eterspire.framework.js.unityweb",
+      codeUrl: buildUrl + "/eterspire.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Lartu",
+      productName: "Eterspire",
+      productVersion: "0.5"
+    };
+
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+    }
+
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') cookie = cookie.substring(1);
+        if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length);
+      }
+      return 1;
+    }
+
+    function resizeScreen(type) {
+      var useSmallScreen = Number(type) === 1;
+      if (useSmallScreen) {
+        canvas.style.width = "800px";
+        canvas.style.height = "600px";
+        setCookie("eterspire_screen_size", 1, 999);
+        return 1;
+      }
+
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      setCookie("eterspire_screen_size", 0, 999);
+      return 0;
+    }
+
+    resizeScreen(getCookie("eterspire_screen_size"));
+
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    script.onload = function () {
+      document.querySelector("#loader .progress").style.display = "block";
+      createUnityInstance(canvas, config, function (progress) {
+        document.querySelector("#loader .progress .full").style.transform = "scaleX(" + progress + ")";
+      }).then(function (unityInstance) {
+        document.querySelector("#loader").style.display = "none";
+        window.unityInstance = unityInstance;
+      }).catch(function (message) {
+        alert(message);
+      });
+    };
+    document.body.appendChild(script);
+
+    window.onbeforeunload = function (event) {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    document.onkeydown = function (event) {
+      event = event || window.event;
+      if (!event.ctrlKey && !event.metaKey) return;
+
+      var code = event.which || event.keyCode;
+      if (code === 83 || code === 87) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+  </script>
+</body>
+
+</html>
