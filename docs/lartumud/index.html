@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,8 +9,16 @@
     <link rel="shortcut icon" type="image/gif" href="favicon.gif">
     <link rel="icon" type="image/gif" href="favicon.gif">
     <style>
-        html { box-sizing: border-box; }
-        *, *::before, *::after { box-sizing: inherit; }
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
         body {
             margin: 0;
             overflow: auto;
@@ -18,11 +27,13 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 11pt;
         }
+
         #gameContainer {
             display: none;
             width: 100%;
             overflow-x: auto;
         }
+
         #unity-canvas {
             display: block;
             width: 800px;
@@ -30,9 +41,22 @@
             min-width: 800px;
             min-height: 600px;
             margin: 20px auto;
-            background: #000000;
+
+            background: {
+                    {
+                        {
+                        BACKGROUND_COLOR
+                    }
+                }
+            }
+
+            ;
         }
-        canvas + * { z-index: 2; }
+
+        canvas+* {
+            z-index: 2;
+        }
+
         #loader {
             position: relative;
             min-height: 600px;
@@ -42,12 +66,14 @@
             justify-content: center;
             background: black;
         }
+
         .progress {
             margin: 1.5em;
             border: 1px solid rgb(186, 103, 9);
             width: min(400px, calc(100vw - 3em));
             display: none;
         }
+
         .progress .full {
             margin: 2px;
             height: 2em;
@@ -55,7 +81,11 @@
             transform: scaleX(0);
             transform-origin: top left;
         }
-        #loader-message.error { color: #ff8a8a; }
+
+        #loader-message.error {
+            color: #ff8a8a;
+        }
+
         .bordered-box-menu {
             max-width: 800px;
             margin: 20px auto 0;
@@ -67,8 +97,16 @@
             color: white;
             font-size: 12px;
         }
-        .bordered-box-menu table { width: 100%; }
-        .bordered-box-menu a, .footer a { color: white; }
+
+        .bordered-box-menu table {
+            width: 100%;
+        }
+
+        .bordered-box-menu a,
+        .footer a {
+            color: white;
+        }
+
         .menu-link {
             display: inline-flex;
             align-items: center;
@@ -76,7 +114,11 @@
             vertical-align: middle;
             white-space: nowrap;
         }
-        .menu-link + .menu-link { margin-left: 10px; }
+
+        .menu-link+.menu-link {
+            margin-left: 10px;
+        }
+
         .footer {
             padding: 10px 10px 20px;
             text-align: center;
@@ -84,11 +126,21 @@
             font-size: 8pt;
             line-height: 150%;
         }
-        .footer a{
+
+        .footer a {
             color: #ff9900;
+        }
+
+        #unity-canvas,
+        #unity-canvas:focus,
+        #unity-canvas:focus-visible {
+            outline: none;
+            border: none;
+            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
+
 <body>
     <div>
         <div style="text-align: center; margin: 16px auto 0; overflow-x: auto;">
@@ -111,8 +163,12 @@
                     </td>
                     <td style="text-align: right;">
                         <span class="menu-link">
+                            <img src="icon_11.png" alt="">
+                            <a href="news.html" target="_blank">News & Updates</a>
+                        </span>
+                        <span class="menu-link">
                             <img src="icon_1.png" alt="">
-                            <a href="manual.html" target="_blank">Need help? Check the Manual</a>
+                            <a href="manual.html" target="_blank">Manual</a>
                         </span>
                         <span class="menu-link">
                             <img src="icon_4.png" alt="">
@@ -120,7 +176,8 @@
                         </span>
                         <span class="menu-link">
                             <img src="icon_8.png" alt="">
-                            <a href="https://discord.com/channels/814967791840264232/1541243891460735097" target="_blank">Forums</a>
+                            <a href="https://discord.com/channels/814967791840264232/1541243891460735097"
+                                target="_blank">Forums</a>
                         </span>
                     </td>
                 </tr>
@@ -129,7 +186,9 @@
     </div>
 
     <div id="loader">
-        <div class="progress"><div class="full"></div></div>
+        <div class="progress">
+            <div class="full"></div>
+        </div>
         <p id="loader-message">Please Wait, Eterspire is Loading...</p>
     </div>
 
@@ -138,7 +197,8 @@
     </div>
 
     <div class="footer">
-        Copyright by <a href="https://www.lartu.net" target="_blank">Lartu</a> &amp; <a href="https://shw.ar" target="_blank">Stonehollow Workshop</a>, 2020. All rights reserved.
+        Copyright by <a href="https://www.lartu.net" target="_blank">Lartu</a> &amp; <a href="https://shw.ar"
+            target="_blank">Stonehollow Workshop</a>, 2020. All rights reserved.
         <br>To play this game you must agree to our
         <a href="https://www.stonehollow-workshop.com/tc.html" target="_blank">Terms and Conditions</a>
         and <a href="https://www.eterspire.com/privacy/" target="_blank">Privacy Policy</a>.
@@ -158,8 +218,8 @@
             codeUrl: buildUrl + "/lartumud.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Lartu",
-            productName: "Eterspire",
-            productVersion: "0.5"
+        productName: { { { JSON.stringify(PRODUCT_NAME) } } },
+        productVersion: { { { JSON.stringify(PRODUCT_VERSION) } } }
         };
 
         function setCookie(name, value, days) {
@@ -245,4 +305,5 @@
         canvas.onselectstart = function () { return false; };
     </script>
 </body>
+
 </html>
