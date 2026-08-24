@@ -1,183 +1,248 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
-  <title>Eterspire</title>
-  <style>
-    html {
-      box-sizing: border-box;
-    }
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      margin: 0;
-      overflow: auto;
-      background: black;
-      color: white;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-size: 11pt;
-    }
-
-    #gameContainer {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #unity-canvas {
-      width: 100%;
-      height: 100%;
-      min-width: 800px;
-      min-height: 600px;
-      display: block;
-      background: #000000;
-    }
-
-    canvas+* {
-      z-index: 2;
-    }
-
-    .progress {
-      margin: 1.5em;
-      border: 1px solid rgb(186, 103, 9);
-      width: min(400px, calc(100vw - 3em));
-      display: none;
-    }
-
-    .progress .full {
-      margin: 2px;
-      background: rgb(186, 103, 9);
-      height: 2em;
-      transform: scaleX(0);
-      transform-origin: top left;
-    }
-
-    #loader {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: black;
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eterspire Beta I - Lartu.net</title>
+    <link rel="shortcut icon" type="image/gif" href="favicon.gif">
+    <link rel="icon" type="image/gif" href="favicon.gif">
+    <style>
+        html { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: inherit; }
+        body {
+            margin: 0;
+            overflow: auto;
+            background: black;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 11pt;
+        }
+        #gameContainer {
+            display: none;
+            width: 100%;
+            overflow-x: auto;
+        }
+        #unity-canvas {
+            display: block;
+            width: 800px;
+            height: 600px;
+            min-width: 800px;
+            min-height: 600px;
+            margin: 20px auto;
+            background: #000000;
+        }
+        canvas + * { z-index: 2; }
+        #loader {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+        .progress {
+            margin: 1.5em;
+            border: 1px solid rgb(186, 103, 9);
+            width: min(400px, calc(100vw - 3em));
+            display: none;
+        }
+        .progress .full {
+            margin: 2px;
+            height: 2em;
+            background: rgb(186, 103, 9);
+            transform: scaleX(0);
+            transform-origin: top left;
+        }
+        #loader-message.error { color: #ff8a8a; }
+        .bordered-box-menu {
+            max-width: 800px;
+            margin: 20px auto 0;
+            border: 12px solid transparent;
+            border-image-source: url("box_border_2.png");
+            border-image-slice: 12 fill;
+            border-image-repeat: repeat;
+            border-image-outset: 4px;
+            color: white;
+            font-size: 12px;
+        }
+        .bordered-box-menu table { width: 100%; }
+        .bordered-box-menu a, .footer a { color: white; }
+        .menu-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        .menu-link + .menu-link { margin-left: 10px; }
+        .footer {
+            padding: 10px 10px 20px;
+            text-align: center;
+            color: white;
+            font-size: 8pt;
+            line-height: 150%;
+        }
+        .footer a{
+            color: #ff9900;
+        }
+    </style>
 </head>
-
 <body>
-  <div id="gameContainer">
-    <canvas id="unity-canvas" width=800 height=600 tabindex="-1"></canvas>
-  </div>
-  <div id="loader">
-    <div class="progress">
-      <div class="full"></div>
+    <div>
+        <div style="text-align: center; margin: 16px auto 0; overflow-x: auto;">
+            <table style="width: initial; margin: auto;">
+                <tr>
+                    <td style="vertical-align: bottom; padding: 0;">
+                        <a href="https://www.eterspire.com" target="_blank"><img src="banner.png"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="bordered-box-menu" style="margin-top: 16px;">
+            <table>
+                <tr>
+                    <td>
+                        <span class="menu-link">
+                            <img src="icon_3.png" alt="">
+                            <a href="https://www.eterspire.com">Eterspire Homepage</a>
+                        </span>
+                    </td>
+                    <td style="text-align: right;">
+                        <span class="menu-link">
+                            <img src="icon_1.png" alt="">
+                            <a href="manual.html" target="_blank">Need help? Check the Manual</a>
+                        </span>
+                        <span class="menu-link">
+                            <img src="icon_4.png" alt="">
+                            <a href="https://www.eterspire.com/rules/" target="_blank">Rules</a>
+                        </span>
+                        <span class="menu-link">
+                            <img src="icon_8.png" alt="">
+                            <a href="https://discord.com/channels/814967791840264232/1541243891460735097" target="_blank">Forums</a>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <p>Please Wait, Eterspire is Loading...</p>
-  </div>
 
-  <script>
-    var canvas = document.querySelector("#unity-canvas");
-    var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/lartumud.loader.js";
-    var config = {
-      arguments: [],
-      dataUrl: buildUrl + "/lartumud.data.unityweb",
-      frameworkUrl: buildUrl + "/lartumud.framework.js.unityweb",
-      codeUrl: buildUrl + "/lartumud.wasm.unityweb",
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "Lartu",
-      productName: "Eterspire",
-      productVersion: "0.5"
-    };
+    <div id="loader">
+        <div class="progress"><div class="full"></div></div>
+        <p id="loader-message">Please Wait, Eterspire is Loading...</p>
+    </div>
 
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
-    }
+    <div id="gameContainer">
+        <canvas id="unity-canvas" width=800 height=600 tabindex="-1"></canvas>
+    </div>
 
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var cookies = document.cookie.split(';');
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        while (cookie.charAt(0) === ' ') cookie = cookie.substring(1);
-        if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length);
-      }
-      return 1;
-    }
+    <div class="footer">
+        Copyright by <a href="https://www.lartu.net" target="_blank">Lartu</a> &amp; <a href="https://shw.ar" target="_blank">Stonehollow Workshop</a>, 2020. All rights reserved.
+        <br>To play this game you must agree to our
+        <a href="https://www.stonehollow-workshop.com/tc.html" target="_blank">Terms and Conditions</a>
+        and <a href="https://www.eterspire.com/privacy/" target="_blank">Privacy Policy</a>.
+    </div>
 
-    function resizeScreen(type) {
-      var useSmallScreen = Number(type) === 1;
-      if (useSmallScreen) {
-        canvas.style.width = "800px";
-        canvas.style.height = "600px";
-        setCookie("eterspire_screen_size", 1, 999);
-        return 1;
-      }
+    <script>
+        var canvas = document.querySelector("#unity-canvas");
+        var gameContainer = document.querySelector("#gameContainer");
+        var loader = document.querySelector("#loader");
+        var loaderMessage = document.querySelector("#loader-message");
+        var buildUrl = "Build";
+        var loaderUrl = buildUrl + "/lartumud.loader.js";
+        var config = {
+            arguments: [],
+            dataUrl: buildUrl + "/lartumud.data.unityweb",
+            frameworkUrl: buildUrl + "/lartumud.framework.js.unityweb",
+            codeUrl: buildUrl + "/lartumud.wasm.unityweb",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "Lartu",
+            productName: "Eterspire",
+            productVersion: "0.5"
+        };
 
-      canvas.style.width = "100%";
-      canvas.style.height = "100%";
-      setCookie("eterspire_screen_size", 0, 999);
-      return 0;
-    }
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+        }
 
-    resizeScreen(getCookie("eterspire_screen_size"));
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) === " ") cookie = cookie.substring(1);
+                if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length);
+            }
+            return 1;
+        }
 
-    var script = document.createElement("script");
-    script.src = loaderUrl;
-    script.onload = function () {
-      document.querySelector("#loader .progress").style.display = "block";
-      createUnityInstance(canvas, config, function (progress) {
-        document.querySelector("#loader .progress .full").style.transform = "scaleX(" + progress + ")";
-      }).then(function (unityInstance) {
-        document.querySelector("#loader").style.display = "none";
-        window.unityInstance = unityInstance;
-      }).catch(function (message) {
-        alert(message);
-      });
-    };
-    document.body.appendChild(script);
+        function resizeScreen(type) {
+            var useSmallScreen = Number(type) === 1;
+            if (useSmallScreen) {
+                canvas.style.width = "800px";
+                canvas.style.height = "600px";
+                setCookie("eterspire_screen_size", 1, 999);
+                return 1;
+            }
+            canvas.style.width = "calc(100% - 40px)";
+            canvas.style.height = Math.max(window.innerHeight - 100, 600) + "px";
+            setCookie("eterspire_screen_size", 0, 999);
+            return 0;
+        }
 
-    window.onbeforeunload = function (event) {
-      event.preventDefault();
-      event.returnValue = "";
-    };
+        resizeScreen(getCookie("eterspire_screen_size"));
+        window.addEventListener("resize", function () {
+            resizeScreen(getCookie("eterspire_screen_size"));
+        });
 
-    document.onkeydown = function (event) {
-      event = event || window.event;
-      if (!event.ctrlKey && !event.metaKey) return;
+        function showLoadError(message) {
+            document.querySelector("#loader .progress").style.display = "none";
+            loaderMessage.classList.add("error");
+            loaderMessage.textContent = "Eterspire could not be loaded: " + message;
+        }
 
-      var code = event.which || event.keyCode;
-      if (code === 83 || code === 87) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    };
-  </script>
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = function () {
+            document.querySelector("#loader .progress").style.display = "block";
+            createUnityInstance(canvas, config, function (progress) {
+                document.querySelector("#loader .progress .full").style.transform = "scaleX(" + progress + ")";
+            }).then(function (unityInstance) {
+                loader.style.display = "none";
+                gameContainer.style.display = "block";
+                window.unityInstance = unityInstance;
+            }).catch(function (message) {
+                showLoadError(message);
+            });
+        };
+        script.onerror = function () {
+            showLoadError("the Unity loader script was not found. Run this page through a local web server.");
+        };
+        document.body.appendChild(script);
+
+        window.onbeforeunload = function (event) {
+            event.preventDefault();
+            event.returnValue = "";
+        };
+
+        document.onkeydown = function (event) {
+            event = event || window.event;
+            if (!event.ctrlKey && !event.metaKey) return;
+            var code = event.which || event.keyCode;
+            if (code === 83 || code === 87) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        };
+
+        canvas.onselectstart = function () { return false; };
+    </script>
 </body>
-
 </html>
