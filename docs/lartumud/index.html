@@ -36,21 +36,11 @@
 
         #unity-canvas {
             display: block;
-            width: 800px;
-            height: 600px;
-            min-width: 800px;
-            min-height: 600px;
+            width: 900px;
+            height: 680px;
+            min-width: 900px;
+            min-height: 680px;
             margin: 20px auto;
-
-            background: {
-                    {
-                        {
-                        BACKGROUND_COLOR
-                    }
-                }
-            }
-
-            ;
         }
 
         canvas+* {
@@ -246,8 +236,8 @@
         function resizeScreen(type) {
             var useSmallScreen = Number(type) === 1;
             if (useSmallScreen) {
-                canvas.style.width = "800px";
-                canvas.style.height = "600px";
+                canvas.style.width = "900px";
+                canvas.style.height = "680px";
                 setCookie("eterspire_screen_size", 1, 999);
                 return 1;
             }
