@@ -5,9 +5,13 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="eterspire-build-version" content="19.8">
     <title>Eterspire Beta I - Lartu.net</title>
-    <link rel="shortcut icon" type="image/gif" href="favicon.gif">
-    <link rel="icon" type="image/gif" href="favicon.gif">
+    <link rel="shortcut icon" type="image/gif" href="favicon.gif?v=19.8">
+    <link rel="icon" type="image/gif" href="favicon.gif?v=19.8">
     <style>
         html {
             box-sizing: border-box;
@@ -80,7 +84,7 @@
             max-width: 800px;
             margin: 20px auto 0;
             border: 12px solid transparent;
-            border-image-source: url("box_border_2.png");
+            border-image-source: url("box_border_2.png?v=19.8");
             border-image-slice: 12 fill;
             border-image-repeat: repeat;
             border-image-outset: 4px;
@@ -137,7 +141,7 @@
             <table style="width: initial; margin: auto;">
                 <tr>
                     <td style="vertical-align: bottom; padding: 0;">
-                        <a href="https://www.eterspire.com" target="_blank"><img src="banner.png"></a>
+                        <a href="https://www.eterspire.com" target="_blank"><img src="banner.png?v=19.8"></a>
                     </td>
                 </tr>
             </table>
@@ -147,25 +151,25 @@
                 <tr>
                     <td>
                         <span class="menu-link">
-                            <img src="icon_3.png" alt="">
+                            <img src="icon_3.png?v=19.8" alt="">
                             <a href="https://www.eterspire.com">Eterspire Homepage</a>
                         </span>
                     </td>
                     <td style="text-align: right;">
                         <span class="menu-link">
-                            <img src="icon_11.png" alt="">
-                            <a href="news.html" target="_blank">News & Updates</a>
+                            <img src="icon_11.png?v=19.8" alt="">
+                            <a href="news.html?v=19.8" target="_blank">News & Updates</a>
                         </span>
                         <span class="menu-link">
-                            <img src="icon_1.png" alt="">
-                            <a href="manual.html" target="_blank">Manual</a>
+                            <img src="icon_1.png?v=19.8" alt="">
+                            <a href="manual.html?v=19.8" target="_blank">Manual</a>
                         </span>
                         <span class="menu-link">
-                            <img src="icon_4.png" alt="">
+                            <img src="icon_4.png?v=19.8" alt="">
                             <a href="https://www.eterspire.com/rules/" target="_blank">Rules</a>
                         </span>
                         <span class="menu-link">
-                            <img src="icon_8.png" alt="">
+                            <img src="icon_8.png?v=19.8" alt="">
                             <a href="https://discord.com/channels/814967791840264232/1541243891460735097"
                                 target="_blank">Forums</a>
                         </span>
@@ -199,13 +203,15 @@
         var gameContainer = document.querySelector("#gameContainer");
         var loader = document.querySelector("#loader");
         var loaderMessage = document.querySelector("#loader-message");
+        var buildVersion = "19.8";
+        var cacheSuffix = "?v=" + encodeURIComponent(buildVersion);
         var buildUrl = "Build";
-        var loaderUrl = buildUrl + "/lartumud.loader.js";
+        var loaderUrl = buildUrl + "/f0b62fe6380c4bf3296e0a8e1122f16a.loader.js" + cacheSuffix;
         var config = {
             arguments: [],
-            dataUrl: buildUrl + "/lartumud.data.unityweb",
-            frameworkUrl: buildUrl + "/lartumud.framework.js.unityweb",
-            codeUrl: buildUrl + "/lartumud.wasm.unityweb",
+            dataUrl: buildUrl + "/07307ef1dcbb04b38998c6e9eec0c807.data.unityweb" + cacheSuffix,
+            frameworkUrl: buildUrl + "/f68874127caebf17994ca77f2dbd4342.framework.js.unityweb" + cacheSuffix,
+            codeUrl: buildUrl + "/6c2613e4112a839c1a23112d2de586d8.wasm.unityweb" + cacheSuffix,
             streamingAssetsUrl: "StreamingAssets",
             companyName: "Lartu",
             productName: "LartuMUD",
@@ -258,24 +264,55 @@
             loaderMessage.textContent = "Eterspire could not be loaded: " + message;
         }
 
-        var script = document.createElement("script");
-        script.src = loaderUrl;
-        script.onload = function () {
-            document.querySelector("#loader .progress").style.display = "block";
-            createUnityInstance(canvas, config, function (progress) {
-                document.querySelector("#loader .progress .full").style.transform = "scaleX(" + progress + ")";
-            }).then(function (unityInstance) {
-                loader.style.display = "none";
-                gameContainer.style.display = "block";
-                window.unityInstance = unityInstance;
-            }).catch(function (message) {
-                showLoadError(message);
-            });
-        };
-        script.onerror = function () {
-            showLoadError("the Unity loader script was not found. Run this page through a local web server.");
-        };
-        document.body.appendChild(script);
+        function startUnity() {
+            var script = document.createElement("script");
+            script.src = loaderUrl;
+            script.onload = function () {
+                document.querySelector("#loader .progress").style.display = "block";
+                createUnityInstance(canvas, config, function (progress) {
+                    document.querySelector("#loader .progress .full").style.transform = "scaleX(" + progress + ")";
+                }).then(function (unityInstance) {
+                    loader.style.display = "none";
+                    gameContainer.style.display = "block";
+                    window.unityInstance = unityInstance;
+                }).catch(function (message) {
+                    showLoadError(message);
+                });
+            };
+            script.onerror = function () {
+                showLoadError("the Unity loader script was not found. Run this page through a local web server.");
+            };
+            document.body.appendChild(script);
+        }
+
+        function checkForNewBuild() {
+            var latestIndexUrl = new URL("index.html", window.location.href);
+            latestIndexUrl.search = "";
+            latestIndexUrl.searchParams.set("_fresh", Date.now().toString());
+
+            return fetch(latestIndexUrl.toString(), { cache: "no-store" })
+                .then(function (response) {
+                    if (!response.ok) throw new Error("Could not check the latest build.");
+                    return response.text();
+                })
+                .then(function (html) {
+                    var match = html.match(/<meta\s+name=["']eterspire-build-version["']\s+content=["']([^"']+)["']/i);
+                    if (!match || match[1] === buildVersion) return false;
+
+                    var latestPageUrl = new URL("index.html", window.location.href);
+                    latestPageUrl.search = "";
+                    latestPageUrl.searchParams.set("v", match[1]);
+                    window.location.replace(latestPageUrl.toString());
+                    return true;
+                })
+                .catch(function () {
+                    return false;
+                });
+        }
+
+        checkForNewBuild().then(function (isReloading) {
+            if (!isReloading) startUnity();
+        });
 
         window.onbeforeunload = function (event) {
             event.preventDefault();
