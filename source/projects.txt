@@ -7,7 +7,7 @@ This is a list of projects I'm currently working on, and projects I've worked on
 This is stuff I'm actively working on. A link might be provided with each project, should they be public; otherwise it means they're either private or that they haven't reached enough maturity to be published yet.
 
 * **[Eterspire | https://www.eterspire.com]**, an MMORPG and the best thing I've ever built. This is also my main job.
-* **PolyComposer**, name tbd, though. A graphical engine for making games for modern and old systems alike. At the moment it supports modern and classic macOS, PSP, PlayStation 2, web, iOS and Android.
+* **PolyComposer**, name tbd though. A graphical engine for making games for modern and old systems alike. At the moment it supports modern and classic macOS, PSP, PlayStation 2, web, iOS and Android.
 
 ## Stuff I've worked on
 
