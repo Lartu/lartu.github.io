@@ -10,6 +10,7 @@ This is stuff I'm actively working on. A link might be provided with each projec
 * **[LartuNet | home]**, my personal website (this very site!). I actively maintain it using Makompile (see below), especially this list and the [book club | bookclub] one. From time to time I change the way it looks and behaves, but it is still my personal corner of the internet.
 * **PolyComposer**, name tbd though. A graphical engine for making games for modern and old systems alike. At the moment it supports modern and classic macOS, PSP, PlayStation 2, web, iOS and Android.
 * **Axonote**, name subject to change. A Telegram Saved Messages-inspired note taking app for iOS and macOS.
+* **Nariscope**, a native [Gopher | https://en.wikipedia.org/wiki/Gopher_(protocol)] browser for macOS.
 
 ## Stuff I've worked on
 
