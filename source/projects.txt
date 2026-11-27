@@ -10,11 +10,11 @@ This is stuff I'm actively working on. A link might be provided with each projec
 * **[LartuNet | home]**, my personal website (this very site!). I actively maintain it using Makompile (see below), especially this list and the [book club | bookclub] one. From time to time I change the way it looks and behaves, but it is still my personal corner of the internet.
 * **PolyComposer**, name tbd though. A graphical engine for making games for modern and old systems alike. At the moment it supports modern and classic macOS, PSP, PlayStation 2, web, iOS and Android.
 * **Axonote**, name subject to change. A Telegram Saved Messages-inspired note taking app for iOS and macOS.
-* **Nariscope**, a native [Gopher | https://en.wikipedia.org/wiki/Gopher_(protocol)] browser for macOS.
 
 ## Stuff I've worked on
 
 This is a list of projects I've worked on, that were previously listed here, or that I felt like listing, but that I'm not actively working on at the moment. I might go back and revisit them in the future though!
 
+* **Nariscope**, a native [Gopher | https://en.wikipedia.org/wiki/Gopher_(protocol)] browser for macOS. [You can find it on GitHub | https://github.com/Lartu/nariscope].
 * **[The LDPL Programming Language | https://github.com/lartu/ldpl]**, a programming language inspired by COBOL that transpiles to C++. It has quite a rich set of features and is stable, but since the advent of AI, I haven't really felt like working on it.
 * **[Makompile]**, a markdown-like website-making tool, used to compile this very site. It's not abandoned, but I haven't touched it for a while. I actively use it, though.
